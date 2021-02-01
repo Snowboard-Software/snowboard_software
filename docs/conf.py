@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Snowboard Data Catalog'
-copyright = '2021, Rick Radewagen, Sven Rudolph'
+copyright = '2021, Snowboard Software GmbH'
 author = 'Rick Radewagen, Sven Rudolph'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -77,13 +77,27 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
-
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
 html_theme = 'alabaster'
+
+html_theme_options = {
+    "description": "The fast and automated data catalog for cloud data warehouses.",
+    "logo": "logo_lupe.png",
+    "logo_name": "false",
+    "show_powered_by": "false",
+    "sidebar_width": "280px",
+    "show_relbar_bottom": "true",
+    "show_relbars": "true",
+    "font_family": 'Helvetica, sans-serif',
+    'caption_font_family': 'Helvetica, sans-serif',
+    'head_font_family': 'Helvetica, sans-serif',
+    'link': '#005bff'
+}
+# html_logo = '_static/logo_lupe.png'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -96,9 +110,6 @@ html_theme = 'alabaster'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_logo = '_static/logo_lupe.png'
-
-
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
 #
@@ -106,17 +117,17 @@ html_logo = '_static/logo_lupe.png'
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
 html_sidebars = {
     '**': [
-        'relations.html',  # needs 'show_related': True theme option to display
+        'about.html',
+        'navigation.html',
+        # 'relations.html',  # needs 'show_related': True theme option to display
         'searchbox.html',
     ]
 }
-
 
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'SnowboardDataCatalogdoc'
-
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -146,7 +157,6 @@ latex_documents = [
      'Rick Radewagen, Sven Rudolph', 'manual'),
 ]
 
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
@@ -155,7 +165,6 @@ man_pages = [
     (master_doc, 'snowboarddatacatalog', 'Snowboard Data Catalog Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output -------------------------------------------
 
@@ -167,6 +176,3 @@ texinfo_documents = [
      author, 'SnowboardDataCatalog', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-
