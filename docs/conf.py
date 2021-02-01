@@ -91,6 +91,7 @@ html_theme_options = {
     "show_powered_by": "false",
     "sidebar_width": "280px",
     "show_relbar_bottom": "true",
+    "show_relbar_top": "false",
     "show_relbars": "true",
     "font_family": 'Helvetica, sans-serif',
     'caption_font_family': 'Helvetica, sans-serif',
