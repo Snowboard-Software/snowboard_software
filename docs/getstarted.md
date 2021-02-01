@@ -20,7 +20,7 @@ Snowboard then provides the ability to fastly and automatically:
 - profile data
 - view access rights and ownership
 - document information objects 
-- understand relationship
-- search
+- understand relationships between tables
+- search everything
 
-![Overview Data Architecture](_static/overview.png)
+![System Architecture](_static/overview.png)
