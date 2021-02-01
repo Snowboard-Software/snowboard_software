@@ -9,6 +9,6 @@ Welcome to Snowboard Data Catalog's documentation!
 .. toctree::
    :maxdepth: 2
 
-      Installation <start_it.md>
+      Get Started <getstarted.md>
       Support <help.rst>
 

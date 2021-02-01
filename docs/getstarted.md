@@ -1,9 +1,26 @@
 Get Started
 ===========
 
+## Deployment
+
 1. Install [`docker`](https://docs.docker.com/engine/install/) and [`docker-compose`](https://docs.docker.com/compose/install/)
 2. Create a directory called `snowboard`
 3. Download the Docker Compose configuration file: [`docker-compose.yml`](https://docs.docker.com/compose/install/ "Download file") (not working yet)
 4. Start the deployment with `docker-compose up`
 5. The Snowboard Data Catalog is now ready on [https://localhost](https://localhost)
 6. Set admin password, configure Snowflake Database Connection, ...
+
+
+## Overview
+
+The Snowboard Data Catalog connects directly with your cloud data warehouse.
+It needs access to the system database and tables of the warehouse (e.g. in `SNOWFLAKE.ACCOUNT_USAGE`).
+
+Snowboard then provides the ability to fastly and automatically: 
+- profile data
+- view access rights and ownership
+- document information objects 
+- understand relationship
+- search
+
+![Overview Data Architecture](_static/overview.png)
