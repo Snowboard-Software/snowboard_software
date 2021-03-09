@@ -71,8 +71,8 @@ language = None
 # This patterns also effect to html_static_path and html_extra_path
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-# The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+# The name of the Pygments (syntax highlighting) style to use. https://pygments.org/docs/styles/#creating-own-styles
+pygments_style = 'borland' #'docs.style.SQLStyle' #'abap', 'borland'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
@@ -85,18 +85,20 @@ todo_include_todos = False
 html_theme = 'alabaster'
 
 html_theme_options = {
-    "description": "The fast and automated data catalog for cloud data warehouses.",
+    "description": "The fast and automated data&#160;catalog for cloud&#160;data&#160;warehouses.",
     "logo": "logo_lupe.png",
     "logo_name": "false",
     "show_powered_by": "false",
-    "sidebar_width": "280px",
+    "sidebar_width": "260px",
+    "page_width": "940px",
     "show_relbar_bottom": "true",
     "show_relbar_top": "false",
     "show_relbars": "true",
     "font_family": 'Helvetica, sans-serif',
     'caption_font_family': 'Helvetica, sans-serif',
     'head_font_family': 'Helvetica, sans-serif',
-    'link': '#005bff'
+    'link': '#005bff',
+    'pre_bg': '#f8f8f8'
 }
 # html_logo = '_static/logo_lupe.png'
 
@@ -109,7 +111,9 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static','_static/custom.css']
+
+html_favicon = 'favicon_yellow.ico'
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -126,6 +130,8 @@ html_sidebars = {
 }
 
 html_show_sourcelink = False
+
+
 
 # -- Options for HTMLHelp output ------------------------------------------
 

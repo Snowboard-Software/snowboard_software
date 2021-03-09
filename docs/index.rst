@@ -10,5 +10,6 @@ Welcome to Snowboard Data Catalog's documentation!
    :maxdepth: 2
 
       Get Started <getstarted.md>
+      Connect with Snowflake <snowflake_connection.md>
       Support <help.rst>
 
