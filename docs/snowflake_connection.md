@@ -20,8 +20,7 @@ create user snowboard_user
     comment = 'Technical User for Snowboard Data Catalog 🏂';
 
 --allow usage of your warehouse
-grant usage on warehouse example_wh 
-    to role snowboard_role;
+grant usage on warehouse example_wh to role snowboard_role;
 ```
 
 ## Create the Snowboard Database
