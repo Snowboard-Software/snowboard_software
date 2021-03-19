@@ -45,7 +45,7 @@ grant select, references on all views in database identifier($db_name) to role s
 grant select, references on future views in database identifier($db_name) to role snowboard_role;
 ```
 
-For external tables the following statement is enough. Replace `external_db` with the correct name.
+For shared databases the following statement is enough. Replace `external_db` with the correct name.
 ```sql
 grant imported privileges on database external_db to role snowboard_role;
 ```
