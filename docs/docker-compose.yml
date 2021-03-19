@@ -1,46 +1,41 @@
 version: '3.8'
 services:
+  frontend:
+    image: getsnowboard/snowboard_ui:21.03.04
+    volumes:
+      - nginx_certs:/certs
+    links:
+      - "app:app"
+    ports:
+      - 80:8080
+      - 443:8443
   app:
-    image: getsnowboard/snowboard_api:latest
-    environment:
-      - HOST=0.0.0.0
-      - PORT=8000
+    image: getsnowboard/snowboard_api:21.03.04
     links:
       - "arangodb:arangodb"
       - "search:search"
-    ports:
-      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
     volumes:
       - nginx_certs:/certs
   search:
     image: getmeili/meilisearch:v0.19.0
     environment:
       - MEILI_MASTER_KEY=50dcbf2980cbdf11e15fbc3bbd5d64aaf3bff1932993d1da66bf96574821a9aa
-    ports:
-      - "7700:7700"
+      - MEILI_ENV=production
+      - MEILI_NO_SENTRY
     volumes:
       - meili_data_container:/data.ms
   arangodb:
     image: arangodb/arangodb:3.7.6
-    command: --log.level queries=trace --log.level info
+    command: --http.keep-alive-timeout=3600
     environment:
       - ARANGO_ROOT_PASSWORD=snowadmin
     hostname: 'arangodb'
-    ports:
-      - 8529:8529
     volumes:
       - arangodb_data_container:/var/lib/arangodb3
       - arangodb_apps_data_container:/var/lib/arangodb3-apps
-  frontend:
-    image: getsnowboard/snowboard_ui:latest
-    volumes:
-      - ./frontend/prod_nginx.conf:/opt/bitnami/nginx/conf/server_blocks/my_server_block.conf:ro
-      - nginx_certs:/certs
-    links:
-      - "app:app"
-    ports:
-      - "80:8080"
-      - "443:8443"
 
 
 volumes:
