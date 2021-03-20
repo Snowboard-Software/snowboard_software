@@ -1,4 +1,4 @@
-Connect with Snowflake 
+Technical User for Snowflake 
 ===========
 ***~ 15 min to complete***
 
@@ -18,6 +18,7 @@ create user snowboard_user
     default_role = snowboard_role
     default_namespace = snowboard
     comment = 'Technical User for Snowboard Data Catalog 🏂';
+grant role snowboard_role to user snowboard_user;
 
 --allow usage of your warehouse
 grant usage on warehouse example_wh to role snowboard_role;
@@ -33,7 +34,7 @@ grant ownership on database snowboard to role snowboard_role;
 
 ## Grants Read Access to Data
 For each database or schema that should be added to the data catalog execute these statements.
-Replace `example_db` with the correct name.
+Replace `example_db` with the correct name. You can add more databases later, have at least one to get started.  
 ```mysql
 set db_name = 'example_db';
 grant usage on database identifier($db_name) to role snowboard_role;
