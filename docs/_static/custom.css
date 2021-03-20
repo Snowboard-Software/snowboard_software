@@ -11,3 +11,9 @@ pre {
 div.body {
     padding: 0 10px 0 10px;
 }
+
+a.copybtn {
+    width: 1.5em;
+    height: 1.5em;
+    opacity: 0.4;
+}
