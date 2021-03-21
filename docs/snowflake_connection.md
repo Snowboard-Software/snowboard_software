@@ -53,6 +53,8 @@ grant imported privileges on database external_db to role snowboard_role;
 
 ## Grants Read Access to Account Information
 Grant access to the query log and further meta data from Snowflake.
+`manage grants` is for retrieving user information. 
 ```sql
 grant imported privileges on database snowflake to role snowboard_role;
+grant manage grants on account to role snowboard_role;
 ```
