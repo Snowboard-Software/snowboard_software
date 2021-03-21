@@ -33,7 +33,7 @@ grant ownership on database snowboard to role snowboard_role;
 ```
 
 ## Grants Read Access to Data
-For each database or schema that should be added to the data catalog execute these statements.
+For each database that should be added to the data catalog execute these statements.
 Replace `example_db` with the correct name. You can add more databases later, have at least one to get started.  
 ```mysql
 set db_name = 'example_db';
@@ -53,8 +53,6 @@ grant imported privileges on database external_db to role snowboard_role;
 
 ## Grants Read Access to Account Information
 Grant access to the query log and further meta data from Snowflake.
-`manage grants` is for retrieving user information. 
 ```sql
 grant imported privileges on database snowflake to role snowboard_role;
-grant manage grants on account to role snowboard_role;
 ```
