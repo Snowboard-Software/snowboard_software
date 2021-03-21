@@ -2,7 +2,7 @@ Get Started
 ===========
 
 ## Deployment
-***~ 45 min to complete***  
+***~ 45 min to complete***  <br>
 *Get support at [hi@snowboard.software](mailto:hi@snowboard.software)*
 
 1. Install [`docker`](https://docs.docker.com/engine/install/) and [`docker-compose`](https://docs.docker.com/compose/install/)
