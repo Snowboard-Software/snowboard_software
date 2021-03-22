@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   frontend:
-    image: getsnowboard/snowboard_ui:21.03.08
+    image: getsnowboard/snowboard_ui:21.03.09
     volumes:
       - nginx_certs:/certs
     links:
@@ -10,7 +10,7 @@ services:
       - 80:8080
       - 443:8443
   app:
-    image: getsnowboard/snowboard_api:21.03.08
+    image: getsnowboard/snowboard_api:21.03.09
     links:
       - "arangodb:arangodb"
       - "search:search"
