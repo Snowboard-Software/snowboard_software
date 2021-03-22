@@ -44,6 +44,8 @@ grant select, references on all tables in database identifier($db_name) to role 
 grant select, references on future tables in database identifier($db_name) to role snowboard_role;
 grant select, references on all views in database identifier($db_name) to role snowboard_role;
 grant select, references on future views in database identifier($db_name) to role snowboard_role;
+grant select, references on all materialized views in database identifier($db_name) to role snowboard_role;
+grant select, references on future materialized views in database identifier($db_name) to role snowboard_role;
 ```
 
 For shared databases the following statement is enough. Replace `external_db` with the correct name.
