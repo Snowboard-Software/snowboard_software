@@ -17,6 +17,8 @@ services:
     environment:
       - HOST=0.0.0.0
       - PORT=8000
+      - SNOWBOARD_MAJOR_VERSION=21.03
+      - SNOWBOARD_VERSION=21.03.14
     volumes:
       - nginx_certs:/certs
   search:
