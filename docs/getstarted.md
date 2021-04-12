@@ -9,11 +9,11 @@ Get Started
 2. Create a directory called `snowboard`
 3. Download the Docker Compose configuration file: [`docker-compose.yml`](https://raw.githubusercontent.com/zurferr/snowboard_software/main/docs/docker-compose.yml "Download file")
 4. Start the deployment with `docker-compose up -d`
-5. The Snowboard Data Catalog is now ready on [https://localhost/login](https://localhost/login) or your server address
+5. The Snowboard Data Catalog is now ready on [http://localhost/login](http://localhost/login) or your server address
     - Login in with `admin@s8.software` and `snowboard`
 6. Set a new admin password in [Settings](http://localhost/settings#Users)
 7. Add an Account and [Prepare a technical user in Snowflake](snowflake_connection.md)
-    - Background tasks will start automatically. They need some time.
+    - Background tasks will start automatically. [(more info)](background_tasks.md)
 8. Configure SSL Certificate _( optional / recommended )_
 9. You did it! Great job. Tell your colleagues about it. 
 
