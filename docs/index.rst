@@ -13,5 +13,6 @@ This is the official documentation of the Snowboard Data Catalog.
       Get Started <getstarted.md>
       Setup with Snowflake <snowflake_connection.md>
       Background Tasks for Snowflake <background_tasks.md>
+      Background Tasks Settings <background_tasks_paths.md>
       Support <help.rst>
 
