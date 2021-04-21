@@ -14,5 +14,6 @@ This is the official documentation of the Snowboard Data Catalog.
       Setup with Snowflake <snowflake_connection.md>
       Background Tasks for Snowflake <background_tasks.md>
       Background Tasks Settings <background_tasks_paths.md>
+      Upgrade <upgrade.md>
       Support <help.rst>
 
