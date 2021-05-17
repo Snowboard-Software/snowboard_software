@@ -9,7 +9,7 @@ Enabling SSO on Snowflake
 You need to grant `CREATE INTEGRATION` to the Snowflake role of your configured Snowboard technical user.
 If you have followed the setup procedure in this documentation you can add these rights with:
 ```sql
-GRANT CREATE INTEGRATION TO ROLE snowboard_role;
+GRANT CREATE INTEGRATION ON ACCOUNT TO ROLE snowboard_role;
 ```
 
 ### Enable SSO
