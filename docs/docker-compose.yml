@@ -19,16 +19,8 @@ services:
       - PORT=8000
     volumes:
       - nginx_certs:/certs
-  search:
-    image: getmeili/meilisearch:v0.19.0
-    environment:
-      - MEILI_MASTER_KEY=50dcbf2980cbdf11e15fbc3bbd5d64aaf3bff1932993d1da66bf96574821a9aa
-      - MEILI_ENV=production
-      - MEILI_NO_SENTRY
-    volumes:
-      - meili_data_container:/data.ms
   arangodb:
-    image: arangodb/arangodb:3.7.6
+    image: getsnowboard/snowboard_db:latest
     command: --http.keep-alive-timeout=3600
     environment:
       - ARANGO_ROOT_PASSWORD=snowadmin
@@ -40,6 +32,4 @@ services:
 
 volumes:
   arangodb_data_container:
-  arangodb_apps_data_container:
-  meili_data_container:
   nginx_certs:

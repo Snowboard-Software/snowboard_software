@@ -1,6 +1,6 @@
 Technical User for Snowflake 
 ===========
-***~ 15 min to complete***
+***~ 20 min to complete***
 
 You need an `ACCOUNTADMIN` user to follow this guide. 
 
@@ -25,7 +25,7 @@ grant usage on warehouse example_wh to role snowboard_role;
 ```
 
 ## Create the Snowboard Database
-This database will be used to store profiling results and the parsed query log. You can also easily access it.
+This database will be used to store profiling results and the parsed query log. You can easily access it for your own analytics.
 Data ownership is great.
 ```sql
 create database snowboard;
@@ -57,4 +57,10 @@ grant imported privileges on database external_db to role snowboard_role;
 Grant access to the query log and further meta data from Snowflake.
 ```sql
 grant imported privileges on database snowflake to role snowboard_role;
+```
+
+## Grant right to enable Single-Sign-On
+Allow the technical user to create a single-sign-on integration. 
+```sql
+GRANT CREATE INTEGRATION ON ACCOUNT TO ROLE snowboard_role;
 ```
