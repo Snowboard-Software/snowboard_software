@@ -15,6 +15,7 @@ This is the official documentation of the Snowboard Data Catalog.
       Background Tasks for Snowflake <background_tasks.md>
       Background Tasks Settings <background_tasks_paths.md>
       Enabling SSO with Snowflake <snowflake_sso.md>
+      Data Lineage <lineage.md>
       Upgrade <upgrade.md>
       Support <help.rst>
 
