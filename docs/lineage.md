@@ -37,4 +37,4 @@ Snowboard parses statements like these to analyze data flows and connects `raw_o
 
 - Data transformations that happen outside of Snowflake are not captured. E.g. a python script that pulls data from view `customers`, enriches the data and writes it back to another table `customers_enriched`. 
 In this case no sql statement is used and no connection will be shown.
-- Both target and source table need to be indexed in Snowboard. E.g. the Snowboard user does not have privileges to access the source table `raw_orders`. Snowboard will ignore the connection with `orders` until it gets privileges to access `raw_orders`.
+- Both target and source table need to be indexed in Snowboard. E.g. if the Snowboard user does not have privileges to access the source table `raw_orders`. Snowboard will ignore the connection with `orders` until it gets privileges to access `raw_orders`.
