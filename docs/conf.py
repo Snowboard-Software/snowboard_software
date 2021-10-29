@@ -85,8 +85,8 @@ todo_include_todos = False
 html_theme = 'alabaster'
 
 html_theme_options = {
-    "description": "The fast and automated data&#160;catalog for cloud&#160;data&#160;warehouses.",
-    "logo": "logo_lupe.png",
+    "description": "Find, Understand and Trust your Snowflake data.",
+    "logo": "logo.png",
     "logo_name": "false",
     "show_powered_by": "false",
     "sidebar_width": "260px",
@@ -117,7 +117,7 @@ html_js_files = [
     'custom.js',
 ]
 
-html_favicon = 'favicon_yellow.ico'
+html_favicon = 'favicon.ico'
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
