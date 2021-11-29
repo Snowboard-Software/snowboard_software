@@ -16,7 +16,7 @@ Snowboard has two engines: one for metadata, one for metrics. Both work hand in 
 
 * All Calculations should live in one place, your data warehouse.&#x20;
 * Define metrics once and consume them with SQL in any other tool.&#x20;
-* Discover and document them in the catalog.&#x20;
+* Discover and document your metrics in the catalog.&#x20;
 
 ****
 
