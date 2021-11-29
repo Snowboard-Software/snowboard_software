@@ -2,7 +2,7 @@
 
 _Get support and advice at _[_hi@snowboard.software_](mailto:hi@snowboard.software)
 
-There are two ways to deploy Snowboard. We manage it for you in the [cloud](getstarted.md#cloud), or you [host it yourself](getstarted.md#self-hosted).
+There are two ways to deploy Snowboard. We manage it for you in the [cloud](./#cloud), or you [host it yourself](./#self-hosted).
 
 ## Cloud
 

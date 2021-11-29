@@ -1,10 +1,11 @@
 # Table of contents
 
 * [Welcome to Snowboard](README.md)
-  * [Get Started](docs/getstarted.md)
-  * [Technical User for Snowflake](docs/snowflake\_connection.md)
-  * [Background Tasks for Snowflake](docs/background\_tasks.md)
-  * [Configure Paths for Background Tasks](docs/background\_tasks\_paths.md)
-  * [Lineage and Data Flows](docs/lineage.md)
-  * [Enabling SSO on Snowflake](docs/snowflake\_sso.md)
-  * [Upgrade self-hosted Snowboard](docs/upgrade.md)
+* [Get Started](getstarted/README.md)
+  * [Connect with Snowflake](getstarted/snowflake\_connection.md)
+  * [Enabling SSO on Snowflake](getstarted/snowflake\_sso.md)
+* [Snowflake](snowflake/README.md)
+  * [Background Tasks for Snowflake](snowflake/background\_tasks.md)
+  * [Configure Paths for Snowflake Background Tasks](snowflake/background\_tasks\_paths.md)
+* [Lineage and Data Flows](lineage.md)
+* [Upgrade self-hosted Snowboard](upgrade.md)
