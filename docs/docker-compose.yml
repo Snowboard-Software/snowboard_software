@@ -13,7 +13,6 @@ services:
     image: getsnowboard/snowboard_api:latest
     links:
       - "arangodb:arangodb"
-      - "search:search"
     environment:
       - HOST=0.0.0.0
       - PORT=8000
@@ -27,8 +26,6 @@ services:
     hostname: 'arangodb'
     volumes:
       - arangodb_data_container:/var/lib/arangodb3
-      - arangodb_apps_data_container:/var/lib/arangodb3-apps
-
 
 volumes:
   arangodb_data_container:
