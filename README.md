@@ -1,14 +1,12 @@
-### Public Documenation of Snowboard Data Catalog
+# Welcome to Snowboard
 
-#### Create documentation
-0. Install sphinx with extensions: `pip install sphinx recommonmark`
-1. Open dir: `cd docs`
-2. Build documentation `./make.bat html` or `make html`
-3. Find results in `docs/_build/_html/index.html`
-4. Push and build public documenation on https://readthedocs.org/projects/snowboard-software/
+Snowboard connects directly with your cloud data warehouse. It needs access to the system database and tables of the warehouse (e.g. in `SNOWFLAKE.ACCOUNT_USAGE`).
 
-Public Result:
-https://snowboard-software.readthedocs.io/en/latest/index.html
+Snowboard then provides the ability to quickly and automatically:
 
-
+* profile data
+* view access rights and ownership
+* document information objects
+* understand relationships between tables
+* search everything
 
