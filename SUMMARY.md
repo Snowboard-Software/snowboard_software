@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome to Snowboard](README.md)
+* [Welcome to Sled](README.md)
 * [Get Started](getstarted.md)
 * [Connect with Snowflake](snowflake\_connection.md)
 * [Enabling SSO on Snowflake](snowflake\_sso.md)
