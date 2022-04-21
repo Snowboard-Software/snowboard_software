@@ -2,7 +2,7 @@
 
 _Get support and advice at_ [_hi@sled.so_](mailto:hi@sled.so)
 
-There are two ways to deploy Snowboard. We manage it for you in the [cloud](getstarted.md#cloud), or you [host it yourself](getstarted.md#self-hosted).
+There are two ways to deploy Sled. We manage it for you in the [cloud](getstarted.md#cloud), or you [host it yourself](getstarted.md#self-hosted).
 
 ## Cloud
 

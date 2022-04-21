@@ -1,8 +1,8 @@
 # Welcome to Sled
 
-Snowboard helps you to find, understand and trust your analytics. We build it for the Snowflake data cloud, because we believe deep integration enables better workflows and allows us to double down on hard platform specific challenges.&#x20;
+Sled helps you to find, understand and trust your analytics. We build it for the Snowflake data cloud, because we believe deep integration enables better workflows and allows us to double down on hard platform specific challenges.&#x20;
 
-Snowboard has two engines: one for metadata, one for metrics. Both work hand in hand to make your analytics scalable and trustworthy.&#x20;
+Sled has two engines: one for metadata, one for metrics. Both work hand in hand to make your analytics scalable and trustworthy.&#x20;
 
 **Data Catalog and Observability - it's meta data management!**
 
