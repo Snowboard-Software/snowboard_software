@@ -1,6 +1,6 @@
 # Get Started
 
-_Get support and advice at_ [_hi@snowboard.software_](mailto:hi@snowboard.software)
+_Get support and advice at_ [_hi@sled.so_](mailto:hi@sled.so)
 
 There are two ways to deploy Snowboard. We manage it for you in the [cloud](getstarted.md#cloud), or you [host it yourself](getstarted.md#self-hosted).
 
