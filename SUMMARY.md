@@ -2,7 +2,8 @@
 
 * [Welcome to Sled](README.md)
 * [Get Started](getstarted.md)
-* [Connect with Snowflake](snowflake\_connection.md)
+* [Connect with Snowflake](snowflake\_connection/README.md)
+  * [Grant permissions on future tables](snowflake\_connection/grant-permissions-on-future-tables.md)
 * [Enabling SSO on Snowflake](snowflake\_sso.md)
 * [Background Tasks for Snowflake](background\_tasks.md)
 * [Configure Paths for Snowflake Background Tasks](background\_tasks\_paths.md)
