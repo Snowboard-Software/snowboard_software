@@ -37,7 +37,7 @@ For each database that should be added to the data catalog execute these stateme
 
 
 ```sql
-set db_name = 'example_db';
+set db_name = 'example_db'; -- specify name of database
 grant usage on database identifier($db_name) to role snowboard_role;
 grant usage on all schemas in database identifier($db_name) to role snowboard_role;
 grant usage on future schemas in database identifier($db_name) to role snowboard_role;
