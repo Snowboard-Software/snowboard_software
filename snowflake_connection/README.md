@@ -11,13 +11,11 @@ This creates a dedicated role and technical user. Replace `example_wh` with your
 ```sql
 create role snowboard_role;
 create user snowboard_user
-    --specify your own password and remember it for later
-    password = '<something secret>' 
-    --specify your warehouse
-    default_warehouse = example_wh 
+    password = '<something secret>' -- remember that!
+    default_warehouse = example_wh  -- specify your warehouse
     default_role = snowboard_role
     default_namespace = snowboard
-    comment = 'Technical User for Snowboard Data Catalog 🏂';
+    comment = 'Technical User for Sled 🛷';
 grant role snowboard_role to user snowboard_user;
 
 --allow usage of your warehouse
@@ -38,7 +36,7 @@ grant ownership on database snowboard to role snowboard_role;
 For each database that should be added to the data catalog execute these statements. Replace `example_db` with the correct name. You can add more databases later, have at least one to get started. \
 
 
-```
+```sql
 set db_name = 'example_db';
 grant usage on database identifier($db_name) to role snowboard_role;
 grant usage on all schemas in database identifier($db_name) to role snowboard_role;
