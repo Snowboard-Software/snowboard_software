@@ -20,8 +20,6 @@ Activated checks are executed on a schedule.
 
 
 
-
-
 ## Custom SQL Checks
 
 Custom checks allow monitoring correctness of business logic, multiple column relationships or validate consistency across tables. An SQL check is considered a failure if it returns rows.
@@ -47,6 +45,8 @@ WHERE NOT( model_id in (
     SELECT id FROM db.sh.car_models
 ))
 ```
+
+##
 
 ## Full Table or Delta Check
 
