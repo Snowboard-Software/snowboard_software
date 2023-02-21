@@ -48,3 +48,13 @@ WHERE NOT( model_id in (
 ))
 ```
 
+### Full Table or Delta Check
+
+Most tables in a data warehouse are either fully recreated with each run or only update the most current rows.&#x20;
+
+The timestamp column for checks (at the top) reflects this difference to either check the full table every time or only the last 7 days.&#x20;
+
+The timestamp column should track the creation or update time for records in the table, e.g. created\_at, updated\_at. This column will be used to filter data and compare values over time. If no column is selected, checks are always applied to the full table.
+
+
+
