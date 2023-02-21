@@ -6,7 +6,7 @@ Activated checks are executed on a schedule.
 
 
 
-### No-Code Checks
+## No-Code Checks
 
 * **Volume** controls row count change is stable. No sudden spikes or drops detected. This is a cheap check that should be enabled for all tables.
 * **Schema Change** violates in the case of incompatible changes in the schema, e.g. a column name or data type is changed that down-stream consumers might rely on.
@@ -22,7 +22,7 @@ Activated checks are executed on a schedule.
 
 
 
-### Custom SQL Checks
+## Custom SQL Checks
 
 Custom checks allow monitoring correctness of business logic, multiple column relationships or validate consistency across tables. An SQL check is considered a failure if it returns rows.
 
@@ -48,7 +48,7 @@ WHERE NOT( model_id in (
 ))
 ```
 
-### Full Table or Delta Check
+## Full Table or Delta Check
 
 Most tables in a data warehouse are either fully recreated with each run or only update the most current rows.&#x20;
 
