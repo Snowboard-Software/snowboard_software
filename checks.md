@@ -38,7 +38,7 @@ WHERE NOT ( distance_km / duration_h < 200 )
 
 
 
-Cross Table Consistency: ensure that all model\_id values in car\_trips are are existent in the car\_models table.
+Cross Table Consistency: ensure that all model\_id values in car\_trips exist in the car\_models table.
 
 ```sql
 SELECT *
