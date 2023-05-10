@@ -18,7 +18,7 @@ Sled has two engines: one for metadata, one for metrics. Both work hand in hand 
 * Define metrics once and consume them with SQL in any other tool.&#x20;
 * Discover and document your metrics in the catalog.&#x20;
 
-****
+
 
 ![](.gitbook/assets/overview\_architecture.png)
 

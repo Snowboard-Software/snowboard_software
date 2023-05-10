@@ -10,3 +10,4 @@
 * [Lineage and Data Flows](lineage.md)
 * [Checks](checks.md)
 * [Tableau Integration](background\_tasks-1.md)
+* [dbt](dbt.md)

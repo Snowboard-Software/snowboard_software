@@ -32,11 +32,11 @@ Generate a Personal Access Token with a user who is either "Site Admin Explorer"
 
 2\. Go to the section “Personal Access Tokens”
 
-![](<.gitbook/assets/grafik (1).png>)
+![](<.gitbook/assets/grafik (1) (1).png>)
 
 3\. Create new token with name “**sled**”
 
-![](.gitbook/assets/grafik.png)
+![](<.gitbook/assets/grafik (4).png>)
 
 4\. Copy token secret to clipboard and save it. This token is valid for 1 year and will need to be refreshed.
 
