@@ -1,4 +1,4 @@
-# Tableau Integration
+# Tableau
 
 Connect with Tableau to&#x20;
 
@@ -36,7 +36,7 @@ Generate a Personal Access Token with a user who is either "Site Admin Explorer"
 
 3\. Create new token with name “**sled**”
 
-![](<.gitbook/assets/grafik (4).png>)
+![](<.gitbook/assets/grafik (5).png>)
 
 4\. Copy token secret to clipboard and save it. This token is valid for 1 year and will need to be refreshed.
 

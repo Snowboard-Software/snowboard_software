@@ -9,7 +9,7 @@
 1. Navigate to dbt Cloud: [https://cloud.getdbt.com](https://cloud.getdbt.com)
 2. Go to **Account Settings**
 
-![](<.gitbook/assets/grafik (5).png>)
+![](<.gitbook/assets/grafik (4).png>)
 
 3. Click the button **Enable Metadata Access**
 

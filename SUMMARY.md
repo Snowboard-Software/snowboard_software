@@ -9,5 +9,5 @@
 * [Configure Paths for Snowflake Background Tasks](background\_tasks\_paths.md)
 * [Lineage and Data Flows](lineage.md)
 * [Checks](checks.md)
-* [Tableau Integration](background\_tasks-1.md)
+* [Tableau](background\_tasks-1.md)
 * [dbt](dbt.md)
