@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Welcome to Sled](README.md)
+* [Sled for Business Users (Viewer)](sled-for-business-users-viewer.md)
 * [Connect with Snowflake](snowflake\_connection/README.md)
   * [Grant permissions on future tables](snowflake\_connection/grant-permissions-on-future-tables.md)
 * [Enabling SSO on Snowflake](snowflake\_sso.md)

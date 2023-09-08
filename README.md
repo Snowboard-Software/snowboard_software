@@ -1,3 +1,7 @@
+---
+description: The All-In-Once Data Governance Solution for Snowflake
+---
+
 # Welcome to Sled
 
 Sled helps you to find, understand and trust your analytics. We build it for the Snowflake data cloud, because we believe deep integration enables better workflows and allows us to double down on hard platform specific challenges.&#x20;
