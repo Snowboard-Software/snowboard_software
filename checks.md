@@ -13,6 +13,8 @@ Activated checks are executed on a schedule.
 * **Technical Freshness** ensures the data pipeline is running and SQL statements are updating the table. This information is retrieved from the Query-History.&#x20;
   * Parameter: Expected freshness in hours, e.g. 24 hours. This would violate if in the last 24 hours (when checking) the table did not get an update (or the upstream tables in case of a View)
 * **Content Freshness** controls that recent rows are added or updated.&#x20;
+  * Parameter: Expected freshness in hours, e.g. 24 hours. This would violate if the selected time column has no new values in the last 24 hours.
+  * Split by dimension: e.g. by country, checks that all dimensions have follow the expected freshness. It might e.g. be that data from your German ERP system is on time, but the Italian one is outdated. Without the split, this check would not fail.
 * **Data Redundancy** checks if there are duplicates in the table according to a set of key columns.
 * **Null Values** checks the ratio of null values in a column is in an accepted range.
 * **Accepted Categorical Values** checks all categorical columns keep the same values. Only less than 10 distinct values are counted as categorical values and the column shouldn't have more than 30% null values.
