@@ -7,13 +7,13 @@ description: >-
 
 # Sled for Data Users (Editors)
 
-Editors can see the same things as Viewers (see [sled-for-business-users-viewer.md](sled-for-business-users-viewer.md "mention")) + more technical metadata + can edit almost everything.
+Editors can see the same things as Viewers (see [sled-for-business-users-viewer.md](../sled-for-business-users-viewer.md "mention")) + more technical metadata + can edit almost everything.
 
 ## Find data
 
 Discover data tables, business definitions or curated dashboards from the landing page.
 
-<figure><img src=".gitbook/assets/grafik (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/grafik (16).png" alt=""><figcaption></figcaption></figure>
 
 Data users can browse data by&#x20;
 
@@ -29,14 +29,14 @@ Data users can browse data by&#x20;
 
 Get structured and high-quality meta data about your all the data in your Snowflake account, and quickly differentiate between your most used & most important assets and your other data.
 
-<figure><img src=".gitbook/assets/grafik (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/grafik (12).png" alt=""><figcaption></figcaption></figure>
 
 * **Documentation:** Each table has a page in the catalog, with a quick description and automatically assigned meta data. Complex or ambigious expressions are explained with Terms that quickly allow you to navigate to the definition or find other places, where `#orders` are used.
 * **Column Profiles**: You can also drill deeper to the column-level to understand the shape and details of the data. Among other things, you can see column usage, completeness and how many unique values are stored.
 * **Lineage:** Understand where data comes from, how it was created and where it is used down-stream. Read more about [lineage.md](lineage.md "mention")
 * **Timeline**: shows updates and usage of this table over time
 
-<figure><img src=".gitbook/assets/grafik (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/grafik (13).png" alt=""><figcaption></figcaption></figure>
 
 ## Build Data Products
 
@@ -76,7 +76,7 @@ As a data engineer categorize your tables directly in Snowflake with [Object Tag
 
 Use topics to cureate your data into categories you and your business users care about. They are displayed prominently on the landing page and easy to filter by.&#x20;
 
-<figure><img src=".gitbook/assets/grafik (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/grafik (14).png" alt=""><figcaption></figcaption></figure>
 
 ### Check
 
@@ -88,7 +88,7 @@ In [checks.md](checks.md "mention") you can easily enable no-code checks that co
 
 As soon as, you data is in a good shape, properly documented, categorized and checked, you can approve it, so that everybody knows they are can use it.&#x20;
 
-<figure><img src=".gitbook/assets/grafik (15).png" alt="" width="291"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/grafik (15).png" alt="" width="291"><figcaption></figcaption></figure>
 
 Approving things, makes them visible to viewers and promotes their position in Search and on the landing page.
 

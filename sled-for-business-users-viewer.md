@@ -45,7 +45,7 @@ Get structured and high-quality meta data about your companies most important as
 
 #### Data Quality
 
-For sound data driven decisions, we need good quality data. Checks help you understand the service-level of the data and if there is currently a problem. Learn more about [checks.md](checks.md "mention").
+For sound data driven decisions, we need good quality data. Checks help you understand the service-level of the data and if there is currently a problem. Learn more about [checks.md](sled-for-data-users-editors/checks.md "mention").
 
 <figure><img src=".gitbook/assets/grafik (9).png" alt=""><figcaption></figcaption></figure>
 
