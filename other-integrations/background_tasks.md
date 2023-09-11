@@ -32,7 +32,7 @@ Generate a Personal Access Token with a user who is either "Site Admin Explorer"
 
 2\. Go to the section “Personal Access Tokens”
 
-![](<../.gitbook/assets/grafik (1) (1).png>)
+![](<../.gitbook/assets/grafik (1) (1) (1).png>)
 
 3\. Create new token with name “**sled**”
 

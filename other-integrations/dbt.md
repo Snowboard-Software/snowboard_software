@@ -9,17 +9,17 @@
 1. Navigate to dbt Cloud: [https://cloud.getdbt.com](https://cloud.getdbt.com)
 2. Go to **Account Settings**
 
-![](<../.gitbook/assets/grafik (4).png>)
+![](<../.gitbook/assets/grafik (4) (1).png>)
 
 3. Click the button **Enable Metadata Access**
 
-<figure><img src="../.gitbook/assets/grafik.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/grafik (4).png" alt=""><figcaption></figcaption></figure>
 
 **Retrieving Service Account Token**
 
 4. Click on your profile icon **> Account Settings**
 
-![](<../.gitbook/assets/grafik (1).png>)
+![](<../.gitbook/assets/grafik (1) (1).png>)
 
 5. Click **Service Tokens**. Then click **New Token**
 

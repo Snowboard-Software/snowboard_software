@@ -4,6 +4,7 @@
 * [Sled for Business Users (Viewer)](sled-for-business-users-viewer.md)
 * [Sled for Data Users (Editors)](sled-for-data-users-editors/README.md)
   * [Checks](sled-for-data-users-editors/checks.md)
+  * [Data Profiles](sled-for-data-users-editors/data-profiles.md)
   * [Lineage and Data Flows](sled-for-data-users-editors/lineage.md)
 * [Connect with Snowflake](snowflake\_connection/README.md)
   * [Grant permissions on future tables](snowflake\_connection/grant-permissions-on-future-tables.md)
