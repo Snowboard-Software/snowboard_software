@@ -49,6 +49,12 @@ To deploy the DBT artifacts package, follow these steps:
 1. **Download Package**: Download the DBT artifacts package from the official GitHub repository at [Sled DBT Artifacts](https://github.com/Snowboard-Software/dbt\_artifacts).
 2. **Deploy Package:** Deploy the package to your DBT environment.
 
+```yaml
+packages:
+    - git: "https://github.com/Snowboard-Software/dbt_artifacts.git"
+      revision: 2.2.8
+```
+
 **Step 3: Connect db Core to Sled**
 
 To connect DBT Core to Sled, follow these steps:
