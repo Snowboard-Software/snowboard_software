@@ -74,3 +74,25 @@ Allow the technical user to create a single-sign-on integration.
 ```sql
 GRANT CREATE INTEGRATION ON ACCOUNT TO ROLE snowboard_role;
 ```
+
+## Network Access
+
+If you restrict network access with network policies you can use the following IP addresses for Sled.
+
+* 3.210.43.243
+* 3.66.185.175
+
+
+
+Create a network policy
+
+```sql
+CREATE NETWORK POLICY snowboard_network_policy
+ALLOWED_IP_LIST = ('3.66.185.175', '3.210.43.243');
+```
+
+Apply the policy to the role
+
+```sql
+ALTER ROLE snowboard_role SET NETWORK_POLICY = snowboard_network_policy;
+```
