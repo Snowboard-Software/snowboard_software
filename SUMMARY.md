@@ -14,6 +14,6 @@
 * [Other Integrations](other-integrations/README.md)
   * [Tableau](other-integrations/background\_tasks.md)
   * [PowerBI](other-integrations/powerbi.md)
+  * [Qlik](other-integrations/qlik.md)
   * [Looker](other-integrations/looker.md)
   * [dbt](other-integrations/dbt.md)
-  * [Qlik](other-integrations/qlik.md)
