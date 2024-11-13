@@ -16,4 +16,4 @@
   * [PowerBI](other-integrations/powerbi.md)
   * [Looker](other-integrations/looker.md)
   * [dbt](other-integrations/dbt.md)
-  * [Qlik (planned)](other-integrations/qlik-planned.md)
+  * [Qlik](other-integrations/qlik.md)
