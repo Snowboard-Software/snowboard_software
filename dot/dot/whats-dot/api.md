@@ -43,9 +43,21 @@ Documentation how to setup a dbt webhooks
 
 
 
-## Other Use Cases
 
-### Authentication
+
+## Import External Assets
+
+Inform Dot about key external knowledge assets, such as BI dashboards or custom data apps, so it can recommend them to users and assist with discovery and understanding. Authentication works similarly to the Sync Connection endpoint.
+
+{% swagger src="../../.gitbook/assets/openapi.json" path="/api/import_and_overwrite_external_asset" method="post" %}
+[openapi.json](../../.gitbook/assets/openapi.json)
+{% endswagger %}
+
+
+
+
+
+## Authentication
 
 For most operations on Dot you first need to login
 
@@ -55,7 +67,7 @@ For most operations on Dot you first need to login
 
 
 
-### User Administration
+## User Administration
 
 {% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/get_users" method="get" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
@@ -85,7 +97,7 @@ For most operations on Dot you first need to login
 [openapi(2) (1).json](<../../.gitbook/assets/openapi(2) (1).json>)
 {% endswagger %}
 
-### Ask questions
+## Ask questions
 
 {% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/ask_with_history" method="post" expanded="false" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
