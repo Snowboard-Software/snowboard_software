@@ -18,6 +18,35 @@ You'll need to provide the service account's email, a [JSON-formatted key](https
 
 
 
+<details>
+
+<summary>Create a service account step by step.</summary>
+
+1. **Navigate to Service Accounts**:
+   * Go to the [Google Cloud Console](https://console.cloud.google.com/).
+   * In the **Navigation menu**, select **IAM & Admin >** [**Service Accounts**](https://console.cloud.google.com/iam-admin/serviceaccounts).
+2. **Create a New Service Account**:
+   * Click on **Create Service Account** at the top.
+   * Assign a **Name** and optional **Description** (e.g., `dot-service-account` for identification).
+   * Click **Create and Continue**.
+3. **Assign Required Roles**:
+   * In the **Grant this service account access to project** section, add the following roles:
+     * **BigQuery Data Viewer** (`roles/bigquery.dataViewer`)
+     * **BigQuery Job User** (`roles/bigquery.jobUser`)
+     * **BigQuery Read Session User** (`roles/bigquery.readSessionUser`)
+   * Click **Continue** to finalize the role assignments.
+4. **Create a JSON Key**:
+   * Under **Create key (optional)**, select **JSON** and click **Create**.
+   * This downloads a JSON file with the service account credentials. Store this file securely; it contains sensitive information.
+5. **Service Account Details Needed for Dot**:
+   * **Service Account Email**: Visible in the **Email** column on the Service Accounts page.
+   * **JSON Key**: The file downloaded in step 4.
+   * **BigQuery Location**: The regional or multi-regional setting for your BigQuery instance (e.g., `us-central1`). Find this in the BigQuery console under **BigQuery > Settings**.
+
+</details>
+
+
+
 ## 2 Granting permissions
 
 The service account also needs the appropriate read-only roles.
