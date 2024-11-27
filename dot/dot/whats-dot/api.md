@@ -4,6 +4,8 @@ description: automate as much as you like
 
 # API
 
+
+
 ## Automatically Sync Dot
 
 To keep Dot in sync with your production environment, it is recommended to trigger the following API endpoint
@@ -55,11 +57,21 @@ Inform Dot about key external knowledge assets, such as BI dashboards or custom 
 
 
 
+## Export Conversation History
+
+Export all conversations together with relevant meta data fields such as number of messages or author.
+
+{% swagger src="../../.gitbook/assets/openapi_20241127.json" path="/api/export_history" method="get" %}
+[openapi_20241127.json](../../.gitbook/assets/openapi_20241127.json)
+{% endswagger %}
 
 
-## Authentication
 
-For most operations on Dot you first need to login
+
+
+## Authentication for all other endpoints
+
+For most operations on Dot you first need to login.
 
 {% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/auth/token" method="post" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
