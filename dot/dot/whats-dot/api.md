@@ -61,9 +61,11 @@ Inform Dot about key external knowledge assets, such as BI dashboards or custom 
 
 Export all conversations together with relevant meta data fields such as number of messages or author.
 
-{% swagger src="../../.gitbook/assets/openapi_20241127.json" path="/api/export_history" method="get" %}
-[openapi_20241127.json](../../.gitbook/assets/openapi_20241127.json)
+{% swagger src="../../.gitbook/assets/openapi_2024-12-05.json" path="/api/export_history" method="get" %}
+[openapi_2024-12-05.json](../../.gitbook/assets/openapi_2024-12-05.json)
 {% endswagger %}
+
+
 
 
 
