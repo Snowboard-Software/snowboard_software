@@ -81,6 +81,14 @@ For most operations on Dot you first need to login.
 
 
 
+For embedded use cases that require SSO, where your end users have individual permissions you can use this endpoint to obtain an access token for users that is valid for 24h. Here is an example on how you can use it to [embed](embed.md) Dot in your application.&#x20;
+
+Please make sure that enabled this flag on settings: "Allow admins to authenticate for users to enable SSO in embed&#x73;**".**
+
+{% swagger src="../../.gitbook/assets/openapi_2024_12_11.json" path="/api/auth/embedded_user_login" method="post" %}
+[openapi_2024_12_11.json](../../.gitbook/assets/openapi_2024_12_11.json)
+{% endswagger %}
+
 ## User Administration
 
 {% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/get_users" method="get" %}
