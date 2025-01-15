@@ -21,7 +21,7 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
 * **hideExplanation=true**
   * hides full logs button & explanation tab
 * **minimizeProgess=True**
-* only show 'thinking' as progess when waiting for an answer
+  * only show 'thinking' as progess when waiting for an answer
 * **primaryColor=%23c700c7**
   * styles important action elements (e.g. chat input + button) according the specified color
   * the color is a hex code with the url encoded #c700c7
