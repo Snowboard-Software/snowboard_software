@@ -28,7 +28,7 @@
   * [Okta](dot/integrations/okta.md)
   * [BI Tools](dot/integrations/bi-tools/README.md)
     * [Tableau](dot/integrations/bi-tools/tableau.md)
-    * [Metabase (planned)](dot/integrations/bi-tools/metabase-planned.md)
+    * [Metabase](dot/integrations/bi-tools/metabase.md)
     * [PowerBI (planned)](dot/integrations/bi-tools/powerbi-planned.md)
     * [Sigma (planned)](dot/integrations/bi-tools/sigma-planned.md)
     * [Qlik (planned)](dot/integrations/bi-tools/qlik-planned.md)
