@@ -4,13 +4,11 @@ Ensuring high standards to protect customer data is critical to operate successf
 
 We are continuously auditing our technical and organizational measures by monitoring our infrastructure and processes with [https://secureframe.com/](https://secureframe.com/).
 
-We've successfully completed the AICPA Service Organization Control (SOC) 2 Type I audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards for security. The audit was conducted by [Prescient Assurance](https://www.prescientassurance.com/).
+We've successfully completed the AICPA Service Organization Control (SOC) 2 Type II audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards for security. The audit was conducted by [Prescient Assurance](https://www.prescientassurance.com/).
 
-For all questions and documentation requests, you can contact our customer support team at [hi@sled.so](mailto:hi@sled.so).
+For all questions and documentation requests, you can contact our customer support team at [hi@getdot.ai](mailto:hi@getdot.ai).
 
-![](../.gitbook/assets/1685538488567-hyper-nize.png)
-
-
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 ## Organizational Security
 
@@ -100,6 +98,39 @@ All team members are required to adhere to a minimum set of password requirement
 
 All company issued laptops utilize a password manager for team members to manage passwords and maintain password complexity.
 
+
+
+## AI Security
+
+**Secure AI Model Usage**
+
+Dot is powered by OpenAI’s and Anthropic’s leading frontier models. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures.&#x20;
+
+**No Training on Customer Data**&#x20;
+
+Data sent to these models will never be used for training.  For more details, refer to:&#x20;
+
+* [OpenAI’s API Data Usage Policies](https://openai.com/policies/api-data-usage-policies)&#x20;
+* [Anthropic’s Privacy Policy](https://privacy.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training?utm_source=chatgpt.com#h_1a7d240480)
+
+As an organization, we are committed to safeguarding customer data and will never use it to train our AI models.
+
+
+
+**AI Data Protection Measures**&#x20;
+
+* Encryption: All data exchanged with AI models is encrypted in transit using TLS/SSL to prevent unauthorized interception.&#x20;
+* Access Control: Only authorized systems and users can interact with AI processing services, ensuring strict data governance.&#x20;
+* Logging & Monitoring: AI interactions are logged and monitored for anomalies to detect and prevent misuse.
+
+**Compliance & Risk Management**&#x20;
+
+* Third-Party Security Audits: AI security practices are included in our periodic security assessments and SOC 2 audits.&#x20;
+* Regulatory Alignment: AI data handling complies with GDPR, CCPA, and other applicable data protection regulations.&#x20;
+* Incident Response: If an AI-related security incident occurs, we have an established protocol for rapid investigation and resolution.
+
+
+
 ## Vendor and Risk Management
 
 **Annual Risk Assessments**
@@ -133,7 +164,7 @@ What we promise:
 * We will handle your report with strict confidentiality, and not pass on your personal details to third parties without your permission,
 * We will keep you informed of the progress towards resolving the problem,
 * In the public information concerning the problem reported, we will give your name as the discoverer of the problem (unless you desire otherwise), and
-* As a token of our gratitude for your assistance, we offer a reward for every report of a security problem that was not yet known to us. The amount of the reward will be determined based on the severity of the leak and the quality of the report. The minimum reward will be a €25 gift certificate.
+* As a token of our gratitude for your assistance, we offer a reward for every report of a security problem that was not yet known to us. The amount of the reward will be determined based on the severity of the leak and the quality of the report. The minimum reward will be a €100 gift certificate.
 
 We strive to resolve all problems as quickly as possible, and we would like to play an active role in the ultimate publication on the problem after it is resolved.\
 

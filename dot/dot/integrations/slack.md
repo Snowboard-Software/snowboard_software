@@ -22,7 +22,7 @@ description: Use Dot where you get work done
 
 4. Chat with @Dot
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Dot Reactions
 
@@ -63,9 +63,9 @@ description: Use Dot where you get work done
 4.  To analyze complex topics it can help to break the questions up in multiple parts:\
     **What's our total revenue per country and its percentage change over time?**
 
-    \-> Show me total revenue over time (1)\
-    \-> Split it by country (2)\
-    \-> Calculate percentage change of revenue over time (3)
+    -> Show me total revenue over time (1)\
+    -> Split it by country (2)\
+    -> Calculate percentage change of revenue over time (3)
 
     \
     This helps Dot to build up context first. Most great things are created iteratively. 🛶⛵🚢\

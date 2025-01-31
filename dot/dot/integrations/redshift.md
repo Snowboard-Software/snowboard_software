@@ -51,11 +51,7 @@ If your organization uses a network policy to manage Redshift access, Dot will o
 
 1. In the Redshift dashboard, **click on the desired cluster name**.
 
-<div align="left">
-
-<figure><img src="https://files.readme.io/39a5a42-1.png" alt="" width="375"><figcaption></figcaption></figure>
-
-</div>
+<div align="left"><figure><img src="https://files.readme.io/39a5a42-1.png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 2. When viewing information for your Redshift cluster, click the **Properties** tab.
 
@@ -63,11 +59,11 @@ If your organization uses a network policy to manage Redshift access, Dot will o
 
 3. Scroll down to the **Network and security settings** section.
 
-![1918](https://files.readme.io/7ed17e1-Screen\_Shot\_2021-04-19\_at\_3.13.51\_PM.png)
+![1918](https://files.readme.io/7ed17e1-Screen_Shot_2021-04-19_at_3.13.51_PM.png)
 
 4. If **Public Accessibility** is not enabled, click **Edit publicly accessible** button then enable.
 
-![1914](https://files.readme.io/a7472c2-4.png)![1918](https://files.readme.io/a18855d-3\_-\_publicly\_accessible.png)
+![1914](https://files.readme.io/a7472c2-4.png)![1918](https://files.readme.io/a18855d-3_-_publicly_accessible.png)
 
 5. Click **VPC security group link**.
 
@@ -82,6 +78,6 @@ If your organization uses a network policy to manage Redshift access, Dot will o
 * `3.229.110.216`
 * `3.122.135.165`
 
-![](<../../.gitbook/assets/image (1).png>)\
+![](<../../.gitbook/assets/image (1) (1).png>)\
 
 
