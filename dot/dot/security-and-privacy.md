@@ -2,9 +2,9 @@
 
 Ensuring high standards to protect customer data is critical to operate successfully given rising IT security threads and increased privacy concerns.
 
-We are continuously auditing our technical and organizational measures by monitoring our infrastructure and processes with [https://secureframe.com/](https://secureframe.com/).
+We are continuously auditing our technical and organizational measures by monitoring our infrastructure and processes with [Secureframe](https://secureframe.com/).
 
-We've successfully completed the AICPA Service Organization Control (SOC) 2 Type II audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards for security. The audit was conducted by [Prescient Assurance](https://www.prescientassurance.com/).
+We've successfully completed the AICPA Service Organization Control (SOC) 2 Type I and Type II audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards for security. The audit was conducted by [Prescient Assurance](https://www.prescientassurance.com/).
 
 For all questions and documentation requests, you can contact our customer support team at [hi@getdot.ai](mailto:hi@getdot.ai).
 
