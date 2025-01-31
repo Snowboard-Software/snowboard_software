@@ -8,7 +8,7 @@ We've successfully completed the AICPA Service Organization Control (SOC) 2 Type
 
 For all questions and documentation requests, you can contact our customer support team at [hi@getdot.ai](mailto:hi@getdot.ai).
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt="" width="203"><figcaption></figcaption></figure>
 
 ## Organizational Security
 
