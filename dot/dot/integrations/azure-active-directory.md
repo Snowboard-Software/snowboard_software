@@ -60,3 +60,18 @@ Once you've completed the above steps:
 
 1. Save the configuration in Dot.
 2. Test the SSO integration to ensure that it's functioning correctly.
+
+
+
+## Configure Which Users Get Access
+
+1. In Azure, go to the "Enterprise application" created for Dot authentication and on the left change to "Manage" -> "Users and Groups"
+2. Press "Add user / group" and then add single users or groups that should be able to login
+
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+
+3. Then on the left change to "Manage" -> "Properties"
+
+<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+
+4. Activate "Assignment required" → Now only users directly assign to this application by user or group can use the SSO in Dot to login
