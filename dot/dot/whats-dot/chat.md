@@ -38,10 +38,6 @@ Let's look at some potential questions for the marketing team of an online-shop.
 
 
 
-With Dot you can just ask and get an answer, and ask again, and again, and again.
-
-
-
 ### How should you ask?
 
 **Ask Clear and Precise Questions**
