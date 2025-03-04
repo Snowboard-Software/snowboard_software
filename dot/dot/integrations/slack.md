@@ -18,11 +18,11 @@ description: Use Dot where you get work done
 
 3. Select the channel, where you want @Dot to respond to user requests and confirm
 
-![](<../../.gitbook/assets/image (3).png>)
+![](<../../.gitbook/assets/image (3) (1).png>)
 
 4. Chat with @Dot
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Dot Reactions
 

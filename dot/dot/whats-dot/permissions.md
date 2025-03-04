@@ -23,7 +23,7 @@ A user can belong to multiple groups, a table can also belong to multiple groups
 
 By default all new tables get assigned the group `all_users` and new users get also added to this group. An admin can configure that new users don't automatically get assigned to this group if your organization operates rather on the "Need to know" principle.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>group section for table on Model page</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>group section for table on Model page</p></figcaption></figure>
 
 
 
