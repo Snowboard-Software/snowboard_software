@@ -10,9 +10,9 @@ description: automate as much as you like
 
 To keep Dot in sync with your production environment, it is recommended to trigger the following API endpoint
 
-{% swagger src="../../.gitbook/assets/dot_openapi2.json" path="/api/sync/{connection_type}/{connection_id}" method="post" %}
+{% openapi src="../../.gitbook/assets/dot_openapi2.json" path="/api/sync/{connection_type}/{connection_id}" method="post" %}
 [dot_openapi2.json](../../.gitbook/assets/dot_openapi2.json)
-{% endswagger %}
+{% endopenapi %}
 
 ```javascript
 // URL endpoint
@@ -51,9 +51,9 @@ Documentation how to setup a dbt webhooks
 
 Inform Dot about key external knowledge assets, such as BI dashboards or custom data apps, so it can recommend them to users and assist with discovery and understanding. Authentication works similarly to the Sync Connection endpoint.
 
-{% swagger src="../../.gitbook/assets/openapi.json" path="/api/import_and_overwrite_external_asset" method="post" %}
+{% openapi src="../../.gitbook/assets/openapi.json" path="/api/import_and_overwrite_external_asset" method="post" %}
 [openapi.json](../../.gitbook/assets/openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
 
 
@@ -61,9 +61,9 @@ Inform Dot about key external knowledge assets, such as BI dashboards or custom 
 
 Export all conversations together with relevant meta data fields such as number of messages or author.
 
-{% swagger src="../../.gitbook/assets/openapi_2024-12-05.json" path="/api/export_history" method="get" %}
+{% openapi src="../../.gitbook/assets/openapi_2024-12-05.json" path="/api/export_history" method="get" %}
 [openapi_2024-12-05.json](../../.gitbook/assets/openapi_2024-12-05.json)
-{% endswagger %}
+{% endopenapi %}
 
 
 
@@ -75,9 +75,81 @@ Export all conversations together with relevant meta data fields such as number 
 
 For most operations on Dot you first need to login.
 
-{% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/auth/token" method="post" %}
+<details>
+
+<summary>Example of Python script to authenticate and adding a label to a chat</summary>
+
+```
+
+import requests
+import json
+
+# Configuration
+BASE_URL = "https://app.getdot.ai"
+LOGIN_ENDPOINT = "/api/auth/token"
+ADD_LABEL_ENDPOINT = "/api/add_label_to_chat"
+
+# Replace these with your actual credentials and chat details
+USERNAME = "your_username"
+PASSWORD = "your_password"
+CHAT_ID = "your_chat_id"
+LABELS = ["your_label"]
+
+def authenticate():
+    """Authenticate and get access token."""
+    data = {
+        "grant_type": "password",
+        "username": USERNAME,
+        "password": PASSWORD
+    }
+    
+    try:
+        response = requests.post(f"{BASE_URL}{LOGIN_ENDPOINT}", data=data)
+        response.raise_for_status()
+        return response.json().get("access_token")
+    except requests.exceptions.RequestException as e:
+        print(f"Authentication failed: {e}")
+        return None
+
+def add_label_to_chat(access_token, chat_id, labels):
+    """Add labels to a chat."""
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json"
+    }
+    data = {
+        "chat_id": chat_id,
+        "labels": labels
+    }
+    
+    try:
+        response = requests.post(
+            f"{BASE_URL}{ADD_LABEL_ENDPOINT}",
+            headers=headers,
+            json=data
+        )
+        response.raise_for_status()
+        print("Successfully added labels to chat.")
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to add labels to chat: {e}")
+
+def main():
+    access_token = authenticate()
+    if access_token:
+        add_label_to_chat(access_token, CHAT_ID, LABELS)
+
+if __name__ == "__main__":
+    main()
+
+```
+
+</details>
+
+
+
+{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/auth/token" method="post" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
 
 
@@ -85,49 +157,49 @@ For embedded use cases that require SSO, where your end users have individual pe
 
 Please make sure that enabled this flag on settings: "Allow admins to authenticate for users to enable SSO in embed&#x73;**".**
 
-{% swagger src="../../.gitbook/assets/openapi_2024_12_11.json" path="/api/auth/embedded_user_login" method="post" %}
+{% openapi src="../../.gitbook/assets/openapi_2024_12_11.json" path="/api/auth/embedded_user_login" method="post" %}
 [openapi_2024_12_11.json](../../.gitbook/assets/openapi_2024_12_11.json)
-{% endswagger %}
+{% endopenapi %}
 
 ## User Administration
 
-{% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/get_users" method="get" %}
+{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/get_users" method="get" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/send_invitations" method="post" %}
+{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/send_invitations" method="post" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/delete_user" method="post" %}
+{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/delete_user" method="post" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/change_user_role" method="post" %}
+{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/change_user_role" method="post" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/add_user_to_group" method="post" %}
+{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/add_user_to_group" method="post" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/remove_user_from_group" method="post" %}
+{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/remove_user_from_group" method="post" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../.gitbook/assets/openapi(2) (1).json" path="/api/create_user" method="post" %}
+{% openapi src="../../.gitbook/assets/openapi(2) (1).json" path="/api/create_user" method="post" %}
 [openapi(2) (1).json](<../../.gitbook/assets/openapi(2) (1).json>)
-{% endswagger %}
+{% endopenapi %}
 
 ## Ask questions
 
-{% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/ask_with_history" method="post" expanded="false" %}
+{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/ask_with_history" method="post" expanded="false" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../../.gitbook/assets/dot_openapi.json" path="/api/ask" method="post" %}
+{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/ask" method="post" %}
 [dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endswagger %}
+{% endopenapi %}
 
 
 
