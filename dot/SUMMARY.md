@@ -14,6 +14,7 @@
   * [Snowflake](dot/integrations/snowflake.md)
   * [BigQuery](dot/integrations/bigquery.md)
   * [Redshift](dot/integrations/redshift.md)
+  * [AWS Athena](dot/integrations/aws-athena.md)
   * [Databricks](dot/integrations/databricks.md)
   * [Postgres](dot/integrations/postgres.md)
   * [Microsoft SQL Server](dot/integrations/microsoft-sql-server.md)
