@@ -175,7 +175,179 @@ if __name__ == "__main__":
 
 </details>
 
+<details>
 
+<summary>Example of Python script to ask a question to Dot and follow up</summary>
+
+```python
+"""
+Dot API Client Example
+
+A minimal example showing how to interact with the Dot API to ask questions
+about your data and follow up with additional questions in the same conversation.
+
+The API flow has two main steps:
+1. Send a question to Dot API (asynchronous processing)
+2. Fetch the results when they're ready
+
+This pattern applies to both initial questions and follow-up questions.
+
+Usage:
+    python3 test_api.py
+
+Requirements:
+    - Python 3.6+
+    - requests library (pip install requests)
+"""
+
+import requests
+import time
+import uuid
+
+# API Configuration
+# Replace with your Dot API key from the Settings page
+API_KEY = "dot-YOUR_API_KEY_HERE"  
+
+# Replace with your Dot API endpoint
+# For cloud: "https://app.getdot.ai/api" or "https://eu.getdot.ai/api"
+BASE_URL = "https://app.getdot.ai/api"
+HEADERS = {"API-KEY": API_KEY, "Content-Type": "application/json"}
+
+
+def ask_question(question):
+    """
+    Send a question to Dot API and fetch results.
+    
+    Returns:
+        tuple: (response_data, chat_id)
+    """
+    # Generate a unique chat ID for this conversation
+    chat_id = str(uuid.uuid4())
+    
+    # Step 1: Send the initial question
+    print(f"Asking question: '{question}'")
+    ask_endpoint = f"{BASE_URL}/ask"
+    ask_payload = {"messages": [{"role": "user", "content": question}], "chat_id": chat_id}
+    
+    response = requests.post(ask_endpoint, headers=HEADERS, json=ask_payload)
+    response.raise_for_status()
+    
+    # Step 2: Fetch the results
+    print("Fetching results...")
+    results_endpoint = f"{BASE_URL}/c2/{chat_id}"
+    time.sleep(2)  # Brief pause to let processing complete
+    
+    result_response = requests.get(results_endpoint, headers=HEADERS)
+    result_response.raise_for_status()
+    
+    return result_response.json(), chat_id
+
+
+def ask_follow_up(question, chat_id):
+    """
+    Send a follow-up question using the same chat session.
+    
+    Returns:
+        dict: Updated conversation with the answer
+    """
+    # Step 1: Send the follow-up question
+    print(f"Asking follow-up: '{question}'")
+    endpoint = f"{BASE_URL}/ask_with_history"
+    payload = {"new_message": {"role": "user", "content": question}, "chat_id": chat_id}
+    
+    response = requests.post(endpoint, headers=HEADERS, json=payload)
+    response.raise_for_status()
+    
+    # Step 2: Fetch the updated results
+    print("Fetching updated results...")
+    results_endpoint = f"{BASE_URL}/c2/{chat_id}"
+    time.sleep(2)  # Brief pause to let processing complete
+    
+    result_response = requests.get(results_endpoint, headers=HEADERS)
+    result_response.raise_for_status()
+    
+    return result_response.json()
+
+
+def print_response(response):
+    """
+    Print the important parts of the response.
+    
+    This extracts the answer text from the conversation history.
+    The API returns the full conversation, so we need to find
+    the last assistant message to get the most recent answer.
+    """
+    if not response:
+        print("No response received")
+        return
+        
+    # For chat history responses, get the last assistant message (the answer)
+    if "messages" in response and len(response["messages"]) > 0:
+        messages = response["messages"]
+        # Find the last assistant message
+        assistant_messages = [m for m in messages if m.get("role") == "assistant"]
+        if assistant_messages:
+            last_message = assistant_messages[-1]
+            
+            # Print the explanation if available
+            if "explanation" in last_message and last_message["explanation"]:
+                print("\n=== ANSWER ===")
+                print(last_message["explanation"])
+                print("\n")
+                
+            # You can uncomment this to see all available fields
+            # print("Available fields:", list(last_message.keys()))
+
+
+def main():
+    """
+    Demonstrate the Dot API conversation flow.
+    
+    This shows a complete conversation with:
+    1. An initial question
+    2. A follow-up question using the same conversation context
+    """
+    try:
+        # Ask an initial question
+        initial_question = "What were our total sales last month?"
+        try:
+            user_input = input("Enter your question: ")
+            if user_input.strip():
+                initial_question = user_input
+        except EOFError:
+            print(f"Using default question: '{initial_question}'")
+        
+        # Step 1: Send the initial question and get response
+        response, chat_id = ask_question(initial_question)
+        print_response(response)
+        print(f"Chat ID: {chat_id} (save this if you want to continue the conversation later)")
+        
+        # Ask a follow-up question in the same conversation
+        follow_up = "How does that compare to the previous month?"
+        try:
+            user_input = input("Enter a follow-up question: ")
+            if user_input.strip():
+                follow_up = user_input
+        except EOFError:
+            print(f"Using default follow-up: '{follow_up}'")
+        
+        # Step 2: Send the follow-up question using the same chat_id
+        follow_up_response = ask_follow_up(follow_up, chat_id)
+        print_response(follow_up_response)
+        
+        print("Conversation complete! You can continue by using the same chat_id.")
+        
+    except Exception as e:
+        print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+</details>
 
 
 
