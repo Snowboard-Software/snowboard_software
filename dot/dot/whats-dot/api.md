@@ -4,15 +4,69 @@ description: automate as much as you like
 
 # API
 
+## Everything starts with a token of trust
+
+All API endpoints can be accessed via an API token that is tied to the permissions of a user account. You can also let them expire after some time.
+
+### How to get a token?
+
+1. Go to **Settings / Users**
+2. Click **Create New Token**
+
+<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+
+3. **Enter a name**, description, and expiration period
+4. **Copy the token** (it's only shown once)
+
+
+
+### How to use the token?
+
+You have two ways. You either pass the token as a header with `API-KEY` or you pass it as a url parameter  in `api_token` . As a header is usually more secure because automated loggers don't store them, but in some places you can't set headers (e.g. dbt webhooks) and then you can use the URL parameter.
+
+#### Via Headers
+
+Call the user endpoint via command line interface.
+
+```bash
+# Basic API request with token
+curl -H "API-KEY: dot-your_token_here" <https://[app or eu].getdot.ai/api/auth/me>
+```
+
+Call the user endpoint via Python.
+
+```python
+import requests
+headers = {"API-KEY": "dot-your_token_here"}
+response = requests.get("<https://[app or eu].getdot.ai/api/auth/me>", headers=headers)
+```
+
+#### Via URL - Parameters
+
+For the following endpoints you can also use a URL based authentication:
+
+* Sync connection
+* Import external asserts
+* Export conversation history
+
+Call the endpoint only via url:
+
+```bash
+curl "https://{region}.getdot.ai/api/sync/{connection_type}/{connection_type}" \
+     "?user_id={user}&api_token={api_token}"
+```
+
+
+
 
 
 ## Automatically Sync Dot
 
 To keep Dot in sync with your production environment, it is recommended to trigger the following API endpoint
 
-{% openapi src="../../.gitbook/assets/dot_openapi2.json" path="/api/sync/{connection_type}/{connection_id}" method="post" %}
-[dot_openapi2.json](../../.gitbook/assets/dot_openapi2.json)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/sync/{connection_type}/{connection_id}" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
 ```javascript
 // URL endpoint
@@ -28,7 +82,7 @@ https://{region}.getdot.ai/api/sync/{connection_type}/{connection_type}?user_id=
 **Trigger with curl (CLI)**
 
 ```javascript
-curl -X "POST" "https://eu.getdot.ai/api/sync/bigquery/my-bg-id?user_id=sync_user%40contoso.com&api_token=42673584be9724a21e1550336d6fe509f4a04207461ec9a926ca2a27cbd27fa0
+curl -X "POST" "https://eu.getdot.ai/api/sync/bigquery/my-bg-id?user_id=sync_user%40contoso.com&api_token=dot-42673584be9724a21e1550336d6fe509f4a04207461ec9a926ca2a27cbd27fa0
 ```
 
 
@@ -51,9 +105,9 @@ Documentation how to setup a dbt webhooks
 
 Inform Dot about key external knowledge assets, such as BI dashboards or custom data apps, so it can recommend them to users and assist with discovery and understanding. Authentication works similarly to the Sync Connection endpoint.
 
-{% openapi src="../../.gitbook/assets/openapi.json" path="/api/import_and_overwrite_external_asset" method="post" %}
-[openapi.json](../../.gitbook/assets/openapi.json)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/import_and_overwrite_external_asset" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
 
 
@@ -61,9 +115,9 @@ Inform Dot about key external knowledge assets, such as BI dashboards or custom 
 
 Export all conversations together with relevant meta data fields such as number of messages or author.
 
-{% openapi src="../../.gitbook/assets/openapi_2024-12-05.json" path="/api/export_history" method="get" %}
-[openapi_2024-12-05.json](../../.gitbook/assets/openapi_2024-12-05.json)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/export_history" method="get" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
 
 
@@ -71,135 +125,117 @@ Export all conversations together with relevant meta data fields such as number 
 
 
 
-## Authentication for all other endpoints
+## All endpoints
 
-For most operations on Dot you first need to login.
+Once you [created your token](api.md#everything-starts-with-a-token-of-trust), you can use [all API endpoints](https://test.getdot.ai/redoc). Here is selection of frequently used endpoints and some examples on how the API got used.
+
+
+
+#### Examples
 
 <details>
 
-<summary>Example of Python script to authenticate and adding a label to a chat</summary>
+<summary>Example of Python script to add labels to a conversation</summary>
 
-```
-
+```python
 import requests
-import json
 
 # Configuration
 BASE_URL = "https://app.getdot.ai"
-LOGIN_ENDPOINT = "/api/auth/token"
 ADD_LABEL_ENDPOINT = "/api/add_label_to_chat"
 
-# Replace these with your actual credentials and chat details
-USERNAME = "your_username"
-PASSWORD = "your_password"
+# Replace with your API token obtained from your account settings.
+API_TOKEN = "dot-your_token_here"
+
+# Chat details
 CHAT_ID = "your_chat_id"
 LABELS = ["your_label"]
 
-def authenticate():
-    """Authenticate and get access token."""
-    data = {
-        "grant_type": "password",
-        "username": USERNAME,
-        "password": PASSWORD
-    }
-    
-    try:
-        response = requests.post(f"{BASE_URL}{LOGIN_ENDPOINT}", data=data)
-        response.raise_for_status()
-        return response.json().get("access_token")
-    except requests.exceptions.RequestException as e:
-        print(f"Authentication failed: {e}")
-        return None
-
-def add_label_to_chat(access_token, chat_id, labels):
-    """Add labels to a chat."""
+def add_label_to_chat(chat_id, labels):
+    """Add labels to a chat using token-based authentication."""
     headers = {
-        "Authorization": f"Bearer {access_token}",
+        "API-KEY": API_TOKEN,
         "Content-Type": "application/json"
     }
-    data = {
-        "chat_id": chat_id,
-        "labels": labels
-    }
+    data = {"chat_id": chat_id, "labels": labels}
     
     try:
-        response = requests.post(
-            f"{BASE_URL}{ADD_LABEL_ENDPOINT}",
-            headers=headers,
-            json=data
-        )
+        response = requests.post(f"{BASE_URL}{ADD_LABEL_ENDPOINT}", headers=headers, json=data)
         response.raise_for_status()
         print("Successfully added labels to chat.")
     except requests.exceptions.RequestException as e:
         print(f"Failed to add labels to chat: {e}")
 
 def main():
-    access_token = authenticate()
-    if access_token:
-        add_label_to_chat(access_token, CHAT_ID, LABELS)
+    add_label_to_chat(CHAT_ID, LABELS)
 
 if __name__ == "__main__":
     main()
-
 ```
 
 </details>
 
 
 
-{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/auth/token" method="post" %}
-[dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endopenapi %}
 
 
+## Ask Dot Automatically
 
-For embedded use cases that require SSO, where your end users have individual permissions you can use this endpoint to obtain an access token for users that is valid for 24h. Here is an example on how you can use it to [embed](embed.md) Dot in your application.&#x20;
+{% openapi-operation spec="dot-openapi" path="/api/ask" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-Please make sure that enabled this flag on settings: "Allow admins to authenticate for users to enable SSO in embed&#x73;**".**
+{% openapi-operation spec="dot-openapi" path="/api/ask_with_history" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% openapi src="../../.gitbook/assets/openapi_2024_12_11.json" path="/api/auth/embedded_user_login" method="post" %}
-[openapi_2024_12_11.json](../../.gitbook/assets/openapi_2024_12_11.json)
-{% endopenapi %}
+Trigger Deep Analysis
+
+{% openapi-operation spec="dot-openapi" path="/api/agentic" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
+
+
 
 ## User Administration
 
-{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/get_users" method="get" %}
-[dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/get_users" method="get" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/send_invitations" method="post" %}
-[dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/send_invitations" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/delete_user" method="post" %}
-[dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/delete_user" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/change_user_role" method="post" %}
-[dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/change_user_role" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/add_user_to_group" method="post" %}
-[dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/add_user_to_group" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/remove_user_from_group" method="post" %}
-[dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/remove_user_from_group" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-{% openapi src="../../.gitbook/assets/openapi(2) (1).json" path="/api/create_user" method="post" %}
-[openapi(2) (1).json](<../../.gitbook/assets/openapi(2) (1).json>)
-{% endopenapi %}
+{% openapi-operation spec="dot-openapi" path="/api/create_user" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
-## Ask questions
+## Automatically Authenticate Embedded Users
 
-{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/ask_with_history" method="post" expanded="false" %}
-[dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endopenapi %}
+For embedded use cases that require SSO, where your end users have individual permissions you can use this endpoint to obtain an access token for users that is valid for 24h. Here is an example on how you can use it to [embed](embed.md) Dot in your application.&#x20;
 
-{% openapi src="../../.gitbook/assets/dot_openapi.json" path="/api/ask" method="post" %}
-[dot_openapi.json](../../.gitbook/assets/dot_openapi.json)
-{% endopenapi %}
+Please make sure that you enabled this flag on settings: **"Allow admins to authenticate for users to enable SSO in embeds".**
+
+{% openapi-operation spec="dot-openapi" path="/api/auth/embedded_user_login" method="post" %}
+[Broken link](broken-reference)
+{% endopenapi-operation %}
 
 
 
