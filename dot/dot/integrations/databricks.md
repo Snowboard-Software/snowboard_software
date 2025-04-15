@@ -1,9 +1,5 @@
 # Databricks
 
-Here's the updated guide for connecting Dot to Databricks using light Markdown formatting:
-
-***
-
 ## Connect Dot to Databricks
 
 ### 1. Generate a Databricks Access Token
