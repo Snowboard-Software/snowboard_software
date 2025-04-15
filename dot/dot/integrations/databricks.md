@@ -1,50 +1,113 @@
 # Databricks
 
-## Create Databricks SQL Warehouse <a href="#id-3-create-databricks-sql-warehouse" id="id-3-create-databricks-sql-warehouse"></a>
+Here's the updated guide for connecting Dot to Databricks using light Markdown formatting:
 
-> _**TIP:**_ you can also use an existing one and skip this step
+***
 
-*   Open the workspace tab and click on created workspace console:
+## Connect Dot to Databricks
 
-    ![](https://docs.airbyte.com/assets/images/databricks\_open\_worspace-54fcb71a96d4c89ad57d2f9b452c7cc8.png)
-* Create SQL warehouse:
+### 1. Generate a Databricks Access Token
 
-![](https://docs.airbyte.com/assets/images/databricks\_new\_warehouse-1da87ce787e707aafbdfb143a64f98b6.png)
+Dot requires an access token to connect to Databricks. It's recommended to use a service principal for this purpose.
 
-* Switch to SQL tab
-* Click New button
-* Choose SQL Warehouse
-* After the SQL warehouse was created we can copy its connection details
+#### Option A: Using a Service Principal
 
-## Databricks SQL Warehouse connection details <a href="#id-4-databricks-sql-warehouse-connection-details" id="id-4-databricks-sql-warehouse-connection-details"></a>
+1. **Create a Service Principal**\
+   Follow the [Databricks documentation](https://docs.databricks.com/api/workspace/serviceprincipals/create) to create a service principal.
+2. **Grant Token Usage to the Service Principal**\
+   Ensure the service principal has permissions to use access tokens.
+3.  **Generate an Access Token**\
+    Use the Databricks CLI to generate an access token:
 
-* Open workspace console.
-*   Go to SQL Warehouse section and open it
-
-    ![](https://docs.airbyte.com/assets/images/databricks\_open\_sql\_warehouse-45c92346a31613a0a1398f4cd9c3aafe.png)
-*   Open Connection Details tab:
-
-    ![](https://docs.airbyte.com/assets/images/databricks\_sql\_warehouse\_connection\_details-91f70fd5a196d5fd21ade7c83c906fa4.png)
-
-> _**IMPORTANT:**_ `Server hostname`, `Port`, `HTTP path` are used for Dot connection
+    ```bash
+    databricks tokens create --comment "Dot Integration" --lifetime-seconds 0
+    ```
 
 
 
-## Create Databricks Token <a href="#id-7-create-databricks-token" id="id-7-create-databricks-token"></a>
+Save the generated token securely.
 
-* Open workspace console.
-*   Open User Settings, go to Access tokens tab and click Generate new token:
+#### Option B: Using a Personal Access Token
 
-    ![](https://docs.airbyte.com/assets/images/dtabricks\_token\_user\_new-01e5f8918dcc0d95610a75a17ddc63fb.png)
-*   In the new window put a comment (Optional) and lifetime:
+Alternatively, you can generate a personal access token for your user account.
 
-    ![](https://docs.airbyte.com/assets/images/databricks\_generate\_token-a6eaed2a1d9acfca77414655bd689145.png)
+### 2. Grant Data Permissions to Dot's Service Principal
 
-> _**TIP:**_ `Lifetime` can be set to `0`
+To allow Dot to access the necessary data, grant the appropriate permissions.
 
-## Allow Dot IPs
+#### Unity Catalog
 
-If your organization uses a firewall to manage access to Databricks, Dot will only access your Databricks warehouse through the following IPs:
+**Access to All Tables in a Catalog**
 
-* `3.229.110.216`
-* `3.122.135.165`
+```sql
+GRANT USE CATALOG ON CATALOG <catalog_name> TO `<application_id>`;
+GRANT USE SCHEMA ON CATALOG <catalog_name> TO `<application_id>`;
+GRANT SELECT ON CATALOG <catalog_name> TO `<application_id>`;
+```
+
+
+
+**Access to Specific Tables**
+
+```sql
+GRANT USE CATALOG ON CATALOG <catalog_name> TO `<application_id>`;
+GRANT USE SCHEMA ON SCHEMA <catalog_name>.<schema_name> TO `<application_id>`;
+GRANT SELECT ON TABLE <catalog_name>.<schema_name>.<table_name> TO `<application_id>`;
+```
+
+
+
+**Access to System Tables for Data Insights**
+
+1.  **Enable System Schemas**\
+    Use the Databricks API to enable system schemas:
+
+    ```bash
+    curl -X PUT -H "Authorization: Bearer <token>" \
+    "https://<workspace_url>/api/2.0/unity-catalog/metastores/<metastore_id>/systemschemas/query"
+    ```
+
+
+
+2.  **Grant Access to System Tables**
+
+    ```sql
+    GRANT USE SCHEMA ON SCHEMA system.query TO `<application_id>`;
+    GRANT SELECT ON TABLE system.query.history TO `<application_id>`;
+    GRANT USE SCHEMA ON SCHEMA system.access TO `<application_id>`;
+    GRANT SELECT ON TABLE system.access.column_lineage TO `<application_id>`;
+    ```
+
+
+
+#### Hive Metastore
+
+```sql
+GRANT READ_METADATA, USAGE, SELECT ON CATALOG <catalog_name> TO `<application_id>`;
+```
+
+
+
+### 3. Create a Databricks SQL Warehouse for Dot
+
+1. **Create a SQL Warehouse**\
+   Follow the [Databricks documentation](https://docs.databricks.com/compute/sql-warehouse/create.html) to create a SQL Warehouse.
+2. **Assign Permissions**\
+   In the SQL Warehouse settings, click 'Permissions' and grant the Dot service principal 'Can Use' permissions.
+
+### 4. Add Databricks as a Connection in Dot
+
+1. **Navigate to Connections**\
+   In Dot, go to the Settings / Connections page.
+2. **Add a New Connection**\
+   Click '+ Database Connection' and select Databricks
+3. **Enter Connection Details**\
+   Provide the following information:
+   * **Host**: From the SQL Warehouse created in Step 3
+   * **Port**: Typically 443
+   * **HTTP Path**: From the SQL Warehouse
+   * **Access Token**: Generated in Step 1
+
+***
+
+This guide should help you set up a connection between Dot and Databricks.
