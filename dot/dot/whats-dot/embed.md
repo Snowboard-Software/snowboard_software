@@ -4,7 +4,7 @@ description: enable your customers to chat with data & visualize insights
 
 # Embed
 
-<figure><img src="../../.gitbook/assets/dot_embedded.png" alt=""><figcaption></figcaption></figure>
+<div align="left" data-full-width="false"><figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure></div>
 
 You can embed Dot directly in your web app via an Iframe and configure parts of the UI with the following parameters. They are all optional.
 
@@ -22,6 +22,8 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
   * hides full logs button & explanation tab
 * **minimizeProgess=True**
   * only show 'thinking' as progess when waiting for an answer
+* **hideNativeLinks=True**
+  * will convert html links to javascript links, so users can't open a new tab accidentally
 * **primaryColor=%23c700c7**
   * styles important action elements (e.g. chat input + button) according the specified color
   * the color is a hex code with the url encoded #c700c7
