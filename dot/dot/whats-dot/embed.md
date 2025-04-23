@@ -4,7 +4,7 @@ description: enable your customers to chat with data & visualize insights
 
 # Embed
 
-<div align="left" data-full-width="false"><figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure></div>
+<figure><img src="../../.gitbook/assets/embedd_dot.png" alt=""><figcaption></figcaption></figure>
 
 You can embed Dot directly in your web app via an Iframe and configure parts of the UI with the following parameters. They are all optional.
 
