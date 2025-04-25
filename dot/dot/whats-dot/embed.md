@@ -29,6 +29,8 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
 * **primaryColor=%23c700c7**
   * styles important action elements (e.g. chat input + button) according the specified color
   * the color is a hex code with the url encoded #c700c7
+* **chatBackgroundColor=%23ffe6ff**
+  * sets the background of the chat window
 * **chatPlaceHolderText=Ask%20AI**
   * changes the placeholder text in the chat input field
   * default value is "Ask Dot about your data..."
