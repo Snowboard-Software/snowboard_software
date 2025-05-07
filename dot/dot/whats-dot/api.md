@@ -125,13 +125,7 @@ Export all conversations together with relevant meta data fields such as number 
 
 
 
-## All endpoints
-
-Once you [created your token](api.md#everything-starts-with-a-token-of-trust), you can use [all API endpoints](https://test.getdot.ai/redoc). Here is selection of frequently used endpoints and some examples on how the API got used.
-
-
-
-#### Examples
+## Example Use Cases
 
 <details>
 
@@ -348,6 +342,55 @@ if __name__ == "__main__":
 ```
 
 </details>
+
+<details>
+
+<summary>Example of Python script to sync a confluence page to the note</summary>
+
+```python
+import os, re, requests, markdownify
+
+# ---------- 1)  Confluence ----------------------------------------------------
+ATL_SITE  = "https://<your-site>.atlassian.net/wiki"
+PAGE_ID   = "<confluence_page_id>"
+ATL_AUTH  = (os.getenv("ATLASSIAN_EMAIL"), os.getenv("ATLASSIAN_API_TOKEN"))
+
+r = requests.get(
+    f"{ATL_SITE}/rest/api/content/{PAGE_ID}?expand=body.storage",
+    auth=ATL_AUTH,
+)
+r.raise_for_status()
+html = r.json()["body"]["storage"]["value"]
+md   = markdownify.markdownify(html, heading_style="ATX")
+page_url = f"{ATL_SITE}/pages/{PAGE_ID}"
+
+# ---------- 2)  Dot – read org & note ----------------------------------------
+DOT_BASE = "https://eu.getdot.ai/api"   # or https://app.getdot.ai/api for US
+HEADERS  = {"API-KEY": os.getenv("DOT_API_KEY")}
+
+org  = requests.get(f"{DOT_BASE}/org", headers=HEADERS).json()   # org has id & note
+note = org.get("note") or ""
+org_id = org["id"]
+
+# ---------- 3)  insert / replace the <faq> block ------------------------------
+new_faq = f'<faq confluence_page_url="{page_url}">\n\n{md}\n\n</faq>'
+note    = re.sub(r"<faq[^>]*>.*?</faq>", new_faq, note, flags=re.I|re.S) \
+          if "<faq" in note.lower() else f"{note.rstrip()}\n\n{new_faq}"
+
+# ---------- 4)  Dot – save the updated note -----------------------------------
+payload = {"org_id": org_id, "note": note}
+requests.post(f"{DOT_BASE}/save_note", headers=HEADERS, json=payload).raise_for_status()
+
+print("✅  org‑note updated")
+```
+
+</details>
+
+
+
+## All endpoints
+
+Once you [created your token](api.md#everything-starts-with-a-token-of-trust), you can use [all API endpoints](https://test.getdot.ai/redoc). Here is selection of frequently used endpoints and some examples on how the API got used.
 
 
 
