@@ -51,7 +51,27 @@ This setup requires to manually add the Teams app with the correct endpoints to 
 
 ## Permissions
 
-Dot uses group based [permissions](../whats-dot/permissions.md). That means users can access data via Dot based on the groups they are a part of. Not in Microsoft teams there are 2 different user types:
+Dot uses group-based permissions to control access. This means a user’s ability to access data via Dot depends on the groups they belong to.
 
-* **Direct Messages**: here Dot is available to an individual user and Dot will identify this user with their email address. If it's the first time Dot interacts with them Dot will automatically create the user with the default settings. For example `claude.shannon@bell.com`
-* **Chats /Team Channels**: here Dot is available to a group of users. In these cases Dot will create a user for the chat or channel, meaning that all users in this chat or channel have the **same** permissions. This is useful e.g. for different domains, where you might have a marketing channel and a finance channel. Then, on the Dot side this would create only 2 users that an admin could grant separate groups to. For example `teams_19:04ca1344-6505-41l3-b743-e64bcf1124f8_5d982b38-eb38-46b6-b929-42ff0392d01a@unq.gbl.spaces@getdot.ai`
+In Microsoft Teams, Dot distinguishes between two types of user contexts:
+
+**1. Direct Messages**
+
+* Dot is used in a 1:1 conversation with an individual user.
+* The user is identified by their email address (e.g., claude.shannon@bell.com).
+* On first interaction, Dot automatically creates a user profile using default settings.\
+
+
+**2. Chats and Team Channels**
+
+* Dot is used in a group context—either a group chat or a team channel.
+* Dot creates a shared user profile for the group or channel, not for each individual.
+* All users within that group or channel will have the same permissions in Dot.
+* This is useful for managing access by organizational domain or function, such as having separate permissions for a marketing channel and a finance channel.
+* Example user ID for a team channel:&#x20;
+
+<pre><code><strong>teams_19:04ca1344-6505-41l3-b743-e64bcf1124f8_5d982b38-eb38-46b6-b929-42ff0392d01a@unq.gbl.spaces@getdot.ai
+</strong></code></pre>
+
+Admins can assign different groups (and thus different permissions) to these shared group-level users, allowing tailored access control without managing individual users within each channel.
+
