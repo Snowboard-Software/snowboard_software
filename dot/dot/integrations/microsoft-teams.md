@@ -38,11 +38,20 @@ This setup requires to manually add the Teams app with the correct endpoints to 
 5.  To analyze complex topics it can help to break the questions up in multiple parts:\
     **What's our total revenue per country and its percentage change over time?**
 
-    \-> Show me total revenue over time (1)\
-    \-> Split it by country (2)\
-    \-> Calculate percentage change of revenue over time (3)\
+    -> Show me total revenue over time (1)\
+    -> Split it by country (2)\
+    -> Calculate percentage change of revenue over time (3)\
 
 
     This helps Dot to build up context first. Most great things are created iteratively. 🛶⛵🚢\
 
 6. Dot is trained to analyze data, not to configure visualizations (yet). It can not build a pie chart. 🍰 But it can format the output data and thus influence the chart, e.g. filter by dimensions or aggregate data differently. The goal of Dot is to come up with the best visualization to answer the question itself.
+
+
+
+## Permissions
+
+Dot uses group based [permissions](../whats-dot/permissions.md). That means users can access data via Dot based on the groups they are a part of. Not in Microsoft teams there are 2 different user types:
+
+* **Direct Messages**: here Dot is available to an individual user and Dot will identify this user with their email address. If it's the first time Dot interacts with them Dot will automatically create the user with the default settings. For example `claude.shannon@bell.com`
+* **Chats /Team Channels**: here Dot is available to a group of users. In these cases Dot will create a user for the chat or channel, meaning that all users in this chat or channel have the **same** permissions. This is useful e.g. for different domains, where you might have a marketing channel and a finance channel. Then, on the Dot side this would create only 2 users that an admin could grant separate groups to. For example `teams_19:04ca1344-6505-41l3-b743-e64bcf1124f8_5d982b38-eb38-46b6-b929-42ff0392d01a@unq.gbl.spaces@getdot.ai`
