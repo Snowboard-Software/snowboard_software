@@ -1,8 +1,6 @@
----
-description: Dot also quacks with Motherduck
----
+# Motherduck & DuckDB
 
-# DuckDB
+## Motherduck
 
 1. Get your token on [Motherduck Settings](https://app.motherduck.com/settings)
 
@@ -10,7 +8,7 @@ description: Dot also quacks with Motherduck
 
 
 
-2.  Write your connection string
+2.  Compose your connection string
 
     It follows this pattern. `md:<database_name>?motherduck_token=<your_token>`\
     e.g.: `md:sample_data?motherduck_token=eyABC...`
@@ -19,7 +17,10 @@ description: Dot also quacks with Motherduck
 
 **Notes**
 
-The Motherduck connector currently requires DuckDB to be on v.0.10.2
+The Motherduck connector requires DuckDB to be at least v.0.10.2
 
-If there is another way you'd like to access DuckDB, please [talk to us](../support.md).
 
+
+## DuckDB
+
+If you have your data in a local duckdb file you can either host it yourself (e.g. on S3) or [talk to us](../support.md).

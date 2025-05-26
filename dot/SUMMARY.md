@@ -19,7 +19,7 @@
   * [Postgres](dot/integrations/postgres.md)
   * [Microsoft SQL Server](dot/integrations/microsoft-sql-server.md)
   * [MySQL / MariaDB](dot/integrations/mysql-mariadb.md)
-  * [DuckDB](dot/integrations/duckdb.md)
+  * [Motherduck & DuckDB](dot/integrations/motherduck-and-duckdb.md)
   * [SAP HANA](dot/integrations/sap-hana.md)
   * [Looker](dot/integrations/looker.md)
   * [dbt Semantic Layer](dot/integrations/dbt-semantic-layer.md)
