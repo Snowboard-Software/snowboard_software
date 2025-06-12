@@ -38,7 +38,7 @@ Call the user endpoint via Python.
 ```python
 import requests
 headers = {"API-KEY": "dot-your_token_here"}
-response = requests.get("<https://[app or eu].getdot.ai/api/auth/me>", headers=headers)
+response = requests.get("https://[app or eu].getdot.ai/api/auth/me", headers=headers)
 ```
 
 #### Via URL - Parameters
