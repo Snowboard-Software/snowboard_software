@@ -38,6 +38,10 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
 * **chatPlaceHolderText=Ask%20AI**
   * changes the placeholder text in the chat input field
   * default value is "Ask Dot about your data..."
+* **suggestedPrompt1=How+is+the+weather**
+  * changes the first suggested prompt text to the url-encoded value
+* **suggestedPrompt2=How+is+the+weather**
+  * changes the second suggested prompt text to the url-encoded value
 * **scope=MYDB%2EMYSCHEMA%2EMYTABLE**
   * specify the id of the data source that should be used as a scope for Dot to answer questions
   * the value is url encoded, e.g. MYDB.MYSCHEMA.MYTABLE
