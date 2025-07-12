@@ -104,7 +104,7 @@ All company issued laptops utilize a password manager for team members to manage
 
 **Secure AI Model Usage**
 
-Dot is powered by OpenAI’s and Anthropic’s leading frontier models. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures.&#x20;
+[Dot](https://getdot.ai/) is powered by OpenAI’s and Anthropic’s leading frontier models. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures.&#x20;
 
 **No Training on Customer Data**&#x20;
 
