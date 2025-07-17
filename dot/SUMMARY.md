@@ -36,8 +36,19 @@
 * [Security & Privacy](dot/security-and-privacy.md)
 * [Support](dot/support.md)
 
-## dotML
+## AI Analytics Wiki
 
-* [What's DotML?](dotml/whats-dotml.md)
-* [Define Metrics & Dimensions](dotml/define-metrics-and-dimensions.md)
-* [DotML is open-source](dotml/dotml-is-open-source.md)
+* [Core Concepts](ai-analytics-wiki/core-concepts/README.md)
+  * [Artificial Intelligence](ai-analytics-wiki/core-concepts/artificial-intelligence.md)
+  * [Business Intelligence](ai-analytics-wiki/core-concepts/business-intelligence.md)
+  * [Data Warehouse](ai-analytics-wiki/core-concepts/data-warehouse.md)
+  * [Data Lake](ai-analytics-wiki/core-concepts/data-lake.md)
+  * [Data Visualization](ai-analytics-wiki/core-concepts/data-visualization.md)
+  * [Large Language Model](ai-analytics-wiki/core-concepts/large-language-model.md)
+  * [Machine Learning](ai-analytics-wiki/core-concepts/machine-learning.md)
+  * [Semantic Layer](ai-analytics-wiki/core-concepts/semantic-layer.md)
+* [Use Cases & Prompts](ai-analytics-wiki/use-cases-and-prompts.md)
+* [Page](ai-analytics-wiki/page.md)
+* [What's DotML?](ai-analytics-wiki/whats-dotml.md)
+* [Define Metrics & Dimensions](ai-analytics-wiki/define-metrics-and-dimensions.md)
+* [DotML is open-source](ai-analytics-wiki/dotml-is-open-source.md)
