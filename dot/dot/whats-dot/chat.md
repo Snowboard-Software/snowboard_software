@@ -18,7 +18,7 @@ Let's look at some potential questions for the marketing team of an online-shop.
 
 2. **Ask questions that need a deep understanding of your companies data model.**
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 3. **Request not just specific data, but also specific visualizations**
 
