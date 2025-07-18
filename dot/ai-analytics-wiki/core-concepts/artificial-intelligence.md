@@ -134,45 +134,13 @@ In the analytics layer, AI transforms both the speed and depth of analysis possi
 
 AI's position in the analytics ecosystem creates value through several mechanisms. First, it democratizes access to sophisticated analysis by enabling [natural language queries and automated insight generation](https://getdot.ai). Second, it scales analytical capabilities beyond human limitations, processing vast amounts of data and identifying patterns that might be missed by traditional approaches.
 
-```mermaid
-flowchart LR
-    A[Data Sources] --> B[Data Infrastructure]
-    B --> C[AI Enhancement Layer]
-    C --> D[Analytics Applications]
-    D --> E[Business Value]
-    
-    subgraph "Data Sources"
-        A1[Databases]
-        A2[APIs]
-        A3[IoT Sensors]
-        A4[Social Media]
-    end
-    
-    subgraph "Analytics Applications"
-        D1[Predictive Models]
-        D2[Automated Insights]
-        D3[Real-time Monitoring]
-        D4[Decision Support]
-    end
-    
-    A1 --> B
-    A2 --> B
-    A3 --> B
-    A4 --> B
-    
-    C --> D1
-    C --> D2
-    C --> D3
-    C --> D4
-```
+<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
 _This diagram shows how AI integrates within the data analytics ecosystem, enhancing capabilities across multiple layers._
 
 #### Integration Challenges and Opportunities
 
-Successful AI integration requires careful consideration of data quality, governance, and security. AI systems are only as good as the data they process, making robust [data governance essential](https://www2.deloitte.com/us/en/pages/consulting/articles/challenges-of-using-artificial-intelligence.html). Organizations must ensure that their data infrastructure can support AI workloads while maintaining security and \[compliance requirements]\([https://docs.aws.amazon.com/p](https://docs.aws.amazon.com/p)
-
-rescriptive-guidance/latest/strategy-enterprise-ready-gen-ai-platform/best-practices.html).
+Successful AI integration requires careful consideration of data quality, governance, and security. AI systems are only as good as the data they process, making robust [data governance essential](https://www2.deloitte.com/us/en/pages/consulting/articles/challenges-of-using-artificial-intelligence.html). Organizations must ensure that their data infrastructure can support AI workloads while maintaining security and [compliance requirements](https://docs.aws.amazon.com/prescriptive-guidance/latest/strategy-enterprise-ready-gen-ai-platform/best-practices.html).
 
 The integration also presents opportunities for innovation. AI can help organizations discover new data sources, identify previously unknown relationships, and develop novel analytical approaches. Companies that successfully integrate AI into their analytics ecosystem often find new revenue streams and competitive advantages.
 
