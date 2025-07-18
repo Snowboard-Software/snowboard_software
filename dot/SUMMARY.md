@@ -41,6 +41,7 @@
 * [Core Concepts](ai-analytics-wiki/core-concepts/README.md)
   * [AI Agents](ai-analytics-wiki/core-concepts/ai-agents.md)
   * [Artificial Intelligence](ai-analytics-wiki/core-concepts/artificial-intelligence.md)
+  * [AI Explainability](ai-analytics-wiki/core-concepts/ai-explainability.md)
   * [Business Intelligence](ai-analytics-wiki/core-concepts/business-intelligence.md)
   * [Data Warehouse](ai-analytics-wiki/core-concepts/data-warehouse.md)
   * [Data Lake](ai-analytics-wiki/core-concepts/data-lake.md)
