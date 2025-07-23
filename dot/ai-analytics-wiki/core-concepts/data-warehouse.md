@@ -8,7 +8,7 @@ In practical terms, a warehouse serves as a long-term “single source of truth�
 
 #### Diagram: End-to-End Data Flow
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 _Description: data flows from diverse sources into a raw landing zone, is transformed into the central warehouse, and finally feeds downstream marts, dashboards and AI agents such as_ [_Dot_](https://getdot.ai)_._
 
@@ -34,7 +34,7 @@ Hybrid “lakehouse” and “logical” patterns have gained traction too. A la
 
 #### Diagram: Three-Tier Snowflake Reference
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 _Description: Snowflake’s architecture separates storage, compute and a cloud-services layer that handles security, metadata and optimisation, enabling elastic scaling and pay-as-you-go economics._
 
