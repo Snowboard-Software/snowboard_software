@@ -6,7 +6,7 @@ Artificial intelligence represents a fundamental shift in how machines can proce
 
 Rather than following pre-programmed instructions like traditional software, AI systems learn from data and improve their performance over time. They analyze patterns, draw conclusions, and [make predictions or recommendations](https://www.atlassian.com/blog/artificial-intelligence/artificial-intelligence-101-the-basics-of-ai) based on what they've learned. Think of AI as teaching a computer to recognize patterns the way a child learns to identify objects—through repeated exposure and feedback, gradually building understanding and capability.
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 _This diagram illustrates the core AI learning cycle, showing how systems continuously improve through feedback and iteration._
 

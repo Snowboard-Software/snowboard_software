@@ -6,7 +6,7 @@
 
 **Historical example.** The Ford Model T sold [**over 15 million units between 1908 and 1927**](https://en.wikipedia.org/wiki/Ford_Model_T), proving that scale manufacturing plus a single upfront price could transform affordability—and a company’s economics.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 #### KPI Definitions (matches the nodes above)
 
