@@ -28,7 +28,7 @@ In summary, organizations need AI explainability to **build trust, drive adoptio
 
 ### Typical Explainability Engine Workflow
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -63,7 +63,7 @@ Finally, it’s worth mentioning a trade-off that often arises: sometimes, to ma
 
 ## Inference and Explanation Integration in Production
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
