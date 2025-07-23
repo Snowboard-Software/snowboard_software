@@ -6,7 +6,7 @@
 
 **Historical example.** Sotheby’s (1744) and Christie’s (1766) have always taken [auction commissions](https://www.investopedia.com/articles/active-trading/031215/how-real-estate-agent-and-broker-fees-work.asp?utm_source=chatgpt.com). Stockbrokers since the 17th century charged per trade, and newspaper classifieds were proto-marketplaces taking small fees to connect local buyers and sellers.
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 #### KPI Definitions
 
