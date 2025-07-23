@@ -8,7 +8,7 @@
 
 **Another current datapoint.** ARM [reported $2.2 billion in royalty revenue in FY2022](https://stockdividendscreener.com/technology/arm-holdings-revenue-breakdown-by-segment/?utm_source=chatgpt.com), with its CPU IP inside roughly 95% of smartphones. **Consumer IP illustration.** Disney’s Consumer Products & Licensing is only about 5% of revenue but \~13% of operating income, showing how lucrative high-margin licensing can be.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 #### KPI Definitions
 

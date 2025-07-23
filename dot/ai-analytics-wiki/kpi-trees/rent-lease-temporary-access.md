@@ -8,7 +8,7 @@
 
 **Historical example.** [Blockbuster](https://en.wikipedia.org/wiki/Blockbuster_LLC) rented movies/games for a few days: at its 2004 peak it ran \~9,000 stores and earned $5.9 billion—pure temporary access to physical media.
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### KPI Definitions
 

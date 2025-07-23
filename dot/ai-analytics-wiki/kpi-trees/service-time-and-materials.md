@@ -8,7 +8,7 @@
 
 **Utilization benchmark.** SPI Research’s benchmarks put average billable utilization at \~67–68%.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### KPI Definitions
 

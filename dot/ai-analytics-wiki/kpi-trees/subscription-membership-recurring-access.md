@@ -6,7 +6,7 @@
 
 **Historical example.** Newspaper and magazine subscriptions date to the 18th century; _The Times_ (1785) and _Reader’s Digest_ (1922) built massive recurring bases long before software did.
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
