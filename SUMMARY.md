@@ -6,7 +6,7 @@
   * [Checks](sled-for-data-users-editors/checks.md)
   * [Data Profiles](sled-for-data-users-editors/data-profiles.md)
   * [Lineage and Data Flows](sled-for-data-users-editors/lineage.md)
-  * [Templates: Automate Your Data Catalog Management](sled-for-data-users-editors/templates-automate-your-data-catalog-management.md)
+  * [Templates](sled-for-data-users-editors/templates.md)
 * [Connect with Snowflake](snowflake_connection/README.md)
   * [Grant permissions on future tables](snowflake_connection/grant-permissions-on-future-tables.md)
   * [Background Tasks for Snowflake](snowflake_connection/background_tasks.md)

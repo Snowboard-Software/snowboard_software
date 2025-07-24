@@ -1,4 +1,8 @@
-# Templates: Automate Your Data Catalog Management
+---
+description: Automate Your Data Catalog Management
+---
+
+# Templates
 
 ### Overview
 
