@@ -63,9 +63,7 @@ If you want to automatically login your users, you can pass the access\_token pa
 
 * **access\_token=eyJhABCDE123456789IsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrb2xhFGHIJ67890bGVkLnNvIiwib3JnX2secret2xlZC5zbyIsImV4cCI6MdotKL09876H0.spR-XrXTtDOTP54321ZWWchwR0x\_S8W\_juPVh8k**
 
-The token can be obtained per user using the [api/auth/embedded\_user\_login ](api/#api-auth-embedded_user_login)endpoint or via the [api/auth/token](api/#api-auth-token) endpoint if you store the users password in your application.
-
-
+The token can be obtained per user using the [api/auth/embedded\_user\_login ](api/commonly-used-endpoints.md#automatically-authenticate-embedded-users)endpoint.
 
 
 
