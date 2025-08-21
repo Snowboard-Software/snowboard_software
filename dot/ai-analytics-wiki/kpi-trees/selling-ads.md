@@ -1,11 +1,11 @@
-# Advertising / Sponsorship (Selling Attention)
+# Selling Ads
 
 **Definition (short).** You give users content or utility (often free or subsidized) and monetize by selling their attention and/or data to advertisers or sponsors. Revenue scales with audience size, engagement (impressions), and the price per impression/click/action.
 
 **Recent example.** Meta booked **$164.5 billion in 2024 revenue, \~97% from ads** across Facebook, Instagram, and now Threads. [Meta booked $164.5 billion in 2024 revenue, \~97% from ads](https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Reports-Fourth-Quarter-and-Full-Year-2024-Results/default.aspx?utm_source=chatgpt.com). YouTube ads brought Alphabet **$10.47 billion in Q4 2024 (up 13.8%)**, while Google overall still derived **\~76% of 2024 revenue from ads**. [Google overall still derived \~76% of 2024 revenue from ads](https://www.marketingdive.com/news/google-ad-revenue-growth-sluggish-ai/739274/?utm_source=chatgpt.com).\
 **Historical example.** U.S. broadcast TV has been ad-funded since the 1950s; newspapers in the late 19th century (e.g., _NYT_) sold papers cheaply and made money on classifieds and display ads—pioneering CPM pricing long before digital.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 #### KPI Definitions
 

@@ -63,7 +63,7 @@ Finally, it’s worth mentioning a trade-off that often arises: sometimes, to ma
 
 ## Inference and Explanation Integration in Production
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

@@ -13,7 +13,7 @@ All API endpoints can be accessed via an API token that is tied to the permissio
 1. Go to **Settings / Users**
 2. Click **Create New Token**
 
-<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 3. **Enter a name**, description, and expiration period
 4. **Copy the token** (it's only shown once)
@@ -65,7 +65,7 @@ curl "https://{region}.getdot.ai/api/sync/{connection_type}/{connection_type}" \
 To keep Dot in sync with your production environment, it is recommended to trigger the following API endpoint
 
 {% openapi-operation spec="dot-openapi" path="/api/sync/{connection_type}/{connection_id}" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 ```javascript
@@ -106,7 +106,7 @@ Documentation how to setup a dbt webhooks
 Inform Dot about key external knowledge assets, such as BI dashboards or custom data apps, so it can recommend them to users and assist with discovery and understanding. Authentication works similarly to the Sync Connection endpoint.
 
 {% openapi-operation spec="dot-openapi" path="/api/import_and_overwrite_external_asset" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 
@@ -116,7 +116,7 @@ Inform Dot about key external knowledge assets, such as BI dashboards or custom 
 Export all conversations together with relevant meta data fields such as number of messages or author.
 
 {% openapi-operation spec="dot-openapi" path="/api/export_history" method="get" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 
@@ -388,26 +388,22 @@ print("✅  org‑note updated")
 
 
 
-## All endpoints
-
-Once you [created your token](api.md#everything-starts-with-a-token-of-trust), you can use [all API endpoints](https://test.getdot.ai/redoc). Here is selection of frequently used endpoints and some examples on how the API got used.
-
 
 
 ## Ask Dot Automatically
 
 {% openapi-operation spec="dot-openapi" path="/api/ask" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 {% openapi-operation spec="dot-openapi" path="/api/ask_with_history" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 Trigger Deep Analysis
 
 {% openapi-operation spec="dot-openapi" path="/api/agentic" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 
@@ -415,41 +411,41 @@ Trigger Deep Analysis
 ## User Administration
 
 {% openapi-operation spec="dot-openapi" path="/api/get_users" method="get" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 {% openapi-operation spec="dot-openapi" path="/api/send_invitations" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 {% openapi-operation spec="dot-openapi" path="/api/delete_user" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 {% openapi-operation spec="dot-openapi" path="/api/change_user_role" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 {% openapi-operation spec="dot-openapi" path="/api/add_user_to_group" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 {% openapi-operation spec="dot-openapi" path="/api/remove_user_from_group" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 {% openapi-operation spec="dot-openapi" path="/api/create_user" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 ## Automatically Authenticate Embedded Users
 
-For embedded use cases that require SSO, where your end users have individual permissions you can use this endpoint to obtain an access token for users that is valid for 24h. Here is an example on how you can use it to [embed](embed.md) Dot in your application.&#x20;
+For embedded use cases that require SSO, where your end users have individual permissions you can use this endpoint to obtain an access token for users that is valid for 24h. Here is an example on how you can use it to [embed](../embed.md) Dot in your application.&#x20;
 
 Please make sure that you enabled this flag on settings: **"Allow admins to authenticate for users to enable SSO in embeds".**
 
 {% openapi-operation spec="dot-openapi" path="/api/auth/embedded_user_login" method="post" %}
-[Broken link](broken-reference)
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
 

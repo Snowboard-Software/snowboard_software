@@ -1,4 +1,4 @@
-# Service / Time & Materials
+# Selling Service
 
 **Definition (short).** You sell expert human time (and any pass-through materials) on an as-consumed basis—hours, days, or sprints. Revenue equals billable hours multiplied by realized rates; profitability depends on utilization, pricing discipline, and delivery efficiency.
 
@@ -8,7 +8,7 @@
 
 **Utilization benchmark.** SPI Research’s benchmarks put average billable utilization at \~67–68%.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### KPI Definitions
 
