@@ -472,7 +472,7 @@ Admins create and manage skills through the UI.
 
 Navigate to the model page → skill tab (/skills page) and you will find the section to add custom skills.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Here you can define the following:
 

@@ -5,7 +5,7 @@
 **Recent example.** U.S. banks’ average **net interest margin was 3.30% in 2023** (up 35 bps YoY). [Net interest margin was 3.30% in 2023](https://www.fdic.gov/analysis/quarterly-banking-profile/qbp/2023dec/qbp.pdf?utm_source=chatgpt.com). U.S. P\&C insurers’ combined ratio improved to **101.7% in 2023** (still an underwriting loss), then to **\~96.5% in 2024** (profit) as price hikes beat claims. [Combined ratio improved to 101.7% in 2023, then to \~96.5% in 2024](https://www.ft.com/content/74109807-82d8-4281-a842-7681af0366fa?utm_source=chatgpt.com).\
 **Historical example.** Lloyd’s of London (1680s) pioneered marine underwriting; medieval moneylenders lived on interest spreads; 19th-century savings & loans profited on mortgage spreads; the “combined ratio” has been an insurance staple since early 20th century.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### KPI Definitions
 

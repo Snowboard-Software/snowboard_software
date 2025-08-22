@@ -31,6 +31,7 @@
   * [Microsoft Teams](dot/integrations/microsoft-teams.md)
   * [Azure Active Directory](dot/integrations/azure-active-directory.md)
   * [Okta](dot/integrations/okta.md)
+  * [MCP](dot/integrations/mcp.md)
   * [BI Tools](dot/integrations/bi-tools/README.md)
     * [Tableau](dot/integrations/bi-tools/tableau.md)
     * [Metabase](dot/integrations/bi-tools/metabase.md)

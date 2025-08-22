@@ -78,6 +78,6 @@ If your organization uses a network policy to manage Redshift access, Dot will o
 * `3.229.110.216`
 * `3.122.135.165`
 
-![](<../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)\
+![](<../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)\
 
 
