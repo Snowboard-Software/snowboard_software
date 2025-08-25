@@ -46,6 +46,8 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
   * specify the id of the data source that should be used as a scope for Dot to answer questions
   * the value is url encoded, e.g. MYDB.MYSCHEMA.MYTABLE
   * if this is not specified Dot will search for the right data source to answer the question
+* **extra=anything**
+  * here you can store anything that should get returned by the conversation history (e.g. an embedded user id)
 
 
 
