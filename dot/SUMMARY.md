@@ -22,6 +22,8 @@
   * [Databricks](dot/integrations/databricks.md)
   * [Postgres](dot/integrations/postgres.md)
   * [Microsoft SQL Server](dot/integrations/microsoft-sql-server.md)
+  * [Microsoft Fabric](dot/integrations/microsoft-fabric.md)
+  * [Clickhouse](dot/integrations/clickhouse.md)
   * [MySQL / MariaDB](dot/integrations/mysql-mariadb.md)
   * [Motherduck & DuckDB](dot/integrations/motherduck-and-duckdb.md)
   * [SAP HANA](dot/integrations/sap-hana.md)
