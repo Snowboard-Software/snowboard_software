@@ -48,6 +48,10 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
   * if this is not specified Dot will search for the right data source to answer the question
 * **extra=anything**
   * here you can store anything that should get returned by the conversation history (e.g. an embedded user id)
+* **active\_groups=finance%2Csales**
+  * restricts a users data access to the specified user groups
+  * Use `%2C` to url-encode a `,` to specify multiple groups
+  * Active groups are validated against the assigned groups of the user
 
 
 
