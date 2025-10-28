@@ -17,7 +17,7 @@ Every good analysis is not just based on writing SQL, but on understanding how y
 **Datasource**\
 Click on all the tables or explores that Dot will search through.
 
-<figure><img src="../../.gitbook/assets/grafik (14).png" alt="" width="257"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (14).png" alt="" width="257"><figcaption></figcaption></figure>
 
 
 
@@ -25,13 +25,13 @@ Click on all the tables or explores that Dot will search through.
 
 Select all fields in a datasource that Dot should know about.
 
-<figure><img src="../../.gitbook/assets/grafik (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (12).png" alt=""><figcaption></figcaption></figure>
 
 ## **Describe Data**
 
 You can click suggest to automatically generate documentation and fetch sample values.
 
-<figure><img src="../../.gitbook/assets/Recording 2023-05-17 at 14.12.36 (1).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Recording 2023-05-17 at 14.12.36 (1).gif" alt=""><figcaption></figcaption></figure>
 
 Make sure to save the changes you made. ⬆️
 
@@ -48,7 +48,7 @@ Without more context there are many ways to answer this question.
 
 The Questions section in Dot gives data teams a chance to build a collection of questions and answers that Dot will reuse.
 
-<figure><img src="../../.gitbook/assets/grafik (19).png" alt=""><figcaption><p>Calculates revenue and number of customers over time to answer question.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (19).png" alt=""><figcaption><p>Calculates revenue and number of customers over time to answer question.</p></figcaption></figure>
 
 
 
@@ -69,7 +69,7 @@ Note:&#x20;
 
 **Example**
 
-<figure><img src="../../.gitbook/assets/grafik (32).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (32).png" alt=""><figcaption></figcaption></figure>
 
 Given the data model above, you want to define 2 Relationships:
 
