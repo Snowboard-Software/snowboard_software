@@ -1,5 +1,5 @@
 ---
-description: Context is King
+description: All you need is Context
 ---
 
 # Notes
