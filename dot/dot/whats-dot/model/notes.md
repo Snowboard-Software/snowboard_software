@@ -1,5 +1,5 @@
 ---
-description: All you need is Context
+description: Context is all you need
 ---
 
 # Notes
