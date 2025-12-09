@@ -59,4 +59,4 @@ grant imported privileges on database snowflake to role dot_role;
 If your organization uses a network policy to manage Snowflake access, Dot will only access your Snowflake through the following IPs:
 
 * `3.229.110.216`
-* `3.122.135.165`\
+* `3.122.135.165`<br>

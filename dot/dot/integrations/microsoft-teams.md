@@ -40,11 +40,9 @@ This setup requires to manually add the Teams app with the correct endpoints to 
 
     -> Show me total revenue over time (1)\
     -> Split it by country (2)\
-    -> Calculate percentage change of revenue over time (3)\
+    -> Calculate percentage change of revenue over time (3)<br>
 
-
-    This helps Dot to build up context first. Most great things are created iteratively. 🛶⛵🚢\
-
+    This helps Dot to build up context first. Most great things are created iteratively. 🛶⛵🚢<br>
 6. Dot is trained to analyze data, not to configure visualizations (yet). It can not build a pie chart. 🍰 But it can format the output data and thus influence the chart, e.g. filter by dimensions or aggregate data differently. The goal of Dot is to come up with the best visualization to answer the question itself.
 
 
@@ -59,8 +57,7 @@ In Microsoft Teams, Dot distinguishes between two types of user contexts:
 
 * Dot is used in a 1:1 conversation with an individual user.
 * The user is identified by their email address (e.g., claude.shannon@bell.com).
-* On first interaction, Dot automatically creates a user profile using default settings.\
-
+* On first interaction, Dot automatically creates a user profile using default settings.<br>
 
 **2. Chats and Team Channels**
 
