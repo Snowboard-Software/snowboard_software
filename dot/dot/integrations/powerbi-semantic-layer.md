@@ -19,15 +19,18 @@ Limitations
 Who: Entra / Azure AD admin (or anyone allowed to create app registrations)
 
 1. In the Entra admin center → App registrations → New registration:
-2. Name: e.g. pbi-backend-service-principal
-3. Supported account types: Single tenant (typical).
-4. Register.
-5. On the app page, capture:
-6. Application (client) ID
-7. Directory (tenant) ID
-8. Certificates & secrets → New client secret:
-9. Add a secret (e.g. 1–2 year lifetime).
-10. Copy the secret value now (can’t be read later).
+   1. Name: e.g. pbi-backend-service-principal
+   2. Supported account types: Single tenant (typical).
+   3. Register.
+2. On the app page, capture:
+   1. Application (client) ID
+   2. Directory (tenant) ID
+3. Certificates & secrets → New client secret:
+   1. Add a secret (e.g. 2 year lifetime).
+   2. Copy the secret value now (can’t be read later).
+4. Add Security Group (optional)
+   4. Create an Entra security group, e.g. pbi-spn-api-callers.
+   5. Add the service principal to that group.
 
 &#x20;
 
@@ -49,14 +52,14 @@ Open Fabric / Power BI Admin portal → Tenant settings. We’ll touch three are
 
 Under Developer settings:
 
-1. Find “Service principals can use Fabric APIs” (or older wording: “Allow service principals to use Power BI APIs”).
+1. Find “Service principals can use Fabric APIs” (or: “Allow service principals to use Power BI APIs”).
 2. Set to:
-3. Enabled, scoped to:
-4. Entire organization, or
-5. Specific security groups → add pbi-spn-api-callers.
-6. Save.
+   1. Enabled, scoped to:
+      1. Entire organization, or
+      2. Specific security groups → add pbi-spn-api-callers.
+3. Save.
 
-&#x20;
+
 
 This unlocks public Power BI/Fabric APIs for service principals.
 
@@ -82,10 +85,6 @@ Under Admin API settings:
 
 1. Turn on “Service principals can access read-only admin APIs”.
 2. Scope to Specific security groups → pbi-spn-api-callers.
-3. (Optional, only if you’ll use update admin APIs) Enable
-
-“Service principals can access admin APIs used for updates” similarly.
-
 3. Save.
 
 &#x20;
@@ -102,17 +101,17 @@ Note: when using service principal for admin APIs, the app must nothave admin-co
 
 Who: Workspace owners (or central admin via script)
 
-executeQueries ALSO requires dataset-level permissions:
+
 
 For each workspace whose semantic models the backend should query:
 
 1. Go to Workspace → Access.
 2. Add either:
-3. The service principal directly, or
-4. The security group pbi-spn-api-callers.
-5. Give it a role that implies Read + Build on semantic models, e.g.:
-6. Contributor or Member, or
-7. Viewer + Build (Viewer with Build on the semantic model itself).
+   1. The service principal directly, or
+   2. The security group pbi-spn-api-callers.
+3. Give it a role that implies Read + Build on semantic models, e.g.:
+   1. Contributor or Member, or
+   2. Viewer + Build (Viewer with Build on the semantic model itself).
 
 &#x20;
 
