@@ -5,6 +5,7 @@
 * [What's Dot?](README.md)
   * [Getting started](dot/whats-dot/getting-started.md)
   * [Chat](dot/whats-dot/chat.md)
+  * [Deep Analysis](dot/whats-dot/deep-analysis.md)
   * [Model](dot/whats-dot/model/README.md)
     * [Notes](dot/whats-dot/model/notes.md)
   * [User Feedback](dot/whats-dot/user-feedback.md)
