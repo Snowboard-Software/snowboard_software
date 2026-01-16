@@ -8,7 +8,7 @@ description: Use Dot where you work with your team
 
 1. In Settings Click on Add Dot to Teams
 
-<figure><img src="../../.gitbook/assets/grafik (2).png" alt="" width="292"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (2).png" alt="" width="292"><figcaption></figcaption></figure>
 
 2. Install App in Teams App Store
 3. Add Dot to group channel or chat with @Dot EU/US
@@ -33,7 +33,7 @@ This setup requires to manually add the Teams app with the correct endpoints to 
 3. In a chat Dot will automatically use the previous 3 messages as context, unless you reset it with `@Dot reset`
 4. If Dot did not get it right, just rephrase your question and try again. It can help to look at the found data source to see which questions Dot might answer on it.
 
-![](<../../.gitbook/assets/grafik (16).png>)
+![](<../../../.gitbook/assets/grafik (16).png>)
 
 5.  To analyze complex topics it can help to break the questions up in multiple parts:\
     **What's our total revenue per country and its percentage change over time?**
@@ -71,4 +71,8 @@ In Microsoft Teams, Dot distinguishes between two types of user contexts:
 </strong></code></pre>
 
 Admins can assign different groups (and thus different permissions) to these shared group-level users, allowing tailored access control without managing individual users within each channel.
+
+## Next Steps
+
+See [Channel Routing](channel-routing.md) to route specific channels to different workspaces.
 

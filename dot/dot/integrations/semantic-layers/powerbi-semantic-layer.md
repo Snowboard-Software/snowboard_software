@@ -133,6 +133,6 @@ To truly “list all” datasets/semantic models:
 
 Go to Settings / Semantic Layers
 
-<figure><img src="../../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 
 <br>

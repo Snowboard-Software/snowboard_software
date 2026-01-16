@@ -4,7 +4,7 @@
 
 1. Get your token on [Motherduck Settings](https://app.motherduck.com/settings)
 
-<figure><img src="../../.gitbook/assets/grafik (34).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (34).png" alt=""><figcaption></figcaption></figure>
 
 
 

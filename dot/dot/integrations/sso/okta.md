@@ -19,14 +19,14 @@ This guide walks you through the process of creating an app integration in Okta 
 1. Select the **OIDC - OpenID Connect** option.
 2. Choose **Web Application** as the application type and click **Next**.
 
-<figure><img src="../../.gitbook/assets/Screenshot_from_2024-01-12_19-08-48.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-12_19-08-48.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 3: Set Redirect URI
 
 1. In a separate browser tab, go to your **Dot Settings** > **Okta** section to copy the Redirect URI.
 2. Return to the Okta tab and paste the copied URI into the **Sign-in redirect URIs** field.
 
-<figure><img src="../../.gitbook/assets/Screenshot_from_2024-01-15_11-28-44.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-15_11-28-44.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 4: Configure General Settings
 
@@ -37,9 +37,9 @@ This guide walks you through the process of creating an app integration in Okta 
    * For US: `https://app.getdot.ai`
 4. Set the logo
 
-{% file src="../../.gitbook/assets/dot_logo.jpg" %}
+{% file src="../../../.gitbook/assets/dot_logo.jpg" %}
 
-<figure><img src="../../.gitbook/assets/Screenshot_from_2024-01-12_19-17-20 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-12_19-17-20 (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 5: Assign Users or Groups
 
@@ -49,7 +49,7 @@ This guide walks you through the process of creating an app integration in Okta 
 
 1. After saving the new app integration, navigate to the **General** tab of your newly created app. 2. Copy the **Client ID** and **Client Secret**.
 
-<figure><img src="../../.gitbook/assets/Screenshot_from_2024-01-12_19-20-06.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-12_19-20-06.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 7: Configure Dot with Okta Credentials
 
@@ -63,7 +63,7 @@ This guide walks you through the process of creating an app integration in Okta 
    * Example: `https://dev-12345678.okta.com/.well-known/openid-configuration`
 2. Your Okta URL can be found in the drop-down menu under your username at the top right corner of the Okta dashboard.
 
-<figure><img src="../../.gitbook/assets/Screenshot_from_2024-01-15_11-43-23-1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-15_11-43-23-1.png" alt=""><figcaption></figcaption></figure>
 
 ### Finalizing the Integration
 

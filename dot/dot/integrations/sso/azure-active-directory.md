@@ -19,14 +19,14 @@ Follow these steps to create and configure a Single Sign-On (SSO) integration wi
 2. Under **Supported account types**, select the relevant option for your organization.
 3. For the **Redirect URI**, input the URI provided by your Dot settings.
 
-<figure><img src="../../.gitbook/assets/Screenshot_from_2024-01-16_13-53-20.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-16_13-53-20.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 3: Application Overview
 
 1. Once the application is registered, you will be redirected to the application's overview page.
 2. Copy the **Application (client) ID** and **Directory (tenant) ID** and save it for later use.
 
-<figure><img src="../../.gitbook/assets/Screenshot_from_2024-01-16_13-53-41.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-16_13-53-41.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 4: Certificates & Secrets
 
@@ -35,14 +35,14 @@ Follow these steps to create and configure a Single Sign-On (SSO) integration wi
 3. Add a description for the secret and set an expiry as required.
 4. Once created, copy the value of the client secret.
 
-<figure><img src="../../.gitbook/assets/Screenshot_from_2024-01-16_13-54-20.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-16_13-54-20.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 5: Adding the Client Secret
 
 1. You can now see the newly created client secret listed.
 2. Note the secret's value, as it will be used in the Dot application configuration.
 
-<figure><img src="../../.gitbook/assets/Screenshot_from_2024-01-16_13-54-30.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-16_13-54-30.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 6: Integrating with Dot
 
@@ -68,10 +68,10 @@ Once you've completed the above steps:
 1. In Azure, go to the "Enterprise application" created for Dot authentication and on the left change to "Manage" -> "Users and Groups"
 2. Press "Add user / group" and then add single users or groups that should be able to login
 
-<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 3. Then on the left change to "Manage" -> "Properties"
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
 4. Activate "Assignment required" → Now only users directly assign to this application by user or group can use the SSO in Dot to login

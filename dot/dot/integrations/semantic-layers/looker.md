@@ -9,19 +9,19 @@
 
 3. Click **Edit** next to a user.
 
-<figure><img src="../../.gitbook/assets/looker_users.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/looker_users.png" alt=""><figcaption></figcaption></figure>
 
 4. Click the **Edit Keys** button next to API Keys.
 
-<figure><img src="../../.gitbook/assets/looker_users_2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/looker_users_2.png" alt=""><figcaption></figcaption></figure>
 
 4. Click **New API3 Key**.
 
-<figure><img src="../../.gitbook/assets/looker_users_3.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/looker_users_3.png" alt=""><figcaption></figcaption></figure>
 
 5. Copy the **Client ID** and **Client Secret**.
 
-<figure><img src="../../.gitbook/assets/looker_users_4.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/looker_users_4.png" alt=""><figcaption></figcaption></figure>
 
 ## Allow Dot IPs
 

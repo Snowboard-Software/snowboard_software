@@ -14,13 +14,13 @@ To connect you need admin access to **dbt cloud** and you need to have [setup th
 
 1. Go to ⚙️ | Accout Settings&#x20;
 
-<figure><img src="../../.gitbook/assets/grafik (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (23).png" alt=""><figcaption></figcaption></figure>
 
 2. Click on Service Tokens
 
 <div align="center">
 
-<figure><img src="../../.gitbook/assets/grafik (24).png" alt="" width="548"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (24).png" alt="" width="548"><figcaption></figcaption></figure>
 
 </div>
 
@@ -28,11 +28,11 @@ To connect you need admin access to **dbt cloud** and you need to have [setup th
 
 3. Create new Token with permissions for `Semantic Layer` and `Metadata`&#x20;
 
-<figure><img src="../../.gitbook/assets/grafik (25).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (25).png" alt=""><figcaption></figcaption></figure>
 
 4. Copy and Save Generated Token
 
-<figure><img src="../../.gitbook/assets/grafik (26).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (26).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -42,13 +42,13 @@ To connect you need admin access to **dbt cloud** and you need to have [setup th
 
 1. Go to Environments
 
-<figure><img src="../../.gitbook/assets/grafik (27).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (27).png" alt=""><figcaption></figcaption></figure>
 
 
 
 2. Click on your production environment and copy the last part of the url ( e.g. 12345)
 
-<figure><img src="../../.gitbook/assets/grafik (28).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/grafik (28).png" alt=""><figcaption></figcaption></figure>
 
 
 

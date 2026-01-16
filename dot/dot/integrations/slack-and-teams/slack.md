@@ -4,25 +4,25 @@ description: Use Dot where you get work done
 
 # Slack
 
-<figure><picture><source srcset="../../.gitbook/assets/front-dark.png" media="(prefers-color-scheme: dark)"><img src="../../.gitbook/assets/front-ligth.png" alt=""></picture><figcaption></figcaption></figure>
+<figure><picture><source srcset="../../../.gitbook/assets/front-dark.png" media="(prefers-color-scheme: dark)"><img src="../../../.gitbook/assets/front-ligth.png" alt=""></picture><figcaption></figcaption></figure>
 
 ## Add @Dot to Slack
 
 1. Click on Slack in [Settings ](https://app.getdot.ai/settings)
 
-![](<../../.gitbook/assets/image (6).png>)
+![](<../../../.gitbook/assets/image (6).png>)
 
 2. Click on install
 
-![](<../../.gitbook/assets/image (8).png>)
+![](<../../../.gitbook/assets/image (8).png>)
 
 3. Select the channel, where you want @Dot to respond to user requests and confirm
 
-![](<../../.gitbook/assets/image (3) (1) (1) (1).png>)
+![](<../../../.gitbook/assets/image (3) (1) (1) (1).png>)
 
 4. Chat with @Dot
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -56,6 +56,10 @@ Retention & admin audit
 * We securely store only interactions involving Dot to provide context and auditability.
 * Admins can review them in Admin Console → History.
 * Workspace data deletion is available on request.
+
+### Next Steps
+
+See [Channel Routing](channel-routing.md) to route specific channels to different workspaces.
 
 
 
