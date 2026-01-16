@@ -12,6 +12,7 @@
 
 ## Train Dot
 
+* [Root: Context Agent](dot/whats-dot/context-agent.md)
 * [Model](dot/whats-dot/model/README.md)
   * [Notes](dot/whats-dot/model/notes.md)
 * [Permissions](dot/whats-dot/permissions.md)
