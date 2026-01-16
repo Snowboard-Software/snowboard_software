@@ -4,9 +4,9 @@ description: Converse with data in your language
 
 # Chat
 
-Data is stored in complex data models and insights are scattered across hundreds or more dashboards and visualizations. The few experts that can navigate this complexity become a bottleneck for the organization.&#x20;
+Data is stored in complex data models and insights are scattered across hundreds or more dashboards and visualizations. The few experts that can navigate this complexity become a bottleneck for the organization. 
 
-Instead of creating Jira-Tickets or following up 3 times on an e-mail, you can just ask Dot - the data bot. Dot is trained by the data team to answer all the flexbile and nuanced questions about your business you care about.&#x20;
+Instead of creating Jira-Tickets or following up 3 times on an e-mail, you can just ask Dot - the data bot. Dot is trained by the data team to answer all the flexbile and nuanced questions about your business you care about. 
 
 ### What can you ask?
 
@@ -32,7 +32,7 @@ Let's look at some potential questions for the marketing team of an online-shop.
 
 <figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-6.  **If Dot didn't find what you were looking for, just say "Try again."**&#x20;
+6.  **If Dot didn't find what you were looking for, just say "Try again."** 
 
     Dot is based on current frontier models and statistically in nature. By trying again it might choose another way to approach the question and succeed.
 
@@ -96,7 +96,7 @@ To get the most accurate results from Dot, ensure your questions include the fol
 
 #### :question:More help
 
-If you're uncertain about Dot's answer, just ask the data team for help!&#x20;
+If you're uncertain about Dot's answer, just ask the data team for help! 
 
 They can audit the query and data model to double check the analysis.
 

@@ -6,7 +6,7 @@ description: permissive or restrictive, however you like it
 
 ## Roles in Dot
 
-There are two roles that control what you can do with Dot.&#x20;
+There are two roles that control what you can do with Dot. 
 
 * **Admins** can control the data model, data source settings and permissions.
 * **Users** can chat.

@@ -40,7 +40,7 @@ grant select on future materialized views in schema identifier($db_schema_name) 
 
 
 
-For shared databases the following statement is enough.&#x20;
+For shared databases the following statement is enough. 
 
 ```sql
 grant imported privileges on database shared_external_db to role dot_role;

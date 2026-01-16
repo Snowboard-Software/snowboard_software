@@ -104,29 +104,29 @@ All company issued laptops utilize a password manager for team members to manage
 
 **Secure AI Model Usage**
 
-[Dot](https://getdot.ai/) is powered by OpenAI’s and Anthropic’s leading frontier models. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures.&#x20;
+[Dot](https://getdot.ai/) is powered by OpenAI’s and Anthropic’s leading frontier models. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures. 
 
-**No Training on Customer Data**&#x20;
+**No Training on Customer Data** 
 
-Data sent to these models will never be used for training.  For more details, refer to:&#x20;
+Data sent to these models will never be used for training.  For more details, refer to: 
 
-* [OpenAI’s API Data Usage Policies](https://openai.com/policies/api-data-usage-policies)&#x20;
+* [OpenAI’s API Data Usage Policies](https://openai.com/policies/api-data-usage-policies) 
 * [Anthropic’s Privacy Policy](https://privacy.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training?utm_source=chatgpt.com#h_1a7d240480)
 
 As an organization, we are committed to safeguarding customer data and will never use it to train our AI models.
 
 
 
-**AI Data Protection Measures**&#x20;
+**AI Data Protection Measures** 
 
-* Encryption: All data exchanged with AI models is encrypted in transit using TLS/SSL to prevent unauthorized interception.&#x20;
-* Access Control: Only authorized systems and users can interact with AI processing services, ensuring strict data governance.&#x20;
+* Encryption: All data exchanged with AI models is encrypted in transit using TLS/SSL to prevent unauthorized interception. 
+* Access Control: Only authorized systems and users can interact with AI processing services, ensuring strict data governance. 
 * Logging & Monitoring: AI interactions are logged and monitored for anomalies to detect and prevent misuse.
 
-**Compliance & Risk Management**&#x20;
+**Compliance & Risk Management** 
 
-* Third-Party Security Audits: AI security practices are included in our periodic security assessments and SOC 2 audits.&#x20;
-* Regulatory Alignment: AI data handling complies with GDPR, CCPA, and other applicable data protection regulations.&#x20;
+* Third-Party Security Audits: AI security practices are included in our periodic security assessments and SOC 2 audits. 
+* Regulatory Alignment: AI data handling complies with GDPR, CCPA, and other applicable data protection regulations. 
 * Incident Response: If an AI-related security incident occurs, we have an established protocol for rapid investigation and resolution.
 
 
@@ -151,7 +151,7 @@ If you discover a vulnerability, we would like to know about it so we can take s
 
 Please do the following:
 
-* E-mail your findings to security@sled.so,&#x20;
+* E-mail your findings to security@sled.so, 
 * Do not take advantage of the vulnerability or problem you have discovered, for example by downloading more data than necessary to demonstrate the vulnerability or deleting or modifying other people's data,
 * Use test.getdot.ai for security testing and not one of our production services,
 * Do not reveal the problem to others until it has been resolved,

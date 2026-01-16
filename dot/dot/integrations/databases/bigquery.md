@@ -14,7 +14,7 @@ You’ll need to have a [Google Cloud Platform](https://cloud.google.com/) accou
 * `bigquery.jobUser`
 * `bigquery.readSessionUser`
 
-You'll need to provide the service account's email, a [JSON-formatted key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating), and the location of your BigQuery instance.&#x20;
+You'll need to provide the service account's email, a [JSON-formatted key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating), and the location of your BigQuery instance. 
 
 
 
@@ -93,7 +93,7 @@ Example Values
 * PROJECT\_ID: `super-position-123456`
 *   SERVICE\_ACCOUNT: `dot-101@super-position-123456.iam.gserviceaccount.com`
 
-    &#x20;
+     
 
 ## Allow Dot IPs
 

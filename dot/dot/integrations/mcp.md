@@ -33,7 +33,7 @@ Select your AI client from the modal after generating the token, and follow the 
 1. Navigate to Settings in Claude Desktop
 2. Edit the configuration file:
    * **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-   * **Windows**: `%APPDATA%\\\\\\\\Claude\\\\\\\\claude_desktop_config.json`
+   * **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 3. Add the Dot server configuration provided in the modal
 4. Save and restart Claude Desktop
 5. Look for the MCP indicator (hammer icon) in the chat input

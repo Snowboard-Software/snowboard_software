@@ -12,7 +12,7 @@ description: Use Dot where you work with your team
 
 2. Install App in Teams App Store
 3. Add Dot to group channel or chat with @Dot EU/US
-4. Say `@Dot EU hello`&#x20;
+4. Say `@Dot EU hello` 
 5. Copy the tenant id to settings and save
 6. Chat! 🎉
 
@@ -20,7 +20,7 @@ description: Use Dot where you work with your team
 
 ## Self-hosted Setup
 
-Please contact us at [hi@getdot.ai](mailto:hi@getdot.ai).&#x20;
+Please contact us at [hi@getdot.ai](mailto:hi@getdot.ai). 
 
 This setup requires to manually add the Teams app with the correct endpoints to your Tenant.
 
@@ -28,7 +28,7 @@ This setup requires to manually add the Teams app with the correct endpoints to 
 
 ## Tips for talking with Dot
 
-1. To speak about a new topic, start a new conversation with `@Dot` in a group channel or chat.&#x20;
+1. To speak about a new topic, start a new conversation with `@Dot` in a group channel or chat. 
 2. In a group channel follow up questions can be directly asked in the thread using the whole thread as context. No additional `@Dot` is needed.
 3. In a chat Dot will automatically use the previous 3 messages as context, unless you reset it with `@Dot reset`
 4. If Dot did not get it right, just rephrase your question and try again. It can help to look at the found data source to see which questions Dot might answer on it.
@@ -65,7 +65,7 @@ In Microsoft Teams, Dot distinguishes between two types of user contexts:
 * Dot creates a shared user profile for the group or channel, not for each individual.
 * All users within that group or channel will have the same permissions in Dot.
 * This is useful for managing access by organizational domain or function, such as having separate permissions for a marketing channel and a finance channel.
-* Example user ID for a team channel:&#x20;
+* Example user ID for a team channel: 
 
 <pre><code><strong>teams_19:04ca1344-6505-41l3-b743-e64bcf1124f8_5d982b38-eb38-46b6-b929-42ff0392d01a@unq.gbl.spaces@getdot.ai
 </strong></code></pre>

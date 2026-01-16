@@ -8,11 +8,11 @@
 
 <figure><img src="../../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
 
-#### KPI Definitions&#x20;
+#### KPI Definitions 
 
 1.  **Profit per Unit of Usage (PPUU)**\
     &#xNAN;_&#x45;N:_ Profit generated for each billable unit (after variable costs).\
-    &#xNAN;_&#x50;seudo:_ `PPUU = (Effective_Unit_Price - Unit_Cost) / Unit` or more commonly `(Revenue - Variable_Costs) / Total_Units`&#x20;
+    &#xNAN;_&#x50;seudo:_ `PPUU = (Effective_Unit_Price - Unit_Cost) / Unit` or more commonly `(Revenue - Variable_Costs) / Total_Units` 
 
     _Why:_ Forces clarity on both monetization (price) and efficiency (cost). High volume without profit per unit is a trap; high margin without volume underutilizes the model.\
     &#xNAN;_&#x42;enchmark:_ Digital infra aims **70–85% gross margin**.
@@ -58,37 +58,37 @@
 13. **Capacity Growth % (CG)** _EN:_ YoY change in maximum deliverable capacity (compute throughput, MW, TPS). _Pseudo:_ `(Cap_t − Cap_{t−1}) / Cap_{t−1} * 100` _Why:_ Overbuild wastes capex; underbuild throttles revenue (throttling, outages). _Benchmark idea:_ hyperscalers expand capacity \~in line with forecasted demand + buffer (e.g., **20–40% YoY** during high-growth years).
 14. **Capacity Utilization % (CI)** _EN:_ Average share of provisioned capacity actually used (often measured at peak window or averaged). _Pseudo:_ `Avg_Usage / Provisioned_Capacity * 100` _Why:_ Direct efficiency metric—too low means idle assets, too high means no headroom for spikes. _Benchmark idea:_ Power plants target **\~60–80%** load factors; cloud infra teams often aim **40–60% average** to leave burst room.
 15. **Provisioned Capacity (PC)** _EN:_ The maximum sustained throughput you can deliver (e.g., kWh/day, requests/sec). _Pseudo:_ `Cap = Σ(node_capacity)` (or grid MW installed) _Why:_ Sets the ceiling; also denominator for utilization. Needed for capex planning.
-16. **Peak Usage / Peak Load (PU)** _EN:_ Highest instantaneous (or short-window) usage observed in the period. _Pseudo:_ `max(usage_rate_t)` over period&#x20;
+16. **Peak Usage / Peak Load (PU)** _EN:_ Highest instantaneous (or short-window) usage observed in the period. _Pseudo:_ `max(usage_rate_t)` over period 
 
     _Why:_ Determines required headroom and auto-scaling needs; drives worst-case cost.
 
     _Benchmark:_ Peak multiples of 1.5–3× average are common; extreme bursty APIs can see 10×.
 
 
-17. **Peak-to-Average Ratio (PAR)** _EN:_ Ratio of peak load to average load. _Pseudo:_ `Peak_Usage / Average_Usage`&#x20;
+17. **Peak-to-Average Ratio (PAR)** _EN:_ Ratio of peak load to average load. _Pseudo:_ `Peak_Usage / Average_Usage` 
 
-    _Why:_ Quantifies burstiness; high PAR stresses infra cost and pricing design (need overage/tier pricing).&#x20;
+    _Why:_ Quantifies burstiness; high PAR stresses infra cost and pricing design (need overage/tier pricing). 
 
     _Benchmark:_ Utilities PAR \~1.3–1.6; consumer APIs (chat/LLM) can be **>3–5** during viral events.
 
 
-18. **Capex per Unit Capacity (CAPU)** _EN:_ Capital required to add one unit of capacity (e.g., $ per kW, $ per 1k TPS). _Pseudo:_ `Capex_added / Capacity_added`&#x20;
+18. **Capex per Unit Capacity (CAPU)** _EN:_ Capital required to add one unit of capacity (e.g., $ per kW, $ per 1k TPS). _Pseudo:_ `Capex_added / Capacity_added` 
 
-    _Why:_ Guides ROI on expansion; lower CAPU means cheaper scaling.&#x20;
+    _Why:_ Guides ROI on expansion; lower CAPU means cheaper scaling. 
 
     _Benchmark:_ Data center build costs ≈ **$7–12M per MW**; GPU clusters vary wildly but trend \~$25–40 per deployable TFLOP.
 
 
-19. **Auto-Scaling Latency (ASL)** _EN:_ Time it takes to provision additional capacity after demand spike. _Pseudo:_ `t(scale_complete) - t(threshold_trigger)`&#x20;
+19. **Auto-Scaling Latency (ASL)** _EN:_ Time it takes to provision additional capacity after demand spike. _Pseudo:_ `t(scale_complete) - t(threshold_trigger)` 
 
-    _Why:_ Slow scaling means you must over-provision; fast scaling lets you run lean.&#x20;
+    _Why:_ Slow scaling means you must over-provision; fast scaling lets you run lean. 
 
     _Benchmark:_ Best cloud-native infra targets **seconds–minutes**; regulated utilities can’t “auto-scale,” they plan years ahead.
 
 
-20. **Headroom % (HR)** _EN:_ Buffer capacity above expected peak. _Pseudo:_ `(Provisioned_Capacity - Expected_Peak) / Provisioned_Capacity * 100`&#x20;
+20. **Headroom % (HR)** _EN:_ Buffer capacity above expected peak. _Pseudo:_ `(Provisioned_Capacity - Expected_Peak) / Provisioned_Capacity * 100` 
 
-    _Why:_ Prevents outages and throttling; too much wastes capital.&#x20;
+    _Why:_ Prevents outages and throttling; too much wastes capital. 
 
     _Benchmark:_ Cloud SREs often keep **20–30%** headroom; grid operators maintain N-1 redundancy (varies but \~15–25% capacity reserve).
 21. **Usage Concentration Risk %** _(auxiliary)_\

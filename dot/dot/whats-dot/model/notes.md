@@ -4,7 +4,7 @@ description: Context is all you need
 
 # Notes
 
-Notes allow you to add useful context to Dot or to provide instructions on how to behave in certain situations. Helping business users with their data questions or creating an impactful churn analysis requires Dot to understand more about your business and your information architecture than can be found on the internet (usually).&#x20;
+Notes allow you to add useful context to Dot or to provide instructions on how to behave in certain situations. Helping business users with their data questions or creating an impactful churn analysis requires Dot to understand more about your business and your information architecture than can be found on the internet (usually). 
 
 Here are four types of notes that we found to be most useful:
 
@@ -20,7 +20,7 @@ We manufature educational and entertaining toy trucks.
 We sell directly them online to parents in Europe and the US.
 ```
 
-The example is a lot shorter than what you usually want to add as background.&#x20;
+The example is a lot shorter than what you usually want to add as background. 
 
 
 
@@ -41,7 +41,7 @@ Never answer questions about a/b tests and rather refer them to https://experime
 
 ## Playbooks / Use Cases
 
-For your high value use cases, you already have a lot of intuition and tribal knowledge on how to analyze certain situations. For example, when you review a marketing campaign, you have your go to data sources, you know which metrics you care most about, how you think about attribution etc.&#x20;
+For your high value use cases, you already have a lot of intuition and tribal knowledge on how to analyze certain situations. For example, when you review a marketing campaign, you have your go to data sources, you know which metrics you care most about, how you think about attribution etc. 
 
 Playbooks are about encoding and documenting this knowledge, so that the analytics agent can replicate it.
 
@@ -196,7 +196,7 @@ You wouldn't trust an analyst that regularly reports different numbers than what
 
 
 
-Dot will use those definitions when giving answers.&#x20;
+Dot will use those definitions when giving answers. 
 
 **Example**
 

@@ -12,7 +12,7 @@ Every good analysis is not just based on writing SQL, but on understanding how y
 
 
 
-## Select Data&#x20;
+## Select Data 
 
 **Datasource**\
 Click on all the tables or explores that Dot will search through.
@@ -58,11 +58,11 @@ The Questions section in Dot gives data teams a chance to build a collection of 
 
 Joining data across different tables is really powerful because it allows us to answer much more broad questions about our business. However, joining data correctly is requires a good understanding of the relationships between your tables.
 
-To ensure Dot avoid join [fan-outs or the chasm trap](https://chat.openai.com/share/790888e3-3ff5-4004-9b58-e04947322757), you can predefine relationships.&#x20;
+To ensure Dot avoid join [fan-outs or the chasm trap](https://chat.openai.com/share/790888e3-3ff5-4004-9b58-e04947322757), you can predefine relationships. 
 
-For each table, you would specify the foreign key references.&#x20;
+For each table, you would specify the foreign key references. 
 
-Note:&#x20;
+Note: 
 
 * a foreign key can be composed key, consisting of multiple columns
 * foreign keys should usually refer to primary or natural keys

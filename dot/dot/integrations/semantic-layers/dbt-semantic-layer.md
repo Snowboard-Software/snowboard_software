@@ -12,7 +12,7 @@ To connect you need admin access to **dbt cloud** and you need to have [setup th
 
 ## Create API token
 
-1. Go to ⚙️ | Accout Settings&#x20;
+1. Go to ⚙️ | Accout Settings 
 
 <figure><img src="../../../.gitbook/assets/grafik (23).png" alt=""><figcaption></figcaption></figure>
 
@@ -26,7 +26,7 @@ To connect you need admin access to **dbt cloud** and you need to have [setup th
 
 
 
-3. Create new Token with permissions for `Semantic Layer` and `Metadata`&#x20;
+3. Create new Token with permissions for `Semantic Layer` and `Metadata` 
 
 <figure><img src="../../../.gitbook/assets/grafik (25).png" alt=""><figcaption></figcaption></figure>
 

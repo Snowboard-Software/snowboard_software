@@ -77,6 +77,3 @@
   * [Financial Services](ai-analytics-wiki/kpi-trees/financial-services.md)
   * [Franchising](ai-analytics-wiki/kpi-trees/franchising.md)
 * [Use Cases & Prompts](ai-analytics-wiki/use-cases-and-prompts.md)
-* [What's DotML?](ai-analytics-wiki/whats-dotml.md)
-* [Define Metrics & Dimensions](ai-analytics-wiki/define-metrics-and-dimensions.md)
-* [DotML is open-source](ai-analytics-wiki/dotml-is-open-source.md)

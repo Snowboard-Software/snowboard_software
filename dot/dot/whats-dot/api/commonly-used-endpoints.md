@@ -113,7 +113,7 @@ Trigger Deep Analysis
 
 ## Automatically Authenticate Embedded Users
 
-For embedded use cases that require SSO, where your end users have individual permissions you can use this endpoint to obtain an access token for users that is valid for 24h. Here is an example on how you can use it to [embed](../embed.md) Dot in your application.&#x20;
+For embedded use cases that require SSO, where your end users have individual permissions you can use this endpoint to obtain an access token for users that is valid for 24h. Here is an example on how you can use it to [embed](../embed.md) Dot in your application. 
 
 Please make sure that you enabled this flag on settings: **"Allow admins to authenticate for users to enable SSO in embeds".**
 

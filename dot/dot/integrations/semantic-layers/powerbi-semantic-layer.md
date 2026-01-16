@@ -32,7 +32,7 @@ Who: Entra / Azure AD admin (or anyone allowed to create app registrations)
    4. Create an Entra security group, e.g. pbi-spn-api-callers.
    5. Add the service principal to that group.
 
-&#x20;
+ 
 
 For this Power BI scenario you do not need to add Power BI API permissions under _API permissions_ when using service principal auth.
 
@@ -46,7 +46,7 @@ Who: Fabric / Power BI admin
 
 Open Fabric / Power BI Admin portal → Tenant settings. We’ll touch three areas.
 
-&#x20;
+ 
 
 ### 2.1 Developer settings: allow SPs to use APIs
 
@@ -87,7 +87,7 @@ Under Admin API settings:
 2. Scope to Specific security groups → pbi-spn-api-callers.
 3. Save.
 
-&#x20;
+ 
 
 This allows the SP to call e.g. GET /v1.0/myorg/admin/datasets(list all datasets) and other admin endpoints, as long as it’s in the allowed group.
 
@@ -113,21 +113,21 @@ For each workspace whose semantic models the backend should query:
    1. Contributor or Member, or
    2. Viewer + Build (Viewer with Build on the semantic model itself).
 
-&#x20;
+ 
 
 The minimum requirement from the API doc:
 
 * Tenant setting “Dataset Execute Queries REST API” enabled, and
 * Caller has dataset Read + Build permissions.
 
-&#x20;
+ 
 
 To truly “list all” datasets/semantic models:
 
 * The admin APIs (see 2.3) give you org-level listing(/admin/datasets etc.) as long as SP is in the allowed group—no workspace membership needed.
 * But to query a dataset with executeQueries, the SP still must have Build/Read on that semantic model’s workspace.
 
-&#x20;
+ 
 
 ## 4. Connect Dot
 

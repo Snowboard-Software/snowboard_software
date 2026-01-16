@@ -2,7 +2,7 @@
 
 **Definition (short).** You monetize intellectual property—patents, code, characters, brands—by letting others use it under contract. Cash arrives as upfront license fees and ongoing royalties, typically a percentage of the licensee’s sales or a fixed dollar amount per unit.
 
-**Recent example.** Qualcomm’s 5G handset portfolio license charges [5% of the net selling price (capped around $20 per 5G phone)](https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/qualcomm-5g-handset-licensing-program.pdf?utm_source=chatgpt.com), generating more than $6 billion of royalties in FY2024.&#x20;
+**Recent example.** Qualcomm’s 5G handset portfolio license charges [5% of the net selling price (capped around $20 per 5G phone)](https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/qualcomm-5g-handset-licensing-program.pdf?utm_source=chatgpt.com), generating more than $6 billion of royalties in FY2024. 
 
 **Historical example.** Bell Labs licensed the transistor in the 1950s, kickstarting the modern electronics industry, just as earlier inventors like Elias Howe lived off sewing-machine patent royalties.
 

@@ -30,7 +30,7 @@ GRANT SELECT ON <schema_name>.<table_name> TO <user_or_role>
 2. Select your subaccount under the account explorer
 3. Select your space under Cloud Foundry -> Spaces
 4. Select **SAP HANA Cloud** on the left panel
-5. Open **SAP HANA Cloud Central**, check the current status of the SAP HANA instance.&#x20;
+5. Open **SAP HANA Cloud Central**, check the current status of the SAP HANA instance. 
 
 For more info on how to start with the SAP HANA free instance check out: [Provision an Instance of SAP HANA Cloud, SAP HANA Database](https://developers.sap.com/tutorials/hana-cloud-mission-trial-3.html).
 

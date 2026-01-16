@@ -8,7 +8,7 @@ Not using Dot to assist with analytics yet? [Sign up for free.](https://app.getd
 
 ## 1. Add Connection
 
-Go to [Settings / Connections](https://app.getdot.ai/settings).&#x20;
+Go to [Settings / Connections](https://app.getdot.ai/settings). 
 
 Connect with your data stack.
 
@@ -26,7 +26,7 @@ Here is a list of all integrations:
 
 ## 2. Select data & attributes
 
-Select the tables and columns of data Dot should know about.&#x20;
+Select the tables and columns of data Dot should know about. 
 
 <figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -38,7 +38,7 @@ Dot works best on clearly defined data models with documentation.
 
 ## 3. Chat
 
-Congrats, you are now ready to chat. 🎉&#x20;
+Congrats, you are now ready to chat. 🎉 
 
 Don't know what do ask? Try this:
 

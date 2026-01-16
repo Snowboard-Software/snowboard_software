@@ -2,9 +2,9 @@
 
 **Definition (short).** You sell expert human time (and any pass-through materials) on an as-consumed basis—hours, days, or sprints. Revenue equals billable hours multiplied by realized rates; profitability depends on utilization, pricing discipline, and delivery efficiency.
 
-**Recent example.** Accenture reported [$64.9 billion in FY 2024 revenue](https://newsroom.accenture.com/content/4q-full-fy24-earnings/accenture-reports-fourth-quarter-and-full-year-fiscal-2024-results.pdf?utm_source=chatgpt.com) with a GAAP operating margin of 14.8%.&#x20;
+**Recent example.** Accenture reported [$64.9 billion in FY 2024 revenue](https://newsroom.accenture.com/content/4q-full-fy24-earnings/accenture-reports-fourth-quarter-and-full-year-fiscal-2024-results.pdf?utm_source=chatgpt.com) with a GAAP operating margin of 14.8%. 
 
-**Historical example.** McKinsey (1926) and the Big Four accounting firms institutionalized the billable hour; law firms have tracked “billable vs. non-billable” time since the mid-20th century. **Rate reality check.** Elite U.S. law firms now bill [up to $3,000 per hour for senior partners](https://taxprof.typepad.com/taxprof_blog/2024/10/2025-hourly-billing-rates-for-elite-law-firms-3000-for-senior-partners-1000-for-first-year-associate.html), while first-year associates flirt with $1,000.&#x20;
+**Historical example.** McKinsey (1926) and the Big Four accounting firms institutionalized the billable hour; law firms have tracked “billable vs. non-billable” time since the mid-20th century. **Rate reality check.** Elite U.S. law firms now bill [up to $3,000 per hour for senior partners](https://taxprof.typepad.com/taxprof_blog/2024/10/2025-hourly-billing-rates-for-elite-law-firms-3000-for-senior-partners-1000-for-first-year-associate.html), while first-year associates flirt with $1,000. 
 
 **Utilization benchmark.** SPI Research’s benchmarks put average billable utilization at \~67–68%.
 
