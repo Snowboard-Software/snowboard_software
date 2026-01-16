@@ -4,7 +4,7 @@ description: Your AI data team member that builds and maintains your knowledge b
 
 # Root: Context Agent
 
-Root is a Claude Code-powered agent that helps you build, maintain, and evolve your organization's knowledge base. It runs in an isolated sandbox with access to your connected tools—databases, BI dashboards, and past conversations—and can create documentation automatically.
+Root is an AI agent that helps you build, maintain, and evolve your organization's knowledge base. It runs in an isolated sandbox with access to your connected tools—databases, BI dashboards, and past conversations—and can create documentation automatically.
 
 <figure><img src="../../.gitbook/assets/root-context-agent.png" alt=""><figcaption><p>Root helps you curate and share company knowledge with Dot</p></figcaption></figure>
 
