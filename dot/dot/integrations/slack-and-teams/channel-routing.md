@@ -25,6 +25,8 @@ Each Slack workspace or Teams tenant connects to one Dot organization or workspa
 3. In your main org: find the channel user and set their default workspace
 4. Test with another message
 
+<figure><img src="../../../.gitbook/assets/channel-routing-default-workspace.png" alt=""><figcaption><p>Set the default workspace for a channel or user</p></figcaption></figure>
+
 ### Route Individual Users
 
 Same process: add them to the workspace, then set their default workspace preference.

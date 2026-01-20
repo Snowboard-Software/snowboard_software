@@ -19,11 +19,16 @@ Unlike dashboard snapshots that show numbers, scheduled reports explain what cha
 ### Creating a Schedule
 
 1. Run a Deep Analysis query
-2. Click the **schedule icon** on the response
+2. Click the **Schedule** button on the response
+
+<figure><img src="../../.gitbook/assets/scheduling-button.png" alt=""><figcaption><p>Click Schedule to set up recurring delivery</p></figcaption></figure>
+
 3. Choose delivery channel (Email/Slack/Teams)
 4. Add recipients
 5. Set frequency: Daily, Weekly (pick day), or Monthly (pick date)
 6. Click **Schedule**
+
+<figure><img src="../../.gitbook/assets/scheduling-dialog.png" alt=""><figcaption><p>Configure channel, recipients, and frequency</p></figcaption></figure>
 
 Click **Test** to send a preview before committing.
 

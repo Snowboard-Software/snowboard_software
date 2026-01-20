@@ -16,11 +16,15 @@ Workspaces are isolated environments within your organization—separate users, 
 2. Enter a name, optionally copy data from another workspace
 3. Done
 
+<figure><img src="../../.gitbook/assets/workspace-create-dialog.png" alt=""><figcaption><p>Create a new workspace with optional data copying</p></figcaption></figure>
+
 Limits: 10 workspaces (free) / 200 (unlimited).
 
 ### Switching Workspaces
 
-Click your **workspace name** (top-left) → select another workspace.
+Click your **workspace name** (bottom-left) → select another workspace.
+
+<figure><img src="../../.gitbook/assets/workspace-switcher.png" alt=""><figcaption><p>Switch between workspaces from the sidebar</p></figcaption></figure>
 
 You can set a default workspace in your user settings.
 

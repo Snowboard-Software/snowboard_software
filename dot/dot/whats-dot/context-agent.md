@@ -17,8 +17,16 @@ Root is an AI agent that helps you build, maintain, and evolve your organization
 1. **Open Context Agent** from the sidebar
 2. **Describe what you need** in natural language—Root understands complex requests
 3. **Approve tool use** when Root needs to query data or make changes
+
+<figure><img src="../../.gitbook/assets/context-agent-tool-approval.png" alt=""><figcaption><p>Review and approve changes before they're applied</p></figcaption></figure>
+
 4. **Review the diff** to see exactly what changed
+
+<figure><img src="../../.gitbook/assets/context-agent-review-changes.png" alt=""><figcaption><p>Click Review Changes to see pending modifications</p></figcaption></figure>
+
 5. **Merge to production** when satisfied—or discard and try again
+
+<figure><img src="../../.gitbook/assets/context-agent-diff-view.png" alt=""><figcaption><p>Review the diff and merge when ready</p></figcaption></figure>
 
 All changes happen in an isolated sandbox. Nothing goes live until you explicitly merge.
 
@@ -73,6 +81,8 @@ Root will:
 Are there inconsistencies in our documentation or data source
 descriptions? Check if sample values match descriptions.
 ```
+
+<figure><img src="../../.gitbook/assets/context-agent-example.png" alt=""><figcaption><p>Root analyzes your context and identifies inconsistencies</p></figcaption></figure>
 
 Root will:
 - Read your current documentation
