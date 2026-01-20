@@ -25,8 +25,6 @@ Before a generated query gets used by Dot an admin needs to select it on the Mod
 
 👎 is a signal for admins that Dot's knowledge base needs to get adjusted to be better able to answer this question.
 
-<figure><img src="../../.gitbook/assets/grafik (4).png" alt=""><figcaption></figcaption></figure>
-
 ## Admin Overview
 
 Admins can select to see the history of all users. All conversations with at least 1 dislike will show up with `problem` and if there is no dislikes and at least 1 like it shows as `success`.
