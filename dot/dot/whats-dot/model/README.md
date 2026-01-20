@@ -37,22 +37,6 @@ Make sure to save the changes you made. ⬆️
 
 
 
-## Provide Example Questions + Answers
-
-_Giving example questions to Dot helps to get consistent and validated answers from Dot._
-
-Depending on your data model, there are multiple ways to answer a question.
-
-E.g. _How was our shop performance in the last 10 weeks?_\
-Without more context there are many ways to answer this question.
-
-The Questions section in Dot gives data teams a chance to build a collection of questions and answers that Dot will reuse.
-
-<figure><img src="../../../.gitbook/assets/grafik (19).png" alt=""><figcaption><p>Calculates revenue and number of customers over time to answer question.</p></figcaption></figure>
-
-
-
-
 
 ## Define Relationships / Joins
 
