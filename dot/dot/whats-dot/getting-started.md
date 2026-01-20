@@ -1,61 +1,53 @@
 ---
-description: You can add Dot to your data stack in less than 10 minutes.
+description: Get answers from your data in under 10 minutes.
 ---
 
-# Getting started
+# Getting Started
 
-Not using Dot to assist with analytics yet? [Sign up for free.](https://app.getdot.ai/register)
+Not using Dot yet? [Sign up for free.](https://app.getdot.ai/register)
 
-## 1. Add Connection
+---
 
-Go to [Settings / Connections](https://app.getdot.ai/settings). 
+## 1. Connect Your Data
 
-Connect with your data stack.
+Go to **Settings → Connections** and add your data warehouse, semantic layer, or BI tool.
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
+No code required—just permissions.
 
-You usually first want to connect your Data Warehouse or Semantic Layer.
+<figure><img src="../../.gitbook/assets/connections-page.png" alt="Connect databases like Snowflake, BigQuery, Postgres, or semantic layers like dbt, Looker, and Power BI"><figcaption></figcaption></figure>
 
-Here is a list of all integrations:
+[See all integrations →](../integrations/)
 
-{% content-ref url="../integrations/" %}
-[integrations](../integrations/)
-{% endcontent-ref %}
+---
 
+## 2. Describe What You Need
 
+Open the **Context Agent** and tell it what you're trying to accomplish. It will interview you, explore your data, and set things up.
 
-## 2. Select data & attributes
+<figure><img src="../../.gitbook/assets/context-agent-interview.png" alt="Context Agent interviewing a user about their product analytics use case"><figcaption></figcaption></figure>
 
-Select the tables and columns of data Dot should know about. 
+You don't need to configure everything upfront—start with one use case and expand from there.
 
-<figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
+[Learn more about the Context Agent →](context-agent.md)
 
-Dot works best on clearly defined data models with documentation.
+---
 
-💡Click **Suggest** for automated documentation that you only need to review.
+## 3. Start Asking Questions
 
+Ask in plain English. Dot queries your data, visualizes results, and explains what it found.
 
+You can ask questions directly in Dot, or connect Slack or Microsoft Teams so your whole team can get answers where they already work.
 
-## 3. Chat
+<figure><img src="../../.gitbook/assets/slack-chat.png" alt="Team members asking Dot questions in Slack and getting answers with charts"><figcaption></figcaption></figure>
 
-Congrats, you are now ready to chat. 🎉 
+[Set up Slack & Teams →](../integrations/slack-and-teams/)
 
-Don't know what do ask? Try this:
+---
 
-```
-What are the most important metrics we should track?
-```
+## What's Next
 
-
-
-## Video Guide
-
-{% embed url="https://www.loom.com/share/321369836deb4ef49a54baec7742bd26" %}
-
-## Next Steps
-
-Ready to dive deeper? Learn how to fine-tune Dot's understanding of your data:
-
-{% content-ref url="model/" %}
-[model](model/)
-{% endcontent-ref %}
+| I want to... | Go here |
+|--------------|---------|
+| Fine-tune how Dot understands my data | [Model →](model/) |
+| Control who can access what | [Permissions →](permissions.md) |
+| Schedule recurring reports | [Scheduling →](scheduling.md) |
