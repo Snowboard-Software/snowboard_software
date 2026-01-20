@@ -15,7 +15,7 @@ This feedback is used to expand Dots knowledge base, and give admins relevant in
 "Strengthen strengths" made young Boris Becker a world champion in Tennis 🎾.\
 When a user clicks 👍, Dot will store the generated query for this question and reuse it for similar questions in the future.
 
-<figure><img src="../../.gitbook/assets/grafik (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/feedback-like-button.png" alt=""><figcaption><p>Click thumbs up to save a successful query</p></figcaption></figure>
 
 {% hint style="info" %}
 Before a generated query gets used by Dot an admin needs to select it on the Model page.
@@ -31,5 +31,5 @@ Before a generated query gets used by Dot an admin needs to select it on the Mod
 
 Admins can select to see the history of all users. All conversations with at least 1 dislike will show up with `problem` and if there is no dislikes and at least 1 like it shows as `success`.
 
-<figure><img src="../../.gitbook/assets/grafik (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/feedback-admin-history.png" alt=""><figcaption><p>View feedback across all users in History</p></figcaption></figure>
 
