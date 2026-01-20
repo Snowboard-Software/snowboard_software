@@ -16,7 +16,7 @@ No code required—just permissions.
 
 <figure><img src="../../.gitbook/assets/connections-page.png" alt="Connect databases like Snowflake, BigQuery, Postgres, or semantic layers like dbt, Looker, and Power BI"><figcaption></figcaption></figure>
 
-[See all integrations →](../integrations/)
+[See all integrations →](../integrations/README.md)
 
 ---
 
@@ -46,8 +46,11 @@ You can ask questions directly in Dot, or connect Slack or Microsoft Teams so yo
 
 ## What's Next
 
-| I want to... | Go here |
-|--------------|---------|
-| Fine-tune how Dot understands my data | [Model →](model/) |
-| Control who can access what | [Permissions →](permissions.md) |
-| Schedule recurring reports | [Scheduling →](scheduling.md) |
+**Fine-tune how Dot understands my data**\
+[Model →](model/)
+
+**Control who can access what**\
+[Permissions →](permissions.md)
+
+**Schedule recurring reports**\
+[Scheduling →](scheduling.md)
