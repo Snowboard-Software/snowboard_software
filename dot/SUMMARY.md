@@ -1,6 +1,7 @@
 # Table of contents
 
 * [README](README.md)
+* [Getting Started](dot/whats-dot/getting-started.md)
 
 ## Using Dot
 

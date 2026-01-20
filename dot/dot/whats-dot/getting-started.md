@@ -51,3 +51,11 @@ What are the most important metrics we should track?
 ## Video Guide
 
 {% embed url="https://www.loom.com/share/321369836deb4ef49a54baec7742bd26" %}
+
+## Next Steps
+
+Ready to dive deeper? Learn how to fine-tune Dot's understanding of your data:
+
+{% content-ref url="model/" %}
+[model](model/)
+{% endcontent-ref %}
