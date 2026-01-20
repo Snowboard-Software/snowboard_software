@@ -29,11 +29,7 @@ Select all fields in a datasource that Dot should know about.
 
 ## **Describe Data**
 
-You can click suggest to automatically generate documentation and fetch sample values.
-
-<figure><img src="../../../.gitbook/assets/Recording 2023-05-17 at 14.12.36 (1).gif" alt=""><figcaption></figcaption></figure>
-
-Make sure to save the changes you made. ⬆️
+You can click suggest to automatically generate documentation and fetch sample values. Make sure to save your changes.
 
 
 
