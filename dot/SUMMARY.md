@@ -1,8 +1,6 @@
 # Table of contents
 
-## [What's Dot?](README.md)
-
-## [Quick Start](dot/whats-dot/getting-started.md)
+* [README](README.md)
 
 ## Using Dot
 
@@ -60,10 +58,6 @@
 * [SSO](dot/integrations/sso/README.md)
   * [Azure Active Directory](dot/integrations/sso/azure-active-directory.md)
   * [Okta](dot/integrations/sso/okta.md)
-
-## [Security & Privacy](dot/security-and-privacy.md)
-
-## [Support](dot/support.md)
 
 ## AI Analytics Wiki
 
