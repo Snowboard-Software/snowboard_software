@@ -60,6 +60,11 @@
   * [Azure Active Directory](dot/integrations/sso/azure-active-directory.md)
   * [Okta](dot/integrations/sso/okta.md)
 
+## Security & Support
+
+* [Security & Privacy](dot/security-and-privacy.md)
+* [Support](dot/support.md)
+
 ## AI Analytics Wiki
 
 * [Core Concepts](ai-analytics-wiki/core-concepts/README.md)
