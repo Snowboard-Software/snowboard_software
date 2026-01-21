@@ -52,10 +52,3 @@ Dot periodically re-syncs to pick up new or changed models. You can also trigger
 * **Personal workspaces not supported** — "My Workspace" cannot be accessed via OAuth
 * **Maximum 100,000 rows per query** — larger result sets are truncated
 {% endhint %}
-
-## Allow Dot IPs
-
-If your organization uses a firewall or IP allowlist, add these Dot IP addresses:
-
-* `35.192.130.54`
-* `34.133.186.126`
