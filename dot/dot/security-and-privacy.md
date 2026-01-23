@@ -98,38 +98,32 @@ All team members are required to adhere to a minimum set of password requirement
 
 All company issued laptops utilize a password manager for team members to manage passwords and maintain password complexity.
 
-
-
 ## AI Security
 
 **Secure AI Model Usage**
 
-[Dot](https://getdot.ai/) is powered by OpenAI’s and Anthropic’s leading frontier models. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures. 
+[Dot](https://getdot.ai/) is powered by OpenAI’s and Anthropic’s leading frontier models. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures.
 
-**No Training on Customer Data** 
+**No Training on Customer Data**
 
-Data sent to these models will never be used for training.  For more details, refer to: 
+Data sent to these models will never be used for training. For more details, refer to:
 
-* [OpenAI’s API Data Usage Policies](https://openai.com/policies/api-data-usage-policies) 
+* [OpenAI’s API Data Usage Policies](https://openai.com/policies/api-data-usage-policies)
 * [Anthropic’s Privacy Policy](https://privacy.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training?utm_source=chatgpt.com#h_1a7d240480)
 
 As an organization, we are committed to safeguarding customer data and will never use it to train our AI models.
 
+**AI Data Protection Measures**
 
-
-**AI Data Protection Measures** 
-
-* Encryption: All data exchanged with AI models is encrypted in transit using TLS/SSL to prevent unauthorized interception. 
-* Access Control: Only authorized systems and users can interact with AI processing services, ensuring strict data governance. 
+* Encryption: All data exchanged with AI models is encrypted in transit using TLS/SSL to prevent unauthorized interception.
+* Access Control: Only authorized systems and users can interact with AI processing services, ensuring strict data governance.
 * Logging & Monitoring: AI interactions are logged and monitored for anomalies to detect and prevent misuse.
 
-**Compliance & Risk Management** 
+**Compliance & Risk Management**
 
-* Third-Party Security Audits: AI security practices are included in our periodic security assessments and SOC 2 audits. 
-* Regulatory Alignment: AI data handling complies with GDPR, CCPA, and other applicable data protection regulations. 
+* Third-Party Security Audits: AI security practices are included in our periodic security assessments and SOC 2 audits.
+* Regulatory Alignment: AI data handling complies with GDPR, CCPA, and other applicable data protection regulations.
 * Incident Response: If an AI-related security incident occurs, we have an established protocol for rapid investigation and resolution.
-
-
 
 ## Vendor and Risk Management
 
@@ -141,8 +135,6 @@ We undergo at least annual risk assessments to identify any potential threats, i
 
 Vendor risk is determined, and the appropriate vendor reviews are performed prior to authorizing a new vendor.
 
-
-
 ## Responsible Disclosure
 
 At Dot, we consider the security of our systems a top priority. But no matter how much effort we put into system security, there can still be vulnerabilities present.
@@ -151,7 +143,7 @@ If you discover a vulnerability, we would like to know about it so we can take s
 
 Please do the following:
 
-* E-mail your findings to security@sled.so, 
+* E-mail your findings to security@sled.so,
 * Do not take advantage of the vulnerability or problem you have discovered, for example by downloading more data than necessary to demonstrate the vulnerability or deleting or modifying other people's data,
 * Use test.getdot.ai for security testing and not one of our production services,
 * Do not reveal the problem to others until it has been resolved,
@@ -165,7 +157,6 @@ What we promise:
 * We will handle your report with strict confidentiality, and not pass on your personal details to third parties without your permission,
 * We will keep you informed of the progress towards resolving the problem,
 * In the public information concerning the problem reported, we will give your name as the discoverer of the problem (unless you desire otherwise), and
-* As a token of our gratitude for your assistance, we offer a reward for every report of a security problem that was not yet known to us. The amount of the reward will be determined based on the severity of the leak and the quality of the report. The minimum reward will be a €100 gift certificate.
+* As a token of our gratitude for your assistance, we offer a reward for every report of a security problem that was not yet known to us. The amount of the reward will be determined based on the severity of the leak and the quality of the report. The minimum reward will be a 50 USD gift certificate.
 
 We strive to resolve all problems as quickly as possible, and we would like to play an active role in the ultimate publication on the problem after it is resolved.<br>
-
