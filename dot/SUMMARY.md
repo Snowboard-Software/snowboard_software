@@ -56,7 +56,7 @@
   * [Slack](dot/integrations/slack-and-teams/slack.md)
   * [Microsoft Teams](dot/integrations/slack-and-teams/microsoft-teams.md)
   * [Channel Routing](dot/integrations/slack-and-teams/channel-routing.md)
-* [SSO](dot/integrations/sso/README.md)
+* [Single Sign On](dot/integrations/sso/README.md)
   * [Azure Active Directory](dot/integrations/sso/azure-active-directory.md)
   * [Okta](dot/integrations/sso/okta.md)
 

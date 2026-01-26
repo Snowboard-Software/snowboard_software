@@ -1,10 +1,6 @@
 ---
-description: Single sign-on for your team
+description: No more forgotten passwords
 ---
 
-# SSO
+# Single Sign On
 
-Set up single sign-on so your team can access Dot with their existing credentials.
-
-- [Azure Active Directory](azure-active-directory.md)
-- [Okta](okta.md)
