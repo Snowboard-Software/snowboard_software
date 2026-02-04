@@ -14,6 +14,7 @@
 * [Root: Context Agent](dot/whats-dot/context-agent.md)
 * [Model](dot/whats-dot/model/README.md)
   * [Notes](dot/whats-dot/model/notes.md)
+* [GitHub Sync](dot/whats-dot/github-sync.md)
 * [Permissions](dot/whats-dot/permissions.md)
 * [User Feedback](dot/whats-dot/user-feedback.md)
 * [Workspaces](dot/whats-dot/workspaces.md)
