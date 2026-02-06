@@ -49,12 +49,3 @@ When you ask a question, Dot generates a `steep_query()` call that fetches data 
 * **Slices** — use predefined filters for common segments
 * **Time ranges** — specify date ranges and time granularity (daily, weekly, monthly, quarterly, yearly)
 
-## Limitations
-
-{% hint style="warning" %}
-**Known limitations**
-
-* **One metric per query** — each query fetches exactly one metric. Multi-metric questions require separate queries.
-* **Maximum 2 breakdowns** — queries support at most two group-by dimensions
-* **Maximum 1,000 rows per query** — larger result sets are truncated
-{% endhint %}
