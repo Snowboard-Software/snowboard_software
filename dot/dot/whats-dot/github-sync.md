@@ -91,7 +91,7 @@ Toggle **Auto-sync enabled** to automatically push changes when you update conte
 
 ## Limitations
 
-- **One repository per organization**, syncing with a single branch
+- **One repository per workspace**, syncing with a single branch
 - **Markdown and YAML only** in the specified directories
 - **Last write wins** for simultaneous edits (no conflict resolution UI)
 
