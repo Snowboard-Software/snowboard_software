@@ -49,6 +49,8 @@
   * [PowerBI Semantic Layer](dot/integrations/semantic-layers/powerbi-semantic-layer.md)
   * [Looker](dot/integrations/semantic-layers/looker.md)
   * [Steep](dot/integrations/semantic-layers/steep.md)
+* [Code Repositories](dot/integrations/code-repositories/README.md)
+  * [dbt Core](dot/integrations/code-repositories/dbt-core.md)
 * [BI Tools](dot/integrations/bi-tools/README.md)
   * [Tableau](dot/integrations/bi-tools/tableau.md)
   * [Metabase](dot/integrations/bi-tools/metabase.md)
