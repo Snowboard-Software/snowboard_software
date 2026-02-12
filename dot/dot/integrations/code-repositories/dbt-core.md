@@ -17,6 +17,8 @@ Connect a dbt project repository so Dot understands your transformation logic, l
 
 Go to **Settings** > **Connections** and scroll to find **dbt Repository**.
 
+<figure><img src="../../../.gitbook/assets/dbt-repo-connect.png" alt="dbt Repository connection form showing Connect GitHub button, branch field, and linked database connection dropdown"><figcaption><p>The dbt Repository connection form</p></figcaption></figure>
+
 ### Option A: Via GitHub App (recommended)
 
 1. Click **Connect GitHub** and install the Dot GitHub App on your organization
@@ -50,13 +52,9 @@ Dot re-syncs periodically, or you can trigger a manual sync from the connection 
 
 ## What It Looks Like
 
-Each matched table shows a compact dbt indicator with sync time and lineage:
+Each matched table shows enriched descriptions, fields, and a compact dbt lineage indicator:
 
-<figure><img src="../../../.gitbook/assets/dbt-drawer-one-line.png" alt="Table drawer showing dbt metadata line with sync time, upstream and downstream models"><figcaption><p>dbt metadata appears as a single line below the table description</p></figcaption></figure>
-
-On the Model page, enriched tables are listed with their dbt descriptions:
-
-<figure><img src="../../../.gitbook/assets/dbt-model-page.png" alt="Model page showing tables enriched with dbt metadata"><figcaption><p>Tables enriched from the dbt project appear with descriptions from your models</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/dbt-table-drawer.png" alt="Table drawer showing dbt-enriched descriptions, fields, and lineage indicator"><figcaption><p>A table enriched with dbt metadata -- descriptions, fields, and upstream/downstream lineage</p></figcaption></figure>
 
 ## Linked Database Connection
 
