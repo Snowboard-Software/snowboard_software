@@ -24,6 +24,7 @@ Roles are managed by admins on the Settings > Users page. Hover over the info ic
 | History (all users) | Yes | Yes | — |
 | History (own) | Yes | Yes | Yes |
 | Model page | Yes | Yes | — |
+| Context Agent | Yes | Yes | — |
 | Evaluation | Yes | Yes | — |
 | Settings | Yes | — | — |
 | Connections | Yes | — | — |
