@@ -21,7 +21,8 @@ Roles are managed by admins on the Settings > Users page. Hover over the info ic
 | Feature | Admin | Modeler | User |
 |---|:---:|:---:|:---:|
 | Chat | Yes | Yes | Yes |
-| History | Yes | Yes | — |
+| History (all users) | Yes | Yes | — |
+| History (own) | Yes | Yes | Yes |
 | Model page | Yes | Yes | — |
 | Evaluation | Yes | Yes | — |
 | Settings | Yes | — | — |
