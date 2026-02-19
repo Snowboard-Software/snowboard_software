@@ -63,6 +63,7 @@
 * [Single Sign On](dot/integrations/sso/README.md)
   * [Azure Active Directory](dot/integrations/sso/azure-active-directory.md)
   * [Okta](dot/integrations/sso/okta.md)
+  * [Google](dot/integrations/sso/google.md)
 
 ## Security & Support
 
