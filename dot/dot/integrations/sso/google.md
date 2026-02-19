@@ -44,23 +44,15 @@ This guide walks you through setting up Google as an SSO provider for Dot using 
 
 1. Go back to your **Dot Settings** > **Google** section.
 2. Paste the **Client ID** and **Client Secret** into the respective fields.
+3. Click **Save** to apply the settings.
 
-### Step 7: Metadata URL
-
-The Metadata URL for Google is the same for all organizations:
-
-```
-https://accounts.google.com/.well-known/openid-configuration
-```
-
-This is pre-filled in Dot, so you typically don't need to change it.
+{% hint style="info" %}
+The Google metadata URL (`https://accounts.google.com/.well-known/openid-configuration`) is automatically configured by Dot — no manual entry needed.
+{% endhint %}
 
 ### Finalizing the Integration
 
-Once you've entered all the information:
-
-1. Click **Save** to apply the settings.
-2. Test the SSO integration by signing out and signing back in with Google.
+Test the SSO integration by signing out and signing back in with Google.
 
 By following these steps, you will have successfully set up SSO with Google for your Dot application. Ensure that all copied values are kept secure and are only shared with authorized personnel within your organization.
 
