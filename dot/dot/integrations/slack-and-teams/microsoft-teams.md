@@ -28,22 +28,12 @@ This setup requires to manually add the Teams app with the correct endpoints to 
 
 ## Tips for talking with Dot
 
-1. To speak about a new topic, start a new conversation with `@Dot` in a group channel or chat. 
-2. In a group channel follow up questions can be directly asked in the thread using the whole thread as context. No additional `@Dot` is needed.
-3. In a chat Dot will automatically use the previous 3 messages as context, unless you reset it with `@Dot reset`
-4. If Dot did not get it right, just rephrase your question and try again. It can help to look at the found data source to see which questions Dot might answer on it.
-
-![](<../../../.gitbook/assets/grafik (16).png>)
-
-5.  To analyze complex topics it can help to break the questions up in multiple parts:\
-    **What's our total revenue per country and its percentage change over time?**
-
-    -> Show me total revenue over time (1)\
-    -> Split it by country (2)\
-    -> Calculate percentage change of revenue over time (3)<br>
-
-    This helps Dot to build up context first. Most great things are created iteratively. 🛶⛵🚢<br>
-6. Dot is trained to analyze data, not to configure visualizations (yet). It can not build a pie chart. 🍰 But it can format the output data and thus influence the chart, e.g. filter by dimensions or aggregate data differently. The goal of Dot is to come up with the best visualization to answer the question itself.
+1. To start a new topic, begin a new conversation with `@Dot` in a group channel or chat.
+2. In a group channel, follow-up questions can be asked directly in the thread — Dot uses the whole thread as context. No need to tag `@Dot` again.
+3. In a direct chat, Dot uses your previous messages as context. Say `@Dot reset` to start fresh.
+4. If Dot didn't get it right, just rephrase. You can also check which data source Dot picked to understand what it can answer.
+5. You can upload files (CSVs, spreadsheets) and Dot will analyze them.
+6. Ask Dot to create charts, generate PowerPoint presentations, or schedule recurring reports to your email or Slack.
 
 
 

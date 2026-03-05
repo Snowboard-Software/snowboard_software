@@ -57,6 +57,14 @@ Retention & admin audit
 * Admins can review them in Admin Console → History.
 * Workspace data deletion is available on request.
 
+## Tips for talking with Dot
+
+1. To start a new topic, begin a new thread with `@Dot` in a channel.
+2. Follow-up questions in the same thread use the full thread as context — no need to tag `@Dot` again.
+3. If Dot didn't get it right, just rephrase your question.
+4. You can upload files (CSVs, spreadsheets) and Dot will analyze them.
+5. Ask Dot to create charts, generate PowerPoint presentations, or schedule recurring reports.
+
 ### Next Steps
 
 See [Channel Routing](channel-routing.md) to route specific channels to different workspaces.
