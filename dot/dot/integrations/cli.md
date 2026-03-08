@@ -23,7 +23,7 @@ It works standalone in any terminal, and integrates with AI coding assistants li
 #### 1. Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Snowboard-Software/getdot/main/scripts/install.sh | sh
+curl -fsSL https://app.getdot.ai/install.sh | sh
 ```
 
 This installs a native binary — no Node.js or other runtime required. Supports macOS (ARM & Intel), Linux (x64 & ARM), and Windows. The installer also sets up the Claude Code skill automatically.
