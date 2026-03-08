@@ -26,7 +26,7 @@ It works standalone in any terminal, and integrates with AI coding assistants li
 curl -fsSL https://raw.githubusercontent.com/Snowboard-Software/getdot/main/scripts/install.sh | sh
 ```
 
-This installs a native binary — no Node.js or other runtime required. Supports macOS (ARM & Intel), Linux (x64 & ARM), and Windows.
+This installs a native binary — no Node.js or other runtime required. Supports macOS (ARM & Intel), Linux (x64 & ARM), and Windows. The installer also sets up the Claude Code skill automatically.
 
 {% hint style="info" %}
 On Windows, download the binary directly from [GitHub Releases](https://github.com/Snowboard-Software/getdot/releases/latest).
@@ -68,7 +68,7 @@ Claude Code automatically discovers Dot's CLI through the `SKILL.md` file. Once 
 * "Ask Dot to show me monthly active users for the past year"
 
 {% hint style="info" %}
-The `SKILL.md` file in the getdot package tells Claude Code when and how to invoke the CLI. No additional configuration is needed — just install and login.
+The installer automatically places a `SKILL.md` file at `~/.claude/skills/getdot/SKILL.md` which tells Claude Code when and how to invoke the CLI. No additional configuration is needed — just install and login.
 {% endhint %}
 
 ### Using with Cursor
