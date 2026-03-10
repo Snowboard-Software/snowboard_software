@@ -28,7 +28,6 @@
   * [Use Cases and Scripts](dot/whats-dot/api/use-cases-and-scripts.md)
   * [All API Endpoints](dot/whats-dot/api/all-api-endpoints.md)
 * [MCP](dot/integrations/mcp.md)
-* [CLI](dot/integrations/cli.md)
 
 ## Integrations
 
