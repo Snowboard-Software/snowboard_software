@@ -59,6 +59,7 @@
   * [Qlik (planned)](dot/integrations/bi-tools/qlik-planned.md)
 * [Slack & Teams](dot/integrations/slack-and-teams/README.md)
   * [Slack](dot/integrations/slack-and-teams/slack.md)
+  * [Reinstall Slack App](dot/integrations/slack-and-teams/reinstall-slack.md)
   * [Microsoft Teams](dot/integrations/slack-and-teams/microsoft-teams.md)
   * [Channel Routing](dot/integrations/slack-and-teams/channel-routing.md)
 * [Single Sign On](dot/integrations/sso/README.md)
