@@ -20,17 +20,13 @@ It works standalone in any terminal, and integrates with AI coding assistants li
 
 ### Quick Start
 
-The fastest way to get started is through the **web setup page** — it generates a single command that installs the CLI and logs you in automatically.
+#### 1. Install
 
-#### One-Click Setup (Recommended)
+Open **Set Up CLI** from the sidebar in your Dot dashboard, or navigate to `/cli-setup`. Copy the install command for your OS and paste it into your terminal.
 
-1. Open **Set Up CLI** from the sidebar in your Dot dashboard, or navigate to `/cli-setup`
-2. Copy the one-line command for your operating system
-3. Paste it into your terminal
+<figure><img src="../../.gitbook/assets/cli-setup-page.png" alt="CLI setup page with install command"><figcaption><p>The setup page auto-detects your OS and shows the right install command</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/cli-setup-page.png" alt="CLI setup page with one-line install command"><figcaption><p>The setup page generates a personalized install command with your auth token embedded</p></figcaption></figure>
-
-The setup page auto-detects your operating system and shows the right command. You can switch between macOS, Linux, and Windows tabs.
+The setup page supports macOS, Linux, and Windows tabs:
 
 <figure><img src="../../.gitbook/assets/cli-setup-windows.png" alt="CLI setup page showing Windows PowerShell command"><figcaption><p>Windows users get a PowerShell command</p></figcaption></figure>
 
@@ -38,9 +34,7 @@ A banner in the sidebar reminds you to set up the CLI until you dismiss it:
 
 <figure><img src="../../.gitbook/assets/cli-setup-sidebar.png" alt="CLI setup banner in sidebar"><figcaption><p>Dismissible sidebar banner with rotating hints</p></figcaption></figure>
 
-#### Manual Install
-
-If you prefer to install manually, or need to install on a remote server:
+Or install directly from your terminal:
 
 **macOS / Linux:**
 
@@ -54,9 +48,9 @@ curl -fsSL https://app.getdot.ai/install.sh | sh
 irm https://app.getdot.ai/install.ps1 | iex
 ```
 
-This installs a native binary — no Node.js or other runtime required. Supports macOS (ARM & Intel), Linux (x64 & ARM), and Windows (x64 & ARM). The installer also sets up the Claude Code skill automatically.
+This installs a native binary — no Node.js or other runtime required. Supports macOS (ARM & Intel), Linux (x64 & ARM), and Windows (x64 & ARM). The installer also sets up the Claude Code skill and configures your server URL automatically.
 
-Then log in:
+#### 2. Login
 
 ```bash
 dot login
@@ -70,17 +64,9 @@ For environments without a browser (CI, remote servers):
 dot login --token <YOUR_API_TOKEN>
 ```
 
-**Custom server URL (self-hosted):**
-
-```bash
-curl -fsSL https://your-dot-instance.com/install.sh | SERVER=https://your-dot-instance.com sh
-```
-
-Or on Windows:
-
-```powershell
-$env:DOT_SERVER='https://your-dot-instance.com'; irm https://your-dot-instance.com/install.ps1 | iex
-```
+{% hint style="info" %}
+**Self-hosted?** If you download the install script from your own server (e.g., `curl -fsSL https://your-instance.com/install.sh | sh`), the server URL is configured automatically. No extra flags needed.
+{% endhint %}
 
 #### 3. Ask a question
 
