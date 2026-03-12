@@ -1,5 +1,5 @@
 ---
-description: Query your company data from the terminal using Dot's CLI tool — works with Claude Code, Cursor, and any terminal.
+description: Query your company data from the terminal using Dot's CLI tool — works with Claude Code, Cursor, Gemini CLI, and any terminal.
 ---
 
 # CLI
@@ -8,12 +8,12 @@ description: Query your company data from the terminal using Dot's CLI tool — 
 
 The Dot CLI lets you query your company's databases directly from the terminal. Dot writes SQL, runs queries, generates charts, and explains results — all from a single command.
 
-It works standalone in any terminal, and integrates with AI coding assistants like **Claude Code**, **Cursor**, and **OpenAI Codex** through a skill file that teaches them when and how to use it.
+It works standalone in any terminal, and integrates with AI coding assistants like **Claude Code**, **Cursor**, **OpenAI Codex**, and **Gemini CLI** through a skill file that teaches them when and how to use it.
 
 ### Why use the CLI?
 
 * **Stay in your flow** — ask data questions without switching to a browser
-* **AI coding assistants** — Claude Code, Cursor, and Codex can query your data autonomously while coding
+* **AI coding assistants** — Claude Code, Cursor, Codex, and Gemini CLI can query your data autonomously while coding
 * **Scriptable** — pipe output to other tools, automate reports
 * **Cached** — repeated questions return instantly from local cache
 * **Secure** — credentials stored locally with restrictive permissions, tokens scoped per user
@@ -97,6 +97,8 @@ Claude Code automatically discovers Dot's CLI through the `SKILL.md` file. Once 
 * Use follow-up questions with `--chat` to refine results
 * Read chart PNGs and CSV files from the output
 
+You can also type **`/dot`** in Claude Code to explicitly invoke the Dot skill — for example, `/dot What were total sales last month?`.
+
 **Example prompts for Claude Code:**
 
 * "What were our top 10 customers by revenue last quarter?"
@@ -107,9 +109,9 @@ Claude Code automatically discovers Dot's CLI through the `SKILL.md` file. Once 
 The installer automatically places a `SKILL.md` file at `~/.claude/skills/dot/SKILL.md` which tells Claude Code when and how to invoke the CLI. No additional configuration is needed — just install and login.
 {% endhint %}
 
-### Using with Cursor
+### Using with Cursor, Codex, and Gemini CLI
 
-Cursor IDE also supports skill files. After installing `dot`, Cursor's AI can use it the same way as Claude Code — discovering the tool and querying data when relevant.
+The installer automatically detects which AI coding assistants are installed and configures the Dot skill for each of them. Cursor, OpenAI Codex, and Gemini CLI all support skill files and will discover the `dot` command the same way as Claude Code — querying data when relevant to your prompts.
 
 ### Commands
 
@@ -149,11 +151,20 @@ Returns instantly (no AI call) and shows:
 * Active tables with descriptions, column counts, and row counts
 * External assets (Looker dashboards, etc.)
 
+#### Update
+
+```bash
+dot update
+```
+
+Updates the CLI to the latest version. Dot also checks for updates automatically once a day and notifies you when a new version is available.
+
 #### Other commands
 
 ```bash
 dot status          # Show login status and token info
 dot logout          # Clear credentials
+dot update          # Update to latest version
 dot --version       # Show version
 dot --help          # Show all options
 ```

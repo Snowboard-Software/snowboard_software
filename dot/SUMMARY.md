@@ -22,6 +22,7 @@
 
 ## Developers
 
+* [CLI](dot/integrations/cli.md)
 * [Embed](dot/whats-dot/embed.md)
 * [API](dot/whats-dot/api/README.md)
   * [Commonly used Endpoints](dot/whats-dot/api/commonly-used-endpoints.md)
