@@ -22,12 +22,12 @@
 
 ## Developers
 
-* [CLI](dot/integrations/cli.md)
 * [Embed](dot/whats-dot/embed.md)
 * [API](dot/whats-dot/api/README.md)
   * [Commonly used Endpoints](dot/whats-dot/api/commonly-used-endpoints.md)
   * [Use Cases and Scripts](dot/whats-dot/api/use-cases-and-scripts.md)
   * [All API Endpoints](dot/whats-dot/api/all-api-endpoints.md)
+* [CLI](dot/integrations/cli.md)
 * [MCP](dot/integrations/mcp.md)
 
 ## Integrations
