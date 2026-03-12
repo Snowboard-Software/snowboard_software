@@ -1,46 +1,30 @@
 ---
-description: Query your company data from the terminal using Dot's CLI tool — works with Claude Code, Cursor, Gemini CLI, and any terminal.
+description: Give your AI coding assistant direct access to your company's data. One install, and Claude Code, Cursor, Codex, and Gemini CLI can query your databases while you work.
 ---
 
-# CLI
+# CLI & AI Agent Skill
 
-### What is the Dot CLI?
+Most data questions interrupt your flow. You leave your editor, open Dot in the browser, wait for an answer, copy it back. The Dot skill eliminates that loop entirely.
 
-The Dot CLI lets you query your company's databases directly from the terminal. Dot writes SQL, runs queries, generates charts, and explains results — all from a single command.
+Once installed, your AI coding assistant can query your company's databases directly. Ask Claude Code "what were our top customers last quarter?" and it writes SQL, runs the query, and gives you the answer — without you ever leaving the terminal.
 
-It works standalone in any terminal, and integrates with AI coding assistants like **Claude Code**, **Cursor**, **OpenAI Codex**, and **Gemini CLI** through a skill file that teaches them when and how to use it.
+<figure><img src="../../.gitbook/assets/claude-code-skill.png" alt="Claude Code loading the Dot skill via /dot command"><figcaption><p>Type /dot in Claude Code to query your company data</p></figcaption></figure>
 
-### Why use the CLI?
+It works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **Gemini CLI**. The installer detects which agents you have and configures the skill for each of them automatically.
 
-* **Stay in your flow** — ask data questions without switching to a browser
-* **AI coding assistants** — Claude Code, Cursor, Codex, and Gemini CLI can query your data autonomously while coding
-* **Scriptable** — pipe output to other tools, automate reports
-* **Cached** — repeated questions return instantly from local cache
-* **Secure** — credentials stored locally with restrictive permissions, tokens scoped per user
+You can also use it standalone from any terminal:
 
-### Quick Start
+```bash
+dot "What were total sales last month?"
+```
 
-The fastest way to get started is through the **web setup page** — it generates a single command that installs the CLI and logs you in automatically.
+### How it works
 
-#### One-Click Setup (Recommended)
+The Dot CLI is a native binary. The installer puts it on your PATH and drops a `SKILL.md` file into the right location for each AI agent. That skill file is what teaches your coding assistant when and how to call `dot` — it's the bridge between a natural language question and your data warehouse.
 
-1. Open **Set Up CLI** from the sidebar in your Dot dashboard, or navigate to `/cli-setup`
-2. Copy the one-line command for your operating system
-3. Paste it into your terminal
+When an AI agent invokes the skill, it runs `dot` under the hood. Dot writes SQL, executes it against your database, and returns a structured answer: text explanation, the SQL query, a data preview, a chart PNG, and a CSV file. The agent reads all of this and uses it in context.
 
-<figure><img src="../../.gitbook/assets/cli-setup-page.png" alt="CLI setup page with one-line install command"><figcaption><p>The setup page generates a personalized install command with your auth token embedded</p></figcaption></figure>
-
-The setup page auto-detects your operating system and shows the right command. You can switch between macOS, Linux, and Windows tabs.
-
-<figure><img src="../../.gitbook/assets/cli-setup-windows.png" alt="CLI setup page showing Windows PowerShell command"><figcaption><p>Windows users get a PowerShell command</p></figcaption></figure>
-
-A banner in the sidebar reminds you to set up the CLI until you dismiss it:
-
-<figure><img src="../../.gitbook/assets/cli-setup-sidebar.png" alt="CLI setup banner in sidebar"><figcaption><p>Dismissible sidebar banner with rotating hints</p></figcaption></figure>
-
-#### Manual Install
-
-If you prefer to install manually, or need to install on a remote server:
+### Install
 
 **macOS / Linux:**
 
@@ -54,64 +38,49 @@ curl -fsSL https://app.getdot.ai/install.sh | sh
 irm https://app.getdot.ai/install.ps1 | iex
 ```
 
-This installs a native binary — no Node.js or other runtime required. Supports macOS (ARM & Intel), Linux (x64 & ARM), and Windows (x64 & ARM). The installer also sets up the Claude Code skill automatically.
-
-Then log in:
+Then authenticate:
 
 ```bash
 dot login
 ```
 
-This opens your browser to authenticate with your Dot account. Your token is saved locally at `~/.config/dot/config.json`.
+This opens your browser. Your token is saved locally at `~/.config/dot/config.json`.
 
-For environments without a browser (CI, remote servers):
+{% hint style="info" %}
+You can also install from the **Set Up CLI** page in your Dot dashboard (`/cli-setup`). It generates a one-line command with your auth token embedded, so you skip the login step.
+{% endhint %}
+
+**Self-hosted Dot:**
+
+```bash
+curl -fsSL https://your-dot-instance.com/install.sh | sh
+```
+
+**CI / headless servers:**
 
 ```bash
 dot login --token <YOUR_API_TOKEN>
 ```
 
-**Custom server URL (self-hosted):**
+### Using with AI agents
 
-```bash
-curl -fsSL https://your-dot-instance.com/install.sh | SERVER=https://your-dot-instance.com sh
+#### Claude Code
+
+Type **`/dot`** followed by your question:
+
+```
+/dot What data sources do we have?
 ```
 
-Or on Windows:
-
-```powershell
-$env:DOT_SERVER='https://your-dot-instance.com'; irm https://your-dot-instance.com/install.ps1 | iex
-```
-
-#### 3. Ask a question
-
-```bash
-dot "What were total sales last month?"
-```
-
-### Using with Claude Code
-
-Claude Code automatically discovers Dot's CLI through the `SKILL.md` file. Once `dot` is installed and authenticated, Claude Code can:
-
-* Query your company data when you ask data questions
-* Run `dot catalog` to understand what tables are available
-* Use follow-up questions with `--chat` to refine results
-* Read chart PNGs and CSV files from the output
-
-You can also type **`/dot`** in Claude Code to explicitly invoke the Dot skill — for example, `/dot What were total sales last month?`.
-
-**Example prompts for Claude Code:**
+Or just ask naturally — Claude Code will invoke the skill when it recognizes a data question:
 
 * "What were our top 10 customers by revenue last quarter?"
 * "Check the database — is the orders table growing?"
-* "Ask Dot to show me monthly active users for the past year"
+* "Show me monthly active users for the past year"
 
-{% hint style="info" %}
-The installer automatically places a `SKILL.md` file at `~/.claude/skills/dot/SKILL.md` which tells Claude Code when and how to invoke the CLI. No additional configuration is needed — just install and login.
-{% endhint %}
+#### Cursor, Codex, and Gemini CLI
 
-### Using with Cursor, Codex, and Gemini CLI
-
-The installer automatically detects which AI coding assistants are installed and configures the Dot skill for each of them. Cursor, OpenAI Codex, and Gemini CLI all support skill files and will discover the `dot` command the same way as Claude Code — querying data when relevant to your prompts.
+These work the same way. The installer configures each agent it detects. No manual setup needed — the skill file tells the agent what `dot` can do and when to use it.
 
 ### Commands
 
@@ -121,18 +90,11 @@ The installer automatically detects which AI coding assistants are installed and
 dot "What were total sales last month?"
 ```
 
-The output includes:
-* **Text explanation** — natural language answer
-* **SQL query** — the exact SQL that was executed
-* **Data preview** — first rows with column statistics
-* **Chart** — saved as PNG to a local temp path
-* **CSV data** — saved locally for further analysis
-* **Dot URL** — link to the full interactive analysis in the browser
-* **Suggested follow-ups** — use these to dig deeper
+Returns: a text explanation, the SQL query, a data preview, a chart (PNG), CSV data, a link to the full analysis in Dot, and suggested follow-ups.
 
 #### Follow-up questions
 
-Every response includes a chat ID. Use `--chat` to continue the conversation:
+Every response includes a chat ID. Continue the conversation:
 
 ```bash
 dot "Now break down by region" --chat cli-m1abc2d-x4y5z6
@@ -144,12 +106,7 @@ dot "Now break down by region" --chat cli-m1abc2d-x4y5z6
 dot catalog
 ```
 
-Returns instantly (no AI call) and shows:
-* Available capabilities (SQL, visualizations, scheduled reports)
-* Custom skills configured for your org
-* Data source connections with table counts
-* Active tables with descriptions, column counts, and row counts
-* External assets (Looker dashboards, etc.)
+Instant response (no AI call). Shows your connections, tables, column counts, row counts, and any external assets like Looker dashboards.
 
 #### Update
 
@@ -157,68 +114,42 @@ Returns instantly (no AI call) and shows:
 dot update
 ```
 
-Updates the CLI to the latest version. Dot also checks for updates automatically once a day and notifies you when a new version is available.
+Dot checks for updates automatically once a day. Run this to update immediately.
 
 #### Other commands
 
 ```bash
-dot status          # Show login status and token info
+dot status          # Login status and token info
 dot logout          # Clear credentials
-dot update          # Update to latest version
 dot --version       # Show version
 dot --help          # Show all options
 ```
 
 ### Caching
 
-Ask responses are cached permanently on disk so repeated questions return instantly:
-
-* `dot "question"` — cached forever until `--clear-cache`
-* Follow-ups with `--chat` are never cached (always fresh)
-* `dot catalog` is never cached (already fast, no AI call)
+Responses are cached on disk. Repeated questions return instantly:
 
 ```bash
-dot "question" --no-cache    # Force fresh request
+dot "question" --no-cache    # Skip cache, force fresh
 dot --clear-cache            # Clear all cached responses
 ```
 
-Cache is stored at `~/.cache/dot/` and is scoped to your user identity — different users on the same machine won't see each other's cached results.
+Follow-ups (`--chat`) and `dot catalog` are never cached.
+
+Cache lives at `~/.cache/dot/`, scoped per user.
 
 ### Security
 
-#### Token Management
-
-* Tokens are stored locally at `~/.config/dot/config.json` with `600` file permissions
-* One CLI token per user — generating a new token revokes the previous one
+* Tokens stored locally at `~/.config/dot/config.json` with `600` permissions
+* One token per user — generating a new one revokes the old one
 * Tokens expire after 365 days
-* Run `dot logout` to clear credentials immediately
-
-#### Data Access
-
-* The CLI respects all your Dot permissions and user group restrictions
-* Queries run within your organization's scope
-* All data filtering rules (row-level security) are enforced
-* All queries are logged in Dot for compliance
+* All Dot permissions and row-level security rules are enforced
+* All queries are logged for compliance
 
 ### Troubleshooting
 
-**"Not authenticated" error**
+**"Not authenticated"** — Run `dot login` or check with `dot status`.
 
-Run `dot login` to authenticate, or check your token with `dot status`.
+**"Connection failed"** — Check your network. For custom servers: `dot login --server https://your-server.com`.
 
-**"Connection failed" error**
-
-* Check your network connection
-* If using a custom server, verify the URL: `dot login --server https://your-server.com`
-
-**Slow responses**
-
-First queries take 10-30 seconds (Dot runs the full AI analysis pipeline). Subsequent identical queries return instantly from cache. Use `dot catalog` first to understand available data — more specific questions get faster answers.
-
-**Custom server URL**
-
-For self-hosted Dot instances:
-
-```bash
-dot login --server https://your-dot-instance.com
-```
+**Slow responses** — First query takes 10-30 seconds (full AI pipeline). Identical queries return instantly from cache after that.
