@@ -14,16 +14,31 @@ Works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **Gemini CLI**. Th
 
 ### Install
 
+Use the URL that matches your Dot region:
+
+| Region | URL |
+|--------|-----|
+| US | `app.getdot.ai` |
+| EU | `eu.getdot.ai` |
+
 **macOS / Linux:**
 
 ```bash
+# US region
 curl -fsSL https://app.getdot.ai/install.sh | sh
+
+# EU region
+curl -fsSL https://eu.getdot.ai/install.sh | sh
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
+# US region
 irm https://app.getdot.ai/install.ps1 | iex
+
+# EU region
+irm https://eu.getdot.ai/install.ps1 | iex
 ```
 
 Then log in:
