@@ -12,6 +12,8 @@
   * [Background Tasks for Snowflake](snowflake_connection/background_tasks.md)
   * [Configure Paths for Snowflake Background Tasks](snowflake_connection/background_tasks_paths.md)
   * [Enabling SSO on Snowflake](snowflake_connection/snowflake_sso.md)
+* [Single Sign-On](sso/README.md)
+  * [Azure Active Directory](sso/azure-active-directory.md)
 * [Other Integrations](other-integrations/README.md)
   * [Tableau](other-integrations/background_tasks.md)
   * [PowerBI](other-integrations/powerbi.md)
