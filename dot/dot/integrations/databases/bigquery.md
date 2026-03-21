@@ -103,8 +103,8 @@ When enabled, Dot runs each query as the logged-in user's Google identity instea
 
 ### Prerequisites
 
-* **Google SSO** must be configured in Dot (see [Google SSO setup](../sso/google.md)). Dot uses the SSO-verified email to identify the Google user.
-* Users must sign in to Dot via Google SSO. Users who sign in with a password will fall back to the shared service account.
+* **Recommended: Google SSO** configured in Dot (see [Google SSO setup](../sso/google.md)). SSO guarantees that the user's Dot email matches their Google Workspace identity.
+* Users who sign in with a password are not impersonated by default. If your password-login users have Dot emails that match their Google Workspace emails, you can enable the **Include non-SSO users** sub-toggle to impersonate them too.
 
 ### Step 1: Grant impersonation permissions
 
@@ -144,7 +144,8 @@ You can also use BigQuery [row-level security policies](https://cloud.google.com
 1. Go to **Settings** > **Connections** > **BigQuery**.
 2. Click **Edit**.
 3. Enable the **Per-user BigQuery access** toggle.
-4. Click **Connect** to save.
+4. Optionally enable **Include non-SSO users** if your password-login users should also be impersonated.
+5. Click **Connect** to save.
 
 Once enabled, every query a user runs in Dot will execute as their Google identity. If a user doesn't have access to a table or column in BigQuery, they'll see a clear error message instead of the data.
 
@@ -153,11 +154,13 @@ Once enabled, every query a user runs in Dot will execute as their Google identi
 | Scenario | Who runs the query |
 |---|---|
 | User logged in via Google SSO | The user's Google identity |
-| User logged in with password | The shared service account |
-| Scheduled queries and alerts | The shared service account |
+| User logged in with password | The shared service account (or user's identity if **Include non-SSO users** is enabled) |
+| Scheduled queries and alerts | The schedule creator's Google identity |
 | Data sync and model operations | The shared service account |
 
-Scheduled queries, alerts, and background operations always use the shared service account, so they are not affected by per-user access settings.
+{% hint style="warning" %}
+**Scheduled queries run as the creator.** If a user's Google account is deactivated (e.g., they leave the company), their scheduled queries will fail. After 3 consecutive failures, the schedule is automatically paused and the owner is notified via email. To fix this, reassign the schedule to an active user.
+{% endhint %}
 
 ## Allow Dot IPs
 
