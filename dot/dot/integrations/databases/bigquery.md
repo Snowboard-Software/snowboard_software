@@ -97,29 +97,32 @@ Example Values
 
 ## Per-User Access (Optional)
 
-By default, all Dot users in your organization share the same service account when querying BigQuery. If you need each user to only see the data they have access to in BigQuery — based on their individual IAM roles, row-level security policies, or column-level policy tags — you can enable **per-user access** via service account impersonation.
+By default, all Dot users in your organization share the same service account when querying BigQuery. If you need each user to only see the data they have access to in BigQuery — based on their individual IAM roles, row-level security policies, or column-level policy tags — you can enable **per-user access** via domain-wide delegation.
 
-When enabled, Dot runs each query as the logged-in user's Google identity instead of the shared service account. BigQuery enforces access controls natively, so you manage permissions in GCP — not in Dot.
+When enabled, Dot runs each query as the logged-in user's Google Workspace identity instead of the shared service account. BigQuery enforces access controls natively, so you manage permissions in GCP — not in Dot.
 
 ### Prerequisites
 
+* **Google Workspace** — per-user access uses [domain-wide delegation](https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority), which requires a Google Workspace domain.
 * **Recommended: Google SSO** configured in Dot (see [Google SSO setup](../sso/google.md)). SSO guarantees that the user's Dot email matches their Google Workspace identity.
-* Users who sign in with a password are not impersonated by default. If your password-login users have Dot emails that match their Google Workspace emails, you can enable the **Include non-SSO users** sub-toggle to impersonate them too.
+* Users who sign in with a password are not delegated by default. If your password-login users have Dot emails that match their Google Workspace emails, you can enable the **Include non-SSO users** sub-toggle.
 
-### Step 1: Grant impersonation permissions
+### Step 1: Enable domain-wide delegation for the service account
 
-The Dot service account needs permission to impersonate your users. Run this in the [Google Cloud Shell](https://console.cloud.google.com/home/dashboard?cloudshell=true):
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/) > **IAM & Admin** > **Service Accounts**.
+2. Click on the Dot service account.
+3. Under **Show domain-wide delegation**, check **Enable Google Workspace Domain-wide Delegation**.
+4. Note the **Client ID** shown (you'll need it in the next step).
 
-```bash
-gcloud iam service-accounts add-iam-policy-binding {{SERVICE_ACCOUNT}} \
-  --project={{PROJECT_ID}} \
-  --member="serviceAccount:{{SERVICE_ACCOUNT}}" \
-  --role="roles/iam.serviceAccountTokenCreator"
-```
+### Step 2: Authorize the service account in Google Workspace
 
-Replace `{{SERVICE_ACCOUNT}}` with the Dot service account email (e.g., `dot-101@super-position-123456.iam.gserviceaccount.com`) and `{{PROJECT_ID}}` with your project ID.
+1. Go to [Google Workspace Admin Console](https://admin.google.com/) > **Security** > **API Controls** > **Manage Domain Wide Delegation**.
+2. Click **Add new**.
+3. Enter the **Client ID** from Step 1.
+4. Enter the following OAuth scope: `https://www.googleapis.com/auth/bigquery`
+5. Click **Authorize**.
 
-### Step 2: Grant BigQuery access to your users
+### Step 3: Grant BigQuery access to your users
 
 Each user who will use Dot needs BigQuery permissions on the relevant projects and datasets. At minimum:
 
