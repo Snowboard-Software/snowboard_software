@@ -165,6 +165,11 @@ Once enabled, every query a user runs in Dot will execute as their Google identi
 **Scheduled queries run as the creator.** If a user's Google account is deactivated (e.g., they leave the company), their scheduled queries will fail. After 3 consecutive failures, the schedule is automatically paused and the owner is notified via email. To fix this, reassign the schedule to an active user.
 {% endhint %}
 
+### Known limitations
+
+* **Table metadata is shared.** Data sync (schema discovery, AI-generated descriptions) always runs as the shared service account. This means all users can see table names, column names, and AI-generated descriptions for all synced tables — even tables they cannot query. No actual data values are exposed, but the table structure and descriptions are visible to all users in the organization.
+* **BigQuery row-level security returns empty results.** If a user has table access but is restricted by BigQuery row-level security policies, queries return empty results rather than an error. Dot will inform the user that no data was found but cannot distinguish between "no matching rows" and "access restricted."
+
 ## Allow Dot IPs
 
 If your organization uses a network policy to manage BigQuery access, Dot will only access your BigQuery through the following IPs:
