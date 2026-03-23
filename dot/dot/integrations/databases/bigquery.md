@@ -95,6 +95,81 @@ Example Values
 
      
 
+## Per-User Access (Optional)
+
+By default, all Dot users in your organization share the same service account when querying BigQuery. If you need each user to only see the data they have access to in BigQuery — based on their individual IAM roles, row-level security policies, or column-level policy tags — you can enable **per-user access** via domain-wide delegation.
+
+When enabled, Dot runs each query as the logged-in user's Google Workspace identity instead of the shared service account. BigQuery enforces access controls natively, so you manage permissions in GCP — not in Dot.
+
+### Prerequisites
+
+* **Google Workspace** — per-user access uses [domain-wide delegation](https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority), which requires a Google Workspace domain.
+* **Recommended: Google SSO** configured in Dot (see [Google SSO setup](../sso/google.md)). SSO guarantees that the user's Dot email matches their Google Workspace identity.
+* Users who sign in with a password are not delegated by default. If your password-login users have Dot emails that match their Google Workspace emails, you can enable the **Include non-SSO users** sub-toggle.
+
+### Step 1: Enable domain-wide delegation for the service account
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/) > **IAM & Admin** > **Service Accounts**.
+2. Click on the Dot service account.
+3. Under **Show domain-wide delegation**, check **Enable Google Workspace Domain-wide Delegation**.
+4. Note the **Client ID** shown (you'll need it in the next step).
+
+### Step 2: Authorize the service account in Google Workspace
+
+1. Go to [Google Workspace Admin Console](https://admin.google.com/) > **Security** > **API Controls** > **Manage Domain Wide Delegation**.
+2. Click **Add new**.
+3. Enter the **Client ID** from Step 1.
+4. Enter the following OAuth scope: `https://www.googleapis.com/auth/bigquery`
+5. Click **Authorize**.
+
+### Step 3: Grant BigQuery access to your users
+
+Each user who will use Dot needs BigQuery permissions on the relevant projects and datasets. At minimum:
+
+```bash
+gcloud projects add-iam-policy-binding {{PROJECT_ID}} \
+  --member="user:alice@yourcompany.com" \
+  --role="roles/bigquery.dataViewer"
+
+gcloud projects add-iam-policy-binding {{PROJECT_ID}} \
+  --member="user:alice@yourcompany.com" \
+  --role="roles/bigquery.jobUser"
+```
+
+For managing permissions at scale, use [Google Groups](https://cloud.google.com/iam/docs/groups-in-cloud-console) — grant roles to a group and add users to it.
+
+{% hint style="info" %}
+You can also use BigQuery [row-level security policies](https://cloud.google.com/bigquery/docs/row-level-security-intro) and [column-level security (policy tags)](https://cloud.google.com/bigquery/docs/column-level-security-intro) for fine-grained access control. These are enforced automatically when per-user access is enabled.
+{% endhint %}
+
+### Step 3: Enable per-user access in Dot
+
+1. Go to **Settings** > **Connections** > **BigQuery**.
+2. Click **Edit**.
+3. Enable the **Per-user BigQuery access** toggle.
+4. Optionally enable **Include non-SSO users** if your password-login users should also be impersonated.
+5. Click **Connect** to save.
+
+Once enabled, every query a user runs in Dot will execute as their Google identity. If a user doesn't have access to a table or column in BigQuery, they'll see a clear error message instead of the data.
+
+### How it works
+
+| Scenario | Who runs the query |
+|---|---|
+| User logged in via Google SSO | The user's Google identity |
+| User logged in with password | The shared service account (or user's identity if **Include non-SSO users** is enabled) |
+| Scheduled queries and alerts | The schedule creator's Google identity |
+| Data sync and model operations | The shared service account |
+
+{% hint style="warning" %}
+**Scheduled queries run as the creator.** If a user's Google account is deactivated (e.g., they leave the company), their scheduled queries will fail. After 3 consecutive failures, the schedule is automatically paused and the owner is notified via email. To fix this, reassign the schedule to an active user.
+{% endhint %}
+
+### Known limitations
+
+* **Table metadata is shared.** Data sync (schema discovery, AI-generated descriptions) always runs as the shared service account. This means all users can see table names, column names, and AI-generated descriptions for all synced tables — even tables they cannot query. No actual data values are exposed, but the table structure and descriptions are visible to all users in the organization.
+* **BigQuery row-level security returns empty results.** If a user has table access but is restricted by BigQuery row-level security policies, queries return empty results rather than an error. Dot will inform the user that no data was found but cannot distinguish between "no matching rows" and "access restricted."
+
 ## Allow Dot IPs
 
 If your organization uses a network policy to manage BigQuery access, Dot will only access your BigQuery through the following IPs:
