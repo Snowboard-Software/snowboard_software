@@ -103,6 +103,12 @@ redirects:
   integrations/mysql: dot/integrations/databases/mysql-mariadb.md
   dot/integrations/dbt: dot/integrations/code-repositories/dbt-core.md
   integrations/dbt: dot/integrations/code-repositories/dbt-core.md
+  dot/integrations/power-bi: dot/integrations/semantic-layers/powerbi-semantic-layer.md
+  integrations/power-bi: dot/integrations/semantic-layers/powerbi-semantic-layer.md
+  dot/integrations/cube: dot/integrations/semantic-layers/README.md
+  integrations/cube: dot/integrations/semantic-layers/README.md
+  dot/integrations/csv: dot/integrations/databases/README.md
+  integrations/csv: dot/integrations/databases/README.md
   # BI tools (unprefixed)
   integrations/tableau: dot/integrations/bi-tools/tableau.md
   integrations/metabase: dot/integrations/bi-tools/metabase.md
@@ -117,6 +123,10 @@ redirects:
   dot/getting-started: dot/whats-dot/getting-started.md
   dot/getting-started/quickstart: dot/whats-dot/getting-started.md
   getting-started/quickstart: dot/whats-dot/getting-started.md
+  dot/getting-started/quick-start: dot/whats-dot/getting-started.md
+  getting-started/quick-start: dot/whats-dot/getting-started.md
+  dot/getting-started/connecting-your-data: dot/whats-dot/getting-started.md
+  getting-started/connecting-your-data: dot/whats-dot/getting-started.md
 
   # Old top-level section root and removed pages (redirect to sensible defaults)
   dot: README.md
