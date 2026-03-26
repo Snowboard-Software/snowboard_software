@@ -43,6 +43,7 @@
   * [Microsoft Fabric](dot/integrations/databases/microsoft-fabric.md)
   * [Clickhouse](dot/integrations/databases/clickhouse.md)
   * [MySQL / MariaDB](dot/integrations/databases/mysql-mariadb.md)
+  * [Oracle Database](dot/integrations/databases/oracle.md)
   * [Motherduck & DuckDB](dot/integrations/databases/motherduck-and-duckdb.md)
   * [SAP HANA](dot/integrations/databases/sap-hana.md)
 * [Semantic Layers](dot/integrations/semantic-layers/README.md)
