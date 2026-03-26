@@ -1,6 +1,10 @@
 redirects:
   # Integration pages moved from flat to categorized (pre-2026-01-16 URLs)
-  # Databases
+  # Some pages got GitBook auto-redirects from git file moves, but not all.
+  # We add both prefixed (dot/integrations/...) and unprefixed variants to
+  # cover links from external sites that used the old /dot/ section URL.
+
+  # Databases (unprefixed)
   integrations/snowflake: dot/integrations/databases/snowflake.md
   integrations/bigquery: dot/integrations/databases/bigquery.md
   integrations/redshift: dot/integrations/databases/redshift.md
@@ -13,18 +17,50 @@ redirects:
   integrations/mysql-mariadb: dot/integrations/databases/mysql-mariadb.md
   integrations/motherduck-and-duckdb: dot/integrations/databases/motherduck-and-duckdb.md
   integrations/sap-hana: dot/integrations/databases/sap-hana.md
-  # Semantic layers
+  # Databases (dot/ prefixed — old /dot/integrations/... URLs)
+  dot/integrations/snowflake: dot/integrations/databases/snowflake.md
+  dot/integrations/bigquery: dot/integrations/databases/bigquery.md
+  dot/integrations/redshift: dot/integrations/databases/redshift.md
+  dot/integrations/aws-athena: dot/integrations/databases/aws-athena.md
+  dot/integrations/databricks: dot/integrations/databases/databricks.md
+  dot/integrations/postgres: dot/integrations/databases/postgres.md
+  dot/integrations/microsoft-sql-server: dot/integrations/databases/microsoft-sql-server.md
+  dot/integrations/microsoft-fabric: dot/integrations/databases/microsoft-fabric.md
+  dot/integrations/clickhouse: dot/integrations/databases/clickhouse.md
+  dot/integrations/mysql-mariadb: dot/integrations/databases/mysql-mariadb.md
+  dot/integrations/motherduck-and-duckdb: dot/integrations/databases/motherduck-and-duckdb.md
+  dot/integrations/sap-hana: dot/integrations/databases/sap-hana.md
+
+  # Semantic layers (unprefixed)
   integrations/dbt-semantic-layer: dot/integrations/semantic-layers/dbt-semantic-layer.md
   integrations/looker: dot/integrations/semantic-layers/looker.md
   integrations/powerbi-semantic-layer: dot/integrations/semantic-layers/powerbi-semantic-layer.md
-  # Slack & Teams
+  # Semantic layers (dot/ prefixed)
+  dot/integrations/dbt-semantic-layer: dot/integrations/semantic-layers/dbt-semantic-layer.md
+  dot/integrations/looker: dot/integrations/semantic-layers/looker.md
+  dot/integrations/powerbi-semantic-layer: dot/integrations/semantic-layers/powerbi-semantic-layer.md
+
+  # Slack & Teams (unprefixed)
   integrations/slack: dot/integrations/slack-and-teams/slack.md
   integrations/microsoft-teams: dot/integrations/slack-and-teams/microsoft-teams.md
-  # SSO
+  # Slack & Teams (dot/ prefixed)
+  dot/integrations/slack: dot/integrations/slack-and-teams/slack.md
+  dot/integrations/microsoft-teams: dot/integrations/slack-and-teams/microsoft-teams.md
+
+  # SSO (unprefixed)
   integrations/azure-active-directory: dot/integrations/sso/azure-active-directory.md
   integrations/okta: dot/integrations/sso/okta.md
+  # SSO (dot/ prefixed)
+  dot/integrations/azure-active-directory: dot/integrations/sso/azure-active-directory.md
+  dot/integrations/okta: dot/integrations/sso/okta.md
+
+  # BI Tools (dot/ prefixed — old flat paths)
+  dot/integrations/tableau: dot/integrations/bi-tools/tableau.md
+  dot/integrations/metabase: dot/integrations/bi-tools/metabase.md
+  dot/integrations/sigma: dot/integrations/bi-tools/sigma.md
 
   # "What's Dot" section pages (old nested URLs before navigation restructuring)
+  # These cover both /whats-dot/... and /dot/whats-dot/... patterns
   whats-dot/chat: dot/whats-dot/chat.md
   whats-dot/deep-analysis: dot/whats-dot/deep-analysis.md
   whats-dot/scheduling: dot/whats-dot/scheduling.md
@@ -41,3 +77,23 @@ redirects:
   whats-dot/api/commonly-used-endpoints: dot/whats-dot/api/commonly-used-endpoints.md
   whats-dot/api/use-cases-and-scripts: dot/whats-dot/api/use-cases-and-scripts.md
   whats-dot/api/all-api-endpoints: dot/whats-dot/api/all-api-endpoints.md
+  dot/whats-dot/chat: dot/whats-dot/chat.md
+  dot/whats-dot/deep-analysis: dot/whats-dot/deep-analysis.md
+  dot/whats-dot/scheduling: dot/whats-dot/scheduling.md
+  dot/whats-dot/context-agent: dot/whats-dot/context-agent.md
+  dot/whats-dot/model: dot/whats-dot/model/README.md
+  dot/whats-dot/model/notes: dot/whats-dot/model/notes.md
+  dot/whats-dot/github-sync: dot/whats-dot/github-sync.md
+  dot/whats-dot/permissions: dot/whats-dot/permissions.md
+  dot/whats-dot/user-feedback: dot/whats-dot/user-feedback.md
+  dot/whats-dot/workspaces: dot/whats-dot/workspaces.md
+  dot/whats-dot/custom-skills: dot/whats-dot/custom-skills.md
+  dot/whats-dot/embed: dot/whats-dot/embed.md
+  dot/whats-dot/api: dot/whats-dot/api/README.md
+  dot/whats-dot/api/commonly-used-endpoints: dot/whats-dot/api/commonly-used-endpoints.md
+  dot/whats-dot/api/use-cases-and-scripts: dot/whats-dot/api/use-cases-and-scripts.md
+  dot/whats-dot/api/all-api-endpoints: dot/whats-dot/api/all-api-endpoints.md
+
+  # Security & Support (old paths under /dot/)
+  dot/security-and-privacy: dot/security-and-privacy.md
+  dot/support: dot/support.md
