@@ -1,0 +1,43 @@
+redirects:
+  # Integration pages moved from flat to categorized (pre-2026-01-16 URLs)
+  # Databases
+  integrations/snowflake: dot/integrations/databases/snowflake.md
+  integrations/bigquery: dot/integrations/databases/bigquery.md
+  integrations/redshift: dot/integrations/databases/redshift.md
+  integrations/aws-athena: dot/integrations/databases/aws-athena.md
+  integrations/databricks: dot/integrations/databases/databricks.md
+  integrations/postgres: dot/integrations/databases/postgres.md
+  integrations/microsoft-sql-server: dot/integrations/databases/microsoft-sql-server.md
+  integrations/microsoft-fabric: dot/integrations/databases/microsoft-fabric.md
+  integrations/clickhouse: dot/integrations/databases/clickhouse.md
+  integrations/mysql-mariadb: dot/integrations/databases/mysql-mariadb.md
+  integrations/motherduck-and-duckdb: dot/integrations/databases/motherduck-and-duckdb.md
+  integrations/sap-hana: dot/integrations/databases/sap-hana.md
+  # Semantic layers
+  integrations/dbt-semantic-layer: dot/integrations/semantic-layers/dbt-semantic-layer.md
+  integrations/looker: dot/integrations/semantic-layers/looker.md
+  integrations/powerbi-semantic-layer: dot/integrations/semantic-layers/powerbi-semantic-layer.md
+  # Slack & Teams
+  integrations/slack: dot/integrations/slack-and-teams/slack.md
+  integrations/microsoft-teams: dot/integrations/slack-and-teams/microsoft-teams.md
+  # SSO
+  integrations/azure-active-directory: dot/integrations/sso/azure-active-directory.md
+  integrations/okta: dot/integrations/sso/okta.md
+
+  # "What's Dot" section pages (old nested URLs before navigation restructuring)
+  whats-dot/chat: dot/whats-dot/chat.md
+  whats-dot/deep-analysis: dot/whats-dot/deep-analysis.md
+  whats-dot/scheduling: dot/whats-dot/scheduling.md
+  whats-dot/context-agent: dot/whats-dot/context-agent.md
+  whats-dot/model: dot/whats-dot/model/README.md
+  whats-dot/model/notes: dot/whats-dot/model/notes.md
+  whats-dot/github-sync: dot/whats-dot/github-sync.md
+  whats-dot/permissions: dot/whats-dot/permissions.md
+  whats-dot/user-feedback: dot/whats-dot/user-feedback.md
+  whats-dot/workspaces: dot/whats-dot/workspaces.md
+  whats-dot/custom-skills: dot/whats-dot/custom-skills.md
+  whats-dot/embed: dot/whats-dot/embed.md
+  whats-dot/api: dot/whats-dot/api/README.md
+  whats-dot/api/commonly-used-endpoints: dot/whats-dot/api/commonly-used-endpoints.md
+  whats-dot/api/use-cases-and-scripts: dot/whats-dot/api/use-cases-and-scripts.md
+  whats-dot/api/all-api-endpoints: dot/whats-dot/api/all-api-endpoints.md
