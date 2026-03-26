@@ -118,6 +118,11 @@ redirects:
   dot/getting-started/quickstart: dot/whats-dot/getting-started.md
   getting-started/quickstart: dot/whats-dot/getting-started.md
 
+  # Old top-level section root and removed pages (redirect to sensible defaults)
+  dot: README.md
+  dot/faq: dot/support.md
+  dot/changelog: README.md
+
   # Security & Support (old paths under /dot/)
   dot/security-and-privacy: dot/security-and-privacy.md
   dot/support: dot/support.md
