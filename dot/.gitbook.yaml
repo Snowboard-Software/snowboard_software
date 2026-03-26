@@ -94,6 +94,30 @@ redirects:
   dot/whats-dot/api/use-cases-and-scripts: dot/whats-dot/api/use-cases-and-scripts.md
   dot/whats-dot/api/all-api-endpoints: dot/whats-dot/api/all-api-endpoints.md
 
+  # Alternate slugs (old URLs with different naming than current files)
+  dot/integrations/google-sso: dot/integrations/sso/google.md
+  integrations/google-sso: dot/integrations/sso/google.md
+  dot/integrations/postgresql: dot/integrations/databases/postgres.md
+  integrations/postgresql: dot/integrations/databases/postgres.md
+  dot/integrations/mysql: dot/integrations/databases/mysql-mariadb.md
+  integrations/mysql: dot/integrations/databases/mysql-mariadb.md
+  dot/integrations/dbt: dot/integrations/code-repositories/dbt-core.md
+  integrations/dbt: dot/integrations/code-repositories/dbt-core.md
+  # BI tools (unprefixed)
+  integrations/tableau: dot/integrations/bi-tools/tableau.md
+  integrations/metabase: dot/integrations/bi-tools/metabase.md
+  integrations/sigma: dot/integrations/bi-tools/sigma.md
+
+  # Old top-level and renamed pages
+  dot/integrations: dot/integrations/databases/README.md
+  dot/whats-dot/scheduled-queries: dot/whats-dot/scheduling.md
+  whats-dot/scheduled-queries: dot/whats-dot/scheduling.md
+  dot/whats-dot/security: dot/security-and-privacy.md
+  whats-dot/security: dot/security-and-privacy.md
+  dot/getting-started: dot/whats-dot/getting-started.md
+  dot/getting-started/quickstart: dot/whats-dot/getting-started.md
+  getting-started/quickstart: dot/whats-dot/getting-started.md
+
   # Security & Support (old paths under /dot/)
   dot/security-and-privacy: dot/security-and-privacy.md
   dot/support: dot/support.md
