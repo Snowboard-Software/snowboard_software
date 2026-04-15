@@ -49,6 +49,7 @@
 * [Semantic Layers](dot/integrations/semantic-layers/README.md)
   * [dbt Semantic Layer](dot/integrations/semantic-layers/dbt-semantic-layer.md)
   * [PowerBI Semantic Layer](dot/integrations/semantic-layers/powerbi-semantic-layer.md)
+  * [Azure Analysis Services](dot/integrations/semantic-layers/azure-analysis-services.md)
   * [Looker](dot/integrations/semantic-layers/looker.md)
   * [Steep](dot/integrations/semantic-layers/steep.md)
 * [Code Repositories](dot/integrations/code-repositories/README.md)
