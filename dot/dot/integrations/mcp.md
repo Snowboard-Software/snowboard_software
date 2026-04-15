@@ -38,29 +38,149 @@ Token-based auth works with all MCP clients. You generate a token in Dot and pas
 
 #### Claude Web (claude.ai)
 
-**Requirements**: Pro, Max, Team, or Enterprise plan
+**Requirements**: Free, Pro, Max, Team, or Enterprise plan. Free users can connect one custom connector at a time.
 
-{% hint style="success" %}
-**OAuth (recommended):** Settings → Connectors → Add custom connector, paste the URL from Dot's Integrations page. Claude handles authentication automatically — a browser window will open for you to sign in and approve access.
+**Your Dot MCP URL** depends on which region you sign into Dot from:
+
+* **US**: `https://app.getdot.ai/ai/mcp`
+* **EU**: `https://eu.getdot.ai/ai/mcp`
+
+Use the same host you use to sign into Dot in the browser. You can also copy the exact URL from **Settings → Integrations** inside Dot.
+
+{% tabs %}
+{% tab title="Pro / Max" %}
+{% stepper %}
+{% step %}
+### Open Customize → Connectors
+
+In Claude, click your profile → **Customize** → **Connectors**.
+
+<figure><img src="../../.gitbook/assets/claude-web-customize.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/claude-web-connectors-tab.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Add a custom connector
+
+Click the **+** next to the Connectors header and choose **Add custom connector**.
+
+<figure><img src="../../.gitbook/assets/claude-web-add-custom-menu.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Name it and paste the URL
+
+Name it **Ask Dot**, paste your Dot MCP URL, then click **Add**.
+
+<figure><img src="../../.gitbook/assets/claude-web-add-custom-dialog.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Connect
+
+Click **Connect** on the new **Ask Dot** entry.
+
+<figure><img src="../../.gitbook/assets/claude-web-connect-button.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Authorize in Dot
+
+A Dot tab opens. Review the requested permissions and click **Allow**.
+
+<figure><img src="../../.gitbook/assets/claude-web-oauth-authorize.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Done
+
+Back in Claude, **Ask Dot** now shows as **Connected** with its available tools. Enable it in any chat via the **+** button → **Connectors**.
+
+<figure><img src="../../.gitbook/assets/claude-web-connected-tools.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+{% endstepper %}
+{% endtab %}
+
+{% tab title="Team / Enterprise" %}
+Team and Enterprise workspaces use a two-step flow: an owner adds the connector once for the organization, then each member connects their own Dot account.
+
+**Owner (one-time setup):**
+
+{% stepper %}
+{% step %}
+### Open Organization settings → Connectors
+
+In Claude, go to **Organization settings → Connectors**.
+{% endstep %}
+
+{% step %}
+### Add a custom web connector
+
+Click **Add** → **Custom** → **Web**.
+{% endstep %}
+
+{% step %}
+### Paste the Dot MCP URL
+
+Name it **Ask Dot**, paste your Dot MCP URL (`app.getdot.ai/ai/mcp` or `eu.getdot.ai/ai/mcp`), then click **Add**.
+{% endstep %}
+{% endstepper %}
+
+**Each member (once):**
+
+{% stepper %}
+{% step %}
+### Open Customize → Connectors
+
+Find **Ask Dot** in the list — it'll be marked **Custom**.
+{% endstep %}
+
+{% step %}
+### Connect
+
+Click **Connect**.
+
+<figure><img src="../../.gitbook/assets/claude-web-connect-button.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Authorize in Dot
+
+A Dot tab opens. Review the permissions and click **Allow**.
+
+<figure><img src="../../.gitbook/assets/claude-web-oauth-authorize.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+{% endstepper %}
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+**API Token fallback:** If OAuth isn't working, follow the same steps but paste the token-appended URL from the **API Token** tab on Dot's Integrations page instead of the plain MCP URL.
 {% endhint %}
-
-**Token-based:** Same steps, but use the token-appended URL from the API Token tab.
-
-For Team/Enterprise owners: Toggle to "Organization connectors" to make available for all members.
 
 #### Claude Desktop
 
-{% hint style="success" %}
-**OAuth (recommended):** Settings → Connectors → Add custom connector, paste the URL from Dot's Integrations page. Claude will open your browser to authenticate.
-{% endhint %}
+**Your Dot MCP URL** is `https://app.getdot.ai/ai/mcp` (US) or `https://eu.getdot.ai/ai/mcp` (EU) — same rule as Claude Web.
 
-**Token-based (manual config):**
+{% tabs %}
+{% tab title="OAuth (recommended)" %}
+1. Open **Settings → Connectors → Add custom connector**.
+2. Name it **Ask Dot** and paste your Dot MCP URL.
+3. Click **Add**, then **Connect** — Claude opens your browser to authorize. Click **Allow** in Dot.
 
-Edit the configuration file:
+Once connected, the MCP indicator (hammer icon) appears in the chat input.
+{% endtab %}
+
+{% tab title="API Token (manual config)" %}
+Edit Claude Desktop's config file:
+
 * **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
 * **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 
-Add the Dot server configuration provided on Dot's Integrations page, save, and restart Claude Desktop. Look for the MCP indicator (hammer icon) in the chat input.
+Paste the Dot server block from the **API Token** tab on Dot's Integrations page, save, and restart Claude Desktop. Look for the MCP indicator (hammer icon) in the chat input.
+{% endtab %}
+{% endtabs %}
 
 #### Claude Code
 
