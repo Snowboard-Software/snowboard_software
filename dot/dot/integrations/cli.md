@@ -135,7 +135,11 @@ dot --help          # Show all options
 
 ### Workspace management
 
-Admins can manage notes and tables directly from the terminal. This is useful for bulk operations, scripting, and CI/CD pipelines where opening the web UI is impractical.
+The CLI is designed as the AI interface to Dot. When you use Claude Code, Cursor, or Codex, your AI assistant manages your Dot workspace through these commands — selecting relevant tables, creating notes with metric definitions, and fixing context gaps. You don't need to type these commands yourself; your AI agent handles it.
+
+{% hint style="info" %}
+**How AI agents use this:** When you say "help me set up Dot for our revenue data", your AI assistant will run `dot catalog` to see what's available, `dot tables list` to check active tables, `dot notes list` to audit existing context, and then interview you to fill gaps — creating notes from your answers.
+{% endhint %}
 
 #### Notes
 
@@ -201,6 +205,20 @@ Submit feedback or feature requests directly from the terminal:
 ```bash
 dot wish "I want better date filtering"
 ```
+
+### Training Dot effectively
+
+The biggest leverage in Dot accuracy comes from good context management. Here's the recommended approach:
+
+**Start with tables.** Select the right data sources and document what each table represents — especially granularity (what does one row mean?) and primary keys. For wide tables or semantic models with hundreds of fields, curate which columns are active.
+
+**Layer in notes.** After tables are set up, add notes for metric definitions, operating principles, and business context. Use strong, unambiguous language: "Always filter out internal users", "Revenue means recognized revenue, not bookings."
+
+**Fix bad answers at the root.** When Dot gives a wrong answer, don't just correct it — investigate why. Wrong table? Activate the right one. Wrong logic? Add a metric definition. Missing context? Add a business context note.
+
+**Audit regularly.** Review existing notes for contradictions. If one note says "use fct\_orders for revenue" and another says "use fct\_arr for revenue" — that ambiguity will produce inconsistent answers. Remove or reconcile.
+
+**Front-load, then prune.** It's better to give too much context upfront and dial it back than to discover gaps one bad answer at a time.
 
 ### Caching
 
