@@ -133,6 +133,75 @@ dot --version       # Show version
 dot --help          # Show all options
 ```
 
+### Workspace management
+
+Admins can manage notes and tables directly from the terminal. This is useful for bulk operations, scripting, and CI/CD pipelines where opening the web UI is impractical.
+
+#### Notes
+
+Notes teach Dot how to query your data. They contain metric definitions, SQL patterns, business context, and operating principles. See [Notes](../../whats-dot/model/notes.md) for what to put in them.
+
+```bash
+dot notes list                          # List all notes (tree view)
+dot notes get <id>                      # Read a note
+dot notes create <title> [content]      # Create a note
+dot notes update <id> [content]         # Update a note
+dot notes delete <id>                   # Delete a note
+dot notes activate <id>                 # Activate a note
+dot notes deactivate <id>              # Deactivate a note
+```
+
+Create notes from files or stdin for longer content:
+
+```bash
+dot notes create "Metric Glossary" --file metrics.md
+cat playbook.md | dot notes create "Campaign Review Playbook"
+```
+
+Organize notes with groups and parent relationships:
+
+```bash
+dot notes create "SQL Patterns" --parent <parent-id> --group data-team
+```
+
+Inactive notes are not used by Dot when answering questions. Deactivate instead of deleting to archive notes you might need later.
+
+#### Tables
+
+Control which database tables Dot can access. Deactivated tables are hidden from Dot entirely.
+
+```bash
+dot tables list                         # Active tables, grouped by connection
+dot tables list --all                   # Include inactive tables
+dot tables get <id>                     # Table details with columns
+dot tables activate <id> [id2 ...]      # Activate table(s)
+dot tables deactivate <id> [id2 ...]    # Deactivate table(s)
+```
+
+Batch operations work with multiple IDs:
+
+```bash
+dot tables activate table-1 table-2 table-3
+```
+
+#### Chat history
+
+Retrieve the full conversation history for any previous query:
+
+```bash
+dot chat <chat-id>
+```
+
+Shows all messages with SQL queries, tool calls, and timestamps. Useful for auditing what Dot did or retrieving answers you saw earlier.
+
+#### Feature requests
+
+Submit feedback or feature requests directly from the terminal:
+
+```bash
+dot wish "I want better date filtering"
+```
+
 ### Caching
 
 Responses are cached on disk. Repeated questions return instantly.
