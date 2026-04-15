@@ -75,38 +75,6 @@ Dot periodically re-syncs to pick up changes. You can also trigger a manual sync
 
 ## Troubleshooting
 
-### AADSTS650052: Missing Service Principal
-
-If you see an error like:
-
-> AADSTS650052: The app is trying to access a service that your organization lacks a service principal for.
-
-This means the Azure Analysis Services first-party application is not registered in your Azure AD tenant. This typically happens if your organization has never provisioned an AAS resource directly, or if AAS was removed.
-
-**Fix:** An Azure AD administrator needs to create the service principal. Run one of the following:
-
-**Azure CLI:**
-
-```bash
-az login --tenant YOUR_TENANT_ID
-az ad sp create --id 4ac7d521-0382-477b-b0f8-7e1d95f85ca2
-```
-
-**PowerShell:**
-
-```powershell
-Connect-AzureAD -TenantId "YOUR_TENANT_ID"
-New-AzureADServicePrincipal -AppId "4ac7d521-0382-477b-b0f8-7e1d95f85ca2"
-```
-
-Or go to **Azure Portal → Enterprise Applications → New Application**, search for "Azure Analysis Services", and add it.
-
-This is a one-time operation. Once completed, the OAuth flow will work.
-
-{% hint style="info" %}
-**Power BI users:** If your data lives in AAS but you access it through Power BI, you can use the [Power BI connector](powerbi-semantic-layer.md) instead — it does not require the AAS service principal.
-{% endhint %}
-
 ### Token Expired / Please Reconnect
 
 If you see "No access token available" or similar errors, your OAuth refresh token may have expired (tokens last 90 days). Go to **Settings → Semantic Layers → Azure Analysis Services** and click **Connect with Microsoft** again to re-authenticate.
