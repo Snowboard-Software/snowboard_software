@@ -13,17 +13,19 @@ You'll paste this URL into every client below. It depends on which region you si
 
 Use the same host you use to sign into Dot in the browser. You can also copy the exact URL from **Settings → Integrations** inside Dot.
 
-### Connect your client
-
 {% hint style="success" %}
 **OAuth is the default.** For supported clients (Claude, Cursor, Windsurf), OAuth means no tokens to copy or manage — just sign into Dot in your browser and click **Allow**. Sessions last up to a year.
 
 If OAuth isn't supported by your client (ChatGPT, Raycast, generic MCP clients) or something goes wrong, see [Using an API token](#using-an-api-token).
 {% endhint %}
 
-#### Claude Web (claude.ai)
+### Claude (Web, Desktop, Cowork, Mobile)
 
 **Requirements**: Free, Pro, Max, Team, or Enterprise plan. Free users can connect one custom connector at a time.
+
+{% hint style="info" %}
+**You only need to set this up once.** Custom connectors are remote MCP servers hosted by Dot, so Anthropic syncs them across every Claude surface automatically. Adding Dot on claude.ai makes it available in Claude Desktop, Cowork, and the Claude mobile apps with no per-device setup. Prefer to start from Claude Desktop? Open **Settings → Connectors → Add custom connector** and follow the same steps — it'll sync back to the web.
+{% endhint %}
 
 {% tabs %}
 {% tab title="Pro / Max" %}
@@ -133,15 +135,7 @@ A Dot tab opens. Review the permissions and click **Allow**.
 {% endtab %}
 {% endtabs %}
 
-#### Claude Desktop
-
-1. Open **Settings → Connectors → Add custom connector**.
-2. Name it **Ask Dot** and paste your Dot MCP URL.
-3. Click **Add**, then **Connect** — Claude opens your browser to authorize. Click **Allow** in Dot.
-
-Once connected, the MCP indicator (hammer icon) appears in the chat input.
-
-#### Claude Code
+### Claude Code
 
 Run the command from Dot's Integrations page:
 
@@ -151,15 +145,19 @@ claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp
 
 OAuth will open your browser to authenticate on first use.
 
-#### Cursor IDE
+{% hint style="info" %}
+Claude Code with a signed-in Anthropic account also picks up custom connectors synced from your Claude Web/Desktop setup. If you've already connected Dot there, you can skip this command.
+{% endhint %}
+
+### Cursor IDE
 
 Click the install button on Dot's Integrations page. Cursor will open your browser to authorize.
 
-#### Windsurf
+### Windsurf
 
 Copy the URL from Dot's Integrations page and add it as an MCP server in Windsurf settings. Windsurf will open your browser to authenticate.
 
-#### ChatGPT
+### ChatGPT
 
 **Requirements**: ChatGPT Enterprise, Education, or Team subscription.
 
@@ -170,7 +168,7 @@ ChatGPT supports token-based auth only — see [Using an API token](#using-an-ap
 * **MCP Server URL**: the ChatGPT-specific URL from Dot's Integrations page
 * **Authentication**: No Auth (the token is carried in the URL)
 
-#### Raycast AI
+### Raycast AI
 
 Raycast uses token-based auth — see [Using an API token](#using-an-api-token) to generate one.
 
@@ -181,7 +179,7 @@ Raycast uses token-based auth — see [Using an API token](#using-an-api-token) 
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-#### Other MCP clients
+### Other MCP clients
 
 Most MCP clients support URL-based configuration. If your client supports OAuth / MCP authorization, use the plain Dot MCP URL — that's it. Otherwise, follow [Using an API token](#using-an-api-token) and use the token-appended URL.
 
