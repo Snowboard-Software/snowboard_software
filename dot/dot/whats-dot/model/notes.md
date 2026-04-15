@@ -223,3 +223,7 @@ You can nest notes in a hierarchy to stay organized.
 You can assign access groups to notes to manage different domains or access patterns.
 {% endhint %}
 
+{% hint style="success" %}
+**CLI access:** You can also manage notes from the terminal with `dot notes list`, `dot notes create`, etc. This is useful for scripting, bulk imports, and CI/CD pipelines. See [CLI & AI Agent Skill](../../integrations/cli.md#notes) for details.
+{% endhint %}
+
