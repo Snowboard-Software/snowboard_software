@@ -25,10 +25,10 @@ Use the URL that matches your Dot region:
 
 ```bash
 # US region
-curl -fsSL https://app.getdot.ai/install.sh | sh
+curl https://app.getdot.ai/install | sh
 
 # EU region
-curl -fsSL https://eu.getdot.ai/install.sh | sh
+curl https://eu.getdot.ai/install | sh
 ```
 
 **Windows (PowerShell):**
@@ -58,7 +58,7 @@ You can also install from the **Set Up CLI** page in your Dot dashboard (`/cli-s
 **Self-hosted Dot:**
 
 ```bash
-curl -fsSL https://your-dot-instance.com/install.sh | sh
+curl https://your-dot-instance.com/install | sh
 ```
 
 **CI / headless servers:**
