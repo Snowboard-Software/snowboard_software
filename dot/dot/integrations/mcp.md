@@ -151,7 +151,28 @@ Claude Code with a signed-in Anthropic account also picks up custom connectors s
 
 ### Cursor IDE
 
-Click the install button on Dot's Integrations page. Cursor will open your browser to authorize.
+The recommended setup uses the [`mcp-remote`](https://www.npmjs.com/package/mcp-remote) stdio proxy — the same approach Linear, Cloudflare, and Sentry recommend for their MCP servers. **Requires [Node.js](https://nodejs.org) installed locally.**
+
+**One-click install:** Click the **Add to Cursor** button on Dot's Integrations page. Cursor will open your browser to authorize.
+
+**Manual install:** Add this to `~/.cursor/mcp.json` (use `https://eu.getdot.ai/ai/mcp` for the EU instance):
+
+```json
+{
+  "mcpServers": {
+    "ask_dot": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://app.getdot.ai/ai/mcp"]
+    }
+  }
+}
+```
+
+Save the file, then restart Cursor (or toggle the server in **Settings → Tools & Integrations → MCP Tools**). On first connect, Cursor will spawn `mcp-remote`, open your browser to authorize, and cache the session for up to a year.
+
+{% hint style="info" %}
+If you'd rather use a static API token instead of OAuth, see [Using an API token → JSON config](#using-an-api-token) below for the Cursor-specific shape.
+{% endhint %}
 
 ### Windsurf
 
