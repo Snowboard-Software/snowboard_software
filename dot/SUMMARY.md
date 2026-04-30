@@ -68,6 +68,7 @@
   * [Azure Active Directory](dot/integrations/sso/azure-active-directory.md)
   * [Okta](dot/integrations/sso/okta.md)
   * [Google](dot/integrations/sso/google.md)
+  * [Generic OIDC](dot/integrations/sso/oidc.md)
 
 ## Security & Support
 
