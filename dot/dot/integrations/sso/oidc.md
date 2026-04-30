@@ -6,7 +6,7 @@ description: Single Sign On with any OpenID Connect provider
 
 ## When to use this provider
 
-Dot ships with dedicated tiles for the SSO providers most customers use — **Azure Active Directory**, **Okta**, and **Google**. If your identity provider isn't one of those (e.g. BlaBlaCar's internal IdP, Auth0, Keycloak, Ping Identity, OneLogin, JumpCloud), use the **Generic OIDC** tile instead. It speaks the same standard — OpenID Connect — and works with any IdP that publishes a discovery document.
+Dot ships with dedicated tiles for the SSO providers most customers use — **Azure Active Directory**, **Okta**, and **Google**. If your identity provider isn't one of those — e.g. an in-house IdP, Auth0, Keycloak, Ping Identity, OneLogin, or JumpCloud — use the **Generic OIDC** tile instead. It speaks the same standard — OpenID Connect — and works with any IdP that publishes a discovery document.
 
 If you're using one of the named providers, follow the dedicated guide instead — those use the same plumbing under the hood, but with the IdP-specific URL prefilled and a fixed button label.
 
@@ -19,7 +19,7 @@ Before opening the Dot admin panel, have these three values ready from your IdP:
 * **Metadata URL** — also called the **OpenID configuration URL** or **discovery URL**. Always ends in `/.well-known/openid-configuration`. Examples:
   * Auth0: `https://{your-tenant}.auth0.com/.well-known/openid-configuration`
   * Keycloak: `https://{host}/realms/{realm}/.well-known/openid-configuration`
-  * BlaBlaCar / generic: ask your IdP team for the discovery URL
+  * In-house / other: ask your IdP team for the discovery URL
 
 The metadata URL is what makes this generic — Dot fetches the IdP's signing keys, authorization endpoint, and token endpoint from that one URL, so you don't have to enter them by hand.
 
@@ -50,9 +50,9 @@ Back in the Dot admin form, fill in the remaining fields:
 * **Client ID** — paste from your IdP
 * **Client Secret** — paste from your IdP
 * **Metadata URL** — the `/.well-known/openid-configuration` URL
-* **Button Label** *(optional)* — what gets displayed on the login page. For example, set this to `BlaBlaCar SSO` to render a button labelled **Sign in with BlaBlaCar SSO**. Leave empty to fall back to the generic label **Sign in with SSO**.
+* **Button Label** *(optional)* — what gets displayed on the login page. For example, set this to `Acme SSO` to render a button labelled **Sign in with Acme SSO**. Leave empty to fall back to the generic label **Sign in with SSO**.
 
-<figure><img src="../../../.gitbook/assets/oidc-sso-filled.png" alt=""><figcaption><p>Filled-in Generic OIDC tile, with a custom button label</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/oidc-sso-filled.png" alt=""><figcaption><p>Filled-in Generic OIDC tile, with a custom button label set to <code>Acme SSO</code></p></figcaption></figure>
 
 Click **Save**. After saving, the tile flips to **Connected**, the secret is masked, and the **Remove** button appears next to **Save** so you can disable the integration later.
 
