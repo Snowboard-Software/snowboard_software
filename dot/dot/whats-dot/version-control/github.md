@@ -48,12 +48,12 @@ Only context files are synced. Database connections, user settings, and chat his
 1. Go to **Settings** > **Version Control** > **GitHub**
 2. Click **Connect with GitHub**
 
-<figure><img src="../../.gitbook/assets/github-sync-connect.png" alt="GitHub sync panel in Dot settings"><figcaption><p>Click Connect with GitHub to start the setup</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/github-sync-connect.png" alt="GitHub sync panel in Dot settings"><figcaption><p>Click Connect with GitHub to start the setup</p></figcaption></figure>
 
 3. Install the **Dot Context Sync** GitHub App
 4. Choose repository access — either **All repositories** or **Selected repositories**
 
-<figure><img src="../../.gitbook/assets/github-sync-install.png" alt="GitHub App installation page"><figcaption><p>Choose repository access during installation</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/github-sync-install.png" alt="GitHub App installation page"><figcaption><p>Choose repository access during installation</p></figcaption></figure>
 
 {% hint style="info" %}
 Both "All repositories" and "Selected repositories" work. If you choose "Selected repositories", you'll need to create your sync repository manually on GitHub first (see Step 2).
