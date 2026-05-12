@@ -17,7 +17,7 @@
 
 **Notes**
 
-The Motherduck connector requires DuckDB to be at least v.0.10.2
+The Motherduck connector requires DuckDB to be at least v1.4.0.
 
 
 
