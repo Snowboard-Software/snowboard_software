@@ -92,8 +92,8 @@ ClickHouse Port: 8443
 
 If your ClickHouse server uses IP restrictions, add these Dot service IP addresses to your allowlist:
 
-* `3.229.110.216`
-* `3.122.135.165`
+* `5.78.211.110`
+* `178.105.217.177`
 
 #### Port Requirements
 

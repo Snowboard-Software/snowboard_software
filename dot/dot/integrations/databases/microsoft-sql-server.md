@@ -39,6 +39,6 @@ GRANT SELECT ON SCHEMA::YourSchemaName TO dot_user;
 
 If you are using SQL Server's firewall features or another firewall mechanism to control access, ensure that you whitelist the following IPs to allow Dot to access your SQL Server:
 
-* 3.229.110.216
-* 3.122.135.165
+* 5.78.211.110
+* 178.105.217.177
 

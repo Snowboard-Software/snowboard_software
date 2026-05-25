@@ -67,6 +67,6 @@ Example: `https://semantic-layer.cloud.getdbt.com/api/graphql`
 
 If your organization uses a firewall to manage dbt access, Dot will only access your dbtthrough the following IPs:
 
-* `3.229.110.216`
-* `3.122.135.165`
+* `5.78.211.110`
+* `178.105.217.177`
 

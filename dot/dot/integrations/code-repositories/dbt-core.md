@@ -64,5 +64,5 @@ The **Linked Database Connection** dropdown tells Dot which database to match mo
 
 If your organization uses IP allowlisting to manage Git access, Dot will only access your repository through the following IPs:
 
-* `3.229.110.216`
-* `3.122.135.165`
+* `5.78.211.110`
+* `178.105.217.177`

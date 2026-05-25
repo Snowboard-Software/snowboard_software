@@ -45,5 +45,5 @@ WHERE schema_name not in ('information_schema', 'pg_catalog', 'pg_internal');
 
 If your organization uses a firewall to manage Postgres access, Dot will only access your Postgres through the following IPs:
 
-* `3.229.110.216`
-* `3.122.135.165`
+* `5.78.211.110`
+* `178.105.217.177`
