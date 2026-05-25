@@ -40,5 +40,5 @@ For more info on how to start with the SAP HANA free instance check out: [Provis
 
 To connect your SAP HANA Cloud instance with Dot, configure it to allow Dot to access it through the following IPs.
 
-* 3.229.110.216
-* 3.122.135.165
+* 5.78.211.110
+* 178.105.217.177

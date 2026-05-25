@@ -174,5 +174,5 @@ Once enabled, every query a user runs in Dot will execute as their Google identi
 
 If your organization uses a network policy to manage BigQuery access, Dot will only access your BigQuery through the following IPs:
 
-* `3.229.110.216`
-* `3.122.135.165`
+* `5.78.211.110`
+* `178.105.217.177`

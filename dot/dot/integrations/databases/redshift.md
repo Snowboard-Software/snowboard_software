@@ -46,8 +46,8 @@ WHERE schema_name not in ('information_schema', 'pg_catalog', 'pg_internal');
 
 If your organization uses a network policy to manage Redshift access, Dot will only access your Redshift through the following IPs:
 
-* `3.229.110.216`
-* `3.122.135.165`
+* `5.78.211.110`
+* `178.105.217.177`
 
 1. In the Redshift dashboard, **click on the desired cluster name**.
 
@@ -75,8 +75,8 @@ If your organization uses a network policy to manage Redshift access, Dot will o
 
 7. Add the following IPs of Type `Redshift`:
 
-* `3.229.110.216`
-* `3.122.135.165`
+* `5.78.211.110`
+* `178.105.217.177`
 
 ![](<../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)<br>
 

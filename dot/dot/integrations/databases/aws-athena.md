@@ -85,8 +85,8 @@ For more details on controlling workgroup access with IAM policies, refer to the
 
 Ensure that Dot can communicate with Athena by allowing outbound access to the following IP addresses, especially if your organization uses a firewall or network policies:
 
-* `3.229.110.216`
-* `3.122.135.165`
+* `5.78.211.110`
+* `178.105.217.177`
 
 **4. Obtain the Access Key ID and Secret Access Key**
 

@@ -27,5 +27,5 @@
 
 If your organization uses a firewall to manage Looker access, Dot will only access your Looker through the following IPs:
 
-* `3.229.110.216`
-* `3.122.135.165`
+* `5.78.211.110`
+* `178.105.217.177`
