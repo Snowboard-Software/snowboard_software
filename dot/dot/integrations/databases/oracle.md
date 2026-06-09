@@ -53,3 +53,14 @@ If your organization uses a firewall to manage Oracle access, Dot will only acce
 
 * `5.78.211.110`
 * `178.105.217.177`
+
+### Connect via SSH Tunnel
+
+If your database is in a private network or behind a firewall, Dot can connect through an SSH bastion host instead of exposing it directly. In the connection dialog, enable **Connect via SSH Tunnel** and provide:
+
+* **SSH Host**: your bastion / jump server
+* **SSH Port**: `22` (default) or a custom port
+* **SSH Username**: the SSH user
+* **SSH Authentication**: SSH password or private key
+
+Dot tunnels the database connection through the bastion, so the database itself never needs a public endpoint.

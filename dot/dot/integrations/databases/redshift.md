@@ -49,6 +49,8 @@ If your organization uses a network policy to manage Redshift access, Dot will o
 * `5.78.211.110`
 * `178.105.217.177`
 
+If you'd rather not make the cluster publicly accessible, you can skip the steps below and use an [SSH tunnel](#connect-via-ssh-tunnel) instead.
+
 1. In the Redshift dashboard, **click on the desired cluster name**.
 
 <div align="left"><figure><img src="https://files.readme.io/39a5a42-1.png" alt="" width="375"><figcaption></figcaption></figure></div>
@@ -79,4 +81,15 @@ If your organization uses a network policy to manage Redshift access, Dot will o
 * `178.105.217.177`
 
 ![](<../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)<br>
+
+## Connect via SSH Tunnel
+
+If you'd rather not make the cluster publicly accessible, Dot can reach a private Redshift cluster through an SSH bastion host in your VPC instead. In the Redshift connection dialog, enable **Connect via SSH Tunnel** and provide:
+
+* **SSH Host**: your bastion / jump server
+* **SSH Port**: `22` (default) or a custom port
+* **SSH Username**: the SSH user
+* **SSH Authentication**: SSH password or private key
+
+Dot tunnels the Redshift connection through the bastion, so the cluster keeps its private endpoint and never needs public accessibility.
 
