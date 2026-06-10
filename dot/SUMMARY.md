@@ -17,6 +17,7 @@
 * [Version Control](dot/whats-dot/version-control/README.md)
   * [GitHub](dot/whats-dot/version-control/github.md)
   * [GitLab](dot/whats-dot/version-control/gitlab.md)
+* [Environments](dot/whats-dot/environments.md)
 * [Permissions](dot/whats-dot/permissions.md)
 * [User Feedback](dot/whats-dot/user-feedback.md)
 * [Workspaces](dot/whats-dot/workspaces.md)
