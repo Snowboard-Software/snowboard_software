@@ -31,8 +31,6 @@ The QlikSense Cloud integration with Sled offers:
 7. Click Save.
 8.  Note the generated Client ID and Client Secret.
 
-
-
     <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 9.  Click the three dots (...) on the far right and select Change consent method, then choose Trusted.
 
@@ -44,9 +42,7 @@ The QlikSense Cloud integration with Sled offers:
 2. Navigate to Integrations and select Qlik Cloud as the new integration.
 3.  Enter your Tenant URL as the server.
 
-
-
-    <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 4. Enter the Client ID and Client Secret noted from the QlikSense Cloud configuration.
 5. Click Test Connection and if its successful then Click Save Account
 

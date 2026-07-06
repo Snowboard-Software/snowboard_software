@@ -10,14 +10,14 @@ Sled integrates with Azure Active Directory (Microsoft Entra ID) using OAuth 2.0
 
 ### Technical Overview
 
-| Property | Value |
-|----------|-------|
-| Protocol | OAuth 2.0 / OpenID Connect |
-| Scopes | `openid`, `profile`, `email`, `User.Read`, `GroupMember.Read.All` |
-| Redirect URI | `https://{your-sled-domain}/api/auth/azure/callback` |
-| Tenant type | Single tenant |
+| Property     | Value                                                             |
+| ------------ | ----------------------------------------------------------------- |
+| Protocol     | OAuth 2.0 / OpenID Connect                                        |
+| Scopes       | `openid`, `profile`, `email`, `User.Read`, `GroupMember.Read.All` |
+| Redirect URI | `https://{your-sled-domain}/api/auth/azure/callback`              |
+| Tenant type  | Single tenant                                                     |
 
----
+***
 
 ## Part 1: Azure AD Configuration
 
@@ -31,9 +31,6 @@ Sled integrates with Azure Active Directory (Microsoft Entra ID) using OAuth 2.0
 1. Enter the name of the application, e.g. `Sled`
 2. Under **Supported account types**, select **"Accounts in this organizational directory only"** (Single tenant)
 3. For the **Redirect URI**, select **Web** and enter: `https://{your-sled-domain}/api/auth/azure/callback`
-
-<figure><img src="../.gitbook/assets/Screenshot_from_2024-01-16_13-53-20.png" alt=""><figcaption></figcaption></figure>
-
 4. Click **Register**
 
 ### Step 3: Copy Application IDs
@@ -43,20 +40,13 @@ Once registered, you will be redirected to the application overview page. Copy a
 * **Application (client) ID**
 * **Directory (tenant) ID**
 
-<figure><img src="../.gitbook/assets/Screenshot_from_2024-01-16_13-53-41.png" alt=""><figcaption></figcaption></figure>
-
 ### Step 4: Create a Client Secret
 
 1. In the application menu, click **Certificates & secrets**
 2. Click **New client secret**
 3. Set a description (e.g. `Sled SSO`) and an expiration (12 or 24 months recommended)
-
-<figure><img src="../.gitbook/assets/Screenshot_from_2024-01-16_13-54-20.png" alt=""><figcaption></figcaption></figure>
-
 4. Click **Add**
 5. **Immediately copy the secret Value** (not the Secret ID) - this is only shown once
-
-<figure><img src="../.gitbook/assets/Screenshot_from_2024-01-16_13-54-30.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 5: Configure API Permissions
 
@@ -64,10 +54,10 @@ Once registered, you will be redirected to the application overview page. Copy a
 2. Click **Add a permission** > **Microsoft Graph** > **Delegated permissions**
 3. Add the following permissions:
 
-| Permission | Purpose | Admin Consent |
-|------------|---------|---------------|
-| `User.Read` | Read the signed-in user's profile (email, name) | No |
-| `GroupMember.Read.All` | Read the signed-in user's group memberships | Yes |
+| Permission             | Purpose                                         | Admin Consent |
+| ---------------------- | ----------------------------------------------- | ------------- |
+| `User.Read`            | Read the signed-in user's profile (email, name) | No            |
+| `GroupMember.Read.All` | Read the signed-in user's group memberships     | Yes           |
 
 4. Click **Add permissions**
 5. Click **Grant admin consent for \[Your Organization]** and confirm
@@ -76,7 +66,7 @@ Once registered, you will be redirected to the application overview page. Copy a
 Granting admin consent for `GroupMember.Read.All` requires Global Administrator or Privileged Role Administrator rights.
 {% endhint %}
 
----
+***
 
 ## Part 2: Azure AD Groups and Role Mapping
 
@@ -92,11 +82,11 @@ Sled uses Azure AD Security Groups to control access levels. This section explai
 
 ### Sled Roles
 
-| Role | Permissions |
-|------|------------|
-| **Admin** | Full access: settings, user management, edit data, read data, search |
-| **Editor** | Edit data, read data, search |
-| **Viewer** | Read-only: browse data and search (default for all SSO users) |
+| Role       | Permissions                                                          |
+| ---------- | -------------------------------------------------------------------- |
+| **Admin**  | Full access: settings, user management, edit data, read data, search |
+| **Editor** | Edit data, read data, search                                         |
+| **Viewer** | Read-only: browse data and search (default for all SSO users)        |
 
 ### Step 6: Create Security Groups (Optional)
 
@@ -108,10 +98,10 @@ This step is **optional**. Without any group configuration, all authenticated Az
 2. Click **New group**
 3. Create groups as needed:
 
-| Group Name | Group Type | Membership Type | Description |
-|------------|-----------|-----------------|-------------|
-| `Sled Admins` | Security | Assigned | Full administrative access to Sled |
-| `Sled Editors` | Security | Assigned | Can edit and review data in Sled |
+| Group Name     | Group Type | Membership Type | Description                        |
+| -------------- | ---------- | --------------- | ---------------------------------- |
+| `Sled Admins`  | Security   | Assigned        | Full administrative access to Sled |
+| `Sled Editors` | Security   | Assigned        | Can edit and review data in Sled   |
 
 4. For each group, open the group and copy the **Object ID** from the Overview page
 
@@ -131,16 +121,10 @@ To limit which users can use Sled SSO (rather than allowing all users in your te
 1. In Azure, go to **Enterprise applications** and find your Sled application
 2. Go to **Manage** > **Users and Groups**
 3. Click **Add user/group** and assign the users or groups that should have access
-
-<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
-
 4. Go to **Manage** > **Properties**
-
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
-
 5. Set **Assignment required?** to **Yes** - now only explicitly assigned users can authenticate
 
----
+***
 
 ## Part 3: Sled Configuration
 
@@ -151,14 +135,14 @@ To limit which users can use Sled SSO (rather than allowing all users in your te
 3. Scroll to the **Azure SSO Configuration** section
 4. Fill in the fields:
 
-| Field | Value |
-|-------|-------|
-| **Tenant ID** | Directory (tenant) ID from Step 3 |
-| **Client ID** | Application (client) ID from Step 3 |
-| **Client Secret** | Secret value from Step 4 |
-| **Redirect URI** | `https://{your-sled-domain}/api/auth/azure/callback` |
-| **Enable Azure SSO** | Enabled |
-| **Enable Password Login** | Enabled (recommended during initial setup) |
+| Field                     | Value                                                |
+| ------------------------- | ---------------------------------------------------- |
+| **Tenant ID**             | Directory (tenant) ID from Step 3                    |
+| **Client ID**             | Application (client) ID from Step 3                  |
+| **Client Secret**         | Secret value from Step 4                             |
+| **Redirect URI**          | `https://{your-sled-domain}/api/auth/azure/callback` |
+| **Enable Azure SSO**      | Enabled                                              |
+| **Enable Password Login** | Enabled (recommended during initial setup)           |
 
 5. Click **Save Configuration**
 
@@ -176,19 +160,20 @@ After enabling Azure SSO, the **Azure AD Group Mappings** section appears below 
 
 #### Example Configuration
 
-| Azure AD Group | Group Object ID | Sled Role |
-|----------------|-----------------|-----------|
-| Sled Admins | `a1b2c3d4-e5f6-...` | Admin |
-| Data Engineers | `e5f6a7b8-c9d0-...` | Editor |
-| BI Analysts | `1a2b3c4d-5e6f-...` | Editor |
+| Azure AD Group | Group Object ID     | Sled Role |
+| -------------- | ------------------- | --------- |
+| Sled Admins    | `a1b2c3d4-e5f6-...` | Admin     |
+| Data Engineers | `e5f6a7b8-c9d0-...` | Editor    |
+| BI Analysts    | `1a2b3c4d-5e6f-...` | Editor    |
 
 With this setup:
+
 * Members of "Sled Admins" get **Admin** access
 * Members of "Data Engineers" or "BI Analysts" get **Editor** access
 * All other authenticated Azure AD users get **Viewer** access
 * A user in both an Admin and an Editor group gets **Admin** (highest privilege wins)
 
----
+***
 
 ## Testing
 
@@ -206,7 +191,7 @@ With this setup:
 2. Log in with a user in a mapped Editor group - verify they have Editor access
 3. Log in with a user not in any mapped group - verify they have Viewer access
 
----
+***
 
 ## Troubleshooting
 
@@ -232,7 +217,7 @@ The redirect URI in Azure does not match the one configured in Sled. Verify both
 
 Azure AD group changes can take a few minutes to propagate. Have the user wait a few minutes, then log out and log in again. Sled fetches group memberships fresh on every login.
 
----
+***
 
 ## Optional: Disable Password Login
 
@@ -246,7 +231,7 @@ Once SSO is working reliably:
 Keep at least one admin account with password access as backup before disabling password login.
 {% endhint %}
 
----
+***
 
 ## FAQ
 
