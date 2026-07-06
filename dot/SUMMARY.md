@@ -57,6 +57,7 @@
   * [Steep](dot/integrations/semantic-layers/steep.md)
 * [Code Repositories](dot/integrations/code-repositories/README.md)
   * [dbt Core](dot/integrations/code-repositories/dbt-core.md)
+  * [dbt Exposures](dot/integrations/code-repositories/dbt-exposures.md)
 * [BI Tools](dot/integrations/bi-tools/README.md)
   * [Tableau](dot/integrations/bi-tools/tableau.md)
   * [Metabase](dot/integrations/bi-tools/metabase.md)
