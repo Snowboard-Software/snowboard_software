@@ -27,7 +27,7 @@ Connect your [Slite](https://slite.com) workspace so Dot can answer questions fr
 2. Paste your API key into the **API key** field.
 3. Click **Connect Slite**. Dot validates the key against your workspace and confirms the connection.
 
-<figure><img src="../../../.gitbook/assets/slite-connected.png" alt="A connected Slite workspace in Dot"><figcaption><p>Once connected, the card shows your Slite workspace name</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/slite-connect-form.png" alt="The Slite connection form with an API key field"><figcaption><p>Paste your Slite API key and click Connect Slite</p></figcaption></figure>
 
 ## What Dot can do
 
@@ -40,6 +40,8 @@ Each action is a separately governed permission under **Model → Skills → Sli
 | `slite.notes.read` | Reading a note's content and navigating the note tree. |
 
 To turn one off, open **Model → Skills**, expand the **Slite** skill, and toggle the permission. A disabled action is refused with a message naming the permission an admin must re-enable.
+
+<figure><img src="../../../.gitbook/assets/slite-skill-permissions.png" alt="Slite's three permissions toggled under Model → Skills"><figcaption><p>Slite's actions, each independently toggleable under Model → Skills</p></figcaption></figure>
 
 ## Limitations
 

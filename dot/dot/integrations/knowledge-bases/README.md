@@ -23,9 +23,9 @@ These are the connectors that answer the original ask behind this whole category
 
 **1. Connect once, in Settings.** Each connector is a card under **Settings → Connections**, in the group the app labels **Context Connectors**. You supply an API token (or, for Notion, authorize via OAuth) and Dot validates it.
 
-<figure><img src="../../../.gitbook/assets/context-connectors-overview.png" alt="The Context Connectors group in Settings → Connections"><figcaption><p>Knowledge-base connectors live under "Context Connectors" in Settings → Connections</p></figcaption></figure>
+**2. Govern each action, in Model → Skills.** Once connected, the connector appears as a **skill** under **Model → Skills**. Expand **Configure permissions** to see each action as its own toggle — an admin turns individual actions on or off. A disabled action is refused with a message naming the exact permission to flip, so nothing runs that you haven't allowed.
 
-**2. Govern each action, in Model → Skills.** Once connected, the connector appears as a **skill** under **Model → Skills**. Expand it to see per-action permissions — each individually toggleable by an admin. A disabled action is refused with a message naming the exact permission to flip, so nothing runs that you haven't allowed.
+<figure><img src="../../../.gitbook/assets/slite-skill-permissions.png" alt="Per-action permission toggles for a connector under Model → Skills"><figcaption><p>Each connector's actions are individually governed under Model → Skills (Slite shown)</p></figcaption></figure>
 
 **3. Dot uses it at query time.** Unlike a database sync, these connectors don't copy your content into Dot. Dot's agents reach into the source *when a question needs it* — searching, reading, or asking against the live workspace. This keeps answers current and means access always reflects the connected account's own permissions in the source tool.
 
