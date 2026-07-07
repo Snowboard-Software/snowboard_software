@@ -6,6 +6,10 @@ description: Context is all you need
 
 Notes allow you to add useful context to Dot or to provide instructions on how to behave in certain situations. Helping business users with their data questions or creating an impactful churn analysis requires Dot to understand more about your business and your information architecture than can be found on the internet (usually).
 
+{% hint style="info" %}
+**Edit safely with environments.** Notes can be created and edited inside an [Environment](../environments.md) — an isolated copy of the model — so you can preview how they change Dot's answers before merging to production.
+{% endhint %}
+
 Here are four types of notes that we found to be most useful:
 
 ## Organization Notes

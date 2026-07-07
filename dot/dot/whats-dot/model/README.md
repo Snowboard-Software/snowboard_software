@@ -10,6 +10,10 @@ Every good analysis is not just based on writing SQL, but on understanding how y
 * What does each table, column and row represent?
 * What are existing analyses that can be build upon?
 
+{% hint style="info" %}
+**Edit safely with environments.** Every change here — selecting data, writing descriptions, defining relationships — can be made inside an [Environment](../environments.md): an isolated copy of the model where you preview changes against real questions, then merge to production when you're ready.
+{% endhint %}
+
 
 
 ## Select Data 
