@@ -6,15 +6,14 @@ description: What Agent Compute Credits are and how Dot measures usage
 
 Dot usage is measured in Agent Compute Credits (ACCs). An ACC reflects the amount of work Dot does to answer a request. A quick lookup uses very little. A complex, multi step investigation uses more.
 
-You purchase a pool of ACCs, and each request draws from that pool based on the work it takes to answer.
-
 ### What consumes ACCs
 
 When Dot answers a question, it does real work behind the scenes. The main drivers of cost are:
 
-- Database queries it runs
-- Reasoning steps it takes
-- Visualizations it builds
+- The database queries it runs
+- The reasoning steps it takes
+- The computation to process and analyze the data
+- The visualizations it builds
 - Web searches, when they are enabled
 
 The more steps a question needs, and the more data Dot has to explore, the more ACCs it uses.
@@ -31,7 +30,15 @@ The figures below are averages for orientation, not fixed prices. Actual usage d
 
 ### Why the same question can vary
 
-Dot is built on large language models, which are not deterministic. The same question can take a slightly different path from one day to the next, so it might use 2 ACCs today and 5 tomorrow. Treat the numbers above as a guide and plan with a small buffer.
+The cost of a question is not fixed. Dot is developed continuously, the underlying large language models are updated regularly, and the context Dot works with keeps changing. As a result, the same question can take a different path and a different amount of work over time, whether you ask it twice on the same day or weeks apart. It might use 1.5 credits today, 1.7 tomorrow, and 0.9 the day after. The numbers here are a guide, not a guarantee.
+
+### How to think about total usage
+
+Total credit consumption is roughly the product of three things:
+
+**Number of users × tasks per user × complexity per task**
+
+Each factor pushes usage up on its own. When all three grow together, total consumption can climb quickly over time, so it helps to keep an eye on all three.
 
 ### Keeping usage predictable
 
