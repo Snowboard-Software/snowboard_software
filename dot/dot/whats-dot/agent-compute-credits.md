@@ -14,7 +14,7 @@ When Dot answers a question, it does real work behind the scenes. The main drive
 - The reasoning steps it takes
 - The computation to process and analyze the data
 - The visualizations it builds
-- Web searches, when they are enabled
+- The web searches it runs
 
 The more steps a question needs, and the more data Dot has to explore, the more ACCs it uses.
 
