@@ -158,6 +158,10 @@ The export is designed to never break your dbt project:
 
 Exposures tell dbt what Dot depends on. The reverse channel lets dbt (and other tools) tell **Dot** when that upstream data is currently failing — so viewers see it in context.
 
+{% hint style="info" %}
+Incident ingest writes org-wide dashboard indicators, so `POST /api/dbt/run_results` and `POST /api/quality/incidents` require an **admin API token**. Modeler and viewer tokens are rejected.
+{% endhint %}
+
 After a `dbt build`, send Dot your run results together with the manifest. Dot opens incidents for failing models and tests and stale sources, and clears them automatically when they pass again or leave the manifest:
 
 ```bash
