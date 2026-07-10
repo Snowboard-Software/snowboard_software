@@ -60,3 +60,29 @@ If your organization uses a network policy to manage Snowflake access, Dot will 
 
 * `5.78.211.110`
 * `178.105.217.177`<br>
+
+
+## Sync Snowflake Roles (optional)
+
+Snowflake can stay the single source of truth for who sees what. The Snowflake connection has two role-sync toggles (both off by default, under **Settings → Connections → Snowflake**):
+
+### Sync Snowflake Roles — tables
+
+On every sync, each table is tagged with the Snowflake roles that can `SELECT` it (from `SHOW GRANTS`), as Dot groups. Only users in a matching group can see and query the table through Dot.
+
+Note: this overwrites the table's existing groups on every sync — Snowflake owns table access from then on.
+
+### Sync Snowflake Roles to Users
+
+The counterpart for people: on every sync, Snowflake users are matched to Dot users by email (the user's `email` or `login_name`), and their granted roles are assigned as Dot groups — using the same group names as the table side, so role-gated tables and role-granted users line up automatically. When someone changes teams in Snowflake, their Dot access follows on the next sync.
+
+* Groups assigned by the sync are tracked separately: a revoked Snowflake role is removed again, while groups you assigned manually in Dot are never touched.
+* Disabled Snowflake users are skipped.
+
+Listing users requires extra visibility for the connection role:
+
+```sql
+grant manage grants on account to role dot_role;
+```
+
+Without it, the user sync skips safely (with a hint in the sync log) and no user is modified — table syncing is unaffected.
