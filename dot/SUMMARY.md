@@ -50,6 +50,7 @@
   * [Oracle Database](dot/integrations/databases/oracle.md)
   * [Motherduck & DuckDB](dot/integrations/databases/motherduck-and-duckdb.md)
   * [SAP HANA](dot/integrations/databases/sap-hana.md)
+* [Data Replication](dot/integrations/data-replication.md)
 * [Semantic Layers](dot/integrations/semantic-layers/README.md)
   * [dbt Semantic Layer](dot/integrations/semantic-layers/dbt-semantic-layer.md)
   * [PowerBI Semantic Layer](dot/integrations/semantic-layers/powerbi-semantic-layer.md)
