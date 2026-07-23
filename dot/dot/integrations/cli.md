@@ -206,6 +206,64 @@ Submit feedback or feature requests directly from the terminal:
 dot wish "I want better date filtering"
 ```
 
+### Apps as code
+
+Dashboards ("apps") are code too. Author `.app` files locally, push them to Dot to build and activate, and manage them through your GitHub repo like any other source. Pushed apps land in the `apps/` folder that [GitHub Sync](../../whats-dot/version-control/github.md) mirrors to your repo.
+
+The loop:
+
+1. **Author** or edit an `.app` file locally.
+2. **`dot apps push <id>`** — Dot builds and activates the app, then writes an `.app.lock` (the compiled SQL) next to it.
+3. **Sync** — your `apps/` folder pushes to your connected GitHub repo.
+4. **`dot apps pr`** — commit the app files and open a pull request.
+
+Common flow:
+
+```bash
+dot apps pull <id>       # Fetch the .app source + .app.lock
+dot apps push <id>       # Build + activate; writes the .app.lock
+dot apps status <id>     # Lock freshness (non-zero exit when stale)
+dot apps preview <id>    # Print the preview URL
+dot apps pr              # Commit app files, push, open a PR
+```
+
+`dot apps deploy` is an alias for `dot apps pr`.
+
+Advanced:
+
+```bash
+dot apps validate <id>                 # Validate locks against the model
+dot apps bless <id>                    # Accept hand-edited compiled SQL
+dot apps resolve <id>                  # Recompile stale queries
+dot apps refactor <id> --rename old:new  # Rewrite locked SQL (sqlglot)
+dot apps deps <table[.column]>         # Show apps that depend on a table/column
+dot apps plan                          # Derive dbt schema mapping and renames
+```
+
+{% hint style="info" %}
+`dot apps status` exits non-zero when a lock is stale, so you can gate CI on it. Add `--json` for machine-readable output.
+{% endhint %}
+
+### Environments
+
+Environments let you branch and test model changes safely before they reach Production — each one is a git branch of your model that you can edit, diff, and merge back.
+
+```bash
+dot env list             # Production + all environments
+dot env current          # The active environment
+dot env show <name>      # Environment details
+dot env create <name>    # New environment (--from <id|name> to branch off another)
+dot env use <name>       # Set the active environment (scopes later commands)
+dot env diff <name>      # Changed files vs Production
+dot env merge <name>     # Merge changes back into Production
+```
+
+`dot env use` saves your choice locally; every later command runs against that environment until you `dot env unset`. Further verbs — `rename`, `delete`, `unset`, `conflicts` (predict merge conflicts), and `target` / `sync-target` (per-connection dbt-style overrides) — are covered by:
+
+```bash
+dot env --help
+```
+
 ### Training Dot effectively
 
 The biggest leverage in Dot accuracy comes from good context management. Here's the recommended approach:

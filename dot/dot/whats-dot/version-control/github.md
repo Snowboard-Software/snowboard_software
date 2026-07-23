@@ -27,13 +27,19 @@ data_sources/
 ├── active/          # Active table documentation
 └── inactive/        # Archived table documentation
 
+apps/                # Dashboards as code
+├── _shared/         # Org-wide dashboards (.app sources + .app.lock compiled sidecars)
+└── <email>/         # Per-user dashboards
+
+skills/              # Custom skills (skills/<name>/SKILL.md plus supporting files)
+
 relationships.yaml   # Table relationships
 ```
 
-All files use Markdown (`.md`) with YAML frontmatter, or plain YAML.
+Context files use Markdown (`.md`) with YAML frontmatter, or plain YAML. Dashboards sync as `.app` sources plus their `.app.lock` compiled sidecars, and custom skills as their `SKILL.md` and supporting text files.
 
 {% hint style="info" %}
-Only context files are synced. Database connections, user settings, and chat history remain in Dot.
+Context files, dashboards (apps), and custom skills are synced. Database connections, user settings, and chat history remain in Dot.
 {% endhint %}
 
 ## Setting Up GitHub Sync
@@ -70,7 +76,7 @@ Both "All repositories" and "Selected repositories" work. If you choose "Selecte
 **Create new repository**: Enter a name, choose a branch, and Dot will create a private repo with all your existing context. This option requires the GitHub App to be installed with "All repositories" access.
 
 {% hint style="info" %}
-If your repository already has files (like a README), Dot will preserve them. Dot only manages files in the `notes/`, `data_sources/`, and `relationships.yaml` paths.
+If your repository already has files (like a README), Dot will preserve them. Dot only manages files in the `notes/`, `data_sources/`, `apps/`, and `skills/` paths, plus `relationships.yaml`.
 {% endhint %}
 
 ### Step 3: Enable Auto-Sync
@@ -92,7 +98,7 @@ Toggle **Auto-sync enabled** to automatically push changes when you update conte
 ## Limitations
 
 - **One repository per workspace**, syncing with a single branch
-- **Markdown and YAML only** in the specified directories
+- **Text files only** in the managed paths — Markdown/YAML context, `.app` dashboard sources with their `.app.lock` sidecars, and skill files (binary or non-UTF-8 assets are skipped)
 - **Last write wins** for simultaneous edits (no conflict resolution UI)
 
 **Not synced**: Database credentials, user accounts, chat history, scheduled reports, organization settings.
@@ -103,7 +109,7 @@ Toggle **Auto-sync enabled** to automatically push changes when you update conte
 |-------|----------|
 | Sync not working | Check Settings > GitHub for connection status and auto-sync toggle |
 | Permission errors | Verify the GitHub App has access to your repo in GitHub Settings > Applications |
-| Files not appearing | Ensure files are in `notes/`, `data_sources/`, or `relationships.yaml` with correct extensions |
+| Files not appearing | Ensure files are in `notes/`, `data_sources/`, `apps/`, `skills/`, or `relationships.yaml` with correct extensions |
 | Can't create repository | This requires "All repositories" access. Create the repo manually on GitHub and select it instead |
 | Sync disabled unexpectedly | If you remove a repository from the GitHub App's access, Dot automatically disables sync. Re-add the repo and re-enable sync in Settings |
 
