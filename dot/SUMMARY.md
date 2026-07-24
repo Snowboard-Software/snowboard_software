@@ -5,11 +5,9 @@
 
 ## Using Dot
 
-* [Chat](dot/whats-dot/chat.md)
-* [Deep Analysis](dot/whats-dot/deep-analysis.md)
-* [Apps](dot/whats-dot/apps/README.md)
+* [Analyze](dot/whats-dot/analyze.md)
+* [Build apps](dot/whats-dot/apps/README.md)
 * [Scheduling](dot/whats-dot/scheduling.md)
-* [Agent Compute Credits](dot/whats-dot/agent-compute-credits.md)
 
 ## Train Dot
 
@@ -24,6 +22,7 @@
 * [User Feedback](dot/whats-dot/user-feedback.md)
 * [Workspaces](dot/whats-dot/workspaces.md)
 * [Custom Skills](dot/whats-dot/custom-skills.md)
+* [Agent Compute Credits](dot/whats-dot/agent-compute-credits.md)
 
 ## Developers
 

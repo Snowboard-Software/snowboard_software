@@ -4,7 +4,7 @@ description: >-
   presentations that stay connected to your data.
 ---
 
-# Apps
+# Build apps
 
 A chat answer is a snapshot in time. A Dot **app** turns that analysis into a **living data product**: you ask for it in plain English, Dot builds it, and it stays connected to your data — fast, interactive, shareable, and traceable to the source.
 
