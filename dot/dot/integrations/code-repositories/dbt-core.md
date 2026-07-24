@@ -23,7 +23,7 @@ Go to **Settings** > **Connections** and scroll to find **dbt Repository**.
 
 1. Click **Connect GitHub** and install the Dot GitHub App on your organization
 2. Select your **repository** from the dropdown
-3. Set the **branch** (defaults to `main`)
+3. Set the **branch** (leave blank for the repository's default branch)
 4. Select the **Linked Database Connection** -- this tells Dot which database the dbt models target
 5. Click **Connect**
 
@@ -32,7 +32,7 @@ Go to **Settings** > **Connections** and scroll to find **dbt Repository**.
 1. Click **Enter manually**
 2. Enter the **Repository URL** (e.g., `https://github.com/your-org/dbt-analytics`)
 3. Enter an **Access Token** (optional for public repos; for private repos, use a GitHub PAT with repo read access)
-4. Set the **branch** (defaults to `main`)
+4. Set the **branch** (leave blank for the repository's default branch)
 5. Select the **Linked Database Connection**
 6. Click **Connect**
 

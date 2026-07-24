@@ -11,7 +11,7 @@ To create a Sigma access token for Dot visit Sigma and log into your account. Us
 <figure><img src="../../../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
 
 1. Fill out the form with the Name and Owner. Make sure that the owner is an Administrator.
-2. Copy the Client ID and Secret and save it. This will be used to connect to Secoda.
+2. Copy the Client ID and Secret and save it. This will be used to connect Sigma to Dot.
 
 **Retrieve your Sigma host**
 

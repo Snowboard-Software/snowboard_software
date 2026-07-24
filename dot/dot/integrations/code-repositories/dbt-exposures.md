@@ -15,7 +15,7 @@ The payoff is **impact analysis**: before you change, rename, or deprecate a mod
 
 * A **dbt repository connected** to Dot (see [dbt Core](dbt-core.md)) — this is what lets Dot validate every `ref()` against your project's manifest.
 * **Dashboards enabled** for your workspace (exposures are derived from your shared Dot dashboards).
-* An **admin or modeler [API token](../../whats-dot/api/README.md)**. Viewer tokens are rejected with `401`.
+* An **admin or modeler [API token](../../whats-dot/api/README.md)**. Viewer tokens are rejected with `403`.
 {% endhint %}
 
 ## What Dot exports

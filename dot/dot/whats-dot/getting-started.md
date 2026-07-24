@@ -16,7 +16,7 @@ No code required—just permissions.
 
 <figure><img src="../../.gitbook/assets/connections-page.png" alt="Connect databases like Snowflake, BigQuery, Postgres, or semantic layers like dbt, Looker, and Power BI"><figcaption></figcaption></figure>
 
-[See all integrations →](../integrations/README.md)
+[See all integrations →](../integrations/databases/README.md)
 
 ---
 

@@ -26,8 +26,6 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
   * only show 'thinking' as progess when waiting for an answer
 * **hideNativeLinks=true**
   * will convert html links to javascript links, so users can't open a new tab accidentally
-* **hideChatToggle=true**
-  * hides the toggle to decide between chat and analysis mode
 * **hideFileUpload=true**
   * hides the file upload button in the chat input (default false)
 * **primaryColor=%23c700c7**
