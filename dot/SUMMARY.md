@@ -7,6 +7,7 @@
 
 * [Chat](dot/whats-dot/chat.md)
 * [Deep Analysis](dot/whats-dot/deep-analysis.md)
+* [Apps](dot/whats-dot/apps/README.md)
 * [Scheduling](dot/whats-dot/scheduling.md)
 * [Agent Compute Credits](dot/whats-dot/agent-compute-credits.md)
 
