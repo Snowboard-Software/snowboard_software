@@ -68,7 +68,13 @@ Click it once to verify the round-trip: Dot redirects you to your IdP, you authe
 
 ## How user provisioning works
 
-The first time a user signs in via Generic OIDC, Dot reads the `email` claim from the IdP's ID token and auto-provisions a new account if one doesn't already exist for your organization. Subsequent sign-ins from the same email reuse the same Dot user. New users are created with the default **Viewer** role — promote them to Editor or Admin from the **Users** tab as needed.
+The first time someone signs in through Generic OIDC, Dot reads the `email` claim from the ID token and creates an account for them if one doesn't exist yet. After that, sign-ins from the same email reuse the same account.
+
+What role a new person gets depends on one org setting. By default Dot makes new people admins. If you don't want that, turn off "Default new users to admin role" on the Users page before you invite anyone. New people then join as regular users instead. Dot has three roles, Admin, Modeler, and User, and you can change anyone's role later on the Users page. There is no Viewer or Editor role.
+
+{% hint style="warning" %}
+With SSO, anyone who can sign in through your identity provider can get a Dot account automatically. While "Default new users to admin role" is on, each of those people becomes an admin. Turn it off first if you want new sign-ins to be regular users.
+{% endhint %}
 
 Make sure your IdP releases the `email` and (ideally) `name` claims to Dot. Most IdPs include both in the default profile scope; if yours doesn't, add `email profile` to the requested scopes on the application you registered in step 2.
 

@@ -1,2 +1,0 @@
-# Qlik (planned)
-

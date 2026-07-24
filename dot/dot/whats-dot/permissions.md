@@ -9,7 +9,7 @@ description: permissive or restrictive, however you like it
 There are three roles that control what you can do in Dot:
 
 * **Admin** — Full access to settings, connections, users, billing, and model management.
-* **Modeler** — Can manage the data model, run evaluations, and view chat history. No access to settings, billing, or user management.
+* **Modeler** — Can manage the data model, run evaluations, and view chat history for their groups. No access to settings, billing, or user management. Admins can adjust what a modeler can do (see [Modeler permissions](#modeler-permissions) below).
 * **User** — Can chat and ask questions only.
 
 Roles are managed by admins on the Settings > Users page. Hover over the info icon next to the Role column to see a summary of each role.
@@ -28,6 +28,29 @@ Roles are managed by admins on the Settings > Users page. Hover over the info ic
 | Connections | Yes | — | — |
 | Billing | Yes | — | — |
 | User management | Yes | — | — |
+
+The Modeler row shows the defaults. That row isn't fixed, though. Admins can change what a modeler can do (see the next section). One thing worth calling out: a modeler's History only shows chats from people in groups they share, not everyone's chats, and admins can hide the History page from modelers entirely.
+
+## Modeler Permissions
+
+The Modeler role is a starting point, not a fixed set of rules. Admins shape it under Settings, then Advanced Settings, then Modeler Permissions.
+
+A few things are on by default, because modelers have always been able to do them. You can turn any of them off:
+
+* See and edit the Skills tab
+* See the History page (limited to their own groups)
+* Chat without restrictions
+
+Everything else is off by default. An admin can grant it when a modeler needs it:
+
+* Trigger and schedule connection syncs
+* Assign workspace users to groups
+* Merge changes to production
+* Review Root's proposals, meaning see them and merge or reject them
+* Revert version history to an earlier commit
+* Manage all apps, like an admin
+
+This way the role stays tight by default, and you hand out exactly the extra access a person needs. These settings are per workspace, so a modeler can have different access in different workspaces.
 
 ## Data Access Control
 
