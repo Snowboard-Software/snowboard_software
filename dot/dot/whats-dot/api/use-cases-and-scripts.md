@@ -245,9 +245,9 @@ page_url = f"{ATL_SITE}/pages/{PAGE_ID}"
 DOT_BASE = "https://eu.getdot.ai/api"   # or https://app.getdot.ai/api for US
 HEADERS  = {"API-KEY": os.getenv("DOT_API_KEY")}
 
-org  = requests.get(f"{DOT_BASE}/org", headers=HEADERS).json()   # org has id & note
-note = org.get("note") or ""
-org_id = org["id"]
+notes    = requests.get(f"{DOT_BASE}/org_notes", headers=HEADERS).json()
+existing = next((n for n in notes if n.get("title") == "Confluence FAQ"), None)
+note     = existing.get("note", "") if existing else ""
 
 # ---------- 3)  insert / replace the <faq> block ------------------------------
 new_faq = f'<faq confluence_page_url="{page_url}">\n\n{md}\n\n</faq>'
@@ -255,8 +255,12 @@ note    = re.sub(r"<faq[^>]*>.*?</faq>", new_faq, note, flags=re.I|re.S) \
           if "<faq" in note.lower() else f"{note.rstrip()}\n\n{new_faq}"
 
 # ---------- 4)  Dot – save the updated note -----------------------------------
-payload = {"org_id": org_id, "note": note}
-requests.post(f"{DOT_BASE}/save_note", headers=HEADERS, json=payload).raise_for_status()
+if existing:
+    requests.put(f"{DOT_BASE}/org_notes/{existing['id']}", headers=HEADERS,
+                 json={"title": "Confluence FAQ", "note": note}).raise_for_status()
+else:
+    requests.post(f"{DOT_BASE}/org_notes", headers=HEADERS,
+                  json={"title": "Confluence FAQ", "note": note}).raise_for_status()
 
 print("✅  org‑note updated")
 ```

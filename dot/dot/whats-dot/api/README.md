@@ -52,7 +52,7 @@ For the following endpoints you can also use a URL based authentication:
 Call the endpoint only via url:
 
 ```bash
-curl "https://{region}.getdot.ai/api/sync/{connection_type}/{connection_type}" \
+curl "https://{region}.getdot.ai/api/sync/{connection_type}/{connection_id}" \
      "?user_id={user}&api_token={api_token}"
 ```
 

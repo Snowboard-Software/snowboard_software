@@ -42,7 +42,7 @@ You can click suggest to automatically generate documentation and fetch sample v
 
 Joining data across different tables is really powerful because it allows us to answer much more broad questions about our business. However, joining data correctly is requires a good understanding of the relationships between your tables.
 
-To ensure Dot avoid join [fan-outs or the chasm trap](https://chat.openai.com/share/790888e3-3ff5-4004-9b58-e04947322757), you can predefine relationships. 
+To ensure Dot avoids join fan-outs or the chasm trap, you can predefine relationships. 
 
 For each table, you would specify the foreign key references. 
 

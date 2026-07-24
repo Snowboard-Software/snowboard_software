@@ -10,7 +10,7 @@ To keep Dot in sync with your production environment, it is recommended to trigg
 
 ```javascript
 // URL endpoint
-https://{region}.getdot.ai/api/sync/{connection_type}/{connection_type}?user_id={user}&api_token={api_token}
+https://{region}.getdot.ai/api/sync/{connection_type}/{connection_id}?user_id={user}&api_token={api_token}
 ```
 
 * **Region**: `app` (US)  or `eu` (EU)

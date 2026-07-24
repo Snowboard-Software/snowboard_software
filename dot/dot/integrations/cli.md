@@ -255,7 +255,7 @@ dot env show <name>      # Environment details
 dot env create <name>    # New environment (--from <id|name> to branch off another)
 dot env use <name>       # Set the active environment (scopes later commands)
 dot env diff <name>      # Changed files vs Production
-dot env merge <name>     # Merge changes back into Production
+dot env merge <name> --confirm   # Merge changes back into Production
 ```
 
 `dot env use` saves your choice locally; every later command runs against that environment until you `dot env unset`. Further verbs — `rename`, `delete`, `unset`, `conflicts` (predict merge conflicts), and `target` / `sync-target` (per-connection dbt-style overrides) — are covered by:
