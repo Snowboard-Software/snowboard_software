@@ -186,8 +186,8 @@ ChatGPT supports token-based auth only — see [Using an API token](#using-an-ap
 
 * **Name**: Ask\_dot
 * **Description**: Dot AI-powered data analysis platform. \<Add additional info about the data you have connected and when to use it>
-* **MCP Server URL**: the ChatGPT-specific URL from Dot's Integrations page
-* **Authentication**: No Auth (the token is carried in the URL)
+* **MCP Server URL**: the URL from Dot's Integrations page
+* **Authentication**: your MCP token, sent in an `X-API-KEY` header (see [Using an API token](#using-an-api-token))
 
 ### Raycast AI
 
@@ -202,7 +202,7 @@ Raycast uses token-based auth — see [Using an API token](#using-an-api-token) 
 
 ### Other MCP clients
 
-Most MCP clients support URL-based configuration. If your client supports OAuth / MCP authorization, use the plain Dot MCP URL — that's it. Otherwise, follow [Using an API token](#using-an-api-token) and use the token-appended URL.
+Most MCP clients support URL-based configuration. If your client supports OAuth / MCP authorization, use the plain Dot MCP URL — that's it. Otherwise, follow [Using an API token](#using-an-api-token) and send the token in a header.
 
 ### Using an API token
 
@@ -219,18 +219,16 @@ Use a token when your client doesn't support OAuth (ChatGPT, Raycast, generic MC
 Depending on how your client accepts credentials, use one of these:
 
 {% tabs %}
-{% tab title="Token-appended URL" %}
-For clients that take a single URL field, paste your Dot MCP URL with the token on the end:
+{% tab title="Header" %}
+Send the token in an `X-API-KEY` header. That's how token auth works now, so use it anywhere your client lets you set request headers.
 
-```
-https://app.getdot.ai/ai/mcp?token=YOUR_TOKEN
-```
-
-This works for Claude Code, Windsurf, ChatGPT, Raycast, and most generic MCP clients.
+For Claude Code, pass the header on the add command:
 
 ```bash
-claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp?token=YOUR_TOKEN
+claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp --header "X-API-KEY: YOUR_TOKEN"
 ```
+
+If your client only takes a plain URL and can't set headers, use OAuth instead (see the top of this page). Putting the token in the URL is no longer supported.
 {% endtab %}
 
 {% tab title="JSON config (Cursor, etc.)" %}
@@ -287,7 +285,7 @@ Once configured, you can ask your AI assistant questions about your data:
 * OAuth uses industry-standard **OAuth 2.1 with PKCE** for secure authorization
 * Access tokens expire after **1 hour** and are automatically refreshed
 * Refresh tokens are valid for **1 year** — after that, re-authentication is required
-* You can revoke OAuth access anytime by changing your Dot password, which invalidates all sessions
+* To end MCP access, disconnect or remove Dot in your client, which revokes that session, or delete your MCP token in Settings. Note that changing your Dot password does not revoke existing MCP connections on its own
 * The consent page shows exactly which permissions the client is requesting before you approve
 
 #### Data access

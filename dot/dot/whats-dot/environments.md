@@ -80,10 +80,14 @@ When the work is ready:
 
 <figure><img src="../../.gitbook/assets/environment-diff.png" alt="Environment diff"><figcaption><p>The diff shows exactly which documentation files changed before you merge</p></figcaption></figure>
 
-Admins can always merge. Modelers need the **Can merge environments to production** permission, which admins grant under **Settings → Advanced Settings → Modeler Permissions**.
+Admins can always merge. Modelers need the "Can merge changes to production" permission, which admins grant under Settings, then Advanced Settings, then Modeler Permissions.
+
+### Promote with a pull request instead
+
+If you connect a Git provider and want changes to go through review, you don't have to merge inside Dot. You can open a pull request instead. On the environment, click **Open pull request**, and Dot opens a PR from the environment's branch into your production branch on GitHub or GitLab. Your team reviews the diff there and merges when it's ready, and Dot picks up the change. Anyone can open a pull request. Merging to production is the part that needs the permission.
 
 {% hint style="info" %}
-If you use [Version Control](version-control/README.md), environment branches live in the same repository as production (`env-<slug>` branches), so you can inspect or review them in GitHub/GitLab too.
+This works when Dot is mirroring environments to Git, which it does by default. Each lasting environment gets its own branch in the same repository as production, named `dot/env-<slug>`. You can turn this off with the "Mirror environments to Git" toggle under Settings, then Version Control. The throwaway environments Root creates for quick fixes aren't mirrored.
 {% endhint %}
 
 ## For coding agents: CLI & API

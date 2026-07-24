@@ -97,7 +97,7 @@ Toggle **Auto-sync enabled** to automatically push changes when you update conte
 
 ## Limitations
 
-- **One repository per workspace**, syncing with a single branch
+- **One repository per workspace.** Dot syncs your production branch. If you use [environments](../environments.md) and leave environment mirroring on, Dot also pushes a branch for each environment, named `dot/env-<slug>`, so you can review changes as pull requests
 - **Text files only** in the managed paths — Markdown/YAML context, `.app` dashboard sources with their `.app.lock` sidecars, and skill files (binary or non-UTF-8 assets are skipped)
 - **Last write wins** for simultaneous edits (no conflict resolution UI)
 

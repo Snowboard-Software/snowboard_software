@@ -84,19 +84,19 @@ Example: A daily pipeline report with a work gate that skips if the ETL hasn't f
 
 ---
 
-### Full Analysis Delivery
+### Full analysis delivery
 
-By default, scheduled reports deliver an executive summary PDF. Admins can enable **full analysis delivery** to send the complete report — text, charts, tables, and files — directly in the email or message.
+By default a scheduled report sends a short executive summary. If you'd rather send the whole thing, with all the charts, tables, and files, turn on "Include full analysis" when you set up the schedule.
 
-**To enable:** Go to **Settings → Modules** and toggle **Send full analysis in scheduled reports**.
+This is a per-schedule choice. You can send the full report for one schedule and keep another as a short summary. The toggle sits in the schedule dialog, next to where you pick the channel and recipients, and you can change it later by opening the schedule again.
 
-This applies to all schedules in your organization. You can toggle it anytime without recreating schedules.
+Here's what each channel sends either way:
 
-| Channel | Default | Full Analysis |
-|---------|---------|---------------|
-| **Email** | Summary PDF | Full report with charts and data |
-| **Slack** | Summary message | Complete analysis with visualizations |
-| **Teams** | Summary card | Full card with charts and PDF download |
+| Channel | Summary (default) | Full analysis |
+|---------|-------------------|---------------|
+| Email | Summary PDF | Full report with charts and data |
+| Slack | Summary message | Complete analysis with charts |
+| Teams | Summary card | Full card with charts and a PDF |
 
 ---
 

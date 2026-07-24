@@ -16,4 +16,6 @@ For current per-plan credit allowances and rates, see the [Dot pricing page](htt
 
 Admins can cap how many ACCs a single user or a group can consume, so spend stays predictable and no one user draws down the pool unexpectedly. You configure these limits in Dot's settings.
 
+There's also a built-in guardrail for single answers. Every now and then a hard question makes Dot do a lot of work at once. So this doesn't quietly run up a big bill, Dot pauses partway through and asks whether to keep going once an answer passes a set amount of credits, about 30 by default. You'll see this in the app, and in Slack, Teams, and email. It's on for everyone out of the box, and admins can raise the limit or switch it off.
+
 You can also keep Dot focused with a note in its context — for example, to answer only questions about your business data and politely decline off-topic requests. This improves answers and saves ACCs, because Dot declines early instead of doing the work.

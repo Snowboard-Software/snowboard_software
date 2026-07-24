@@ -468,32 +468,23 @@ Custom skills appear as natural extensions of Dot's capabilities. Users simply a
 
 ### **Creating Custom Skills**
 
-Admins create and manage skills through the UI.
+Skills live on the Skills page. Open the Model page and go to the Skills tab, or go straight to `/skills`.
 
-Navigate to the model page → skill tab (/skills page) and you will find the section to add custom skills.
+A skill is mostly a set of written instructions. You describe, in plain words, what the skill does and when Dot should use it, and Dot follows those instructions the same way it follows your notes. If the skill needs to run code, you add a Python script next to the instructions.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+To add one, click **Add skill** and fill in:
 
-Here you can define the following:
+* A short name, for example `add_issue_to_jira`.
+* A description of what it does and when to use it. Be specific. This is what helps Dot pick the right skill for a question.
+* The instructions, written as plain markdown. Explain the steps, mention any script Dot should run, and call out common mistakes so it avoids them.
+* Any Python scripts the skill needs.
+* Secrets, like API keys, stored as named environment variables. Dot passes them in when the skill runs, so nothing sensitive sits in the instructions.
 
-1. **Name**: Name of the custom skill. Be descriptive as it will help Dot use the skill more effectively (e.g., add\_issue\_to\_jira). Limited to alphanumeric characters, underscores, and hyphens (maximum 128 characters).
-2. **Description**: Explain what the skill does and when to use it—this helps Dot select the appropriate skill for user queries. Be detailed: add all information that a developer would need to use this function. If there are common mistakes that Dot might make when using the skill, mention them here.
-3. **Parameters**: Define the inputs your function requires. Remember that Dot will decide all these parameters when calling this function. Keep them minimal and simple. If you have static values (API endpoints, hard-coded params), define them as variables.
-   * **Types**: `str`, `number`, `bool`, `dataframe`. Note that if the type is dataframe, the skill can only be used in Agentic mode.
-4. **Code**: Your Python function. Parameters are passed as global variables at runtime to this script. Use print(variable) to pass data back to Dot.
-5. **Secrets**: Encrypted storage for API keys and credentials.
-6. **Groups**: Control which user groups can access this skill.
-7. **Active**: Toggle to enable or disable the skill.
+Two toggles control how a skill behaves. **Active** turns it on or off. **Network** decides whether the script can reach the internet, and it's off by default, so a skill can't make outside calls unless you allow it. A skill that talks to a service like Jira or Notion needs it on. You can also limit a skill to certain user groups if not everyone should use it.
 
-Use the **Test** button to validate your skill with sample data before saving.
+### Install a ready-made skill
 
-### Custom Skills in Normal Chat vs Agentic Mode
-
-If any of the input parameters for the custom skill is a `dataframe` - the skill can only be used in agentic mode.
-
-What this means in practice is that it is better to reserve complex tools like data prediction or data manipulation tools for the agentic mode.
-
-The key difference: In Deep Analysis mode, Dot can chain multiple operations together, using output from your skill as input for further analysis. Skills become building blocks in a larger analytical workflow.
+You don't have to write everything yourself. The Skills page has a small marketplace of prebuilt skills you can add with one click, including skills for working with PDF, Word, Excel, and PowerPoint files. You can also install a skill from a link someone shares with you. Under the hood every skill is just a `SKILL.md` file plus any supporting scripts, so you can download one, adjust it, and upload it again.
 
 ### **Technical Architecture**
 
@@ -505,13 +496,7 @@ The key difference: In Deep Analysis mode, Dot can chain multiple operations tog
 
 #### **Available Packages**
 
-Pre-installed in the execution environment:
-
-* `pandas` - Data manipulation and analysis
-* `numpy` - Numerical computing
-*   `requests` - HTTP requests
-
-    If you need additional packages, please contact us and we will be happy to assist.
+Common data packages come pre-installed, including `pandas`, `numpy`, `requests`, `scikit-learn`, `xgboost`, `prophet`, `pyarrow`, `python-pptx`, and `python-dotenv`. If you need something else, get in touch and we'll help.
 
 ### Best Practices
 

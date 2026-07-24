@@ -10,7 +10,7 @@ Root is an AI agent that helps you build, maintain, and evolve your organization
 
 **Why this matters**: Building a comprehensive knowledge base manually takes months. Root accelerates this by extracting business logic from your existing systems and learning from how your team actually uses data.
 
-Root also learns on its own. When Dot spots something worth remembering during a conversation — a corrected metric, a renamed table, a missing definition — it sends a proposal to Root. An admin reviews it, and if it looks right, merges it with one click. Dot gets smarter every day, and humans stay in control.
+Root also learns on its own. When Dot spots something worth remembering during a conversation, like a corrected metric, a renamed table, or a missing definition, it sends a proposal to Root. Someone reviews it and merges it with one click if it looks right. That's an admin by default, and you can let modelers review proposals too. Dot gets smarter every day, and people stay in control.
 
 ---
 
@@ -158,7 +158,7 @@ Root will:
 Remember that our fiscal year starts in April, not January.
 ```
 
-Dot will propose a knowledge base update. An admin sees the proposal, reviews what changed, and merges it — or rejects it if something looks off.
+Dot will propose a knowledge base update. A reviewer sees the proposal, checks what changed, and merges or rejects it. That's an admin, or a modeler you've given the review permission to.
 
 The people closest to the data are the ones who catch mistakes first. This lets them fix things on the spot, with an admin verifying before it goes live.
 
@@ -168,7 +168,7 @@ The people closest to the data are the ones who catch mistakes first. This lets 
 
 **Problem**: A user had a bad experience — wrong numbers, a confusing chart, or a query that missed the point. You want to know why.
 
-**Solution**: Open the chat from your history and click **Investigate**. Root reads everything Dot did during that conversation — which tables it picked, which SQL it wrote, where it went wrong — and explains the root cause.
+**Solution**: Open the chat from your history and ask Root to look into it. Root reads everything Dot did during that conversation, which tables it picked, which SQL it wrote, and where it went wrong, and explains the root cause.
 
 ```
 Look into this chat and make sure this mistake doesn't happen again.
@@ -205,15 +205,15 @@ This turns reactive troubleshooting into proactive improvement.
 
 ## How Dot Learns
 
-Dot improves its knowledge base continuously, but **nothing changes without admin approval**:
+Dot improves its knowledge base continuously, but nothing changes without a review:
 
-1. **Dot spots something** — during a conversation, Dot notices a mismatch, or a user explicitly says "remember this"
-2. **A proposal appears** — in Root's history, admins see pending proposals with a clear diff of what would change
-3. **Admin reviews** — open the proposal, see exactly what's being added or corrected, and why
+1. **Dot spots something** — during a conversation Dot notices a mismatch, or someone says "remember this"
+2. **A proposal appears** — proposals collect in the Proposals inbox, each with a clear diff of what would change
+3. **A reviewer checks it** — an admin, or a modeler with the review permission, opens the proposal and sees exactly what's being added or corrected, and why
 4. **Merge or reject** — one click to approve, or reject if it's not right
-5. **Dot is smarter** — the improvement is live immediately for all users
+5. **Dot is smarter** — the improvement is live right away for everyone
 
-Dot suggests. Humans decide.
+Dot suggests. People decide.
 
 ---
 
