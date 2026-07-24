@@ -10,7 +10,7 @@ Your data lives in complex models, and the answers you need are scattered across
 
 Dot removes the bottleneck. Ask a question in your own words and Dot does the analysis: it understands your data model, writes and runs the SQL, checks its own work, and answers with a clear result you can trace back to the source. No ticket, no dashboard hunt, no waiting on the data team.
 
-<figure><img src="../../.gitbook/assets/analyze-investigation.png" alt="Dot answering a business question with a cited headline and a chart"><figcaption><p>Ask in plain English → Dot investigates and answers, with every number traceable to its source.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/analyze-investigation.png" alt="Dot answering a revenue-growth question with a cited headline and a rising line chart"><figcaption><p>Ask in plain English → Dot investigates and answers, with every number traceable to its source.</p></figcaption></figure>
 
 ## One place for every question
 
