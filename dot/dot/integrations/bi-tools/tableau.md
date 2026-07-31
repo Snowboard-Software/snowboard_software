@@ -39,11 +39,13 @@ A site administrator sets it up:
 1. In Tableau, go to **Settings → Connected Apps** and create a new app of type **Direct Trust**. On Tableau Server this lives in the site settings and requires version 2022.1 or later (earlier versions expose connected apps only via the REST API).
 2. Add the Dot host your workspace runs on to the app's domain allowlist — Tableau refuses the embed otherwise.
 3. Generate a secret and copy three values: **Client ID**, **Secret ID** and **Secret Value**. Secret ID and Secret Value are easy to mix up.
-4. In Dot, open the Tableau connection's **Connected App** tab, paste the three values and set a **Tableau service account**.
+4. In Dot, open the Tableau connection's **Connected App** tab, paste the three values and enter the email of a **Tableau admin user**.
 
-The service account is an existing Tableau login Dot uses when nobody is asking — scheduled runs and the setup check. An admin account works and costs no extra licence. When a person asks a question, Dot signs in as them by their Dot email, so Tableau applies their own permissions.
+Use an existing licensed Tableau login, ideally an admin so it can see every workbook. Dot does not create a user and does not need an extra licence. Dot signs in as that admin for its own automated checks, such as the setup check and scheduled runs.
 
-The secret stays on Dot's server; Dot mints a short-lived token per request (valid under ten minutes) and never hands the secret to a browser.
+Everywhere else, Dot signs in to Tableau as the person asking the question, using their Dot email as the Tableau username. Each person therefore sees exactly what their own Tableau permissions allow, and anyone who needs exact values has to be a Tableau user too.
+
+The secret stays on Dot's server: Dot mints a short-lived token per request, valid under ten minutes, and never hands the secret to a browser.
 
 
 
