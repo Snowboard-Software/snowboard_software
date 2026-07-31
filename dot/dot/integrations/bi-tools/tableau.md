@@ -34,20 +34,11 @@ The setup is identical to Tableau Cloud. If your server is not reachable from th
 
 A Connected App lets Dot read the exact value behind a tile on a dashboard, with that view's filters applied. This is what powers matching Dot's answers to your existing dashboards and migrating a dashboard into Dot. It is optional and comes in addition to the Personal Access Token — both are needed.
 
-A site administrator sets it up:
+A site administrator sets it up in Tableau:
 
-1. In Tableau, go to **Settings → Connected Apps** and create a new app of type **Direct Trust**. On Tableau Server this lives in the site settings and requires version 2022.1 or later (earlier versions expose connected apps only via the REST API).
+1. Go to **Settings → Connected Apps** and create a new app of type **Direct Trust**. On Tableau Server this lives in the site settings and requires version 2022.1 or later (earlier versions expose connected apps only via the REST API).
 2. Add the Dot host your workspace runs on to the app's domain allowlist — Tableau refuses the embed otherwise.
 3. Generate a secret and copy three values: **Client ID**, **Secret ID** and **Secret Value**. Secret ID and Secret Value are easy to mix up.
-4. In Dot, open the Tableau connection's **Connected App** tab, paste the three values and enter the email of a **Tableau admin user**.
-
-<figure><img src="../../../.gitbook/assets/tableau-connected-app-tab.png" alt=""><figcaption></figcaption></figure>
-
-Use an existing licensed Tableau login, ideally an admin so it can see every workbook. Dot does not create a user and does not need an extra licence. Dot signs in as that admin for its own automated checks, such as the setup check and scheduled runs.
-
-Everywhere else, Dot signs in to Tableau as the person asking the question, using their Dot email as the Tableau username. Each person therefore sees exactly what their own Tableau permissions allow, and anyone who needs exact values has to be a Tableau user too.
-
-The secret stays on Dot's server: Dot mints a short-lived token per request, valid under ten minutes, and never hands the secret to a browser.
 
 
 
@@ -56,6 +47,14 @@ The secret stays on Dot's server: Dot mints a short-lived token per request, val
 Enter your details, hit connect and watch it sync. As soon as it's done, you can head over to **Model /External assets** to further curate what Dot should know about.
 
 <figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+
+To add exact values, open the connection's **Connected App** tab, paste the three values from Tableau and enter the email of a Tableau admin user.
+
+<figure><img src="../../../.gitbook/assets/tableau-connected-app-tab.png" alt=""><figcaption></figcaption></figure>
+
+Use an existing licensed Tableau login, ideally an admin so it can see every workbook — Dot does not create a user and does not need an extra licence. Dot signs in as that admin for its own automated checks. When someone asks a question, Dot signs in to Tableau with that person's Dot email instead, so each person sees exactly what their own Tableau permissions allow.
+
+The secret stays on Dot's server: Dot mints a short-lived token per request, valid under ten minutes, and never hands the secret to a browser.
 
 
 
