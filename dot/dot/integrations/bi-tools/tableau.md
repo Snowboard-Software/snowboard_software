@@ -37,12 +37,9 @@ A Connected App lets Dot read the exact value behind a tile on a dashboard, with
 A site administrator sets it up:
 
 1. In Tableau, go to **Settings → Connected Apps** and create a new app of type **Direct Trust**. On Tableau Server this lives in the site settings and requires version 2022.1 or later (earlier versions expose connected apps only via the REST API).
-
-2\. Add the Dot host your workspace runs on to the app's domain allowlist — Tableau refuses the embed otherwise.
-
-3\. Generate a secret and copy three values: **Client ID**, **Secret ID** and **Secret Value**. Secret ID and Secret Value are easy to mix up.
-
-4\. In Dot, open the Tableau connection's **Connected App** tab, paste the three values and set a **Tableau service account**.
+2. Add the Dot host your workspace runs on to the app's domain allowlist — Tableau refuses the embed otherwise.
+3. Generate a secret and copy three values: **Client ID**, **Secret ID** and **Secret Value**. Secret ID and Secret Value are easy to mix up.
+4. In Dot, open the Tableau connection's **Connected App** tab, paste the three values and set a **Tableau service account**.
 
 The service account is an existing Tableau login Dot uses when nobody is asking — scheduled runs and the setup check. An admin account works and costs no extra licence. When a person asks a question, Dot signs in as them by their Dot email, so Tableau applies their own permissions.
 
@@ -64,6 +61,5 @@ The same three things apply to Tableau Cloud and Tableau Server:
 
 1. The **Metadata API** is enabled. On Tableau Cloud it always is. On Tableau Server an administrator enables it once with `tsm maintenance metadata-services enable` — see [Tableau's guide](https://help.tableau.com/current/api/metadata_api/en-us/docs/meta_api_start.html#enable-the-tableau-metadata-api-for-tableau-server). Without it Dot still lists workbooks and views, but loses the lineage to warehouse tables and can't see calculated-field definitions.
 
-2\. Dot's IPs are allowlisted: `5.78.211.110` and `178.105.217.177`.
-
-3\. The paths Dot needs are reachable: `/api/*` for catalog and metadata, and — for exact tile values — `/javascripts/*`, `/views/*`, `/vizql/*` and `/vizportal/*`. If only `/api/*` is reachable, the connection looks healthy and the catalog syncs, while exact values silently don't work.
+2. Dot's IPs are allowlisted: `5.78.211.110` and `178.105.217.177`.
+3. The paths Dot needs are reachable: `/api/*` for catalog and metadata, and — for exact tile values — `/javascripts/*`, `/views/*`, `/vizql/*` and `/vizportal/*`. If only `/api/*` is reachable, the connection looks healthy and the catalog syncs, while exact values silently don't work.
