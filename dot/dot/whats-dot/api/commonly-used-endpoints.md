@@ -81,6 +81,8 @@ Follow up by posting to `/api/agentic_with_history` with the same `chat_id`, so 
 
 Both take an optional `mode` — `economy`, `balanced` or `frontier` — the same dial as the [energy mode](../analyze.md#energy-modes) selector in the app. Left out, your workspace default applies.
 
+To ask against an [environment](../environments.md) instead of production, send its id in the `X-Dot-Environment` header. That works on every endpoint on this page, not just these two.
+
 The answer sits in the last message carrying a `formatted_result`: a list of parts, of which the `text` ones joined together are what a person reads. A long investigation can outlast the request, so fetch it later with `GET /api/c2/{chat_id}` using the same `chat_id`. There is a [worked example](use-cases-and-scripts.md) of both.
 
 
