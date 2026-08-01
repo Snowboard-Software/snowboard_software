@@ -32,9 +32,7 @@ The setup is identical to Tableau Cloud. If your server is not reachable from th
 
 ## Connected App <a href="#connected-app" id="connected-app"></a>
 
-A site administrator sets it up in Tableau:
-
-1. Go to **Settings → Connected Apps** and create a new app of type **Direct Trust**. On Tableau Server this lives in the site settings and requires version 2022.1 or later (earlier versions expose connected apps only via the REST API).
+1. In Tableau, go to **Settings → Connected Apps** and create a new app of type **Direct Trust**. On Tableau Server this lives in the site settings and requires version 2022.1 or later (earlier versions expose connected apps only via the REST API).
 2. Add the Dot host your workspace runs on to the app's domain allowlist — Tableau refuses the embed otherwise.
 3. Generate a secret and copy three values: **Client ID**, **Secret ID** and **Secret Value**. Secret ID and Secret Value are easy to mix up.
 
