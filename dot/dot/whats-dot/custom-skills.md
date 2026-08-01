@@ -47,7 +47,6 @@ Example workflow:
 
 ```python
 import requests
-import time
 import uuid
 import os
 from dotenv import load_dotenv
@@ -82,33 +81,26 @@ try:
     if is_new_chat:
         # Start a new conversation
         chat_id = str(uuid.uuid4())
-        url = f"{BASE_URL}/ask"
+        url = f"{BASE_URL}/agentic"
         payload = {"messages": [{"role": "user", "content": user_request}], "chat_id": chat_id}
     else:
         # Continue existing conversation
-        url = f"{BASE_URL}/ask_with_history"
+        url = f"{BASE_URL}/agentic_with_history"
         payload = {"new_message": {"role": "user", "content": user_request}, "chat_id": chat_id}
 
-    # Send the request
-    response = requests.post(url, headers=headers, json=payload)
+    # Send the request — the conversation comes back once Dot has answered
+    response = requests.post(url, headers=headers, json=payload, timeout=600)
     response.raise_for_status()
+    messages = response.json()
 
-    # Wait a moment for processing
-    time.sleep(2)
-
-    # Get the answer
-    answer_response = requests.get(f"{BASE_URL}/c2/{chat_id}", headers=headers)
-    answer_response.raise_for_status()
-
-    # Extract and display the response
-    data = answer_response.json()
-    if "messages" in data:
-        # Find the assistant's response
-        for message in reversed(data["messages"]):
-            if message.get("role") == "assistant":
-                # Dot will automatically parse the response and do appropriate formatting
-                print(message)
-                break
+    # The answer is the last message carrying a formatted result. That result is a
+    # list of parts — text, tables, charts — and the text parts are what a person reads.
+    for message in reversed(messages):
+        parts = (message.get("additional_data") or {}).get("formatted_result") or []
+        texts = [str(p["data"]) for p in parts if p.get("type") == "text" and p.get("data")]
+        if texts:
+            print("\n\n".join(texts))
+            break
 
     # Provide the chat ID for continuing the conversation
     print(f"\nTo continue this conversation, use chat_id: {chat_id}")
