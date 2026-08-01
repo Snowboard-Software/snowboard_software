@@ -113,7 +113,7 @@ Using the [REST API](api/README.md) directly, send the same header with the envi
 ```bash
 # Everything below is scoped to the environment — production is untouched
 curl -H "X-API-KEY: $DOT_API_KEY" -H "X-Dot-Environment: $ENV_ID" \
-  -H "Content-Type: application/json" https://app.getdot.ai/api/ask \
+  -H "Content-Type: application/json" https://app.getdot.ai/api/agentic \
   -d "{\"messages\": [{\"role\": \"user\", \"content\": \"Which columns does dim_customers have?\"}], \"chat_id\": \"$(uuidgen)\"}"
 ```
 
