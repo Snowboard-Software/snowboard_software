@@ -65,19 +65,19 @@ Export all conversations together with relevant meta data fields such as number 
 
 ## Ask Dot Automatically
 
-{% openapi-operation spec="dot-openapi" path="/api/ask" method="post" %}
-[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
-{% endopenapi-operation %}
-
-{% openapi-operation spec="dot-openapi" path="/api/ask_with_history" method="post" %}
-[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
-{% endopenapi-operation %}
-
-Trigger Deep Analysis
+Start a conversation. Dot decides on its own how much work the question needs, from a single lookup to a multi-step investigation.
 
 {% openapi-operation spec="dot-openapi" path="/api/agentic" method="post" %}
 [OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
+
+Continue an existing conversation by passing the same `chat_id`.
+
+{% openapi-operation spec="dot-openapi" path="/api/agentic_with_history" method="post" %}
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
+{% endopenapi-operation %}
+
+Both accept an optional `mode` — `economy`, `balanced` or `frontier` — to pick how much thinking goes into the answer, the same dial as the [energy mode](../analyze.md#energy-modes) selector in the app. Left out, your workspace default applies.
 
 
 
