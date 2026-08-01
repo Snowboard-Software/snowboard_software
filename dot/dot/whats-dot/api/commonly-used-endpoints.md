@@ -65,19 +65,23 @@ Export all conversations together with relevant meta data fields such as number 
 
 ## Ask Dot Automatically
 
-Start a conversation. Dot decides on its own how much work the question needs, from a single lookup to a multi-step investigation.
+`/api/agentic` is how you ask Dot anything. It is the same engine behind the app, Slack and Teams: Dot reads your model, writes and runs SQL, builds charts, and keeps going until it can answer. A one-line lookup and a multi-step investigation use this one endpoint — Dot decides how far to go.
+
+Send a question with a `chat_id` you generate. The call returns the conversation once Dot has finished.
 
 {% openapi-operation spec="dot-openapi" path="/api/agentic" method="post" %}
 [OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
-Continue an existing conversation by passing the same `chat_id`.
+Follow up by posting to `/api/agentic_with_history` with the same `chat_id`, so Dot keeps the context of everything already asked.
 
 {% openapi-operation spec="dot-openapi" path="/api/agentic_with_history" method="post" %}
 [OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
 
-Both accept an optional `mode` — `economy`, `balanced` or `frontier` — to pick how much thinking goes into the answer, the same dial as the [energy mode](../analyze.md#energy-modes) selector in the app. Left out, your workspace default applies.
+Both take an optional `mode` — `economy`, `balanced` or `frontier` — the same dial as the [energy mode](../analyze.md#energy-modes) selector in the app. Left out, your workspace default applies.
+
+The answer sits in the last message carrying a `formatted_result`: a list of parts, of which the `text` ones joined together are what a person reads. A long investigation can outlast the request, so fetch it later with `GET /api/c2/{chat_id}` using the same `chat_id`. There is a [worked example](use-cases-and-scripts.md) of both.
 
 
 

@@ -74,12 +74,10 @@ Requirements:
 import requests
 import uuid
 
-# API Configuration
 # Replace with your Dot API key from the Settings page
-API_KEY = "dot-YOUR_API_KEY_HERE"  
+API_KEY = "dot-YOUR_API_KEY_HERE"
 
-# Replace with your Dot API endpoint
-# For cloud: "https://app.getdot.ai/api" or "https://eu.getdot.ai/api"
+# Use "https://eu.getdot.ai/api" for the EU region
 BASE_URL = "https://app.getdot.ai/api"
 HEADERS = {"API-KEY": API_KEY, "Content-Type": "application/json"}
 
@@ -91,13 +89,12 @@ def ask_question(question):
     Returns:
         tuple: (messages, chat_id)
     """
-    # Generate a unique chat ID for this conversation
     chat_id = str(uuid.uuid4())
     
     print(f"Asking question: '{question}'")
     endpoint = f"{BASE_URL}/agentic"
     payload = {"messages": [{"role": "user", "content": question}], "chat_id": chat_id}
-    # Optional: "mode": "economy" | "balanced" | "frontier"
+    # Add "mode": "economy" | "balanced" | "frontier" to control how deep Dot goes
     
     response = requests.post(endpoint, headers=HEADERS, json=payload, timeout=600)
     response.raise_for_status()
@@ -159,7 +156,6 @@ def answer_text(messages):
 
 
 def print_response(messages):
-    """Print the answer, if there is one."""
     answer = answer_text(messages)
     if answer:
         print("\n=== ANSWER ===")
@@ -170,15 +166,8 @@ def print_response(messages):
 
 
 def main():
-    """
-    Demonstrate the Dot API conversation flow.
-    
-    This shows a complete conversation with:
-    1. An initial question
-    2. A follow-up question using the same conversation context
-    """
+    """A question, then a follow-up in the same conversation."""
     try:
-        # Ask an initial question
         initial_question = "What were our total sales last month?"
         try:
             user_input = input("Enter your question: ")
@@ -187,12 +176,10 @@ def main():
         except EOFError:
             print(f"Using default question: '{initial_question}'")
         
-        # Step 1: Send the initial question and get the conversation back
         messages, chat_id = ask_question(initial_question)
         print_response(messages)
         print(f"Chat ID: {chat_id} (save this if you want to continue the conversation later)")
         
-        # Ask a follow-up question in the same conversation
         follow_up = "How does that compare to the previous month?"
         try:
             user_input = input("Enter a follow-up question: ")
@@ -201,7 +188,6 @@ def main():
         except EOFError:
             print(f"Using default follow-up: '{follow_up}'")
         
-        # Step 2: Send the follow-up question using the same chat_id
         follow_up_response = ask_follow_up(follow_up, chat_id)
         print_response(follow_up_response)
         

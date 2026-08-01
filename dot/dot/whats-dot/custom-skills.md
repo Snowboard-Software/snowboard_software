@@ -53,11 +53,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Configuration - Replace with your actual values
 API_KEY = os.getenv("DOT_API_KEY")  # Get from Settings > API Tokens in your Dot instance
 BASE_URL = "https://app.getdot.ai/api"  # Or "https://eu.getdot.ai/api" for EU
 
-# Set up headers for API requests
 headers = {"API-KEY": API_KEY, "Content-Type": "application/json"}
 
 # These variables are injected by Dot when running as a custom skill:
@@ -70,31 +68,26 @@ chat_id = "new"
 
 
 try:
-    # Check if this is a new conversation
-    # Handle case where chat_id is not defined
     if "chat_id" not in locals() and "chat_id" not in globals():
         chat_id = "new"
 
     is_new_chat = chat_id is None or chat_id == "" or chat_id == "new"
 
-    # Prepare the API request
     if is_new_chat:
-        # Start a new conversation
         chat_id = str(uuid.uuid4())
         url = f"{BASE_URL}/agentic"
         payload = {"messages": [{"role": "user", "content": user_request}], "chat_id": chat_id}
     else:
-        # Continue existing conversation
         url = f"{BASE_URL}/agentic_with_history"
         payload = {"new_message": {"role": "user", "content": user_request}, "chat_id": chat_id}
 
-    # Send the request — the conversation comes back once Dot has answered
+    # The call returns the whole conversation once Dot has finished answering
     response = requests.post(url, headers=headers, json=payload, timeout=600)
     response.raise_for_status()
     messages = response.json()
 
-    # The answer is the last message carrying a formatted result. That result is a
-    # list of parts — text, tables, charts — and the text parts are what a person reads.
+    # The answer is the last message with a formatted_result — a list of parts,
+    # of which the text ones joined together are what a person reads
     for message in reversed(messages):
         parts = (message.get("additional_data") or {}).get("formatted_result") or []
         texts = [str(p["data"]) for p in parts if p.get("type") == "text" and p.get("data")]
@@ -102,7 +95,6 @@ try:
             print("\n\n".join(texts))
             break
 
-    # Provide the chat ID for continuing the conversation
     print(f"\nTo continue this conversation, use chat_id: {chat_id}")
 
 except requests.exceptions.ConnectionError:
@@ -520,7 +512,7 @@ There is a chance Dot makes a mistake. Try to catch as many errors as possible p
 
 You can pass back results using the `print()` statement.
 
-In agentic mode, you can pass back a dataframe to Dot by doing:
+You can pass back a dataframe to Dot by doing:
 
 `print(dataframe)` — we will automatically handle the logic to convert this into a format that Dot can understand.
 
