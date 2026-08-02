@@ -1,5 +1,7 @@
-# Where the last weekly docs sync stopped. The next sync's window starts here,
-# so a skipped or failed week widens the window instead of dropping work.
-# Advanced only when a sync PR merges. See .github/workflows/docs_sync.yml in
-# Snowboard-Software/dot.
+# Where the last weekly docs sync stopped. The next sync's window is
+# master_sha..origin/master, so work that sat on dev for weeks is still caught by
+# the sync that promotes it to production. A skipped or failed week widens the
+# window instead of dropping work. Both anchors advance only when a sync PR
+# merges. See .github/workflows/docs_sync.yml in Snowboard-Software/dot.
+master_sha: ff04290a677f9557591a5ad5ff6d1a379b492a03
 covers_until: 2026-08-02
