@@ -38,4 +38,26 @@ Make sure the meta data API is enabled.
 
 Enter your details, hit connect and watch it sync. As soon as it's done, you can head over to **Model /External assets** to further curate what Dot should know about.
 
+The Tableau connection has two tabs. **Standard** takes the Server URL, Token Name and Token Value, and covers browsing, lineage and metadata. **Connected App** layers on top of a completed Standard connection and lets Dot read the exact values shown on a tile.
+
+### Connected App
+
+Fill all four fields: **Client ID**, **Secret ID**, **Secret Value**, and **Tableau admin user**.
+
+For the admin user, pick an existing licensed Tableau login, ideally an admin so it can see every workbook. Dot does not create a new user and does not need another licence. Dot uses this account for its own automated checks. Everyone else is impersonated by their own email.
+
+After you save, Dot runs a check and shows the result on the connection: when it was verified, or why it failed. The status stays there, so you can come back to it later. Click **Run check again** to retest without re-entering the credentials. Saving new credentials clears the old result.
+
+{% hint style="info" %}
+A filled-in form is not a working connection. Trust the status row, not the fact that the fields have text in them.
+{% endhint %}
+
+### Tableau behind an identity-aware proxy
+
+To read exact tile values, Dot loads Tableau's Embedding API in a browser on its own server. If your Tableau sits behind a corporate SSO gateway, that proxy intercepts the browser and redirects it to your identity provider, so the script never loads.
+
+The check names the proxy when this happens, for example `login.microsoftonline.com`. The server URL is correct and reachable in this case. The proxy is what blocks Dot.
+
+To fix it, ask whoever runs the proxy to exempt Dot, either by its egress IP or by the Tableau embed paths. Everything that goes through the REST API, including browsing, lineage and exports, keeps working while you sort this out.
+
 <figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>

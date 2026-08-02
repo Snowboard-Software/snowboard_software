@@ -1,0 +1,5 @@
+# Where the last weekly docs sync stopped. The next sync's window starts here,
+# so a skipped or failed week widens the window instead of dropping work.
+# Advanced only when a sync PR merges. See .github/workflows/docs_sync.yml in
+# Snowboard-Software/dot.
+covers_until: 2026-08-02
