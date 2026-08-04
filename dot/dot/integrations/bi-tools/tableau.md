@@ -1,6 +1,6 @@
 # Tableau
 
-Both Tableau Online or Tableau Server (2019.3 or later) are supported.
+Both Tableau Cloud (Online) or Tableau Server (2019.3 or later) are supported.
 
 ## Tableau Online <a href="#tableau-online" id="tableau-online"></a>
 
@@ -26,11 +26,15 @@ Generate a Personal Access Token with a user who is either "Site Admin Explorer"
 
 ## **Tableau Server** <a href="#tableau-server" id="tableau-server"></a>
 
-For connecting from the Cloud with Tableau server, please coordinate with our customer success team [hi@getdot.ai](mailto:hi@getdot.ai). A typical network setup uses OpenVPN.
+The setup is identical to Tableau Cloud. If your server is not reachable from the internet, please coordinate with our customer success team [hi@getdot.ai](mailto:hi@getdot.ai) — a typical network setup uses OpenVPN.
 
-Make sure the meta data API is enabled.
 
-[https://help.tableau.com/current/api/metadata\_api/en-us/docs/meta\_api\_start.html#enable-the-tableau-metadata-api-for-tableau-server](https://help.tableau.com/current/api/metadata_api/en-us/docs/meta_api_start.html#enable-the-tableau-metadata-api-for-tableau-server)
+
+## Connected App <a href="#connected-app" id="connected-app"></a>
+
+1. In Tableau, go to **Settings → Connected Apps** and create a new app of type **Direct Trust**. On Tableau Server this lives in the site settings and requires version 2022.1 or later (earlier versions expose connected apps only via the REST API).
+2. Add the Dot host your workspace runs on to the app's domain allowlist — Tableau refuses the embed otherwise.
+3. Generate a secret and copy three values: **Client ID**, **Secret ID** and **Secret Value**. Secret ID and Secret Value are easy to mix up.
 
 
 
@@ -39,3 +43,20 @@ Make sure the meta data API is enabled.
 Enter your details, hit connect and watch it sync. As soon as it's done, you can head over to **Model /External assets** to further curate what Dot should know about.
 
 <figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+
+Open the connection's **Connected App** tab, paste the three values from Tableau and enter the email of a Tableau admin user.
+
+<figure><img src="../../../.gitbook/assets/tableau-connected-app-tab.png" alt=""><figcaption></figcaption></figure>
+
+Use an existing licensed Tableau login, ideally an admin so it can see every workbook — Dot does not create a user and does not need an extra licence. When someone asks a question, Tableau applies that person's own permissions, so everyone sees exactly what they already see in Tableau.
+
+
+
+## What Dot needs access to <a href="#what-dot-needs-access-to" id="what-dot-needs-access-to"></a>
+
+The same three things apply to Tableau Cloud and Tableau Server:
+
+1. The **Metadata API** is enabled. On Tableau Cloud it always is. On Tableau Server an administrator enables it once with `tsm maintenance metadata-services enable` — see [Tableau's guide](https://help.tableau.com/current/api/metadata_api/en-us/docs/meta_api_start.html#enable-the-tableau-metadata-api-for-tableau-server). Without it Dot still lists workbooks and views, but loses the lineage to warehouse tables and can't see calculated-field definitions.
+
+2. Dot's IPs are allowlisted: `5.78.211.110` and `178.105.217.177`.
+3. The paths Dot needs are reachable: `/api/*` for catalog and metadata, and — for exact tile values — `/javascripts/*`, `/views/*`, `/vizql/*` and `/vizportal/*`. If only `/api/*` is reachable, the connection looks healthy and the catalog syncs, while exact values silently don't work.
