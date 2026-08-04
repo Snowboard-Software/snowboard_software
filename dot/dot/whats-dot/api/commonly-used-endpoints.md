@@ -65,19 +65,25 @@ Export all conversations together with relevant meta data fields such as number 
 
 ## Ask Dot Automatically
 
-{% openapi-operation spec="dot-openapi" path="/api/ask" method="post" %}
-[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
-{% endopenapi-operation %}
+`/api/agentic` is how you ask Dot anything. It is the same engine behind the app, Slack and Teams: Dot reads your model, writes and runs SQL, builds charts, and keeps going until it can answer. A one-line lookup and a multi-step investigation use this one endpoint — Dot decides how far to go.
 
-{% openapi-operation spec="dot-openapi" path="/api/ask_with_history" method="post" %}
-[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
-{% endopenapi-operation %}
-
-Trigger Deep Analysis
+Send a question with a `chat_id` you generate. The call returns the conversation once Dot has finished.
 
 {% openapi-operation spec="dot-openapi" path="/api/agentic" method="post" %}
 [OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
+
+Follow up by posting to `/api/agentic_with_history` with the same `chat_id`, so Dot keeps the context of everything already asked.
+
+{% openapi-operation spec="dot-openapi" path="/api/agentic_with_history" method="post" %}
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
+{% endopenapi-operation %}
+
+Both take an optional `mode` — `economy`, `balanced` or `frontier` — the same dial as the [energy mode](../analyze.md#energy-modes) selector in the app. Left out, your workspace default applies.
+
+To ask against an [environment](../environments.md) instead of production, send its id in the `X-Dot-Environment` header. That works on every endpoint on this page, not just these two.
+
+The answer sits in the last message carrying a `formatted_result`: a list of parts, of which the `text` ones joined together are what a person reads. A long investigation can outlast the request, so fetch it later with `GET /api/c2/{chat_id}` using the same `chat_id`. There is a [worked example](use-cases-and-scripts.md) of both.
 
 
 
