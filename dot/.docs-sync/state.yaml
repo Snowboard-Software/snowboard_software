@@ -1,0 +1,7 @@
+# Where the last weekly docs sync stopped. The next sync's window is
+# master_sha..origin/master, so work that sat on dev for weeks is still caught by
+# the sync that promotes it to production. A skipped or failed week widens the
+# window instead of dropping work. Both anchors advance only when a sync PR
+# merges. See .github/workflows/docs_sync.yml in Snowboard-Software/dot.
+master_sha: f1bae2daf2c23edcbfd80798f27aca4efd22d827
+covers_until: 2026-08-04

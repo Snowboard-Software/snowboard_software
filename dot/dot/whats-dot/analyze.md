@@ -78,9 +78,25 @@ So instead of _"How are sales?"_ ask _"What was Enterprise revenue by month for 
 
 ## Configuration (Admins)
 
-In **Settings → Configure Dot**:
+In **Settings → Advanced Settings → AI & Data Configuration**:
 
-* **Default energy mode** — set the starting mode for the workspace, and optionally lock it so everyone uses the same depth.
+* **Default Energy Mode** — set the starting mode for the workspace, and optionally lock it so everyone uses the same depth.
+* **Business questions only** — off by default. See below.
+
+On the Model page, under **Design**:
+
 * **Custom appendix** — append a disclaimer or contact details to every answer.
 
 Deeper questions do more work, which uses more [Agent Compute Credits](agent-compute-credits.md). Admins can cap usage per user or group to keep spend predictable.
+
+### Business questions only
+
+If people use Dot for things it is not there for, you can keep it on topic. Turn on **Business questions only** and Dot answers work questions and politely declines the rest, like weather, jokes, sports, or homework. It says so in two sentences, in the person's own language, and names something it can help with instead.
+
+Work questions are not limited to your connected data. Competitors, suppliers, customers, market size, pricing, regulation, and industry benchmarks all count, and Dot researches them on the web as usual.
+
+This is useful for spend as well as for focus. Dot decides before it does anything, so a declined question runs no query and no search, and costs close to nothing.
+
+{% hint style="info" %}
+The setting applies to the workspace you turn it on in. Turn it on separately in each workspace you want it in. It guides Dot rather than blocking it, so treat it as a strong steer, not a hard filter.
+{% endhint %}
