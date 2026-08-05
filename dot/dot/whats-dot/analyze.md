@@ -31,10 +31,10 @@ One dial controls how much thinking Dot puts into an answer. Open the **energy m
 
 <figure><img src="../../.gitbook/assets/analyze-energy-modes.png" alt="The energy mode selector showing Economy, Balanced, and Frontier"><figcaption><p>Pick the effort to match the question — Economy for quick looks, Frontier for the hard ones.</p></figcaption></figure>
 
-Your choice sticks to the conversation, so a follow-up keeps the same depth. Admins can set the default for the whole workspace and, if they prefer, lock it (see [Configuration](#configuration-admins)). When it's locked, everyone uses the workspace default, and your own pick, including the Slack and Teams keywords below, is ignored.
+Your choice sticks to the conversation, so a follow-up keeps the same depth — and every new chat starts fresh on the workspace default. Admins can set that default, lock it, or scope individual modes to specific user groups (see [Configuration](#configuration-admins)). When it's locked, everyone uses the workspace default and your own pick, including the Slack and Teams keywords below, is ignored. When a mode is scoped to groups you're not in, it simply isn't offered — a request for it runs at the best tier you do have.
 
 {% hint style="info" %}
-In Slack, Teams, and email you can set the mode with a keyword: start a message with `!economy`, `!balanced`, or `!frontier`. Adding **"go deep"** or **"ultrathink"** to any message bumps just that one to Frontier.
+In Slack, Teams, and email you can set the mode with a keyword: start a message with `!e` (Economy), `!b` (Balanced), or `!f` (Frontier) — the footer under each answer reminds you of the switches available to you. Adding **"go deep"** or **"ultrathink"** to any message bumps just that one to Frontier.
 {% endhint %}
 
 ## Answers you can trust
@@ -81,6 +81,11 @@ So instead of _"How are sales?"_ ask _"What was Enterprise revenue by month for 
 In **Settings → Configure Dot**:
 
 * **Default energy mode** — set the starting mode for the workspace, and optionally lock it so everyone uses the same depth.
+* **Who can use each mode** — scope a mode to specific user groups. Members outside the group don't see the mode in their selector, aren't taught its keyword, and any request for it quietly runs at the best tier they do have. Admins always keep all modes, and unscoped modes stay open to everyone.
 * **Custom appendix** — append a disclaimer or contact details to every answer.
 
-Deeper questions do more work, which uses more [Agent Compute Credits](agent-compute-credits.md). Admins can cap usage per user or group to keep spend predictable.
+{% hint style="success" %}
+A setup that keeps spend predictable without slowing anyone down: leave **Balanced** open to everyone as the default, scope **Frontier** to the people whose questions earn it — management, pricing analysts, and other experienced high-impact users — and open **Economy** widely when you want a larger circle to check the data every now and then.
+{% endhint %}
+
+Deeper questions do more work, which uses more [Agent Compute Credits](agent-compute-credits.md). Group-scoped modes cap the cost *per answer*; the usage limits below cap the *volume* — admins can cap credit use per user or group to keep spend predictable.
