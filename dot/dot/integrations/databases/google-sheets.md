@@ -1,36 +1,46 @@
 ---
-description: Ask questions about data that lives in a spreadsheet
+description: Paste a link and query your spreadsheet like a database table — always the live values.
 ---
 
 # Google Sheets
 
-Plenty of useful data never makes it into the warehouse. Targets, headcount plans, and account owners often live in a spreadsheet somebody maintains by hand. Connect that sheet and Dot can answer questions about it, and join it to your warehouse tables.
+A lot of business truth never makes it into the warehouse: budgets, targets, headcount plans, campaign trackers, hand-maintained mappings. Connect those sheets and Dot can answer with them — instead of pretending they don't exist.
 
-## Share the sheet
+There is no export-import loop. Dot reads the sheet live on every query, so answers always reflect what the spreadsheet says right now.
 
-Dot reads your sheet over a link, so the link has to work without a Google login.
+## Prerequisites
 
-1. Open the sheet in Google Sheets and click **Share**.
-2. Under general access, choose **Anyone with the link**.
-3. Set the role to **Viewer**.
+* A Google Sheet shared as **Anyone with the link → Viewer**. Dot reads sheets through Google's CSV export, so there is no service account to create and no OAuth flow.
+* Data laid out as a table: headers in the first row, one record per row.
 
-## Connect it
+## Connect in Dot
 
-1. Open **Settings → Connections** and add a **Google Sheets** connection.
-2. Paste the URL of the sheet.
-3. Click connect.
+1. In Google Sheets, click **Share → Anyone with the link → Viewer** and copy the link.
+2. In Dot, go to **Settings → Connections** and choose **Google Sheets**.
+3. Paste one or more spreadsheet URLs and connect.
 
-One URL covers one tab. The URL you copy from the address bar points at the tab you are looking at, so open the tab you want first. To bring in more tabs, or more spreadsheets, add a row for each one.
+Dot discovers every tab in each spreadsheet, skips the ones that aren't shaped like a table, and creates one table per remaining tab — with a short, descriptive name inferred from the content. Names of tabs you've already synced stay stable across re-connects, so notes and saved questions keep working.
 
-## Keeping it up to date
-
-Dot reads the values live on every query, so edits to rows and cells show up straight away. There is nothing to sync when the numbers change.
-
-Changing the shape of the sheet is different. Adding, renaming, or removing a **column** changes the table Dot queries, so tell Dot about it:
-
-* Click **Sync** on the connection. Modelers use **Sync now** in the connection panel.
-* Or set up **Schedule sync** in the connection panel to refresh it daily or weekly, the same as a warehouse.
+{% hint style="info" %}
+Odd delimiters, European decimal commas, extra header rows — Dot samples each tab and configures parsing automatically. If a tab comes out wrong, fix the layout in the sheet and sync again.
+{% endhint %}
 
 {% hint style="warning" %}
-If a sheet stops being shared with "Anyone with the link", the sync log says how many sheets could not be refreshed. Re-share the sheet and sync again.
+**Anyone with the link means exactly that.** Anyone holding the URL can view the sheet. Use this for data you'd be comfortable circulating internally, and keep sensitive data in a governed source instead.
 {% endhint %}
+
+## When to sync
+
+Editing rows and cells needs no sync, because every query reads the sheet live.
+
+Changing the sheet's *shape* does. Adding, renaming or removing a column changes the table Dot queries, and a new tab is a new table, so tell Dot about it:
+
+* Click **Sync** on the connection. Modelers use **Sync now** in the connection panel.
+* Or turn on **Schedule sync** in the connection panel to refresh it daily or weekly, the same as a warehouse.
+
+If a tab stops being shared with "Anyone with the link", the sync log says how many sheets could not be refreshed. Re-share it and sync again.
+
+## Good to know
+
+* **Always fresh** — queries read the live sheet; there is no cached copy to go stale.
+* **A table like any other** — sheets appear in your Model where you can activate them, describe them, and use them in questions and dashboards alongside your other sources.
