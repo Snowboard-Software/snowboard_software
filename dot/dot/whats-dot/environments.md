@@ -74,11 +74,14 @@ Target overrides redirect **queries and metadata sync** for that environment onl
 
 When the work is ready:
 
-1. Open **Manage environments** and click **Diff** to see every file the environment changed compared to production.
-2. Click **Merge to production** and confirm. Dot merges the environment's branch into the production model.
-3. Optionally delete the environment after merging — or keep it for the next iteration.
+1. Open **Manage environments** and click **Diff** to see every file the environment changed compared to production. Each file is marked `added`, `modified` or `deleted`.
+2. Click a file to read the change itself, line by line, with additions in green and removals in red. One file stays open at a time, so click another to switch. You don't have to leave Dot to see what a merge would do.
+3. Click **Merge to production** and confirm. Dot merges the environment's branch into the production model.
+4. Optionally delete the environment after merging — or keep it for the next iteration.
 
-<figure><img src="../../.gitbook/assets/environment-diff.png" alt="Environment diff"><figcaption><p>The diff shows exactly which documentation files changed before you merge</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/environment-diff.png" alt="Environment diff"><figcaption><p>The diff lists every documentation file the environment changed</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/environment-diff-file-expanded.png" alt="An expanded file in the environment diff"><figcaption><p>Click a file to read its changes line by line</p></figcaption></figure>
 
 Admins can always merge. Modelers need the "Can merge changes to production" permission, which admins grant under Settings, then Advanced Settings, then Modeler Permissions.
 
