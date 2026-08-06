@@ -78,7 +78,7 @@ Use an existing licensed Tableau login, ideally an admin so it can see every wor
 
 The same three things apply to Tableau Cloud and Tableau Server:
 
-1. The **Metadata API** is enabled. On Tableau Cloud it always is. On Tableau Server an administrator enables it once with `tsm maintenance metadata-services enable` — see [Tableau's guide](https://help.tableau.com/current/api/metadata_api/en-us/docs/meta_api_start.html#enable-the-tableau-metadata-api-for-tableau-server). Without it Dot still lists workbooks and views, but loses the lineage to warehouse tables and can't see calculated-field definitions. You can tell this apart from a broken server by the error: the metadata request comes back `403 Forbidden` from `/relationship-service-war/graphql`, which means the service is running and answering — the API just isn't switched on yet.
+1. The **Metadata API** is enabled. On Tableau Cloud it always is. On Tableau Server an administrator enables it once with `tsm maintenance metadata-services enable` — see [Tableau's guide](https://help.tableau.com/current/api/metadata_api/en-us/docs/meta_api_start.html#enable-the-tableau-metadata-api-for-tableau-server). Without it Dot still lists workbooks and views, but loses the lineage to warehouse tables and can't see calculated-field definitions.
 
 2. Dot's IPs are allowlisted: `5.78.211.110` and `178.105.217.177`.
-3. The paths Dot needs are reachable: `/api/*` for catalog and metadata, and — for exact tile values — `/auth/*`, `/javascripts/*`, `/views/*`, `/vizql/*` and `/vizportal/*`. If only `/api/*` is reachable, the connection looks healthy and the catalog syncs, while exact values silently don't work.
+3. The paths Dot needs are reachable: `/api/*` for catalog and metadata, and — for exact tile values — `/javascripts/*`, `/views/*`, `/vizql/*` and `/vizportal/*`. If only `/api/*` is reachable, the connection looks healthy and the catalog syncs, while exact values silently don't work.
