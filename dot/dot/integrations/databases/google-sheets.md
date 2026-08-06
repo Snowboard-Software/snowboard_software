@@ -29,6 +29,17 @@ Odd delimiters, European decimal commas, extra header rows — Dot samples each 
 **Anyone with the link means exactly that.** Anyone holding the URL can view the sheet. Use this for data you'd be comfortable circulating internally, and keep sensitive data in a governed source instead.
 {% endhint %}
 
+## When to sync
+
+Editing rows and cells needs no sync, because every query reads the sheet live.
+
+Changing the sheet's *shape* does. Adding, renaming or removing a column changes the table Dot queries, and a new tab is a new table, so tell Dot about it:
+
+* Click **Sync** on the connection. Modelers use **Sync now** in the connection panel.
+* Or turn on **Schedule sync** in the connection panel to refresh it daily or weekly, the same as a warehouse.
+
+If a tab stops being shared with "Anyone with the link", the sync log says how many sheets could not be refreshed. Re-share it and sync again.
+
 ## Good to know
 
 * **Always fresh** — queries read the live sheet; there is no cached copy to go stale.
