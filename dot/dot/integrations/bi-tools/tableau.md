@@ -28,6 +28,8 @@ Generate a Personal Access Token with a user who is either "Site Admin Explorer"
 
 The setup is identical to Tableau Cloud. If your server is not reachable from the internet, please coordinate with our customer success team [hi@getdot.ai](mailto:hi@getdot.ai) — a typical network setup uses OpenVPN.
 
+One difference: the Metadata API, which lineage is built on, is not enabled by default on Tableau Server. When it is off, Dot's metadata request comes back as `403 Forbidden` from `/relationship-service-war/graphql` — the metadata microservice is answering, the API itself is just not switched on, or the token's user lacks the role for it. Check with `tsm status -v` and enable it with `tsm maintenance metadata-services enable`. Everything else keeps working meanwhile, because browsing workbooks and views and exporting data go through the REST API. Tableau Cloud is not affected.
+
 
 
 ## Connected App <a href="#connected-app" id="connected-app"></a>
