@@ -1,7 +1,7 @@
 ---
 description: >-
   Let Dot search and read your Google Drive — Docs, Sheets, Slides, and PDFs —
-  scoped to exactly the drives you choose.
+  scoped to exactly the folders or drives you choose.
 ---
 
 # Google Drive
@@ -14,14 +14,14 @@ The connector is **read-only**. Dot never creates, edits, or deletes anything in
 
 You choose per connection, when you connect. Most workspaces want the first.
 
-### One shared drive (default)
+### A folder or shared drive (default)
 
-You add a service account to **one shared drive**, and everyone you grant access to sees that drive. The credential can reach nothing else — not because Dot filters it, but because Google never gave it access to anything else.
+You share **one folder** (or a shared drive) with a service account, and everyone you grant access to sees it. The credential can reach nothing else — not because Dot filters it, but because Google never gave it access to anything else. Sharing applies to everything inside the folder, so subfolders come along automatically.
 
-Different teams get different drives: repeat the setup with a **separate service account per drive**. Each becomes its own connection with its own Access Groups, so Finance sees the Finance drive and nobody else's.
+Different teams get different content: repeat the setup with a **separate service account per scope**. Each becomes its own connection with its own Access Groups, so Finance sees the Finance folder and nobody else's.
 
 {% hint style="info" %}
-**Why this is the default.** Dot chooses which credential to use; Google decides what that credential can see. Dot keeps no copy of your Drive permissions, so nothing can drift out of sync with them. It also needs no Workspace admin — adding a member to a shared drive is something any drive manager can do — and it works in Slack and Teams.
+**Why this is the default.** Dot chooses which credential to use; Google decides what that credential can see. Dot keeps no copy of your Drive permissions, so nothing can drift out of sync with them. It needs no Workspace admin — sharing a folder is something anyone who owns one can do, on every Workspace edition — and it works in Slack and Teams.
 {% endhint %}
 
 ### Each user's own Drive
@@ -44,11 +44,11 @@ What it costs: a Workspace **super-admin** must authorize the service account, t
 1. In [Google Cloud → Service accounts](https://console.cloud.google.com/iam-admin/serviceaccounts), create a service account and download a **JSON key**.
 2. Enable the [Google Drive API](https://console.cloud.google.com/apis/library/drive.googleapis.com) on the same project.
 
-### 2a. Shared drive mode
+### 2a. Folder or shared drive mode
 
-In Google Drive, open the shared drive you want Dot to read and add the service account's **`client_email`** as a member with **Viewer** access.
+In Google Drive, right-click the folder you want Dot to read → **Share**, and add the service account's **`client_email`** as a **Viewer**. Untick *Notify people* — a service account has no inbox. If your edition has shared drives, adding it as a member of one works the same way.
 
-That membership *is* the scope — there is nothing else to configure, and nothing else is reachable.
+What you shared *is* the scope — there is nothing else to configure, and nothing else is reachable.
 
 ### 2b. Per-user mode
 
@@ -69,13 +69,13 @@ Go to **Settings → Connections → Google Drive**, pick the mode, paste the ke
 
 <figure><img src="../../../.gitbook/assets/drive-connect-form.png" alt="The Google Drive connection form in Dot, showing the choice between one shared drive and each user's own Drive, with the service account key field and setup steps"><figcaption><p>The setup steps change with the mode you pick.</p></figcaption></figure>
 
-Dot verifies against Google **before saving**. In shared mode, if the account hasn't been added to any shared drive, the connect is refused and the error names the exact address to add — so a half-finished setup can't sit there looking connected and then fail for everyone later.
+Dot verifies against Google **before saving**. If the account can't see anything yet, the connect is refused and the error names the exact address to share with — so a half-finished setup can't sit there looking connected and then fail for everyone later.
 
-<figure><img src="../../../.gitbook/assets/drive-connected-verified.png" alt="A connected Google Drive card in Dot showing the scope it was verified against"><figcaption><p>A connection is only saved once Dot has actually read Drive with it.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/drive-connected-verified.png" alt="A connected Google Drive card in Dot, showing the folder it is scoped to and the access groups that may use it"><figcaption><p>The card names the scope, and Access Groups decides who can use it.</p></figcaption></figure>
 
 ### 4. Choose who can use it
 
-Set **Access Groups** on the connection. Only users in those groups can reach that drive through Dot.
+Set **Access Groups** on the connection. Only users in those groups can reach that content through Dot.
 
 ## Using it
 
@@ -86,6 +86,8 @@ Just ask. Dot decides when Drive is relevant:
 - *"What changed in the onboarding runbook recently?"*
 
 Dot searches **Drive's own full-text index**, which covers the contents of Docs, Sheets, Slides and PDFs — not just file names. If you can reach several drives, one search covers all of them and each result says which drive it came from.
+
+<figure><img src="../../../.gitbook/assets/drive-answer-example.png" alt="Dot answering a question from a document in Drive, with a link back to the source file"><figcaption><p>Answers cite the file they came from.</p></figcaption></figure>
 
 ## What Dot can do
 
@@ -126,7 +128,7 @@ Long documents are read in pages, so Dot can work through a large file without l
 
 - **Read-only.** Dot cannot create, edit, or delete Drive files.
 - **Google Workspace only** — personal Gmail accounts aren't supported.
-- **A connection covers a whole shared drive.** Scoping to a folder within one isn't available.
+- **A connection covers everything shared with its service account.** To scope more narrowly, share less — or use a second service account.
 - **Sheets are read one tab at a time** (see above).
 - **Per-user mode only:** unavailable from Slack and Teams, and a Dot user whose email isn't a Google account in your domain can't use it.
 - Very large files are read up to a bounded size, and very large downloads are refused rather than truncated.
@@ -135,8 +137,8 @@ Long documents are read in pages, so Dot can work through a large file without l
 
 | Message | What it means | What to do |
 |---|---|---|
-| *has not been added to any shared drive* | The service account is a member of nothing | Add its `client_email` to the shared drive as a Viewer |
-| *can see N shared drives* | One account was added to several drives | Give each drive its own service account |
+| *can't see anything yet* | Nothing has been shared with the service account | Share the folder with its `client_email` as a Viewer |
+| *is a member of N shared drives* | One account was added to several drives | Give each drive its own service account |
 | *Google would not issue Drive access for &lt;email&gt;* | Per-user mode: the Admin console authorization is missing, or that address isn't a Google account in your domain | Recheck the client ID and scope |
 | *Action requires permission `drive.…`* | That action is switched off for this user | Enable it under **Model → Skills → Drive** |
 | *Google denied access to this file* | The credential genuinely can't read it | Share the file with the service account, or with the user in per-user mode |
