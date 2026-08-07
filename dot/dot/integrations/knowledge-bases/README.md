@@ -18,7 +18,7 @@ These are the connectors that answer the original ask behind this whole category
 | [Notion](notion.md) | Notion workspaces | Search, read pages & databases, create/update pages, comments |
 | [Confluence](confluence.md) | Atlassian Cloud wikis | Search, read, create/update pages, attachments, comments |
 | [Jira](jira.md) | Atlassian Cloud issues | Search, read, create/update/transition issues, comments |
-| [Google Drive](google-drive.md) | Google Workspace Drives | Search and read Docs, Sheets, Slides, PDFs — **read-only**, under each user's own Drive permissions |
+| [Google Drive](google-drive.md) | Google Workspace Drives | Search and read Docs, Sheets, Slides, PDFs — **read-only**, scoped per shared drive (or per user) |
 
 ## How they work
 
@@ -26,7 +26,7 @@ These are the connectors that answer the original ask behind this whole category
 
 **2. Govern each action, in Model → Skills.** Once connected, the connector appears as a **skill** under **Model → Skills**. Expand **Configure permissions** to see each action as its own toggle — an admin turns individual actions on or off. A disabled action is refused with a message naming the exact permission to flip, so nothing runs that you haven't allowed.
 
-**3. Dot uses it at query time.** Unlike a database sync, these connectors don't copy your content into Dot. Dot's agents reach into the source *when a question needs it* — searching, reading, or asking against the live workspace. This keeps answers current and means access always reflects live permissions in the source tool — those of the connected account, or for [Google Drive](google-drive.md), those of the individual user asking.
+**3. Dot uses it at query time.** Unlike a database sync, these connectors don't copy your content into Dot. Dot's agents reach into the source *when a question needs it* — searching, reading, or asking against the live workspace. This keeps answers current and means access always reflects live permissions in the source tool — those of the connected account, or for [Google Drive](google-drive.md), of whichever drive that connection was scoped to.
 
 {% hint style="info" %}
 **Permission defaults follow a simple rule.** Non-destructive reads (and, for Notion/Confluence/Jira, ordinary writes) default **on** — connecting the tool implies you want Dot to use it. Destructive or privacy-sensitive actions (delete, archive, listing workspace members) default **off** and must be turned on explicitly.
