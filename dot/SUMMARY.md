@@ -73,6 +73,7 @@
   * [Notion](dot/integrations/knowledge-bases/notion.md)
   * [Confluence](dot/integrations/knowledge-bases/confluence.md)
   * [Jira](dot/integrations/knowledge-bases/jira.md)
+  * [Google Drive](dot/integrations/knowledge-bases/google-drive.md)
 * [Slack & Teams](dot/integrations/slack-and-teams/README.md)
   * [Slack](dot/integrations/slack-and-teams/slack.md)
   * [Reinstall Slack App](dot/integrations/slack-and-teams/reinstall-slack.md)
