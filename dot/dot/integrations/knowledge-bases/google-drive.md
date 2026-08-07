@@ -50,6 +50,10 @@ In Google Drive, right-click the folder you want Dot to read → **Share**, and 
 
 What you shared *is* the scope — there is nothing else to configure, and nothing else is reachable.
 
+{% hint style="info" %}
+**Scope stays live.** Sharing another folder with the same service account adds it to this connection straight away — no reconnect, no admin step. That is deliberate: it lets a team add material to Dot without filing a ticket. The flip side is that anyone who can share a folder can widen what the connection reaches, so treat the service account's address as something to hand out carefully. If you need a scope that cannot grow that way, use a shared drive — its membership is managed.
+{% endhint %}
+
 ### 2b. Per-user mode
 
 In the [Admin console](https://admin.google.com/ac/owl/domainwidedelegation) (**Security → Access and data control → API controls → Domain-wide delegation**), click **Add new**:
