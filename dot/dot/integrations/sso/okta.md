@@ -67,6 +67,27 @@ You can use Okta for sign-in only, or go further and let your **Okta groups beco
 
 <figure><img src="../../../.gitbook/assets/Screenshot_from_2024-01-15_11-43-23-1.png" alt=""><figcaption></figcaption></figure>
 
+### Step 9: Initiate Login URI (Recommended)
+
+By default, clicking the Dot tile on the Okta dashboard lands users on Dot's generic login page, where they still have to type their email address before the SSO button appears. Setting an **Initiate login URI** sends them straight into your organization's SSO flow instead.
+
+1. In Okta, open your Dot app and go to the **General** tab.
+2. Click **Edit** on **General Settings**.
+3. Set **Initiate login URI** to your organization's direct login URL:
+   * `https://eu.getdot.ai/login/{your-org-id}` (EU)
+   * `https://app.getdot.ai/login/{your-org-id}` (US)
+4. **Save**.
+
+Your organization ID is the value shown in Dot under **Settings** > **Users** (usually your email domain, for example `acme.com`). So a full URI looks like `https://eu.getdot.ai/login/acme.com`.
+
+{% hint style="info" %}
+The query form `https://eu.getdot.ai/login?org_id=acme.com` behaves identically, if you prefer it or already have it in circulation. Either URL is also a good bookmark to share with your users directly.
+{% endhint %}
+
+{% hint style="success" %}
+If your organization has exactly one SSO provider active, landing on this URL takes users all the way to Okta without a further click. With password login still enabled, users can fall back to it from the standard `/login` page.
+{% endhint %}
+
 ### Finalizing the Integration
 
 After you have entered all the necessary information into Dot's Okta settings:
@@ -90,11 +111,21 @@ Dot reads group membership from the **ID token**, so Okta has to include it ther
 
 1. In the Okta admin dashboard, go to **Applications** > **Applications** and open your Dot app.
 2. Open the **Sign On** tab.
-3. Under **OpenID Connect ID Token**, click **Edit**.
-4. Set **Groups claim type** to **Filter**.
-5. In **Groups claim filter**, set the claim name to `groups`.
-6. Choose a matcher and value that selects the groups Dot should see (see below).
+3. Scroll to **Token claims** and expand **Show legacy configuration**.
+4. Next to **Group Claims**, click **Edit**.
+5. Leave **Groups claim type** as **Filter**.
+6. Under **Groups claim filter**, keep the claim name `groups`, then pick a matcher and enter a value that selects the groups Dot should see (see [Step 2](okta.md#step-2-choose-which-groups-dot-receives)).
 7. **Save**.
+
+<figure><img src="../../../.gitbook/assets/okta-group-claims-filter.png" alt="The Group Claims form in Okta with claim type Filter, claim name groups, and a Starts with dot- filter"><figcaption>Group Claims under <strong>Show legacy configuration</strong>: claim name <code>groups</code>, filtered to groups starting with <code>dot-</code></figcaption></figure>
+
+{% hint style="warning" %}
+**The filter needs a value.** The claim name defaults to `groups` and the matcher to **Starts with**, but the value box starts empty. An empty value displays as **Groups claim filter: None** and sends no groups at all — the most common reason group sync appears to do nothing.
+{% endhint %}
+
+{% hint style="info" %}
+**Can't find Group Claims?** In current Okta versions the group-claim fields are not on the **OpenID Connect ID Token** card (that card only holds Issuer and Audience). They live under **Token claims** > **Show legacy configuration**. The newer expression-based **Token claims** editor above it is not needed for group sync.
+{% endhint %}
 
 {% hint style="warning" %}
 The claim must be on the **ID token**. A claim added only to the access token or only to the `/userinfo` endpoint will not reach Dot, and group sync will behave as if the user is in no groups.
@@ -151,7 +182,7 @@ Users then only see the tables and explores their groups grant. New tables defau
 
 ### Troubleshooting
 
-**Nobody gets any groups** — Almost always a missing or misplaced claim. Confirm the claim is named `groups`, is on the **ID token** (not the access token or `/userinfo`), and that the filter actually matches something. Have the user sign out and back in afterwards.
+**Nobody gets any groups** — Almost always a missing or misplaced claim. In Okta, open **Sign On** > **Token claims** > **Show legacy configuration** and check **Group Claims**. If **Groups claim filter** reads **None**, the filter has no value and sends nothing. Also confirm the claim is named `groups`, is on the **ID token** (not the access token or `/userinfo`), and that the filter actually matches your group names. Have the user sign out and back in afterwards.
 
 **A group is missing for one user** — Check they are a member of that group in Okta, and that the group matches your claim filter. A group excluded by the filter never reaches Dot, even though the user is in it.
 
