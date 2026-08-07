@@ -175,6 +175,10 @@ The claim filter and the app assignment do different jobs. Okta only authenticat
 
 The setting only appears once Okta SSO is configured and saved.
 
+{% hint style="info" %}
+With group sync on, Dot requests one extra scope at login (`groups`), which is what makes Okta emit the claim. The filter from Step 2 shapes *which* groups it returns, but without the scope Okta sends none at all — so both halves are required. Dot handles the scope automatically; there is nothing to configure in Okta for it. Users may see a one-time consent prompt. Turning the toggle back off drops the scope again.
+{% endhint %}
+
 ### Step 5: Check It Worked
 
 Nothing is synced until a user signs in again, so verify before scoping any data to the new groups:
@@ -185,10 +189,10 @@ Nothing is synced until a user signs in again, so verify before scoping any data
 
 If they are missing, work through it in this order:
 
-1. Does the group name actually match your claim filter? A group excluded by the filter never reaches Dot, even though the user is in it.
+1. Is **Group sync** on in Dot's Okta card? It also controls the `groups` scope, so with it off Okta sends no groups no matter how the filter is set.
 2. Is **Groups claim filter** showing a value rather than **None**? (Okta > **Sign On** > **Token claims** > **Show legacy configuration**.)
-3. Was it a full sign-out and sign-in? An existing session is not re-evaluated.
-4. Is **Group sync** still on in the Okta card?
+3. Does the group name actually match your claim filter? A group excluded by the filter never reaches Dot, even though the user is in it.
+4. Was it a full sign-out and sign-in? An existing session is not re-evaluated.
 
 ### Step 6: Use the Groups
 
