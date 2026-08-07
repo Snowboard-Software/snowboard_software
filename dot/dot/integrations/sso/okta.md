@@ -105,7 +105,22 @@ Unlike the Azure AD and Google integrations, there is **no mapping table to fill
 
 Group sync affects **group membership only**. It does not set roles, does not add or remove workspace memberships, and never blocks a login.
 
-### Step 1: Add a Groups Claim in Okta
+### Step 1: Create the Groups in Okta
+
+Group sync mirrors groups that already exist in Okta — it never creates them. Most Okta directories are organized around IT concerns (`vpn-users`, `office-oslo`) rather than data access, so start by making a small set of groups for the access you want in Dot:
+
+1. In Okta, go to **Directory** > **Groups** > **Add group**.
+2. Name it with a shared prefix, for example `dot-commercial`.
+3. Open the group, click **Assign people**, and add the users who belong to it.
+4. Repeat for each group you need (`dot-finance`, `dot-analysts`, …).
+
+The shared prefix is what makes the filter in [Step 3](okta.md#step-3-choose-which-groups-dot-receives) simple, and it makes clear at a glance which Dot groups are owned by Okta.
+
+{% hint style="warning" %}
+**The prefix comes across with the name.** Group names arrive verbatim, so the Okta group `dot-commercial` becomes the Dot group `dot-commercial` — the prefix is *not* stripped. Scope your tables and explores to the prefixed names, and if you want the Dot group to read exactly `commercial` instead, name the Okta group `commercial` and use a matcher that still selects it.
+{% endhint %}
+
+### Step 2: Add a Groups Claim in Okta
 
 Dot reads group membership from the **ID token**, so Okta has to include it there.
 
@@ -114,7 +129,7 @@ Dot reads group membership from the **ID token**, so Okta has to include it ther
 3. Scroll to **Token claims** and expand **Show legacy configuration**.
 4. Next to **Group Claims**, click **Edit**.
 5. Leave **Groups claim type** as **Filter**.
-6. Under **Groups claim filter**, keep the claim name `groups`, then pick a matcher and enter a value that selects the groups Dot should see (see [Step 2](okta.md#step-2-choose-which-groups-dot-receives)).
+6. Under **Groups claim filter**, keep the claim name `groups`, then pick a matcher and enter a value that selects the groups Dot should see (see [Step 3](okta.md#step-3-choose-which-groups-dot-receives)).
 7. **Save**.
 
 <figure><img src="../../../.gitbook/assets/okta-group-claims-filter.png" alt="The Group Claims form in Okta with claim type Filter, claim name groups, and a Starts with dot- filter"><figcaption>Group Claims under <strong>Show legacy configuration</strong>: claim name <code>groups</code>, filtered to groups starting with <code>dot-</code></figcaption></figure>
@@ -135,7 +150,7 @@ The claim must be on the **ID token**. A claim added only to the access token or
 The steps above apply to the **Okta org authorization server**, which is what the Metadata URL in [Step 8](okta.md#step-8-metadata-url) points at (`https://{okta-url}/.well-known/openid-configuration`). If you pointed Dot at a **custom authorization server** instead (a Metadata URL containing `/oauth2/{id}/`), the Sign On tab has no effect — add the `groups` claim under **Security** > **API** > **Authorization Servers** > *[your server]* > **Claims**, with **Include in token type** set to **ID Token**.
 {% endhint %}
 
-### Step 2: Choose Which Groups Dot Receives
+### Step 3: Choose Which Groups Dot Receives
 
 The filter is your control over what Dot gets. Keep it narrow — send only the groups that should drive access in Dot.
 
@@ -149,20 +164,33 @@ The filter is your control over what Dot gets. Keep it narrow — send only the 
 `Matches regex` `.*` works, but sends every group in your directory that the user belongs to. In a large directory that makes the token big and fills Dot with groups that mean nothing there. A prefix like `dot-` keeps the set deliberate.
 {% endhint %}
 
-Most Okta directories contain groups named for IT purposes — `vpn-users`, `office-oslo` — rather than for data access. If yours is like that, create a small set of purpose-made groups in Okta (for example `dot-commercial`, `dot-finance`), assign people to them, and filter on the `dot-` prefix.
-
 {% hint style="success" %}
 The claim filter and the app assignment do different jobs. Okta only authenticates people the Dot app is assigned to (**Applications** > **Dot** > **Assignments**), so that governs **who can sign in**. The groups claim governs **what they can see** once inside. Widening the filter never grants anyone a login.
 {% endhint %}
 
-### Step 3: Turn On Group Sync in Dot
+### Step 4: Turn On Group Sync in Dot
 
 1. In Dot, go to **Settings** > **Connections** and open the **Okta** card.
 2. Under **Group sync**, switch **Use Okta groups as Dot groups** on.
 
 The setting only appears once Okta SSO is configured and saved.
 
-### Step 4: Use the Groups
+### Step 5: Check It Worked
+
+Nothing is synced until a user signs in again, so verify before scoping any data to the new groups:
+
+1. Sign out of Dot completely, then sign back in through Okta.
+2. Go to **Settings** > **Users**.
+3. The synced groups appear against each user, alongside any groups assigned by hand.
+
+If they are missing, work through it in this order:
+
+1. Does the group name actually match your claim filter? A group excluded by the filter never reaches Dot, even though the user is in it.
+2. Is **Groups claim filter** showing a value rather than **None**? (Okta > **Sign On** > **Token claims** > **Show legacy configuration**.)
+3. Was it a full sign-out and sign-in? An existing session is not re-evaluated.
+4. Is **Group sync** still on in the Okta card?
+
+### Step 6: Use the Groups
 
 Synced groups behave exactly like groups created in Dot, so you can scope data with them. To restrict a table or Looker explore to a group:
 
@@ -175,7 +203,7 @@ Users then only see the tables and explores their groups grant. New tables defau
 ### How the Sync Behaves
 
 * **Applied at every login.** Changes in Okta take effect the next time the user signs in, not immediately.
-* **Names are used as-is**, lowercased. An Okta group `Commercial` becomes the Dot group `commercial`. Matching ignores case.
+* **Names are used as-is**, lowercased and prefix included. An Okta group `Dot-Commercial` becomes the Dot group `dot-commercial`. Matching ignores case.
 * **Removing someone from an Okta group** removes the matching Dot group on their next sign-in.
 * **Groups you assign by hand in Dot are left alone** — sync only manages the groups it added. The exception is a name that is both hand-assigned and sent by Okta: Okta owns it, so removing it in Okta removes it in Dot.
 * **Workspace identities are kept in step too.** A user who is a member of a workspace has their groups synced there as well, so revoking an Okta group also revokes the workspace access it granted. Roles and workspace memberships themselves are never changed.
