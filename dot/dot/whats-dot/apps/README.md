@@ -37,14 +37,14 @@ They all share the same engine, primitives, and data connections — the differe
 ## Live, interactive, and yours to edit
 
 * **Always current** — every view runs the pinned SQL against live data. Refresh on demand or on a [schedule](../scheduling.md).
-* **Interactive** — a declarative filter threads through every card whose data has that column and cross-filters the rest automatically; view controls (log/linear, time window, smoothing, show/hide series) flip instantly, client-side, with no re-query.
+* **Interactive** — a declarative filter threads through every card whose data has that column and cross-filters the rest automatically; view controls (log/linear, time window, smoothing, show/hide series) flip instantly, client-side, with no re-query. Your filter choices go into the address bar, so copying the URL shares the exact view you are looking at.
 * **Editable** — AI-built, but fully human-editable: the text, layout, style, and the queries themselves — in chat or by hand.
 
 ## Share it anywhere
 
 * **Share link** — a private link you can revoke at any time.
 * **Embed** — drop an app into your wiki, portal, or product.
-* **PDF** — a board-ready export that still links back to the live app.
+* **PDF** — a board-ready export that still links back to the live app. It exports the view you are looking at, so the filters you picked are the ones in the file, and the link inside it reopens that same filtered view.
 * **Present** — full-screen live slides straight from the browser.
 
 ## Trust and governance
