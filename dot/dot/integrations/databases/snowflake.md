@@ -86,3 +86,13 @@ grant manage grants on account to role dot_role;
 ```
 
 Without it, the user sync skips safely (with a hint in the sync log) and no user is modified — table syncing is unaffected.
+
+## Internal Marketplace (optional)
+
+If your Snowflake organization publishes data products internally, Dot can list them and search them alongside your other tables.
+
+Turn on **Internal Marketplace** under **Settings → Connections → Snowflake**. It is off by default. Turning it on also switches on the Snowflake Marketplace skill under **Settings → Skills**.
+
+Dot reads the organizational listings your connection's role can see, and refreshes them every time the connection syncs. If that refresh fails, the rest of the sync still finishes and the sync log says what went wrong.
+
+Dot only reads the catalog. Mounting a listing's data, and granting your Dot role access to it, still happens in Snowflake.

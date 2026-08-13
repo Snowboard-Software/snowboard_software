@@ -52,6 +52,10 @@ You don't need to create an environment for small fixes. When you start a [Root]
 
 This means production documentation is never edited in place — every change, however small, goes through an isolated branch.
 
+A throwaway environment is disposable on purpose. Dot deletes it after seven days without activity, and it never gets a branch in your Git repository, even when you have environment mirroring on.
+
+To hold on to one, open **Manage environments** and click **Keep it** on the environment. Dot then treats it like any environment you created yourself: it stays until you delete it, Root leaves it alone when the chat finishes, and it gets its own `dot/env-<slug>` branch if environment mirroring is on.
+
 ## Work against your dbt dev target
 
 By default an environment reads from the same warehouse schemas as production. For dbt-style development you can point it at your **dev target** instead:
@@ -90,7 +94,7 @@ Admins can always merge. Modelers need the "Can merge changes to production" per
 If you connect a Git provider and want changes to go through review, you don't have to merge inside Dot. You can open a pull request instead. On the environment, click **Open pull request**, and Dot opens a PR from the environment's branch into your production branch on GitHub or GitLab. Your team reviews the diff there and merges when it's ready, and Dot picks up the change. Anyone can open a pull request. Merging to production is the part that needs the permission.
 
 {% hint style="info" %}
-This works when Dot is mirroring environments to Git, which it does by default. Each lasting environment gets its own branch in the same repository as production, named `dot/env-<slug>`. You can turn this off with the "Mirror environments to Git" toggle under Settings, then Version Control. The throwaway environments Root creates for quick fixes aren't mirrored.
+This works when Dot is mirroring environments to Git, which it does by default. Each lasting environment gets its own branch in the same repository as production, named `dot/env-<slug>`. You can turn this off with the "Mirror environments to Git" toggle under Settings, then Version Control. The throwaway environments Root creates for quick fixes aren't mirrored, unless you keep one.
 {% endhint %}
 
 ## For coding agents: CLI & API
