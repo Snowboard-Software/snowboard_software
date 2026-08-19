@@ -6,21 +6,19 @@ description: How to keep Dot's answers correct and trusted as your data, your co
 
 Setting Dot up gets you answers. Maintaining Dot is what makes people trust them.
 
-**Why this matters**: four things make Dot better over time. The models improve. We improve the agent around them. Your users get better at asking. And your context gets better. Only the last one is yours — and it is the one that compounds. A clean data model with well-written notes is the highest-leverage investment you can make, and it pays twice: better answers, and lower cost, because Dot iterates and backtracks less.
-
-It is also where the problems are. A few years ago a disappointing answer usually meant the model was not strong enough to reason about the situation. Today that is rare: nine times out of ten, a bad answer is missing or ambiguous context. What you are really doing is building an environment in which the agent finds it hard to be wrong.
+**Why this matters**: four things make Dot better over time. The models improve, we improve the agent around them, and your users get better at asking — but the fourth is yours, and it is the one that compounds. A clean data model with well-written notes pays twice: better answers, and lower cost, because Dot iterates and backtracks less. It is also where the problems are. A disappointing answer used to mean the model could not reason well enough; today that is rare. Nine times out of ten it is missing or ambiguous context. What you are really building is an environment in which the agent finds it hard to be wrong.
 
 This page is for whoever owns Dot. If you are a user who wants better answers, read [Dot-Maxxing](https://www.getdot.ai/blog/dot-maxxing) instead.
 
 ---
 
-## Fix things at the source, not with a note
+## Fix things at the source first
 
-When something is confusing, the instinct is to write a note explaining it. Usually the better move is to fix the thing itself.
+When something is confusing, the instinct is to write a note explaining it. Write the note — but fix the source first, or you end up maintaining an explanation of a problem you could have removed.
 
-An explore that joins everything to everything, a table with a thousand fields where only half are real, two revenue fields that differ in ways nobody remembers — that is *accidental* complexity. Your business has genuine complexity and you have to model it; accidental complexity is technical debt that crept in, and it is worth attacking directly. Narrower explores, consistent names, fewer ambiguous fields. Every hour spent there pays off in every answer afterwards.
+A data source that joins everything to everything, a thousand fields where only half are maintained, two revenue fields that differ in ways nobody remembers — that is *accidental* complexity. Your business has genuine complexity and you have to model it; accidental complexity is technical debt that crept in, and it is worth attacking directly. Narrower sources, consistent names, fewer ambiguous fields. Every hour spent there pays off in every answer afterwards.
 
-Some things you cannot remove — a legacy field that still feeds a report someone depends on. Then write the rule explicitly: which field to use when, and why the other one exists.
+Then write the note. Some things you cannot remove — a legacy field that still feeds a report someone depends on — and that rule belongs in the text: which field to use when, and why the other one still exists.
 
 Be careful what you feed Dot, too. An exported Confluence space is human-readable, not agent-ready. Documentation dumped in wholesale is one of the most common causes of vague answers.
 
@@ -30,7 +28,7 @@ Be careful what you feed Dot, too. An exported Confluence space is human-readabl
 
 - **One topic per note.** Atomic notes are easier to update, easier to retrieve, and cheaper to load.
 - **Split anything oversized.** A very large note — past roughly 50,000 characters — gets pulled in whole when only a paragraph was needed. Break it up and only the relevant piece loads.
-- **Group by type, not by team**: organization information, behaviour and formatting rules, metrics glossary.
+- **Organize so ownership is obvious.** In a small setup, grouping by type works well: organization information, behaviour and formatting rules, metrics glossary. Once you are big enough that no single person can own all of it, split by team or domain first — marketing, finance, supply — and group by type inside each. What you are after is being able to say "this team owns this folder"; ownership gets much harder when the structure cuts across teams.
 - **Say what is out of scope — and where to go instead.** A note that politely refuses off-topic questions, gives a few counter-examples, and names the right tool for them ("for technical documentation, use X") beats a bare refusal: people learn the boundary instead of hitting it repeatedly. Expect to iterate on it; you will not anticipate everything up front. Notes take effect within seconds, so this is cheap to tune.
 
 ---
@@ -74,7 +72,7 @@ Once a week:
 
 Open **Full logs → Lineage** on an answer and you can see which notes were actually used, and which were merely loaded into context.
 
-- Loaded often **and** used often: valuable. Keep it fresh, and consider splitting it so only the needed part loads.
+- Loaded often **and** used often: valuable. Keep it accurate.
 - Loaded often but rarely used: it is charging you on nearly every question. Retire it.
 - Never loaded at all: ask why it exists.
 
@@ -84,7 +82,7 @@ Context also goes stale — the business moves and the note does not. Re-read yo
 
 ## Change things safely
 
-Never change production directly. Create an [environment](environments.md), make the change there, test it by chatting inside it, and merge when you are convinced. You are not obliged to merge at all — an environment is a fine place to just try something.
+Never change production directly. Create an [environment](environments.md), make the change there, test it by chatting inside it, and merge when you are convinced. You do not have to merge at all — an environment is a fine place to just try something.
 
 {% hint style="warning" %}
 Two things that surprise people:
@@ -93,27 +91,27 @@ Two things that surprise people:
 * **Reconnecting a data source and syncing erases the context Dot learned on it.** Reconnect only when you mean to.
 {% endhint %}
 
-When an answer is wrong, capture the correct query. A wrong answer plus its ground truth is the most useful thing you can hand over — far more useful than a description of what went wrong. Everything is [version controlled](version-control/README.md), so a change that makes things worse is one revert away.
+Everything is [version controlled](version-control/README.md), so a change that makes things worse is one revert away.
 
 <figure><img src="../../.gitbook/assets/environment-switcher.png" alt=""><figcaption><p>Work in an environment while production stays untouched</p></figcaption></figure>
 
 ---
 
-## Spend follows configuration
+## Spend
 
-Cost is mostly a configuration problem, not a usage problem.
+More usage costs more, and that is fine — it means people are getting answers. What you want is for the spend to land on work worth doing, and a good part of that is configuration.
 
 - Default to the economical energy mode and escalate deliberately. Most questions do not need the frontier.
-- Set per-user credit limits. Constraints are useful: they make people spend their budget on the work that matters.
+- Set per-user credit limits. Constraints are useful: they push people to spend their budget on what actually matters to them.
 - Usage follows a power law — a handful of people account for most of the spend. Talk to them rather than emailing everyone.
 
 ---
 
-## The rhythm
+## The routine, and who owns it
 
-**Weekly, twenty minutes, one named owner.** Thumbs-down, proposals, and a skim of what new users asked. First questions from new people are the best signal for what your documentation assumes but never says.
+**Weekly, twenty minutes, one named owner.** The problem conversations, the pending proposals, and a skim of what new users asked — first questions from new people are the best signal for what your documentation assumes but never says.
 
-**Every second week, forty-five minutes, with the people who ask the questions.** One domain, its trusted dashboards, and the questions it needs answered. That session also does something a solo review cannot: it shows the people whose questions these are that somebody is tending the system.
+**Every second week, forty-five minutes, with the people who ask the questions.** One domain, its trusted dashboards, and the questions it needs answered. It also shows the people whose questions these are that somebody is tending the system.
 
 | Role | Owns |
 | --- | --- |
