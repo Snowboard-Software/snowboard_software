@@ -54,17 +54,25 @@ A good ritual: collect five to ten conversations where Dot got it wrong and root
 
 ---
 
-## Feedback: the thumbs-down is the valuable one
+## Let Dot tell you where it failed
 
-Dot learns from corrections, not from praise. 👍 saves a good query for reuse. 👎 tells you the knowledge base is missing something — which is the more useful signal.
+You do not have to hunt for the bad answers. After every response, in the background, Dot reviews the whole conversation and labels it. Admins see the verdict on the **History** page, in the **Auto-Review** column:
 
-Once a week:
+- **Issue** — something went wrong: the user complained, a query errored, they had to repeat themselves, a query came back empty where data was expected, or Dot described what it was going to do without ever delivering findings. A single failure late in an otherwise good conversation still marks the whole thing as an issue, deliberately.
+- **Abandoned** — Dot asked a clarifying question and nobody came back. The easiest signal to overlook, and often the most telling: usually the question was too ambiguous to answer, or the person gave up on it.
+- **Success** and **OK** — the user said it was what they needed, or the conversation simply completed without complaint.
 
-- Filter History for conversations marked `problem` and fix the context behind them.
-- Review [Root's](context-agent.md) proposals. Work **bottom-up rather than newest-first** — later proposals often build on earlier ones, and approving out of order creates conflicts.
-- Put it on a fixed day so a backlog never builds. Friday or Monday both work.
+Hover a label to see the one-line reason, and use the **Issues** and **Abandoned** filters to work through them. If you want this in your own reporting, the admin usage export carries each conversation's score and reason.
 
-<figure><img src="../../.gitbook/assets/feedback-admin-history.png" alt=""><figcaption><p>Conversations with a dislike show up as <code>problem</code> in the admin History</p></figcaption></figure>
+Your users' thumbs are the second signal, in the separate **Feedback** column, and 👎 is the one worth acting on. Dot learns from being corrected — "that is wrong, here is how we actually calculate it" — far more than from being approved of.
+
+{% hint style="info" %}
+Both columns use the word **Success** for their positive case, but they are independent: Auto-Review is Dot's own judgement of the conversation, Feedback is what your users clicked. Neither overrides the other.
+{% endhint %}
+
+When an answer is wrong, capture the correct query. A wrong answer plus its ground truth is the most useful thing you can hand over — far more useful than a description of what went wrong.
+
+<figure><img src="../../.gitbook/assets/feedback-admin-history.png" alt=""><figcaption><p>Auto-Review is Dot's own verdict on the conversation; Feedback is what users clicked</p></figcaption></figure>
 
 ---
 
@@ -109,7 +117,7 @@ More usage costs more, and that is fine — it means people are getting answers.
 
 ## The routine, and who owns it
 
-**Weekly, twenty minutes, one named owner.** The problem conversations, the pending proposals, and a skim of what new users asked — first questions from new people are the best signal for what your documentation assumes but never says.
+**Weekly, twenty minutes, one named owner.** Work the issues and abandoned conversations. Review [Root's](context-agent.md) pending proposals — bottom-up rather than newest-first, since later ones often build on earlier ones and approving out of order creates conflicts. Then skim what new users asked: first questions from new people are the best signal for what your documentation assumes but never says. Put it on a fixed day, Friday or Monday, so a backlog never builds.
 
 **Every second week, forty-five minutes, with the people who ask the questions.** One domain, its trusted dashboards, and the questions it needs answered. It also shows the people whose questions these are that somebody is tending the system.
 
