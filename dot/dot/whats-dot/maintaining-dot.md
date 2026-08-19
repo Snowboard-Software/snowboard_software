@@ -1,101 +1,119 @@
 ---
-description: The short weekly rhythm that keeps Dot's answers correct as your data and your team change
+description: How to keep Dot's answers correct and trusted as your data, your context, and your team change
 ---
 
 # Maintaining Dot
 
 Setting Dot up gets you answers. Maintaining Dot is what makes people trust them.
 
-**Why this matters**: the teams that get the most out of Dot are not the ones with the biggest data model. They are the ones where somebody spends twenty minutes a week looking at what Dot got wrong and fixing the context behind it. That loop is the whole difference between "we tried an AI analyst" and "I ask Dot before I ask a colleague".
+**Why this matters**: four things make Dot better over time. The models improve. We improve the agent around them. Your users get better at asking. And your context gets better. Only the last one is yours — and it is the one that compounds. A clean data model with well-written notes is the highest-leverage investment you can make, and it pays twice: better answers, and lower cost, because Dot iterates and backtracks less.
 
-This page is for whoever owns Dot — usually an admin or a modeler. If you are a user who wants better answers, read [Dot-Maxxing](https://www.getdot.ai/blog/dot-maxxing) instead.
+It is also where the problems are. A few years ago a disappointing answer usually meant the model was not strong enough to reason about the situation. Today that is rare: nine times out of ten, a bad answer is missing or ambiguous context. What you are really doing is building an environment in which the agent finds it hard to be wrong.
 
----
-
-## The weekly twenty minutes
-
-Three things, in this order.
-
-**1. Read the thumbs-down.** Every 👎 is either missing context or missing data. Missing context you fix in minutes with a note. Missing data goes on your roadmap. Open History as an admin and filter for conversations marked `problem`.
-
-<figure><img src="../../.gitbook/assets/feedback-admin-history.png" alt=""><figcaption><p>Conversations with a dislike show up as <code>problem</code> in the admin History</p></figcaption></figure>
-
-**2. Review the proposals.** When Dot notices something worth remembering — a corrected metric, a renamed table — it sends a proposal to [Root](context-agent.md) instead of silently editing. Merge the good ones, reject the rest. Rejecting is not a failure; it is the review working.
-
-<figure><img src="../../.gitbook/assets/context-agent-review-changes.png" alt=""><figcaption><p>Review what changed before anything goes live</p></figcaption></figure>
-
-**3. Skim what new people asked.** First questions from new users are your best signal for what your documentation assumes and never says.
+This page is for whoever owns Dot. If you are a user who wants better answers, read [Dot-Maxxing](https://www.getdot.ai/blog/dot-maxxing) instead.
 
 ---
 
-## Teach Dot how you think, not just what your columns mean
+## Fix things at the source, not with a note
 
-Most weak answers are not model failures. They are a colleague being asked to do an analysis nobody explained to them.
+When something is confusing, the instinct is to write a note explaining it. Usually the better move is to fix the thing itself.
 
-The trick is to give enough context and to teach Dot how *you* approach a problem. One mobility customer wrote their A/B testing playbook down as a note — how they evaluate lift, which guardrail metrics matter, when a result counts as real. Every experiment analysis now follows that pattern instead of being reinvented per question.
+An explore that joins everything to everything, a table with a thousand fields where only half are real, two revenue fields that differ in ways nobody remembers — that is *accidental* complexity. Your business has genuine complexity and you have to model it; accidental complexity is technical debt that crept in, and it is worth attacking directly. Narrower explores, consistent names, fewer ambiguous fields. Every hour spent there pays off in every answer afterwards.
 
-Be blunt when precision matters. A note can say exactly this:
+Some things you cannot remove — a legacy field that still feeds a report someone depends on. Then write the rule explicitly: which field to use when, and why the other one exists.
 
-```
-ALWAYS: when someone asks for ERP sales targets, use SALES_PLAN_REVENUE_INTERNAL_NET_DAILY
-from CORE.FCT_SALES_BUDGETS_DAILY.
-```
-
-And tell Dot what it *cannot* see. A short note listing the data you do not expose stops Dot from improvising around a gap — it will say the question is out of scope instead.
+Be careful what you feed Dot, too. An exported Confluence space is human-readable, not agent-ready. Documentation dumped in wholesale is one of the most common causes of vague answers.
 
 ---
 
-## One question, one answer
+## Write notes the way an agent reads them
 
-The fastest way to lose trust is two defensible numbers for the same question.
+- **One topic per note.** Atomic notes are easier to update, easier to retrieve, and cheaper to load.
+- **Split anything oversized.** A very large note — past roughly 50,000 characters — gets pulled in whole when only a paragraph was needed. Break it up and only the relevant piece loads.
+- **Group by type, not by team**: organization information, behaviour and formatting rules, metrics glossary.
+- **Say what is out of scope — and where to go instead.** A note that politely refuses off-topic questions, gives a few counter-examples, and names the right tool for them ("for technical documentation, use X") beats a bare refusal: people learn the boundary instead of hitting it repeatedly. Expect to iterate on it; you will not anticipate everything up front. Notes take effect within seconds, so this is cheap to tune.
 
-It usually looks like this: two tables both legitimately describe revenue, a colleague asks the same question twice a week apart, and the answers differ. Both queries are correct. The setup is wrong.
+---
 
-Pick the canonical source for each important metric and say so in a note. Then, after any bulk change to your context or model, re-ask your ten most important questions and check the numbers still match what you expect. Bulk changes are exactly when defaults move quietly.
+## Training is agreeing on a source of truth
+
+Training Dot does not mean fine-tuning a model. It means aligning Dot with the numbers your company already trusts.
+
+The principle underneath: there is no accuracy in a vacuum. If nobody has defined how a metric should be calculated, no agent can be right about it, and you have nothing to benchmark against.
+
+So work one domain at a time:
+
+1. Pick two to five dashboards you trust end to end.
+2. Give that domain one owner.
+3. Ask Dot the questions those dashboards already answer.
+4. Treat every disagreement as a work item. Either Dot is missing context, or your dashboard and your warehouse disagree — which is worth finding out either way.
+
+If the same question asked two different ways returns two different numbers, treat it as a high-value problem rather than a quirk. Nothing destroys trust faster.
 
 {% hint style="info" %}
-Ask Dot the same question in two different phrasings once in a while. If the numbers disagree, you have found a context problem before your CFO does.
+A good ritual: collect five to ten conversations where Dot got it wrong and root-cause them together in one sitting. Patterns show up quickly, and a single fix usually closes several of them.
 {% endhint %}
 
 ---
 
-## Keep the context lean
+## Feedback: the thumbs-down is the valuable one
 
-More notes is not more knowledge. Dot loads notes by relevance, so a bloated knowledge base means more competing context on every question — slower, more expensive, and less precise.
+Dot learns from corrections, not from praise. 👍 saves a good query for reuse. 👎 tells you the knowledge base is missing something — which is the more useful signal.
 
-A pattern worth avoiding: a bulk rewrite split a tidy set of notes into far more, smaller ones. Nothing looked broken, but the median number of notes pulled into each question went from around a dozen to over fifty, cost per question climbed, and a default table quietly changed along the way.
+Once a week:
 
-So, every few weeks:
+- Filter History for conversations marked `problem` and fix the context behind them.
+- Review [Root's](context-agent.md) proposals. Work **bottom-up rather than newest-first** — later proposals often build on earlier ones, and approving out of order creates conflicts.
+- Put it on a fixed day so a backlog never builds. Friday or Monday both work.
 
-- Delete notes that duplicate each other, and merge the near-duplicates.
-- Check that references between notes still resolve — renamed files leave dead pointers behind.
-- Ask whether a note has ever shaped an answer. Open **Full logs → Lineage** on a few answers to see which notes actually got used.
+<figure><img src="../../.gitbook/assets/feedback-admin-history.png" alt=""><figcaption><p>Conversations with a dislike show up as <code>problem</code> in the admin History</p></figcaption></figure>
+
+---
+
+## Prune with the numbers Dot already gives you
+
+Open **Full logs → Lineage** on an answer and you can see which notes were actually used, and which were merely loaded into context.
+
+- Loaded often **and** used often: valuable. Keep it fresh, and consider splitting it so only the needed part loads.
+- Loaded often but rarely used: it is charging you on nearly every question. Retire it.
+- Never loaded at all: ask why it exists.
+
+Context also goes stale — the business moves and the note does not. Re-read your foundational notes on a schedule rather than waiting for someone to notice.
 
 ---
 
 ## Change things safely
 
-You do not have to experiment in production.
+Never change production directly. Create an [environment](environments.md), make the change there, test it by chatting inside it, and merge when you are convinced. You are not obliged to merge at all — an environment is a fine place to just try something.
 
-Create an [environment](environments.md), write your notes there, and chat inside it to see whether answers improve. Nothing you do there touches what your team sees, and you only merge when you are convinced. You are not obliged to merge at all — an environment is a fine place to just try something.
+{% hint style="warning" %}
+Two things that surprise people:
+
+* **Settings are workspace-global, not per environment.** Changing a setting while inside a dev environment takes effect in production immediately.
+* **Reconnecting a data source and syncing erases the context Dot learned on it.** Reconnect only when you mean to.
+{% endhint %}
+
+When an answer is wrong, capture the correct query. A wrong answer plus its ground truth is the most useful thing you can hand over — far more useful than a description of what went wrong. Everything is [version controlled](version-control/README.md), so a change that makes things worse is one revert away.
 
 <figure><img src="../../.gitbook/assets/environment-switcher.png" alt=""><figcaption><p>Work in an environment while production stays untouched</p></figcaption></figure>
 
-When an answer is wrong, capture the correct query. A wrong answer plus its ground truth is the single most useful thing you can hand to Dot — far more useful than a description of what went wrong. Everything is [version controlled](version-control/README.md), so a change that makes things worse is one revert away.
+---
+
+## Spend follows configuration
+
+Cost is mostly a configuration problem, not a usage problem.
+
+- Default to the economical energy mode and escalate deliberately. Most questions do not need the frontier.
+- Set per-user credit limits. Constraints are useful: they make people spend their budget on the work that matters.
+- Usage follows a power law — a handful of people account for most of the spend. Talk to them rather than emailing everyone.
 
 ---
 
-## The bi-weekly working session
+## The rhythm
 
-Twenty minutes a week keeps Dot healthy. If you want it to get noticeably better, book forty-five minutes every second week with the people who actually ask the questions.
+**Weekly, twenty minutes, one named owner.** Thumbs-down, proposals, and a skim of what new users asked. First questions from new people are the best signal for what your documentation assumes but never says.
 
-Bring one real use case: the business questions a team asks each week, and the dashboard that already answers them. Ask Dot those questions. Where Dot and the dashboard disagree, you have your work list — and the dashboard's own logic is usually the context that was missing.
-
-That session also does something a solo review cannot: it shows the people whose questions these are that somebody is tending the system.
-
----
-
-## Who owns what
+**Every second week, forty-five minutes, with the people who ask the questions.** One domain, its trusted dashboards, and the questions it needs answered. That session also does something a solo review cannot: it shows the people whose questions these are that somebody is tending the system.
 
 | Role | Owns |
 | --- | --- |
@@ -103,4 +121,4 @@ That session also does something a solo review cannot: it shows the people whose
 | Modeler | Notes, the data model, metric definitions, playbooks, canonical sources |
 | User | Feedback on answers, and saying "remember this" when Dot gets it wrong |
 
-The most common failure is not a bad model. It is that nobody in particular owns any of this. Put one name against the weekly twenty minutes.
+The most common failure is not a bad data model. It is that nobody in particular owns any of this. Put one name against the weekly twenty minutes.
