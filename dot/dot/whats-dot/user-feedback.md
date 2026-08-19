@@ -4,30 +4,22 @@ description: is valuable input for learning
 
 # User Feedback
 
-Users can either upvote or downvote a response from Dot.
-
-This feedback is used to expand Dots knowledge base, and give admins relevant insights to manage Dot.
-
-
-
-## Positive Feedback
-
-"Strengthen strengths" made young Boris Becker a world champion in Tennis 🎾.\
-When a user clicks 👍, Dot will store the generated query for this question and reuse it for similar questions in the future.
-
-<figure><img src="../../.gitbook/assets/feedback-like-button.png" alt=""><figcaption><p>Click thumbs up to save a successful query</p></figcaption></figure>
-
-{% hint style="info" %}
-Before a generated query gets used by Dot an admin needs to select it on the Model page.
-{% endhint %}
+Users can either upvote or downvote a response from Dot. This feedback tells admins where Dot's knowledge base needs work.
 
 ## Negative feedback
 
-👎 is a signal for admins that Dot's knowledge base needs to get adjusted to be better able to answer this question.
+👎 is the signal worth acting on. Dot learns from being corrected far more than from being approved of: a downvote, ideally with a sentence about what the right answer was, tells an admin exactly which definition, table, or note is missing or wrong.
+
+<figure><img src="../../.gitbook/assets/feedback-like-button.png" alt=""><figcaption><p>Users rate an answer with 👍 or 👎</p></figcaption></figure>
+
+## Positive Feedback
+
+👍 marks an answer as good. It is a light-touch signal — useful for seeing which topics are working, but it does not by itself change how Dot answers in the future.
 
 ## Admin Overview
 
-Admins can select to see the history of all users. All conversations with at least 1 dislike will show up with `problem` and if there is no dislikes and at least 1 like it shows as `success`.
+Admins can see the history of all users. Conversations show a **Feedback** column, based on what users clicked: at least one dislike shows as `Problem`, and likes with no dislikes show as `Success`.
+
+Next to it, the **Auto-Review** column shows Dot's own assessment of each conversation — it reviews its answers in the background whether or not anyone clicks anything. See [Maintaining Dot](maintaining-dot.md) for how to work through both signals.
 
 <figure><img src="../../.gitbook/assets/feedback-admin-history.png" alt=""><figcaption><p>View feedback across all users in History</p></figcaption></figure>
-
