@@ -28,8 +28,8 @@ Be careful what you feed Dot, too. An exported Confluence space is human-readabl
 
 - **One topic per note.** Atomic notes are easier to update, easier to retrieve, and cheaper to load.
 - **Split anything oversized.** A very large note — past roughly 50,000 characters — gets pulled in whole when only a paragraph was needed. Break it up and only the relevant piece loads.
-- **Organize so ownership is obvious.** In a small setup, grouping by type works well: organization information, behaviour and formatting rules, metrics glossary. Once you are big enough that no single person can own all of it, split by team or domain first — marketing, finance, supply — and group by type inside each. What you are after is being able to say "this team owns this folder"; ownership gets much harder when the structure cuts across teams.
-- **Say what is out of scope — and where to go instead.** A note that politely refuses off-topic questions, gives a few counter-examples, and names the right tool for them ("for technical documentation, use X") beats a bare refusal: people learn the boundary instead of hitting it repeatedly. Expect to iterate on it; you will not anticipate everything up front. Notes take effect within seconds, so this is cheap to tune.
+- **Organize so ownership is obvious.** While it is small, group by type: organization information, behaviour and formatting rules, metrics glossary. Once no single person can own all of it, split by team or domain first — marketing, finance, supply — and group by type inside each. You want to be able to say "this team owns this folder", and that gets hard when the structure cuts across teams.
+- **Say what is out of scope — and where to go instead.** A note that politely declines off-topic questions and names the right tool ("for technical documentation, use X") beats a bare refusal: people learn the boundary instead of repeatedly hitting it. You will not anticipate everything up front, and notes take effect within seconds, so iterate.
 
 ---
 
@@ -58,9 +58,9 @@ A good ritual: collect five to ten conversations where Dot got it wrong and root
 
 You do not have to hunt for the bad answers. After every response, in the background, Dot reviews the whole conversation and labels it. Admins see the verdict on the **History** page, in the **Auto-Review** column:
 
-- **Issue** — something went wrong: the user complained, a query errored, they had to repeat themselves, a query came back empty where data was expected, or Dot described what it was going to do without ever delivering findings. A single failure late in an otherwise good conversation still marks the whole thing as an issue, deliberately.
-- **Abandoned** — Dot asked a clarifying question and nobody came back. The easiest signal to overlook, and often the most telling: usually the question was too ambiguous to answer, or the person gave up on it.
-- **Success** and **OK** — the user said it was what they needed, or the conversation simply completed without complaint.
+- **Issue** — something went wrong: a complaint, a query error, the user repeating themselves, an empty result where data was expected, or Dot describing what it would do without ever delivering findings. One late failure marks the whole conversation, deliberately.
+- **Abandoned** — Dot asked a clarifying question and nobody came back. The easiest signal to overlook and often the most telling: the question was too ambiguous to answer, or the person gave up.
+- **Success** and **OK** — the user said it was what they needed, or the conversation completed without complaint.
 
 Hover a label to see the one-line reason, and use the **Issues** and **Abandoned** filters to work through them. If you want this in your own reporting, the admin usage export carries each conversation's score and reason.
 
