@@ -1,12 +1,14 @@
 # Security & Privacy
 
-Ensuring high standards to protect customer data is critical to operate successfully given rising IT security threads and increased privacy concerns.
+Ensuring high standards to protect customer data is critical to operate successfully given rising IT security threats and increased privacy concerns.
 
 We are continuously auditing our technical and organizational measures by monitoring our infrastructure and processes with [Probo](https://www.probo.com/).
 
 We've successfully completed the AICPA Service Organization Control (SOC) 2 Type II audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards. Our current report is issued by [MJD Advisors](https://mjd.cpa/) and covers the Security, Availability and Confidentiality trust services criteria for the Dot Platform.
 
-For all questions and documentation requests, you can contact our customer support team at [hi@getdot.ai](mailto:hi@getdot.ai).
+Our SOC 2 Type II report, our most recent penetration test summary, and a bridge letter covering the period since the last report are available under NDA. We also sign a Data Processing Agreement (DPA) with customers who need one.
+
+For these documents, a completed security questionnaire, or any other question, contact us at [hi@getdot.ai](mailto:hi@getdot.ai).
 
 <figure><img src="../.gitbook/assets/image (5) (1).png" alt="" width="203"><figcaption></figcaption></figure>
 
@@ -48,21 +50,21 @@ All of our services are hosted on [Hetzner Cloud](https://www.hetzner.com/), in 
 
 **Data Hosting Security**
 
-Each customer is served from a single region — the EU (`eu.getdot.ai`) or the US (`app.getdot.ai`) — and their data stays in that region. Every organization gets its own separate database.
+Each customer is served from a single region — the EU or the US — and their data stays in that region. Every organization gets its own separate database.
 
 Dot queries your data warehouse in place. We store the schema and documentation Dot needs as context, plus the results that are returned into a chat — we do not copy or replicate your warehouse.
 
 **Encryption at Rest**
 
-All databases are encrypted at rest.
+Credentials for your data sources, and the contents of chats, are encrypted at the application layer before they are written to disk. Backups are encrypted before they leave the server (see below).
 
 **Encryption in Transit**
 
-Our applications encrypt in transit with TLS/SSL only. Certificates are issued through Let's Encrypt and terminated on our own servers.
+Our applications encrypt in transit with TLS/SSL only.
 
 **Backups**
 
-All data is backed up hourly with [restic](https://restic.net/) — encrypted and deduplicated client-side before it leaves the server — to object storage on Cloudflare R2. Each server keeps its own independent repository. Retention is 24 hourly, 7 daily, 4 weekly and 12 monthly snapshots, and restores are tested.
+All data is backed up hourly with [restic](https://restic.net/) — encrypted and deduplicated on the server, before it leaves it — to off-site object storage in a different cloud than the servers themselves. Each server keeps its own independent repository. Snapshots age out on a rolling schedule and the oldest is never more than a year old. Restores are tested.
 
 **Vulnerability Scanning**
 
@@ -84,7 +86,7 @@ We have a process for handling information security events which includes escala
 
 **Administrative Access**
 
-Our servers have no publicly reachable SSH or admin interfaces. All administrative access runs over [Tailscale](https://tailscale.com/), a private mesh VPN, and is limited to authorized employees.
+Our servers have no publicly reachable SSH or administrative interfaces. All administrative access runs over a private mesh VPN and is limited to authorized employees.
 
 **Permissions and Authentication**
 
@@ -107,6 +109,26 @@ All team members are required to adhere to a minimum set of password requirement
 **Password Managers**
 
 All company issued laptops utilize a password manager for team members to manage passwords and maintain password complexity.
+
+## Your Controls
+
+The sections above describe how we secure our own systems. These are the controls you operate yourself.
+
+**Single Sign-On**
+
+Dot supports SAML and OpenID Connect, with dedicated setup for Microsoft Entra ID, Okta and Google, and a generic OIDC option for any other identity provider. Group membership from your IdP can drive a user's role and access scope on every login. See [Single Sign On](integrations/sso/README.md).
+
+**Roles and Permissions**
+
+Access inside Dot is governed by three roles — Admin, Modeler and User — plus groups and workspaces that scope which data and chats a person can reach. Dot queries your warehouse as the database user you connect it with, so it can never read data that user is not granted. See [Permissions](whats-dot/permissions.md).
+
+**Audit Logging**
+
+Security-relevant events are recorded per organization and can be pulled through the API for forwarding to your own log management system.
+
+## Data Retention and Deletion
+
+Your data stays in Dot for as long as you are a customer. On request, or when an organization is deleted, we remove its database and associated files from our live systems. Backup snapshots containing that data age out on the rolling schedule described above.
 
 ## AI Security
 
@@ -135,6 +157,22 @@ As an organization, we are committed to safeguarding customer data and will neve
 * Third-Party Security Audits: AI security practices are included in our periodic security assessments and SOC 2 audits.
 * Regulatory Alignment: AI data handling complies with GDPR, CCPA, and other applicable data protection regulations.
 * Incident Response: If an AI-related security incident occurs, we have an established protocol for rapid investigation and resolution.
+
+## Sub-processors
+
+We keep the number of parties that touch customer data small. These are the ones that do:
+
+| Sub-processor | Purpose | Location |
+| --- | --- | --- |
+| Hetzner Online GmbH | Hosting and compute | Germany (EU customers) / United States (US customers) |
+| Cloudflare, Inc. | Encrypted off-site backup storage | Global |
+| Anthropic, Google, OpenAI | Model inference, under zero data retention terms | United States |
+| Microsoft | Notification email delivery | European Union |
+| PostHog, Inc. | Product analytics and error reporting | European Union |
+
+Our own observability stack is self-hosted, so prompts and query results are not sent to a third-party monitoring vendor.
+
+We notify customers of changes to this list. Organizations that require it can be served through Azure OpenAI instead of the model providers above.
 
 ## Vendor and Risk Management
 
