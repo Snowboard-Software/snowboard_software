@@ -56,7 +56,7 @@ Dot queries your data warehouse in place. We store the schema and documentation 
 
 **Encryption at Rest**
 
-Backups are encrypted before they leave the server (see below).
+All customer data is encrypted at rest. The volumes holding the databases are encrypted, and backups are encrypted before they leave the server (see below).
 
 **Encryption in Transit**
 
