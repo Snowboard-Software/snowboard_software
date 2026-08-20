@@ -155,7 +155,7 @@ As an organization, we are committed to safeguarding customer data and will neve
 **Compliance & Risk Management**
 
 * Third-Party Security Audits: AI security practices are included in our periodic security assessments and SOC 2 audits.
-* Regulatory Alignment: AI data handling complies with GDPR, CCPA, and other applicable data protection regulations.
+* Regulatory Alignment: We process customer data as a processor under the GDPR and as a service provider under the CCPA. Our DPA covers both.
 * Incident Response: If an AI-related security incident occurs, we have an established protocol for rapid investigation and resolution.
 
 ## Sub-processors
