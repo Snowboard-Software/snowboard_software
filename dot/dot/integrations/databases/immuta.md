@@ -15,7 +15,7 @@ Two people can ask Dot the same question and get different answers, because Immu
 This works with Snowflake today.
 
 {% hint style="info" %}
-Immuta is a paid add-on. Contact us to turn it on for your workspace.
+Immuta enforcement has to be switched on for your workspace before you can use it. Contact us and we will turn it on.
 {% endhint %}
 
 ## Before you start
