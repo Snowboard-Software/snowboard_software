@@ -1,12 +1,14 @@
 # Security & Privacy
 
-Ensuring high standards to protect customer data is critical to operate successfully given rising IT security threads and increased privacy concerns.
+Ensuring high standards to protect customer data is critical to operate successfully given rising IT security threats and increased privacy concerns.
 
-We are continuously auditing our technical and organizational measures by monitoring our infrastructure and processes with [Secureframe](https://secureframe.com/).
+We are continuously auditing our technical and organizational measures by monitoring our infrastructure and processes with [Probo](https://www.probo.com/).
 
-We've successfully completed the AICPA Service Organization Control (SOC) 2 Type I and Type II audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards for security. The audit was conducted by [Prescient Assurance](https://www.prescientassurance.com/).
+We've successfully completed the AICPA Service Organization Control (SOC) 2 Type II audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards. Our current report is issued by [MJD Advisors](https://mjd.cpa/) and covers the Security, Availability and Confidentiality trust services criteria for the Dot Platform.
 
-For all questions and documentation requests, you can contact our customer support team at [hi@getdot.ai](mailto:hi@getdot.ai).
+Our SOC 2 Type II report, our most recent penetration test summary, and a bridge letter covering the period since the last report are available under NDA. We also sign a Data Processing Agreement (DPA) with customers who need one.
+
+For these documents, a completed security questionnaire, or any other question, contact us at [hi@getdot.ai](mailto:hi@getdot.ai).
 
 <figure><img src="../.gitbook/assets/image (5) (1).png" alt="" width="203"><figcaption></figcaption></figure>
 
@@ -22,7 +24,7 @@ Our organization undergoes independent third-party assessments to test our secur
 
 **Third-Party Penetration Testing**
 
-We perform an independent third-party penetration at least annually to ensure that the security posture of our services is uncompromised.
+We perform an independent third-party penetration test at least annually to ensure that the security posture of our services is uncompromised.
 
 **Roles and Responsibilities**
 
@@ -44,19 +46,25 @@ We perform background checks on all new team members in accordance with local la
 
 **Cloud Infrastructure Security**
 
-All of our services are hosted with Amazon Web Services (AWS). They employ a robust security program with multiple certifications. For more information on our provider’s security processes, please visit AWS Security.
+All of our services are hosted on [Hetzner Cloud](https://www.hetzner.com/), in Falkenstein, Germany (EU) and Hillsboro, Oregon (US). Hetzner operates its own data centres and publishes its security and compliance measures at [Hetzner Legal & Compliance](https://www.hetzner.com/legal/).
 
 **Data Hosting Security**
 
-All of our data is hosted on Amazon Web Services (AWS) databases. These databases are located in the United States or Europe. Please reference the above vendor specific documentation linked above for more information.
+Each customer is served from a single region — the EU or the US — and their data stays in that region. Every organization gets its own separate database.
+
+Dot queries your data warehouse in place. We store the schema and documentation Dot needs as context, plus the results that are returned into a chat — we do not copy or replicate your warehouse.
 
 **Encryption at Rest**
 
-All databases are encrypted at rest.
+All customer data is encrypted at rest. The volumes holding the databases are encrypted, and backups are encrypted before they leave the server (see below).
 
 **Encryption in Transit**
 
 Our applications encrypt in transit with TLS/SSL only.
+
+**Backups**
+
+All data is backed up hourly with [restic](https://restic.net/) — encrypted and deduplicated on the server, before it leaves it — to off-site object storage in a different cloud than the servers themselves. Each server keeps its own independent repository. Snapshots age out on a rolling schedule and the oldest is never more than a year old. Restores are tested.
 
 **Vulnerability Scanning**
 
@@ -68,13 +76,17 @@ We actively monitor and log various cloud services.
 
 **Business Continuity and Disaster Recovery**
 
-We use our data hosting provider’s backup services to reduce any risk of data loss in the event of a hardware failure. We utilize monitoring services to alert the team in the event of any failures affecting users.
+Encrypted off-site backups in a separate cloud from the servers themselves allow us to restore an individual organization's database or a complete host. We utilize monitoring services to alert the team in the event of any failures affecting users.
 
 **Incident Response**
 
 We have a process for handling information security events which includes escalation procedures, rapid mitigation and communication.
 
-Access Security
+## Access Security
+
+**Administrative Access**
+
+Our servers have no publicly reachable SSH or administrative interfaces. All administrative access runs over a private mesh VPN and is limited to authorized employees.
 
 **Permissions and Authentication**
 
@@ -98,18 +110,39 @@ All team members are required to adhere to a minimum set of password requirement
 
 All company issued laptops utilize a password manager for team members to manage passwords and maintain password complexity.
 
+## Your Controls
+
+The sections above describe how we secure our own systems. These are the controls you operate yourself.
+
+**Single Sign-On**
+
+Dot supports SAML and OpenID Connect, with dedicated setup for Microsoft Entra ID, Okta and Google, and a generic OIDC option for any other identity provider. Group membership from your IdP can drive a user's role and access scope on every login. See [Single Sign On](integrations/sso/README.md).
+
+**Roles and Permissions**
+
+Access inside Dot is governed by three roles — Admin, Modeler and User — plus groups and workspaces that scope which data and chats a person can reach. Dot queries your warehouse as the database user you connect it with, so it can never read data that user is not granted. See [Permissions](whats-dot/permissions.md).
+
+**Audit Logging**
+
+Security-relevant events are recorded per organization and can be pulled through the API for forwarding to your own log management system.
+
+## Data Retention and Deletion
+
+Your data stays in Dot for as long as you are a customer. On request, or when an organization is deleted, we remove its database and associated files from our live systems. Backup snapshots containing that data age out on the rolling schedule described above.
+
 ## AI Security
 
 **Secure AI Model Usage**
 
-[Dot](https://getdot.ai/) is powered by OpenAI’s and Anthropic’s leading frontier models. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures.
+[Dot](https://getdot.ai/) is powered by leading frontier models from Anthropic, Google and OpenAI. Organizations that require it can instead be served through Azure OpenAI. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures.
 
 **No Training on Customer Data**
 
-Data sent to these models will never be used for training. For more details, refer to:
+We use every model provider under zero data retention terms: your prompts and results are not stored by them and are never used for training. For more details, refer to:
 
+* [Anthropic’s Privacy Policy](https://privacy.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training#h_1a7d240480)
+* [Google’s Gemini API Terms](https://ai.google.dev/gemini-api/terms)
 * [OpenAI’s API Data Usage Policies](https://openai.com/policies/api-data-usage-policies)
-* [Anthropic’s Privacy Policy](https://privacy.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training?utm_source=chatgpt.com#h_1a7d240480)
 
 As an organization, we are committed to safeguarding customer data and will never use it to train our AI models.
 
@@ -122,8 +155,24 @@ As an organization, we are committed to safeguarding customer data and will neve
 **Compliance & Risk Management**
 
 * Third-Party Security Audits: AI security practices are included in our periodic security assessments and SOC 2 audits.
-* Regulatory Alignment: AI data handling complies with GDPR, CCPA, and other applicable data protection regulations.
+* Regulatory Alignment: We process customer data as a processor under the GDPR and as a service provider under the CCPA. Our DPA covers both.
 * Incident Response: If an AI-related security incident occurs, we have an established protocol for rapid investigation and resolution.
+
+## Sub-processors
+
+We keep the number of parties that touch customer data small. These are the ones that do:
+
+| Sub-processor | Purpose | Location |
+| --- | --- | --- |
+| Hetzner Online GmbH | Hosting and compute | Germany (EU customers) / United States (US customers) |
+| Cloudflare, Inc. | Encrypted off-site backup storage | Global |
+| Anthropic, Google, OpenAI | Model inference, under zero data retention terms | United States |
+| Microsoft | Notification email delivery | European Union |
+| PostHog, Inc. | Product analytics and error reporting | European Union |
+
+Our own observability stack is self-hosted, so prompts and query results are not sent to a third-party monitoring vendor.
+
+We notify customers of changes to this list. Organizations that require it can be served through Azure OpenAI instead of the model providers above.
 
 ## Vendor and Risk Management
 
@@ -143,7 +192,7 @@ If you discover a vulnerability, we would like to know about it so we can take s
 
 Please do the following:
 
-* E-mail your findings to security@sled.so,
+* E-mail your findings to [security@getdot.ai](mailto:security@getdot.ai),
 * Do not take advantage of the vulnerability or problem you have discovered, for example by downloading more data than necessary to demonstrate the vulnerability or deleting or modifying other people's data,
 * Use test.getdot.ai for security testing and not one of our production services,
 * Do not reveal the problem to others until it has been resolved,
