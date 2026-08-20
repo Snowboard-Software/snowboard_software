@@ -192,7 +192,7 @@ If you discover a vulnerability, we would like to know about it so we can take s
 
 Please do the following:
 
-* E-mail your findings to security@sled.so,
+* E-mail your findings to [security@getdot.ai](mailto:security@getdot.ai),
 * Do not take advantage of the vulnerability or problem you have discovered, for example by downloading more data than necessary to demonstrate the vulnerability or deleting or modifying other people's data,
 * Use test.getdot.ai for security testing and not one of our production services,
 * Do not reveal the problem to others until it has been resolved,
