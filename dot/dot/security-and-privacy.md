@@ -56,7 +56,7 @@ Dot queries your data warehouse in place. We store the schema and documentation 
 
 **Encryption at Rest**
 
-Credentials for your data sources, and the contents of chats, are encrypted at the application layer before they are written to disk. Backups are encrypted before they leave the server (see below).
+Backups are encrypted before they leave the server (see below).
 
 **Encryption in Transit**
 
