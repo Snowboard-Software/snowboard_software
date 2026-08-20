@@ -4,7 +4,7 @@ Ensuring high standards to protect customer data is critical to operate successf
 
 We are continuously auditing our technical and organizational measures by monitoring our infrastructure and processes with [Secureframe](https://secureframe.com/).
 
-We've successfully completed the AICPA Service Organization Control (SOC) 2 Type I and Type II audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards for security. The audit was conducted by [Prescient Assurance](https://www.prescientassurance.com/).
+We've successfully completed the AICPA Service Organization Control (SOC) 2 Type II audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards. Our current report is issued by [MJD Advisors](https://mjd.cpa/) and covers the Security, Availability and Confidentiality trust services criteria for the Dot Platform.
 
 For all questions and documentation requests, you can contact our customer support team at [hi@getdot.ai](mailto:hi@getdot.ai).
 
@@ -22,7 +22,7 @@ Our organization undergoes independent third-party assessments to test our secur
 
 **Third-Party Penetration Testing**
 
-We perform an independent third-party penetration at least annually to ensure that the security posture of our services is uncompromised.
+We perform an independent third-party penetration test at least annually to ensure that the security posture of our services is uncompromised.
 
 **Roles and Responsibilities**
 
@@ -44,11 +44,13 @@ We perform background checks on all new team members in accordance with local la
 
 **Cloud Infrastructure Security**
 
-All of our services are hosted with Amazon Web Services (AWS). They employ a robust security program with multiple certifications. For more information on our provider’s security processes, please visit AWS Security.
+All of our services are hosted on [Hetzner Cloud](https://www.hetzner.com/), in Falkenstein, Germany (EU) and Hillsboro, Oregon (US). Hetzner operates its own data centres and publishes its security and compliance measures at [Hetzner Legal & Compliance](https://www.hetzner.com/legal/).
 
 **Data Hosting Security**
 
-All of our data is hosted on Amazon Web Services (AWS) databases. These databases are located in the United States or Europe. Please reference the above vendor specific documentation linked above for more information.
+Each customer is served from a single region — the EU (`eu.getdot.ai`) or the US (`app.getdot.ai`) — and their data stays in that region. Every organization gets its own separate database, hosted on encrypted volumes.
+
+Dot queries your data warehouse in place. We store the schema and documentation Dot needs as context, plus the results that are returned into a chat — we do not copy or replicate your warehouse.
 
 **Encryption at Rest**
 
@@ -56,7 +58,11 @@ All databases are encrypted at rest.
 
 **Encryption in Transit**
 
-Our applications encrypt in transit with TLS/SSL only.
+Our applications encrypt in transit with TLS/SSL only. Certificates are issued through Let's Encrypt and terminated on our own servers.
+
+**Backups**
+
+All data is backed up hourly with [restic](https://restic.net/) — encrypted and deduplicated client-side before it leaves the server — to object storage on Cloudflare R2. Each server keeps its own independent repository. Retention is 24 hourly, 7 daily, 4 weekly and 12 monthly snapshots, and restores are tested.
 
 **Vulnerability Scanning**
 
@@ -68,13 +74,17 @@ We actively monitor and log various cloud services.
 
 **Business Continuity and Disaster Recovery**
 
-We use our data hosting provider’s backup services to reduce any risk of data loss in the event of a hardware failure. We utilize monitoring services to alert the team in the event of any failures affecting users.
+Encrypted off-site backups in a separate cloud from the servers themselves allow us to restore an individual organization's database or a complete host. We utilize monitoring services to alert the team in the event of any failures affecting users.
 
 **Incident Response**
 
 We have a process for handling information security events which includes escalation procedures, rapid mitigation and communication.
 
-Access Security
+## Access Security
+
+**Administrative Access**
+
+Our servers have no publicly reachable SSH or admin interfaces. All administrative access runs over [Tailscale](https://tailscale.com/), a private mesh VPN, and is limited to authorized employees.
 
 **Permissions and Authentication**
 
@@ -102,14 +112,15 @@ All company issued laptops utilize a password manager for team members to manage
 
 **Secure AI Model Usage**
 
-[Dot](https://getdot.ai/) is powered by OpenAI’s and Anthropic’s leading frontier models. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures.
+[Dot](https://getdot.ai/) is powered by leading frontier models from Anthropic, Google and OpenAI. Organizations that require it can instead be served through Azure OpenAI. These models provide state-of-the-art AI capabilities while maintaining strong security and privacy measures.
 
 **No Training on Customer Data**
 
-Data sent to these models will never be used for training. For more details, refer to:
+We use every model provider under zero data retention terms: your prompts and results are not stored by them and are never used for training. For more details, refer to:
 
+* [Anthropic’s Privacy Policy](https://privacy.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training#h_1a7d240480)
+* [Google’s Gemini API Terms](https://ai.google.dev/gemini-api/terms)
 * [OpenAI’s API Data Usage Policies](https://openai.com/policies/api-data-usage-policies)
-* [Anthropic’s Privacy Policy](https://privacy.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training?utm_source=chatgpt.com#h_1a7d240480)
 
 As an organization, we are committed to safeguarding customer data and will never use it to train our AI models.
 
