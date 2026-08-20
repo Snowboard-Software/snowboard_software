@@ -39,6 +39,7 @@
 
 * [Databases](dot/integrations/databases/README.md)
   * [Snowflake](dot/integrations/databases/snowflake.md)
+  * [Immuta](dot/integrations/databases/immuta.md)
   * [BigQuery](dot/integrations/databases/bigquery.md)
   * [Redshift](dot/integrations/databases/redshift.md)
   * [AWS Athena](dot/integrations/databases/aws-athena.md)
