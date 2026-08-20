@@ -14,10 +14,6 @@ Two people can ask Dot the same question and get different answers, because Immu
 
 This works with Snowflake today.
 
-{% hint style="info" %}
-Immuta enforcement has to be switched on for your workspace before you can use it. Contact us and we will turn it on.
-{% endhint %}
-
 ## Before you start
 
 You need:
