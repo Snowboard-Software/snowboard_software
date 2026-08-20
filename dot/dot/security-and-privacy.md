@@ -2,7 +2,7 @@
 
 Ensuring high standards to protect customer data is critical to operate successfully given rising IT security threads and increased privacy concerns.
 
-We are continuously auditing our technical and organizational measures by monitoring our infrastructure and processes with [Secureframe](https://secureframe.com/).
+We are continuously auditing our technical and organizational measures by monitoring our infrastructure and processes with [Probo](https://www.probo.com/).
 
 We've successfully completed the AICPA Service Organization Control (SOC) 2 Type II audit. The audit confirms that Snowboard Software GmbH’s information security practices, policies, procedures, and operations meet the SOC 2 standards. Our current report is issued by [MJD Advisors](https://mjd.cpa/) and covers the Security, Availability and Confidentiality trust services criteria for the Dot Platform.
 
