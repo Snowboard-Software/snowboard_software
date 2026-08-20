@@ -48,7 +48,7 @@ All of our services are hosted on [Hetzner Cloud](https://www.hetzner.com/), in 
 
 **Data Hosting Security**
 
-Each customer is served from a single region — the EU (`eu.getdot.ai`) or the US (`app.getdot.ai`) — and their data stays in that region. Every organization gets its own separate database, hosted on encrypted volumes.
+Each customer is served from a single region — the EU (`eu.getdot.ai`) or the US (`app.getdot.ai`) — and their data stays in that region. Every organization gets its own separate database.
 
 Dot queries your data warehouse in place. We store the schema and documentation Dot needs as context, plus the results that are returned into a chat — we do not copy or replicate your warehouse.
 
