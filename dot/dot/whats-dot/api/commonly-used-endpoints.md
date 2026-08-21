@@ -89,16 +89,17 @@ The answer sits in the last message carrying a `formatted_result`: a list of par
 
 ## Gate a GitHub Pull Request with an Evaluation
 
-An Evaluation is a reusable set of questions with known numeric answers. Run it after a model or data change to catch an answer regression before users do. The GitHub workflow below starts one run, follows that exact run to completion, and passes only when every question matches.
+An Evaluation is a reusable set of questions with known numeric answers. Run it after a model, data, or synchronized context change to catch an answer regression before users do. The GitHub workflow below starts one run, follows that exact run to completion, and passes only when every question matches.
 
 ### Set up the workflow
 
-1. In Dot, open **Model → Evaluation** and select the evaluation you want to use as the gate.
-2. In **Settings → Users → API Tokens**, create a token for a user who can run evaluations.
-3. In the GitHub repository, open **Settings → Secrets and variables → Actions** and add the token as a repository secret named `DOT_API_TOKEN`.
-4. Back in Dot, click **Run from CI** and copy the generated workflow.
+1. If you manage Dot context in GitHub, connect the repository under **Settings → Connections → GitHub** and enable auto-sync. Dot adds its parser check to pull requests automatically.
+2. In Dot, open **Model → Evaluation** and select the evaluation you want to use as the gate.
+3. In **Settings → Users → API Tokens**, create a token for a user who can run evaluations.
+4. In the GitHub repository, open **Settings → Secrets and variables → Actions** and add the token as a repository secret named `DOT_API_TOKEN`.
+5. Back in Dot, click **Run from CI** and copy the generated workflow.
 
-<figure><img src="../../../.gitbook/assets/evaluation-run-from-ci.png" alt="The Run evaluation from CI dialog in Dot with token, GitHub secret, and workflow steps"><figcaption><p>Dot fills in the correct host and evaluation ID. The token itself stays in GitHub Secrets.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/evaluation-github-context-sync.png" alt="Dot connected to a GitHub context repository with auto-sync and the GitHub context check active"><figcaption><p>The context repository is synchronized and Dot's parser check is active before the Evaluation gate is added.</p></figcaption></figure>
 
 Save the workflow as `.github/workflows/dot-evaluation.yml`:
 
@@ -184,6 +185,18 @@ Use `https://eu.getdot.ai` for an EU workspace. The **Run from CI** dialog autom
 
 The action adds the verdict and question counts to the GitHub job summary without exposing the API token. It exits successfully only for `pass`, so it can be made a required status check in your branch protection rules.
 
+On a context pull request, GitHub shows both checks independently: **Dot context check** validates the proposed context files, while **Dot evaluation** exercises the known-answer questions.
+
+<figure><img src="../../../.gitbook/assets/evaluation-github-pr-checks.png" alt="A GitHub context pull request ready to merge with Dot context check and Dot evaluation both passing"><figcaption><p>A synchronized context change is ready to merge only after both the parser check and the Evaluation pass.</p></figcaption></figure>
+
+Open the workflow run to see the exact verdict and counts without leaving GitHub.
+
+<figure><img src="../../../.gitbook/assets/evaluation-github-action-verdict.png" alt="A successful GitHub Action with a Dot evaluation summary showing one passed question and no failures or errors"><figcaption><p>The job summary makes the release decision explicit: pass, fail, and execution-error counts are separate.</p></figcaption></figure>
+
+The completed run remains available in Dot for investigation and comparison with prior runs.
+
+<figure><img src="../../../.gitbook/assets/evaluation-dot-passing-result.png" alt="The corresponding Dot Evaluation result showing 100 percent accuracy and the matching expected and observed answer"><figcaption><p>The same run in Dot shows the evaluated question, expected answer, observed answer, and status.</p></figcaption></figure>
+
 | Verdict | Meaning | GitHub result |
 | --- | --- | --- |
 | `pass` | Every question matched its known answer. | Pass |
@@ -191,9 +204,7 @@ The action adds the verdict and question counts to the GitHub job summary withou
 | `error` | Dot could not complete the run, for example because a provider or connection was unavailable. This is not a 0% accuracy score. | Fail |
 | `pending` | The run is still queued or running. | Keep polling |
 
-The workflow deliberately checks `verdict == "pass"` instead of calculating a result from counts. A terminal run with a missing result therefore fails closed as `error`.
-
-<figure><img src="../../../.gitbook/assets/evaluation-run-error-state.png" alt="An Evaluation run incomplete state in Dot that explains an execution error is not a zero percent score"><figcaption><p>Dot separates provider or connection errors from answer mismatches, so an unavailable dependency cannot be mistaken for 0% accuracy.</p></figcaption></figure>
+The workflow deliberately checks `verdict == "pass"` instead of calculating a result from counts. A terminal run with a missing result therefore fails closed as `error`. In Dot, execution errors appear as an incomplete run rather than a misleading 0% accuracy score.
 
 If GitHub retries the job while the evaluation is already running, Dot returns `409` with that run's `active_run_id`. The workflow continues polling the same run instead of charging for or starting a duplicate.
 
