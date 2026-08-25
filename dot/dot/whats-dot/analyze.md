@@ -23,19 +23,9 @@ Under the hood Dot can understand your semantic model, write and run SQL, comput
 
 ## Energy modes
 
-One dial controls how much thinking Dot puts into an answer. Open the **energy mode** selector next to the message box:
-
-* **Economy** — lighter on cost, a solid pick for everyday questions.
-* **Balanced** — the default. More depth when a question needs it.
-* **Frontier** — the deepest reasoning, for your most complex questions.
+One dial controls how much capability Dot uses for an answer: Economy for everyday questions, Balanced for more depth, and Frontier for the hardest work. See [Energy modes](energy-modes.md) for switching instructions in the app, Slack, Teams, and email.
 
 <figure><img src="../../.gitbook/assets/analyze-energy-modes.png" alt="The energy mode selector showing Economy, Balanced, and Frontier"><figcaption><p>Pick the effort to match the question — Economy for quick looks, Frontier for the hard ones.</p></figcaption></figure>
-
-Your choice sticks to the conversation, so a follow-up keeps the same depth. Admins can set the default for the whole workspace and, if they prefer, lock it (see [Configuration](#configuration-admins)). When it's locked, everyone uses the workspace default, and your own pick, including the Slack and Teams keywords below, is ignored.
-
-{% hint style="info" %}
-In Slack, Teams, and email you can set the mode with a keyword: start a message with `!economy`, `!balanced`, or `!frontier`. Adding **"go deep"** or **"ultrathink"** to any message bumps just that one to Frontier.
-{% endhint %}
 
 ## Answers you can trust
 
