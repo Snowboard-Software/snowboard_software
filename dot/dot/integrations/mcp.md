@@ -151,7 +151,7 @@ Claude Code with a signed-in Anthropic account also picks up custom connectors s
 
 ### Cursor IDE
 
-Cursor connects to Dot directly as a remote MCP server. No extra software is needed.
+Cursor connects to Dot directly as a remote MCP server.
 
 **One-click install:** Click the **Add to Cursor** button on Dot's Integrations page. Cursor will open your browser to authorize.
 
