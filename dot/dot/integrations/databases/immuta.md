@@ -71,22 +71,28 @@ The agent API key vends a role for any person it names. Treat it like a password
 
 ## Turn it on in Dot
 
-Go to **Settings**, then **Connections**, and open your Snowflake connection. Connect as `DOT_AGENT` using key pair authentication with the private key from the first step.
+Go to **Settings**, then **Connections**, and open the **Immuta** card under Authentication.
 
-Turn on **Enforce Immuta access**. The settings appear underneath.
+<figure><img src="../../../.gitbook/assets/immuta-authentication-section.png" alt="The Immuta card in the Authentication section of Connections"><figcaption><p>Immuta sits with your other identity providers.</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/immuta-connection-settings.png" alt="Immuta settings on a Snowflake connection"><figcaption><p>The settings appear once you turn enforcement on.</p></figcaption></figure>
+Enter your **tenant URL** and the **agent API key** from the step above, and save. You do this once for the whole workspace. One agent's External Mapping holds a username per technology, so the same key covers every warehouse Immuta governs for you.
 
-1. Enter your **Immuta tenant URL**.
-2. Enter the **Agent API key** from the step above.
-3. Click **Save Immuta settings**.
+<figure><img src="../../../.gitbook/assets/immuta-workspace-settings.png" alt="The Immuta card holding a tenant URL and a stored agent key"><figcaption><p>Dot never shows the key again. It only tells you one is stored.</p></figcaption></figure>
 
-Now check it works. Put an Immuta user's email in **Test as** and click **Test vending**. Dot asks Immuta for a role for that person and tells you what came back.
+Now add your Snowflake connection. Connect as `DOT_AGENT` using key pair authentication with the private key from the first step, and turn on **Enforce Immuta access**.
 
-<figure><img src="../../.gitbook/assets/immuta-test-vending.png" alt="A successful test vend, showing the role Immuta returned"><figcaption><p>Test vending before you rely on the connection.</p></figcaption></figure>
+Check it works before you rely on it. Put an Immuta user's email in **Test as** and click **Test vending**. Dot asks Immuta for a role for that person and tells you what came back.
+
+<figure><img src="../../../.gitbook/assets/immuta-connection-enforcement.png" alt="Enforcement turned on, with a successful test vend"><figcaption><p>A successful vend proves the whole chain: your key, the agent mapping, and the warehouse grant.</p></figcaption></figure>
 
 {% hint style="warning" %}
-**Test as** must be someone Immuta knows. If you leave it empty, Dot vends for your own Dot login. If you are not an Immuta user yourself, that fails with a user not found message, and the key is fine.
+**Test as** must be someone Immuta knows. If you leave it empty, Dot vends for your own Dot login. If you are not an Immuta user yourself, that fails with a user not found message, and it means the key is fine and only the person named is unknown.
+{% endhint %}
+
+{% hint style="success" %}
+A Snowflake connection you add **after** saving the Immuta card turns enforcement on by itself, as long as a test vend succeeds. Dot never enables it on a guess: a working vend is the only thing that also proves the agent mapping and the warehouse grant are in place.
+
+Connections you already had are left for you to turn on yourself, because enabling clears collected data samples and refuses any row-level rule you have set.
 {% endhint %}
 
 ## What changes on this connection
