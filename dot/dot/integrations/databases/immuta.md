@@ -59,11 +59,13 @@ alter user "DOT_AGENT" set default_role = "DOT_AGENT_ROLE";
 2. Open the agent and go to **External Mapping**. Enter `DOT_AGENT`, the Snowflake user you just created.
 3. Go to **API Keys** and generate a key. Copy it now. Immuta shows it once.
 
-Immuta creates a role in Snowflake for each person it vends for. Those roles need to use your warehouse.
+Mapping the agent makes Immuta create a role for it in Snowflake. That role needs to use your warehouse, so grant it now that it exists.
 
 ```sql
-grant usage on warehouse example_wh to role "IMMUTA_USER_person@example.com";
+grant usage on warehouse example_wh to role "<the role Immuta created>";
 ```
+
+This is the only warehouse grant you make. The roles Immuta vends per person are generated, with names like `IMMUTA_VENDED_6_7_c7148ee7-caad-4ee7-893d-4e669c5fcb9e`, and you never grant to them by hand.
 
 {% hint style="warning" %}
 The agent API key vends a role for any person it names. Treat it like a password.
@@ -75,7 +77,9 @@ Go to **Settings**, then **Connections**, and open the **Immuta** card under Aut
 
 <figure><img src="../../../.gitbook/assets/immuta-authentication-section.png" alt="The Immuta card in the Authentication section of Connections"><figcaption><p>Immuta sits with your other identity providers.</p></figcaption></figure>
 
-Enter your **tenant URL** and the **agent API key** from the step above, and save. You do this once for the whole workspace. One agent's External Mapping holds a username per technology, so the same key covers every warehouse Immuta governs for you.
+Enter your **tenant URL** and the **agent API key** from the step above, and save. You do this once for the whole workspace, as an admin. One agent's External Mapping holds a username per technology, so the same key covers every warehouse Immuta governs for you. Sub-workspaces have no card of their own and do not inherit this one: their people are different people, with different Immuta policies.
+
+**Remove** clears the tenant and key for the whole workspace and turns enforcement off on every connection at once, so nothing is left claiming an access check Dot can no longer make.
 
 <figure><img src="../../../.gitbook/assets/immuta-workspace-settings.png" alt="The Immuta card holding a tenant URL and a stored agent key"><figcaption><p>Dot never shows the key again. It only tells you one is stored.</p></figcaption></figure>
 
@@ -105,7 +109,7 @@ Turning on enforcement changes four things.
 
 **Secondary roles are turned off.** The vended role already covers everything Immuta granted the person. Inherited roles would widen it.
 
-**A question with no clear asker is refused.** Dot needs one person to ask Immuta about. Scheduled queries carry their owner, so they work. A shared Slack channel has no single asker, so Dot answers that it cannot tell whose access to apply, and reads nothing.
+**A question with no clear asker is refused.** Dot needs one person to ask Immuta about. Scheduled queries carry their owner, so they work. A shared Slack or Teams channel has no single asker, so Dot answers that it cannot tell whose access to apply, and reads nothing. Someone asking Dot directly is always a single person, whichever surface they use.
 
 If Immuta cannot be reached, Dot stops. It never falls back to the connection's own warehouse account.
 
