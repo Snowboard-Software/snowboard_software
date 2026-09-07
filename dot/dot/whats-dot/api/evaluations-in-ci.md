@@ -102,8 +102,6 @@ Activate and scan this table in Dot. Add a note defining net revenue as gross am
 
 For January completed orders, gross revenue is 1,000 USD, refunds are 100 USD, and net revenue is 900 USD. There are four orders, refunds are 10% of gross revenue, and zero orders violate the amount checks. The cancelled order and February order catch missing status and date filters.
 
-Run the suite to establish a baseline. To prove your CI gate catches failures, change only the net-revenue expected answer to `1000` in a temporary copy and run it without a baseline: a 900 USD answer must fail the exact check. Restore the reviewed expectation of `900` afterward. To test a context regression, change the net-revenue definition in a candidate environment, compare against the passing baseline, then restore the definition and rerun.
-
 ## Save once, then run
 
 Create the evaluation once:
@@ -184,6 +182,48 @@ dot eval run suite.json --target production --timeout 900
 On timeout or interruption, the CLI requests cancellation and exits with code `2`. If cancellation cannot be confirmed, it prints the run ID and a cancellation command.
 
 Use `--idempotency-key` when retrying the same logical run after a connection failure. Reuse the key with the same request; use a new key for a new run.
+
+## Verify the gate end to end
+
+After saving the example suite and connecting the synthetic fixture, run it against your test environment:
+
+```bash
+dot eval run suite.json --target YOUR_ENVIRONMENT_ID --output baseline.json
+```
+
+All four checks should pass. Read the baseline run ID from the report:
+
+```bash
+BASELINE_RUN_ID=$(python3 -c 'import json; print(json.load(open("baseline.json"))["run"]["id"])')
+```
+
+Introduce a known data regression in the synthetic fixture by removing the refund on order 3:
+
+```sql
+UPDATE evaluation_ci.orders SET refund_amount = 0 WHERE order_id = 3;
+```
+
+Run the unchanged suite again:
+
+```bash
+dot eval run suite.json --target YOUR_ENVIRONMENT_ID \
+  --baseline "$BASELINE_RUN_ID" --output regression.json
+```
+
+The net-revenue answer is now 1,000 USD instead of 900 USD, and the refund rate is zero instead of 10%. Those two checks fail; the order-count and invalid-amount checks still pass. The command exits with code `1` and the report identifies both regressions.
+
+Restore the fixture:
+
+```sql
+UPDATE evaluation_ci.orders SET refund_amount = 100 WHERE order_id = 3;
+```
+
+```bash
+dot eval run suite.json --target YOUR_ENVIRONMENT_ID \
+  --baseline "$BASELINE_RUN_ID" --output recovery.json
+```
+
+All four checks should pass again, with exit code `0`. This verifies a data regression and recovery through the same numerical gate used in CI.
 
 ## GitHub Actions
 

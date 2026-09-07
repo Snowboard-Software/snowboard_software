@@ -53,6 +53,8 @@ CLI runs preserve the questions recorded at submission. Their web view shows tha
 
 A completed run means that processing finished. It does not mean every question passed. Look at the question results and error count when deciding whether a change is ready.
 
+<figure><img src="../../.gitbook/assets/evaluation-ci-regression.png" alt="Evaluation of the synthetic January sales dataset showing net revenue and refund-rate failures, with two of four questions passing"><figcaption><p>Removing a 100 USD refund from the test data produces two clear failures: net revenue changes from 900 to 1,000 USD, and the refund rate changes from 10% to zero.</p></figcaption></figure>
+
 ## Keep evaluations in Git
 
 The [Dot CLI](../integrations/cli.md) lets you save an evaluation as JSON, review changes to its questions and expected answers, and run it from your terminal. Stable question IDs keep results associated with the same test as wording and definitions evolve. `dot eval create` saves the evaluation and updates the suite file with the evaluation ID and assigned question IDs. Commit the updated file and retain those IDs when editing existing questions.
