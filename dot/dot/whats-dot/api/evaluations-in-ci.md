@@ -131,13 +131,19 @@ Export writes a new file and refuses to overwrite an existing one.
 
 ### Check a candidate environment
 
-Use an environment ID to test context changes before promoting them:
+Use an environment ID to test context changes before promoting them. After confirming the intended changes have reached that environment, inspect its current revision without starting an evaluation:
 
 ```bash
-dot eval run suite.json --target YOUR_ENVIRONMENT_ID \
-  --expect-commit YOUR_DOT_CONTEXT_COMMIT \
+DOT_EVALUATION_TARGET="YOUR_ENVIRONMENT_ID"
+dot eval target --target "$DOT_EVALUATION_TARGET" --json > target.json
+DOT_CONTEXT_COMMIT=$(jq -er '.target_commit' target.json)
+
+dot eval run suite.json --target "$DOT_EVALUATION_TARGET" \
+  --expect-commit "$DOT_CONTEXT_COMMIT" \
   --output artifacts/evaluation.json
 ```
+
+Use `production` as the target to inspect Production. The target report contains `target`, `target_label`, `target_commit`, and `target_overrides`.
 
 `--expect-commit` checks the Dot context revision being evaluated. Use the revision in Dot, which may differ from your application or dbt repository's Git commit. It does not sync a branch or pin warehouse data. Set up the environment and its [warehouse target](../environments.md#work-against-your-dbt-dev-target) first.
 
@@ -311,6 +317,8 @@ Keep the metric definition revision and data snapshot with your CI evidence. `--
 * **Baseline mismatch:** compare the suite definitions and choose a baseline for the same question fingerprint.
 
 ## Call the API directly
+
+Read the current context revision with `GET /api/evaluations/target`. Add `?environment_id=YOUR_ENVIRONMENT_ID` for an environment; omit it for Production. This is the read-only endpoint used by `dot eval target`.
 
 For an existing evaluation, start a run with the same regional URL and API token:
 
