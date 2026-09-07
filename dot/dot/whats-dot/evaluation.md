@@ -49,6 +49,8 @@ Evaluation currently runs Dot in Economy mode. If the first response asks for cl
 
 Open **Evaluations**, choose **New evaluation**, and follow the setup conversation to create a question set with trusted expected answers. Choose Production or an [environment](environments.md) as the target and start a run. Inspect failed questions using their expected and observed values and linked conversations.
 
+CLI runs preserve the questions recorded at submission. Their web view shows that snapshot, including questions added or changed in a suite file. Choose **View saved questions** to edit the persisted question set for future runs, then **View run** to return to the recorded results. **Run saved questions** runs the saved set; use the CLI to rerun a file with different questions.
+
 A completed run means that processing finished. It does not mean every question passed. Look at the question results and error count when deciding whether a change is ready.
 
 ## Keep evaluations in Git

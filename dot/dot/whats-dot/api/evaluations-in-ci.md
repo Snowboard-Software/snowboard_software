@@ -120,7 +120,7 @@ dot eval run suite.json --target production \
   --junit artifacts/evaluation.xml
 ```
 
-The command waits for completion and uses the questions in the file for that run. You can also run an existing saved evaluation by supplying its ID instead of a JSON file.
+The command waits for completion and uses the questions in the file for that run, without changing the saved question set. Its run link opens those recorded questions in the web UI. You can also run an existing saved evaluation by supplying its ID instead of a JSON file.
 
 To start from a question set created in the web UI:
 
