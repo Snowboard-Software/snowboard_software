@@ -63,8 +63,12 @@ curl https://your-dot-instance.com/install | sh
 
 **CI / headless servers:**
 
+Set `DOT_API_TOKEN` through your CI secret store and choose the regional server. The CLI reads these directly without an interactive login:
+
 ```bash
-dot login --token <YOUR_API_TOKEN>
+export DOT_API_BASE_URL="https://app.getdot.ai"
+export DOT_API_TOKEN="YOUR_API_TOKEN"
+dot status
 ```
 
 ### How it works
@@ -143,7 +147,7 @@ The CLI is designed as the AI interface to Dot. When you use Claude Code, Cursor
 
 #### Notes
 
-Notes teach Dot how to query your data. They contain metric definitions, SQL patterns, business context, and operating principles. See [Notes](../../whats-dot/model/notes.md) for what to put in them.
+Notes teach Dot how to query your data. They contain metric definitions, SQL patterns, business context, and operating principles. See [Notes](../whats-dot/model/notes.md) for what to put in them.
 
 ```bash
 dot notes list                          # List all notes (tree view)
@@ -206,9 +210,25 @@ Submit feedback or feature requests directly from the terminal:
 dot wish "I want better date filtering"
 ```
 
+### Evaluations
+
+Test business questions against trusted numbers from your terminal or CI pipeline:
+
+```bash
+dot eval create suite.json              # Save a question set once
+dot eval run suite.json --target production \
+  --output artifacts/evaluation.json \
+  --junit artifacts/evaluation.xml
+dot eval --help
+```
+
+`create` updates your suite JSON with the saved evaluation ID and assigned question IDs. Commit the updated file and keep those IDs when editing existing questions. Runs wait for completion and return a nonzero exit code when the gate fails or the evaluation cannot complete.
+
+See [Evaluation](../whats-dot/evaluation.md) for numerical scoring and [Evaluations in CI](../whats-dot/api/evaluations-in-ci.md) for the suite format, environment targets, baseline comparisons, and a complete GitHub Actions workflow.
+
 ### Apps as code
 
-Dashboards ("apps") are code too. Author `.app` files locally, push them to Dot to build and activate, and manage them through your GitHub repo like any other source. Pushed apps land in the `apps/` folder that [GitHub Sync](../../whats-dot/version-control/github.md) mirrors to your repo.
+Dashboards ("apps") are code too. Author `.app` files locally, push them to Dot to build and activate, and manage them through your GitHub repo like any other source. Pushed apps land in the `apps/` folder that [GitHub Sync](../whats-dot/version-control/github.md) mirrors to your repo.
 
 The loop:
 
