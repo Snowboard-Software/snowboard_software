@@ -56,6 +56,10 @@ curl "https://{region}.getdot.ai/api/sync/{connection_type}/{connection_id}" \
      "?user_id={user}&api_token={api_token}"
 ```
 
+## Evaluate Dot in CI
+
+Use the [evaluation CLI workflow](evaluations-in-ci.md) to run question sets, wait for results, enforce a pass-rate gate, and save JSON/JUnit reports. The [evaluation guide](../evaluation.md) explains expected answers and numerical tolerances. For direct API integration, see the [evaluation endpoints](https://test.getdot.ai/redoc#tag/evaluations).
+
 ## Learn More
 
 {% content-ref url="commonly-used-endpoints.md" %}

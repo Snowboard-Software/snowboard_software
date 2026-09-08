@@ -20,6 +20,7 @@
   * [GitHub](dot/whats-dot/version-control/github.md)
   * [GitLab](dot/whats-dot/version-control/gitlab.md)
 * [Environments](dot/whats-dot/environments.md)
+* [Evaluation](dot/whats-dot/evaluation.md)
 * [Permissions](dot/whats-dot/permissions.md)
 * [User Feedback](dot/whats-dot/user-feedback.md)
 * [Workspaces](dot/whats-dot/workspaces.md)
@@ -33,6 +34,7 @@
   * [Commonly used Endpoints](dot/whats-dot/api/commonly-used-endpoints.md)
   * [Use Cases and Scripts](dot/whats-dot/api/use-cases-and-scripts.md)
   * [All API Endpoints](dot/whats-dot/api/all-api-endpoints.md)
+  * [Evaluations in CI](dot/whats-dot/api/evaluations-in-ci.md)
 * [CLI & AI Agent Skill](dot/integrations/cli.md)
 * [MCP](dot/integrations/mcp.md)
 
