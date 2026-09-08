@@ -49,7 +49,92 @@ Use a candidate environment ID in place of `production` when evaluating a contex
 
 ## Define a suite in code
 
-Start with `dot eval init suite.json` to generate an example, or save your question set as `suite.json`. Each question needs a stable `id`, `question`, and `expected_answer`. Numeric answer types are `number`, `count`, `currency`, `percent`, and `ratio`. `tolerance_pct` defaults to 3%.
+Use **YAML** (`.yaml` or `.yml`) for comments and readable multiline questions, or **JSON** (`.json`) for generated suites. Both formats use the same fields and evaluation behavior. `validate`, `create`, and `run` accept either format; exported suites and run reports use JSON.
+
+Generate a starter with `dot eval init --output suite.yaml` or `dot eval init suite.json`, or copy one of these equivalent starters. Their answers come from the [synthetic fixture below](#reproduce-the-example); replace them with reviewed values from your data before adopting the suite. The examples omit `evaluation_id` because `create` fills it in.
+
+### Minimal starter
+
+Only the suite name, question, and expected answer are needed to create a suite. Save either version and replace the example with a reviewed answer from your data.
+
+YAML (`suite.yaml`):
+
+```yaml
+name: Revenue checks
+questions:
+  - question: What was net revenue in USD for completed orders in January 2026?
+    expected_answer: 900
+```
+
+JSON (`suite.json`):
+
+```json
+{
+  "name": "Revenue checks",
+  "questions": [
+    {
+      "question": "What was net revenue in USD for completed orders in January 2026?",
+      "expected_answer": 900
+    }
+  ]
+}
+```
+
+`validate` accepts this draft offline. `create` assigns and writes stable question IDs plus `evaluation_id` into the same file. Keep those IDs for later runs: question wording can change while its identity stays the same. A wording, expected-answer, answer-type, or tolerance change still requires a fresh compatible baseline. `answer_type` is optional, and numeric tolerance defaults to 3%.
+
+Check and save your chosen starter, then preview its target:
+
+```bash
+dot eval validate suite.yaml
+dot eval create suite.yaml
+dot eval run suite.yaml --target production --dry-run
+```
+
+Use `suite.json` instead if you chose JSON. The preview starts no agent; [run the saved suite](#save-once-then-run) when you are ready.
+
+### Complete fixture with explicit types and exact comparisons
+
+For the reproducible four-check fixture below, use either of these equivalent suites instead. Explicit IDs make this example easy to discuss; you can omit them before the first `create`.
+
+#### YAML — save as suite.yaml
+
+```yaml
+name: Sales regression checks
+description: >-
+  Fixed January 2026 sales fixture. Exclude cancelled orders and subtract refunds from gross revenue.
+questions:
+  - id: january-net-revenue
+    question: What was net revenue in USD for completed orders in January 2026?
+    expected_answer: "900"
+    answer_type: currency
+    tolerance_pct: 0 # Exact match for this fixed fixture
+    concept_name: Net revenue
+    source:
+      system: sql_fixture
+      definition: >-
+        Sum gross_amount minus refund_amount for completed orders from 2026-01-01 inclusive to 2026-02-01 exclusive.
+  - id: january-completed-orders
+    question: How many completed orders were placed in January 2026?
+    expected_answer: "4"
+    answer_type: count
+    tolerance_pct: 0
+  - id: january-refund-rate
+    question: >-
+      For completed orders in January 2026, what percentage of gross revenue was refunded?
+    expected_answer: "10%"
+    answer_type: percent
+    tolerance_pct: 0
+  - id: january-invalid-amounts
+    question: >-
+      How many completed orders in January 2026 have a negative gross amount,
+      a negative refund amount, or refunds greater than gross amount?
+      Return the count, including zero if there are none.
+    expected_answer: "0" # Zero is a valid expected answer
+    answer_type: count
+    tolerance_pct: 0
+```
+
+#### JSON — save as suite.json
 
 ```json
 {
@@ -93,9 +178,25 @@ Start with `dot eval init suite.json` to generate an example, or save your quest
 }
 ```
 
-The answers above use the synthetic dataset below. Replace the questions and answers with reviewed values from your own data when adopting this suite. Question IDs must be unique within the suite. Initial examples may use slugs. After saving, keep the assigned IDs stable when editing a question so file, UI, and exported runs refer to the same tests. A new question can start with a new unique slug.
+### Suite fields
 
-`concept_name` groups related questions. `source` records the origin of the expected answer; it does not execute a reference query. If you include a BI dashboard source, preserve the provenance fields from the exported evaluation.
+| Field | Required? | Meaning |
+| --- | --- | --- |
+| `name` | Yes | A nonempty suite name, up to 160 characters. |
+| `description` | No | Context for reviewers, up to 2,000 characters. |
+| `evaluation_id` | After saving | Set by `create`; retain it for later runs. |
+| `questions` | Yes | A nonempty list of test cases. |
+| `questions[].id` | After saving | `create` writes the saved case ID, replacing any draft ID. Keep it unique and stable. Start with a letter or digit; use letters, digits, dots, underscores, colons, or hyphens. |
+| `questions[].question` | Yes | The business question, up to 1,000 characters. |
+| `questions[].expected_answer` | Yes | A finite number or ISO date (`YYYY-MM-DD`), as text or a JSON/YAML number. Zero is valid. |
+| `questions[].answer_type` | No | `number`, `count`, `currency`, `percent`, `ratio`, or `date`. Omitted types infer `percent` from `%`, `currency` from `$`, `€`, `£`, or `¥`, `date` from an ISO date, and otherwise `number`. Set `count` and `ratio` explicitly; use `percent` when a bare number represents a percentage. |
+| `questions[].tolerance_pct` | No | Percentage tolerance from 0 to 100; defaults to 3. Dates always use 0. |
+| `questions[].concept_name` | No | Groups related questions by metric. |
+| `questions[].source` | No | Records the origin of the expected answer; it does not execute a reference query. Preserve exported BI provenance. |
+
+Initial IDs are optional and may use slugs. `create` assigns saved question IDs; commit those IDs and keep them stable when editing so file, UI, and exported runs refer to the same tests. A new question can start with a new unique slug.
+
+Use one suite object per file. Field names are exact: unknown suite/question fields, duplicate question IDs, empty answers, booleans, prose answers, and invalid dates are rejected. Quote dates, currency, and percentages in YAML to preserve their intended text. YAML comments and folded questions (`>-`) make business logic easier to review. A saved suite needs IDs for every question when running; give newly added questions new unique IDs. Exported `concept_id` and source fields should be retained when editing an existing suite.
 
 ### Reproduce the example
 
@@ -125,13 +226,15 @@ For January completed orders, gross revenue is 1,000 USD, refunds are 100 USD, a
 
 ## Save once, then run
 
-Create the evaluation once:
+Check the file offline, then save the evaluation once. Use `suite.yaml` below if you chose YAML:
 
 ```bash
+dot eval validate suite.json
 dot eval create suite.json
+dot eval run suite.json --target production --dry-run
 ```
 
-The command saves the evaluation and updates the file with its `evaluation_id` and the assigned question IDs and canonical fields. Commit that updated file to Git. Reuse it for subsequent CI runs; calling `create` again on a saved suite is rejected. You can run `dot eval validate suite.json` before saving to check the file without credentials.
+The command saves the evaluation and updates the same file with its `evaluation_id` and the assigned question IDs and canonical fields. Commit that updated file to Git. Reuse it for subsequent CI runs; calling `create` again on a saved suite is rejected. You can run `dot eval validate suite.json` before saving to check the file without credentials.
 
 ```bash
 dot eval run suite.json --target production \
@@ -139,7 +242,7 @@ dot eval run suite.json --target production \
   --junit artifacts/evaluation.xml
 ```
 
-The command waits for completion and uses the questions in the file for that run, without changing the saved question set. Its run link opens those recorded questions in the web UI. You can also run an existing saved evaluation by supplying its ID instead of a JSON file.
+The command waits for completion and uses the questions in the file for that run, without changing the saved question set. Its run link opens those recorded questions in the web UI. You can also run an existing saved evaluation by supplying its ID instead of a suite file.
 
 To start from a question set created in the web UI:
 
