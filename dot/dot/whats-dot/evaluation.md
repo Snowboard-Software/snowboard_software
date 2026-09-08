@@ -51,9 +51,13 @@ Open **Model → Evaluation**, choose **New evaluation**, and follow the setup c
 
 CLI runs preserve the questions recorded at submission. Their web view shows that snapshot, including questions added or changed in a suite file. Choose **View saved questions** to edit the persisted question set for future runs, then **View run** to return to the recorded results. **Run saved questions** runs the saved set; use the CLI to rerun a file with different questions.
 
+Choose **Run in CI** for a guided setup: download the saved questions, check the regional server, and copy terminal commands or a GitHub Actions workflow. The setup shows the saved-question count explicitly. Run details identify the tested Dot context commit and, when available, the originating CI job and source revision.
+
 A completed run means that processing finished. It does not mean every question passed. Look at the question results and error count when deciding whether a change is ready.
 
-<figure><img src="../../.gitbook/assets/evaluation-ci-regression.png" alt="Evaluation of the synthetic January sales dataset showing net revenue and refund-rate failures, with two of four questions passing"><figcaption><p>Removing a 100 USD refund from the test data produces two clear failures: net revenue changes from 900 to 1,000 USD, and the refund rate changes from 10% to zero.</p></figcaption></figure>
+Use **Needs attention** to focus on failed questions, execution errors, or missing expected answers. Search by question or metric to find a specific check. Filtering the table leaves the overall run score unchanged; choose **All** and clear the search to restore the full list.
+
+<figure><img src="../../.gitbook/assets/evaluation-ci-triage.png" alt="Needs attention filter showing the net-revenue and refund-rate failures while the overall result stays at two of four questions passing"><figcaption><p>Removing a 100 USD refund produces two failures. Needs attention focuses the table on those checks while preserving the full run score.</p></figcaption></figure>
 
 ## Keep evaluations in Git
 
@@ -61,6 +65,8 @@ The [Dot CLI](../integrations/cli.md) lets you save an evaluation as JSON, revie
 
 ```bash
 dot eval create suite.json
+dot eval validate suite.json
+dot eval run suite.json --target production --dry-run
 dot eval run suite.json --target production \
   --output artifacts/evaluation.json \
   --junit artifacts/evaluation.xml

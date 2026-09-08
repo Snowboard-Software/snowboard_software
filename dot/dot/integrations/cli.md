@@ -216,13 +216,15 @@ Test business questions against trusted numbers from your terminal or CI pipelin
 
 ```bash
 dot eval create suite.json              # Save a question set once
+dot eval validate suite.json            # Check the file offline
+dot eval run suite.json --target production --dry-run
 dot eval run suite.json --target production \
   --output artifacts/evaluation.json \
   --junit artifacts/evaluation.xml
 dot eval --help
 ```
 
-`create` updates your suite JSON with the saved evaluation ID and assigned question IDs. Commit the updated file and keep those IDs when editing existing questions. Runs wait for completion and return a nonzero exit code when the gate fails or the evaluation cannot complete.
+`create` updates your suite JSON with the saved evaluation ID and assigned question IDs. Commit the updated file and keep those IDs when editing existing questions. `validate` works offline; `--dry-run` previews the target and baseline using read-only API requests. Neither starts an evaluation. Actual runs wait for completion and return a nonzero exit code when the gate fails or the evaluation cannot complete.
 
 See [Evaluation](../whats-dot/evaluation.md) for numerical scoring and [Evaluations in CI](../whats-dot/api/evaluations-in-ci.md) for the suite format, environment targets, baseline comparisons, and a complete GitHub Actions workflow.
 

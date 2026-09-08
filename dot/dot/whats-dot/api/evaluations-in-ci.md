@@ -26,7 +26,28 @@ export DOT_API_TOKEN="YOUR_API_TOKEN"
 
 Use `https://eu.getdot.ai` for an EU workspace. The CLI reads the token from the environment, so CI does not need an interactive login.
 
-## Define a suite
+## Start with an existing evaluation
+
+Open an evaluation and choose **Run in CI**. The setup dialog downloads the **saved questions**, shows the correct regional server, and provides terminal commands or a GitHub Actions workflow. It displays the saved-question count so you can distinguish it from a run that used a different file snapshot.
+
+<figure><img src="../../../.gitbook/assets/evaluation-ci-setup.png" alt="Run in CI setup showing the saved-question count, JSON download, workspace connection, and separate preview and execution commands"><figcaption><p>Start with the saved suite, preview the target, then run the evaluation.</p></figcaption></figure>
+
+You can also export from the terminal:
+
+```bash
+dot eval export YOUR_EVALUATION_ID --output suite.json
+dot eval validate suite.json
+dot eval run suite.json --target production --dry-run
+dot eval run suite.json --target production \
+  --output artifacts/evaluation.json \
+  --junit artifacts/evaluation.xml
+```
+
+`validate` checks the suite file locally and needs no token or network. `--dry-run` reads the evaluation, target revision, and optional baseline, then shows what would run. Neither command starts an agent or spends evaluation credits. The final command executes the evaluation. Commit the downloaded or exported suite to keep its question IDs and expected answers under review.
+
+Use a candidate environment ID in place of `production` when evaluating a context change before release. Export refuses to overwrite an existing file.
+
+## Define a suite in code
 
 Start with `dot eval init suite.json` to generate an example, or save your question set as `suite.json`. Each question needs a stable `id`, `question`, and `expected_answer`. Numeric answer types are `number`, `count`, `currency`, `percent`, and `ratio`. `tolerance_pct` defaults to 3%.
 
@@ -110,7 +131,7 @@ Create the evaluation once:
 dot eval create suite.json
 ```
 
-The command saves the evaluation and updates the file with its `evaluation_id` and the assigned question IDs and canonical fields. Commit that updated file to Git. Reuse it for subsequent CI runs; calling `create` again on a saved suite is rejected.
+The command saves the evaluation and updates the file with its `evaluation_id` and the assigned question IDs and canonical fields. Commit that updated file to Git. Reuse it for subsequent CI runs; calling `create` again on a saved suite is rejected. You can run `dot eval validate suite.json` before saving to check the file without credentials.
 
 ```bash
 dot eval run suite.json --target production \
@@ -146,6 +167,16 @@ dot eval run suite.json --target "$DOT_EVALUATION_TARGET" \
 Use `production` as the target to inspect Production. The target report contains `target`, `target_label`, `target_commit`, and `target_overrides`.
 
 `--expect-commit` checks the Dot context revision being evaluated. Use the revision in Dot, which may differ from your application or dbt repository's Git commit. It does not sync a branch or pin warehouse data. Set up the environment and its [warehouse target](../environments.md#work-against-your-dbt-dev-target) first.
+
+Preview the exact target and baseline before starting an agent:
+
+```bash
+dot eval run suite.json --target "$DOT_EVALUATION_TARGET" \
+  --expect-commit "$DOT_CONTEXT_COMMIT" \
+  --baseline YOUR_BASELINE_RUN_ID --dry-run
+```
+
+Add `--json` for a machine-readable preview. The preview checks configuration and baseline compatibility; the actual evaluation checks agent execution and warehouse access. The commit guard is checked again when submitting the real run.
 
 ### Set the release gate
 
@@ -271,6 +302,7 @@ jobs:
         shell: bash
         run: |
           dot --version
+          dot eval validate suite.json
           dot eval run suite.json --target production \
             --timeout 1800 \
             --idempotency-key "gh-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
@@ -293,6 +325,8 @@ Fork pull requests skip this job because GitHub does not provide the workspace s
 ## Inspect a report
 
 Progress goes to stderr. Add `--json` for JSON-only stdout; `--output` saves the same report to a file. Reports include `schema_version`, `run_url`, the gate decision in `gate`, and the API run with its question results in `run`.
+
+When you provide a compatible baseline, `comparison` records regressions and recoveries with the previous and current answers. The terminal and GitHub summary show those changes, including questions that are passing again. Recoveries do not cancel out a regression in the release gate. Failed questions in GitHub summaries and JUnit evidence link directly to their conversations.
 
 ```bash
 dot eval results YOUR_RUN_ID --json
