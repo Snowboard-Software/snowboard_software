@@ -10,6 +10,11 @@ description: enable your customers to chat with data & visualize insights
 
 You can embed Dot directly in your web app via an Iframe and configure parts of the UI with the following parameters. They are all optional.
 
+* **hideProfile=true**
+  * hides the Profile navigation item (default false)
+* **hideAllFeatures=true**
+  * hides all configurable navigation and optional chat controls by default; the core chat remains available (default false)
+  * set an individual hide flag to `false` to expose that control, for example `hideFileUpload=false`
 * **hideSideNavigation=true**
   * hides the complete left side navigation (default false)
 * **hideHelp=true**
@@ -56,6 +61,24 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
   * Active groups are validated against the assigned groups of the user
 
 
+
+### Start with optional controls hidden
+
+Use `hideAllFeatures=true` to default all supported visibility flags to hidden. An explicit `false` enables a particular control; omitted or unrecognized values keep it hidden. Without this mode, existing defaults remain unchanged.
+
+To show only New chat and the conversation list in the sidebar:
+
+```text
+https://eu.getdot.ai/?hideAllFeatures=true&hideSideNavigation=false&hideNewChat=false&hideChatHistory=false
+```
+
+Navigation flags: `hideSideNavigation`, `hideNewChat`, `hideApps`, `hideHistory`, `hideSchedules`, `hideModel`, `hideSettings`, `hideProfile`, and `hideChatHistory` (the conversation list and chat search). Showing a navigation item also requires `hideSideNavigation=false`.
+
+Chat control flags: `hideHelp`, `hideTitle`, `hideShareButton`, `hideSuggestedQuestions`, `hideExplanation`, and `hideFileUpload`. These flags persist when navigating within the iframe. Presentation options such as colors, `uiMode`, `hideNativeLinks`, and `minimizeProgress` retain their independent behavior.
+
+{% hint style="info" %}
+Visibility flags customize the UI; they do not restrict API or direct URL access or grant permissions. Existing user permissions and workspace feature settings still apply. New optional controls must use the same visibility policy to remain hidden in this mode.
+{% endhint %}
 
 **Full example url**
 
