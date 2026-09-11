@@ -12,9 +12,9 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
 
 * **hideProfile=true**
   * hides the Profile navigation item (default false)
-* **hideAllFeatures=true**
-  * hides all configurable navigation and optional chat controls by default; the core chat remains available (default false)
-  * set an individual hide flag to `false` to expose that control, for example `hideFileUpload=false`
+* **showFeatures=sideNavigation,newChat,chatHistory**
+  * shows only the listed navigation items and optional controls; omitted items, including newly added items, stay hidden
+  * omit the parameter to keep existing defaults, or use `showFeatures=` for core chat without optional controls
 * **hideSideNavigation=true**
   * hides the complete left side navigation (default false)
 * **hideHelp=true**
@@ -62,22 +62,28 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
 
 
 
-### Start with optional controls hidden
+### Choose exactly what to show
 
-Use `hideAllFeatures=true` to default all supported visibility flags to hidden. An explicit `false` enables a particular control; omitted or unrecognized values keep it hidden. Without this mode, existing defaults remain unchanged.
+Set `showFeatures` to a comma-separated allowlist. Only listed items are shown; adding a new navigation item does not expose it in existing embeds. Names are case-sensitive. An empty list (`showFeatures=`) hides all supported navigation and optional controls while keeping core chat available. Omit the parameter entirely to retain the existing defaults.
 
 To show only New chat and the conversation list in the sidebar:
 
 ```text
-https://eu.getdot.ai/?hideAllFeatures=true&hideSideNavigation=false&hideNewChat=false&hideChatHistory=false
+https://eu.getdot.ai/?showFeatures=sideNavigation,newChat,chatHistory
 ```
 
-Navigation flags: `hideSideNavigation`, `hideNewChat`, `hideApps`, `hideHistory`, `hideSchedules`, `hideModel`, `hideSettings`, `hideProfile`, and `hideChatHistory` (the conversation list and chat search). Showing a navigation item also requires `hideSideNavigation=false`.
+Add `profile` to that list to expose Profile. Unknown names are ignored; repeated `showFeatures` parameters are treated as an empty list.
 
-Chat control flags: `hideHelp`, `hideTitle`, `hideShareButton`, `hideSuggestedQuestions`, `hideExplanation`, and `hideFileUpload`. These flags persist when navigating within the iframe. Presentation options such as colors, `uiMode`, `hideNativeLinks`, and `minimizeProgress` retain their independent behavior.
+| Items | Names |
+| --- | --- |
+| Navigation | `sideNavigation`, `newChat`, `apps`, `history`, `schedules`, `model`, `settings`, `profile` |
+| Conversation list and chat search | `chatHistory` |
+| Optional chat controls | `help`, `title`, `shareButton`, `suggestedQuestions`, `explanation`, `fileUpload` |
+
+Include `sideNavigation` to display the sidebar containing the selected navigation items. Existing `hide…=true` flags can hide a listed item, but `hide…=false` cannot expose an item omitted from the allowlist. The list persists when navigating within the iframe. Colors, `uiMode`, `hideNativeLinks`, and `minimizeProgress` retain their independent behavior.
 
 {% hint style="info" %}
-Visibility flags customize the UI; they do not restrict API or direct URL access or grant permissions. Existing user permissions and workspace feature settings still apply. New optional controls must use the same visibility policy to remain hidden in this mode.
+The allowlist customizes the UI; it does not restrict API or direct URL access or grant permissions. Existing user permissions and workspace feature settings still apply. Core chat actions remain available. New optional controls must use the shared visibility policy, and navigation items are automatically filtered by the allowlist.
 {% endhint %}
 
 **Full example url**
