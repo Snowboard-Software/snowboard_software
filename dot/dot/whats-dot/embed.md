@@ -10,6 +10,11 @@ description: enable your customers to chat with data & visualize insights
 
 You can embed Dot directly in your web app via an Iframe and configure parts of the UI with the following parameters. They are all optional.
 
+* **hideProfile=true**
+  * hides the Profile navigation item (default false)
+* **showFeatures=sideNavigation,newChat,chatHistory**
+  * shows only the listed navigation items and optional controls; omitted items, including newly added items, stay hidden
+  * omit the parameter to keep existing defaults, or use `showFeatures=` for core chat without optional controls
 * **hideSideNavigation=true**
   * hides the complete left side navigation (default false)
 * **hideHelp=true**
@@ -56,6 +61,30 @@ You can embed Dot directly in your web app via an Iframe and configure parts of 
   * Active groups are validated against the assigned groups of the user
 
 
+
+### Choose exactly what to show
+
+Set `showFeatures` to a comma-separated allowlist. Only listed items are shown; adding a new navigation item does not expose it in existing embeds. Names are case-sensitive. An empty list (`showFeatures=`) hides all supported navigation and optional controls while keeping core chat available. Omit the parameter entirely to retain the existing defaults.
+
+To show only New chat and the conversation list in the sidebar:
+
+```text
+https://eu.getdot.ai/?showFeatures=sideNavigation,newChat,chatHistory
+```
+
+Add `profile` to that list to expose Profile. Unknown names are ignored; repeated `showFeatures` parameters are treated as an empty list.
+
+| Items | Names |
+| --- | --- |
+| Navigation | `sideNavigation`, `newChat`, `apps`, `history`, `schedules`, `model`, `settings`, `profile` |
+| Conversation list and chat search | `chatHistory` |
+| Optional chat controls | `help`, `title`, `shareButton`, `suggestedQuestions`, `explanation`, `fileUpload` |
+
+Include `sideNavigation` to display the sidebar containing the selected navigation items. Existing `hide…=true` flags can hide a listed item, but `hide…=false` cannot expose an item omitted from the allowlist. The list persists when navigating within the iframe. Colors, `uiMode`, `hideNativeLinks`, and `minimizeProgress` retain their independent behavior.
+
+{% hint style="info" %}
+The allowlist customizes the UI; it does not restrict API or direct URL access or grant permissions. Existing user permissions and workspace feature settings still apply. Core chat actions remain available. New optional controls must use the shared visibility policy, and navigation items are automatically filtered by the allowlist.
+{% endhint %}
 
 **Full example url**
 
