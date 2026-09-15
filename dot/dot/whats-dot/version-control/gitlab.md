@@ -64,9 +64,7 @@ Toggle **Auto-sync enabled** to push changes to GitLab automatically when you ed
 
 ## Evaluation files
 
-Saved evaluations sync as `evaluations/<evaluation-id>.yaml`. Keep the file's evaluation ID, question IDs, and metadata when editing questions or expected answers. Changes on an environment branch reach Production through the normal merge workflow. A running evaluation keeps its recorded question snapshot.
-
-The synced file is Dot's model format. For the portable JSON/YAML suite accepted by `dot eval run`, use `dot eval export` as described in [Evaluations in CI](../api/evaluations-in-ci.md).
+Evaluations sync as `evaluations/<id>.yaml` and follow the same environment and merge workflow as other context. Preserve IDs and metadata when editing. For a portable CLI suite, use `dot eval export`; see [Evaluations in CI](../api/evaluations-in-ci.md).
 
 ## How Sync Works
 
