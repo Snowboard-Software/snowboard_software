@@ -212,51 +212,20 @@ dot wish "I want better date filtering"
 
 ### Evaluations
 
-Test business questions against trusted numbers from your terminal or CI pipeline. Start with a YAML or JSON file. YAML supports comments and multiline questions; both formats use the same fields.
-
-Save this as `suite.yaml`, replacing the example question and answer with a reviewed value from your data:
-
-```yaml
-name: Revenue checks
-questions:
-  - question: What was net revenue in USD for completed orders in January 2026?
-    expected_answer: 900
-```
-
-Or save the equivalent JSON as `suite.json`:
-
-```json
-{
-  "name": "Revenue checks",
-  "questions": [
-    {
-      "question": "What was net revenue in USD for completed orders in January 2026?",
-      "expected_answer": 900
-    }
-  ]
-}
-```
-
-A draft needs only `name` and a nonempty `questions` list with `question` and `expected_answer`; zero is valid. `create` generates stable question IDs and adds them to the file, so wording can change without losing case identity. Keep those IDs in saved suites and give newly added cases new unique IDs. Changes to wording, expected answers, answer types, or tolerances require a fresh compatible baseline.
-
-`answer_type` is optional: Dot infers number, currency, percent, or ISO date from the answer. Set `count` or `ratio` explicitly, or `percent` when a bare number represents a percentage. `tolerance_pct` defaults to 3%; dates always use 0. Unknown suite/question fields, prose or boolean answers, and duplicate question IDs are rejected. Quote dates and formatted values in YAML.
-
-Check locally, save once, preview, then execute:
+Run saved business questions as a local or CI check:
 
 ```bash
-dot eval validate suite.yaml            # Offline; no token needed
-dot eval create suite.yaml              # Save once; add assigned IDs to this file
-dot eval run suite.yaml --target production --dry-run
-dot eval run suite.yaml --target production \
-  --output artifacts/evaluation.json \
-  --junit artifacts/evaluation.xml
+export DOT_ENV="" # Saved evaluation is in Production.
+dot eval export YOUR_EVALUATION_ID --output suite.json
+dot eval validate suite.json
+dot eval run suite.json --target production --dry-run
+dot eval run suite.json --target production \
+  --output results.json --junit results.xml
 ```
 
-Use `suite.json` in these commands if you chose JSON. You can also generate a starter with `dot eval init --output suite.yaml` or `dot eval init suite.json`.
+Use an environment ID for `DOT_ENV` to read a draft evaluation, and `--target` to choose the context to test. Preview spends no evaluation credits; actual runs wait for results and exit nonzero if the gate fails.
 
-`create` adds `evaluation_id` and assigned question IDs to the file. Commit the updated file and keep those IDs when editing existing questions; later runs use the file without changing the saved set. `validate` works offline; `--dry-run` previews the target and baseline through read-only API requests. Neither starts an evaluation. Actual runs wait for completion and return a nonzero exit code when the gate fails or the evaluation cannot complete. Exports and machine-readable run reports remain JSON.
-
-See [Evaluation](../whats-dot/evaluation.md) for numerical scoring and [Evaluations in CI](../whats-dot/api/evaluations-in-ci.md) for the full schema, reproducible fixture, environment targets, baselines, and a GitHub Actions workflow.
+See [Evaluations in CI](../whats-dot/api/evaluations-in-ci.md) to create a suite or add a GitHub Actions workflow.
 
 ### Apps as code
 

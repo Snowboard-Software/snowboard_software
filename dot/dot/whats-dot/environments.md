@@ -25,9 +25,11 @@ Environments are available to **admins and modelers**. Regular users always see 
 
 | Isolated per environment                                      | Shared with production              |
 | ------------------------------------------------------------- | ----------------------------------- |
-| Table documentation, notes, relationships, reports, skills    | Database connections (overridable)  |
+| Table documentation, notes, relationships, reports, skills, evaluation definitions    | Database connections (overridable)  |
 | Warehouse target overrides (dev schema/database)              | Users, permissions, and groups      |
 | [Root](context-agent.md) sessions and their changes           | Chat history (tagged with the environment) |
+
+Evaluation definitions live in `evaluations/<evaluation-id>.yaml` and follow the environment's Git history. Merging promotes their questions and expected answers to Production. Evaluation runs and results remain shared records with their own question snapshots and target revisions; merging does not rewrite past runs. CLI and API snapshots stay immutable; eligible manual runs can be regraded by expected-answer or tolerance corrections in the UI.
 
 Chats you run inside an environment appear in the regular History page, tagged with the environment's name — so usage stays visible in one place.
 

@@ -62,6 +62,10 @@ When someone pushes to the configured branch, GitLab sends a signed event to Dot
 
 Toggle **Auto-sync enabled** to push changes to GitLab automatically when you edit context in Dot.
 
+## Evaluation files
+
+Evaluations sync as `evaluations/<id>.yaml` and follow the same environment and merge workflow as other context. Preserve IDs and metadata when editing. For a portable CLI suite, use `dot eval export`; see [Evaluations in CI](../api/evaluations-in-ci.md).
+
 ## How Sync Works
 
 **Push (Dot → GitLab)**: Changes in Dot become commits in GitLab via the Repository Commits API — one atomic commit per change. The first push after configuration ships your existing context.

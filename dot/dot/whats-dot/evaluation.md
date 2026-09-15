@@ -1,87 +1,32 @@
 ---
-description: Test Dot against trusted numbers in the UI, terminal, or CI pipeline.
+description: Check Dot's answers against trusted numbers.
 ---
 
 # Evaluation
 
-Evaluations check whether Dot answers your business questions correctly. Pair each question with a trusted number, run the set against Production or an environment, and inspect the differences. You can use the same evaluation in the web UI and your CI pipeline, independently of Train.
+Evaluations check whether Dot answers your business questions correctly. Start with a few questions that matter—revenue, paying customers, conversion—and pair each with a trusted answer from a dashboard, reviewed SQL, or a governed metric.
 
-Start with a few questions that matter: revenue after refunds, paying customers, conversion rate. A single number makes each result easy to understand and each regression easy to investigate.
+## Create and run
 
-## Write a useful test
+1. Open **Model → Evaluation → New evaluation** and follow the setup conversation.
+2. Give each question a clear metric, time period, and relevant filters. Use the same data snapshot for the expected answer and Dot's query.
+3. Run the evaluation. It tests the active environment, so use the [environment switcher](environments.md) to choose a saved version first.
+4. Open **Needs attention** to inspect failures and their linked conversations.
 
-Each question should identify a metric, time period, and any relevant filters. Keep the wording close to what your users ask. Put the business definition in Dot's context so the test checks whether Dot uses it correctly.
+Dot compares the observed and expected values. Numeric tolerance defaults to **3%**; set it to **0** for an exact check. A completed run can still contain failures or errors. Evaluations use Economy mode and may make one follow-up attempt when the first answer needs clarification.
 
-For example:
+<figure><img src="../../.gitbook/assets/evaluation-ci-triage.png" alt="Evaluation results filtered to show questions needing attention"><figcaption><p>Inspect the expected and observed answers, then open the conversation to understand a failure.</p></figcaption></figure>
 
-> What was our net revenue in January 2026, in USD?
+Fix missing context or incorrect metric definitions, then rerun. Change an expected answer only when its business definition or source data changes.
 
-Use a trusted dashboard, reviewed SQL, or governed metric to obtain the expected value. Record where it came from. Avoid creating expected answers from the same agent response you are testing.
+## Versions and environments
 
-Choose a stable dataset. A closed month can still change after a backfill, so use a controlled warehouse snapshot for repeatable regression tests. When testing live data, refresh the expected answers against the same data Dot will query.
+Evaluations are saved as `evaluations/<id>.yaml` in the model repository. Each save creates a version. Changes stay in their environment until merged to Production and participate in [GitHub](version-control/github.md) or [GitLab](version-control/gitlab.md) sync.
 
-## What a result means
+Use **History** to inspect or restore an older version. Archiving preserves the file, history, and previous runs. CLI/API runs keep their submitted questions and results; correcting expected answers or tolerances can regrade eligible manual runs. A frozen training keeps grading its pinned evaluation version.
 
-Dot extracts the answer and compares it with the expected value. For a nonzero expected value, the relative difference is:
+## Run in CI
 
-```text
-abs(observed − expected) / abs(expected) × 100
-```
+Choose **Run in CI** to export the saved questions and copy terminal commands or a GitHub Actions workflow. CLI suites use JSON or YAML and are separate from the model repository's file format.
 
-The default tolerance is **3%**. Set `tolerance_pct` to `0` for an exact check or to another percentage appropriate for the metric. For example, `tolerance_pct: 1` means 1%, not 0.01%.
-
-| Result | Meaning |
-| --- | --- |
-| Pass | The observed answer satisfies the comparison. |
-| Fail | Dot returned an answer outside the allowed tolerance. |
-| Error | The question could not be evaluated successfully. |
-| Pending | The question has not finished. |
-
-Percentage answers support percentage/ratio normalization, such as `25%` and `0.25`. Use `answer_type: "percent"` and write the unit in the question. Counts and currency do not receive this normalization.
-
-For an expected value of zero, the current scorer reports zero difference when the observed value is zero and 100% difference otherwise. Use a tolerance below 100% when zero must remain zero.
-
-{% hint style="info" %}
-Evaluation currently runs Dot in Economy mode. If the first response asks for clarification or does not provide a usable answer, the runner can send one follow-up requesting a best-effort answer. The score includes that recovery attempt; it is not a separate measurement of first-response accuracy or another energy mode.
-{% endhint %}
-
-## Use the web UI
-
-Open **Model → Evaluation**, choose **New evaluation**, and follow the setup conversation to create a question set with trusted expected answers. Choose Production or an [environment](environments.md) as the target and start a run. Inspect failed questions using their expected and observed values and linked conversations.
-
-CLI runs preserve the questions recorded at submission. Their web view shows that snapshot, including questions added or changed in a suite file. Choose **View saved questions** to edit the persisted question set for future runs, then **View run** to return to the recorded results. **Run saved questions** runs the saved set; use the CLI to rerun a file with different questions.
-
-Choose **Run in CI** for a guided setup: download the saved questions, check the regional server, and copy terminal commands or a GitHub Actions workflow. The setup shows the saved-question count explicitly. Run details identify the tested Dot context commit and, when available, the originating CI job and source revision.
-
-A completed run means that processing finished. It does not mean every question passed. Look at the question results and error count when deciding whether a change is ready.
-
-Use **Needs attention** to focus on failed questions, execution errors, or missing expected answers. Search by question or metric to find a specific check. Filtering the table leaves the overall run score unchanged; choose **All** and clear the search to restore the full list.
-
-<figure><img src="../../.gitbook/assets/evaluation-ci-triage.png" alt="Needs attention filter showing the net-revenue and refund-rate failures while the overall result stays at two of four questions passing"><figcaption><p>Removing a 100 USD refund produces two failures. Needs attention focuses the table on those checks while preserving the full run score.</p></figcaption></figure>
-
-## Keep evaluations in Git
-
-The [Dot CLI](../integrations/cli.md) lets you save an evaluation as JSON, review changes to its questions and expected answers, and run it from your terminal. Stable question IDs keep results associated with the same test as wording and definitions evolve. `dot eval create` saves the evaluation and updates the suite file with the evaluation ID and assigned question IDs. Commit the updated file and retain those IDs when editing existing questions.
-
-```bash
-dot eval create suite.json
-dot eval validate suite.json
-dot eval run suite.json --target production --dry-run
-dot eval run suite.json --target production \
-  --output artifacts/evaluation.json \
-  --junit artifacts/evaluation.xml
-```
-
-See [Evaluations in CI](api/evaluations-in-ci.md) for the suite format, setup, exit codes, baseline comparisons, and a complete GitHub Actions workflow.
-
-## Improve an answer
-
-When a test fails, open its conversation and inspect the query and answer. Check whether Dot selected the right data, applied the metric definition, and used the requested dates and filters. Update the relevant [notes](model/notes.md) or table documentation in an environment, then rerun the same questions against the same data.
-
-Keep the expected value fixed while correcting a regression. Change it when the approved business definition or source data changes, and review that change alongside its source.
-
-## Use existing dbt definitions
-
-Dot can use the [dbt Semantic Layer](../integrations/semantic-layers/dbt-semantic-layer.md) during analysis. Your evaluation can use those same governed definitions as the source of expected numbers.
-
-Run your existing dbt, MetricFlow, or warehouse tooling to calculate the expected values, write them into the suite JSON, and run Dot against the matching data target. The evaluation CLI accepts expected answers; it does not execute reference dbt metrics or SQL from the suite.
+Follow [Evaluations in CI](api/evaluations-in-ci.md) for setup and examples.
