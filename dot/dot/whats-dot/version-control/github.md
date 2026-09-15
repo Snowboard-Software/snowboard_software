@@ -33,13 +33,15 @@ apps/                # Dashboards as code
 
 skills/              # Custom skills (skills/<name>/SKILL.md plus supporting files)
 
+evaluations/         # Saved evaluation definitions (<evaluation-id>.yaml)
+
 relationships.yaml   # Table relationships
 ```
 
 Context files use Markdown (`.md`) with YAML frontmatter, or plain YAML. Dashboards sync as `.app` sources plus their `.app.lock` compiled sidecars, and custom skills as their `SKILL.md` and supporting text files.
 
 {% hint style="info" %}
-Context files, dashboards (apps), and custom skills are synced. Database connections, user settings, and chat history remain in Dot.
+Context files, dashboards (apps), custom skills, and evaluation definitions are synced. Evaluation runs and results remain in Dot. Database connections, user settings, and chat history remain in Dot.
 {% endhint %}
 
 ## Setting Up GitHub Sync
@@ -76,12 +78,18 @@ Both "All repositories" and "Selected repositories" work. If you choose "Selecte
 **Create new repository**: Enter a name, choose a branch, and Dot will create a private repo with all your existing context. This option requires the GitHub App to be installed with "All repositories" access.
 
 {% hint style="info" %}
-If your repository already has files (like a README), Dot will preserve them. Dot only manages files in the `notes/`, `data_sources/`, `apps/`, and `skills/` paths, plus `relationships.yaml`.
+If your repository already has files (like a README), Dot will preserve them. Dot only manages files in the `notes/`, `data_sources/`, `apps/`, `skills/`, and `evaluations/` paths, plus `relationships.yaml`.
 {% endhint %}
 
 ### Step 3: Enable Auto-Sync
 
 Toggle **Auto-sync enabled** to automatically push changes when you update context in Dot's UI.
+
+## Evaluation files
+
+Saved evaluations sync as `evaluations/<evaluation-id>.yaml`. Keep the file's evaluation ID, question IDs, and metadata when editing questions or expected answers. Changes on an environment branch reach Production through the normal merge workflow. A running evaluation keeps its recorded question snapshot.
+
+The synced file is Dot's model format. For the portable JSON/YAML suite accepted by `dot eval run`, use `dot eval export` as described in [Evaluations in CI](../api/evaluations-in-ci.md).
 
 ## How Sync Works
 

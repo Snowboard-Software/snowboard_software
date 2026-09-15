@@ -47,7 +47,7 @@ Evaluation currently runs Dot in Economy mode. If the first response asks for cl
 
 ## Use the web UI
 
-Open **Model → Evaluation**, choose **New evaluation**, and follow the setup conversation to create a question set with trusted expected answers. Choose Production or an [environment](environments.md) as the target and start a run. Inspect failed questions using their expected and observed values and linked conversations.
+Open **Model → Evaluation**, choose **New evaluation**, and follow the setup conversation to create a question set with trusted expected answers. Use the [environment switcher](environments.md) to select the saved evaluation version you want to test, then start a run against that environment (or Production). Inspect failed questions using their expected and observed values and linked conversations.
 
 CLI runs preserve the questions recorded at submission. Their web view shows that snapshot, including questions added or changed in a suite file. Choose **View saved questions** to edit the persisted question set for future runs, then **View run** to return to the recorded results. **Run saved questions** runs the saved set; use the CLI to rerun a file with different questions.
 
@@ -61,9 +61,21 @@ Use **Needs attention** to focus on failed questions, execution errors, or missi
 
 ## Keep evaluations in Git
 
-The [Dot CLI](../integrations/cli.md) lets you save an evaluation as JSON, review changes to its questions and expected answers, and run it from your terminal. Stable question IDs keep results associated with the same test as wording and definitions evolve. `dot eval create` saves the evaluation and updates the suite file with the evaluation ID and assigned question IDs. Commit the updated file and retain those IDs when editing existing questions.
+Evaluations are saved as `evaluations/<evaluation-id>.yaml` in Dot's model repository. Each environment has its own version of the file. Changes stay in that environment until you merge them to Production, and the files participate in [GitHub](version-control/github.md) and [GitLab](version-control/gitlab.md) sync.
+
+Every save creates a commit. Open **History** on an evaluation to inspect an older version read-only or restore it as a new commit. Archiving keeps the file, its history, and previous runs. CLI and API runs retain their question snapshots and results when the saved definition changes. Eligible manual runs can be regraded when you correct an expected answer or tolerance in the UI. Once a linked training freezes its evaluation version, subsequent evaluation edits do not change the ground truth it grades against.
+
+For terminal and CI workflows, the [Dot CLI](../integrations/cli.md) accepts a portable suite in JSON or YAML. `dot eval create` saves it in the selected environment and writes the evaluation ID and assigned question IDs back into the suite. Commit that updated suite and retain the IDs when editing existing questions.
+
+| File | Purpose |
+| --- | --- |
+| `evaluations/<evaluation-id>.yaml` in the model repository | Dot's saved definition, including identity, audit metadata, and questions; edited and promoted through the environment lifecycle. |
+| `suite.json` or `suite.yaml` in your CI repository | A portable question snapshot accepted by the CLI; exported suites use JSON. Running it does not update the saved definition. |
+
+These formats have different schemas. Use `dot eval export` to produce a CLI suite from a saved evaluation; do not pass a model-repository file directly to `dot eval run`.
 
 ```bash
+export DOT_ENV="" # Save and read the evaluation in Production.
 dot eval create suite.json
 dot eval validate suite.json
 dot eval run suite.json --target production --dry-run

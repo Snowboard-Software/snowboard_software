@@ -7,7 +7,7 @@ description: Run numerical analytics tests with the Dot CLI and use the results 
 Run the same [evaluation](../evaluation.md) locally and in CI. The CLI submits the questions, waits for the run, checks the results, and writes reports. Your pipeline can fail when a trusted number changes or a previously passing question regresses.
 
 {% hint style="info" %}
-These commands require a Dot CLI release with `dot eval` support and the matching evaluation API. Run `dot eval --help` to check availability. If the command is unavailable, update the CLI after your workspace has received the evaluation CI release.
+Use Dot CLI **0.3.1 or later** with the matching evaluation-files API. Run `dot --version` to check your CLI and `dot update` after your workspace receives the release. Older installed CLIs retain basic creation and preview compatibility, but 0.3.1 also aligns saved-ID previews and baseline checks with an explicitly selected target.
 {% endhint %}
 
 ## Before you start
@@ -22,13 +22,25 @@ Set credentials in your shell or CI secret store:
 ```bash
 export DOT_API_BASE_URL="https://app.getdot.ai"
 export DOT_API_TOKEN="YOUR_API_TOKEN"
+export DOT_ENV="" # Read and create saved evaluations in Production.
 ```
 
 Use `https://eu.getdot.ai` for an EU workspace. The CLI reads the token from the environment, so CI does not need an interactive login.
 
+## Select the saved evaluation's environment
+
+Evaluations are versioned model files, so their saved definitions are scoped to an environment. Set `DOT_ENV="YOUR_ENVIRONMENT_ID"` to create, list, show, or export a draft evaluation. Set `DOT_ENV=""` to use Production even if you have another environment saved in your CLI settings.
+
+`--target` selects the context and warehouse overrides to test:
+
+* **Suite file:** Dot reads the saved evaluation identity and provenance from `DOT_ENV`, then runs the file's question snapshot against `--target`. The target environment can predate the saved evaluation; you do not need to copy the definition there.
+* **Evaluation ID:** Dot runs the saved questions at the target's committed revision. That target must contain the evaluation. Merge the definition into it, select an environment that contains it, or export and run a suite file instead.
+
+If `--target` is omitted, execution uses the active environment, or Production when none is selected. Preview uses the same selection rules. Archiving the relevant saved definition prevents new runs while preserving previous results.
+
 ## Start with an existing evaluation
 
-Open an evaluation and choose **Run in CI**. The setup dialog downloads the **saved questions**, shows the correct regional server, and provides terminal commands or a GitHub Actions workflow. It displays the saved-question count so you can distinguish it from a run that used a different file snapshot.
+Open an evaluation and choose **Run in CI**. The setup dialog downloads the **saved questions**, shows the correct regional server, and provides terminal commands or a GitHub Actions workflow. Its commands also select the evaluation's source environment with `DOT_ENV`. It displays the saved-question count so you can distinguish it from a run that used a different file snapshot.
 
 <figure><img src="../../../.gitbook/assets/evaluation-ci-setup.png" alt="Run in CI setup showing the saved-question count, JSON download, workspace connection, and separate preview and execution commands"><figcaption><p>Start with the saved suite, preview the target, then run the evaluation.</p></figcaption></figure>
 
@@ -49,7 +61,7 @@ Use a candidate environment ID in place of `production` when evaluating a contex
 
 ## Define a suite in code
 
-Use **YAML** (`.yaml` or `.yml`) for comments and readable multiline questions, or **JSON** (`.json`) for generated suites. Both formats use the same fields and evaluation behavior. `validate`, `create`, and `run` accept either format; exported suites and run reports use JSON.
+Use **YAML** (`.yaml` or `.yml`) for comments and readable multiline questions, or **JSON** (`.json`) for generated suites. Both portable suite formats use the same fields and evaluation behavior. The automatically synced `evaluations/<evaluation-id>.yaml` files use a separate model-repository schema with audit metadata. Export a portable suite with `dot eval export`; renaming or copying a synced file is not a conversion. `validate`, `create`, and `run` accept either format; exported suites and run reports use JSON.
 
 Generate a starter with `dot eval init --output suite.yaml` or `dot eval init suite.json`, or copy one of these equivalent starters. Their answers come from the [synthetic fixture below](#reproduce-the-example); replace them with reviewed values from your data before adopting the suite. The examples omit `evaluation_id` because `create` fills it in.
 
@@ -242,7 +254,7 @@ dot eval run suite.json --target production \
   --junit artifacts/evaluation.xml
 ```
 
-The command waits for completion and uses the questions in the file for that run, without changing the saved question set. Its run link opens those recorded questions in the web UI. You can also run an existing saved evaluation by supplying its ID instead of a suite file.
+The command waits for completion and uses the questions in the file for that run, without changing the saved question set. Its run link opens those recorded questions in the web UI. You can also run an existing saved evaluation by supplying its ID instead of a suite file; its definition must exist at the target revision.
 
 To start from a question set created in the web UI:
 
@@ -389,6 +401,7 @@ jobs:
     timeout-minutes: 35
     env:
       DOT_API_BASE_URL: https://app.getdot.ai
+      DOT_ENV: "" # Saved evaluation is in Production.
       DOT_API_TOKEN: ${{ secrets.DOT_API_TOKEN }}
     steps:
       - uses: actions/checkout@v4
@@ -474,11 +487,15 @@ The create-run request accepts these optional fields:
 | Field | Purpose |
 | --- | --- |
 | `target` | `{"kind":"production"}` or `{"kind":"environment","environment_id":"…"}`. |
-| `questions` | A per-run question snapshot, using the suite's question objects and stable IDs. Omit to use the saved evaluation's questions. |
+| `questions` | A per-run question snapshot, using the suite's question objects and stable IDs. The saved evaluation is read from `X-Dot-Environment` (Production when absent). Omit to use the questions at the target's committed revision. |
 | `expected_target_commit` | Full lowercase 40-character Dot context SHA that must match the target. |
 | `idempotency_key` | Reattach to an accepted run when replaying the same request. |
 | `metadata` | String key/value pairs for your source revision and CI job identifiers. |
 | `trigger` | `api`, `cli`, or `manual`; use `api` for direct integrations. |
+
+For saved-definition CRUD requests, use `X-Dot-Environment: YOUR_ENVIRONMENT_ID` to select an environment; omit it for Production. Creation no longer stores a default run target. Older clients may send `target` on creation only when it matches that selected environment. API responses retain derived `status` and `target` fields for older CLIs; `archived_at` and `version` describe the saved file.
+
+A run exposes `data.evaluation_commit` for the saved definition used, `target_commit` for the tested context, and `data.question_snapshot` for the exact questions graded. A suite file can override the saved questions for that run, so the snapshot is the authoritative evidence of what was tested. Reuse an idempotency key only for the same request and source environment.
 
 The CLI records GitHub repository, source SHA, run ID, and attempt from the GitHub Actions environment when present. Those identifiers are separate from the captured Dot target commit.
 

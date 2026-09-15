@@ -256,6 +256,10 @@ Use `suite.json` in these commands if you chose JSON. You can also generate a st
 
 `create` adds `evaluation_id` and assigned question IDs to the file. Commit the updated file and keep those IDs when editing existing questions; later runs use the file without changing the saved set. `validate` works offline; `--dry-run` previews the target and baseline through read-only API requests. Neither starts an evaluation. Actual runs wait for completion and return a nonzero exit code when the gate fails or the evaluation cannot complete. Exports and machine-readable run reports remain JSON.
 
+Use `DOT_ENV` to select where evaluations are created, listed, shown, and exported. Set `DOT_ENV=""` for Production or an environment ID for a draft. When running a suite file, that environment supplies the saved evaluation identity and provenance; `--target` independently selects the context to test. When running an evaluation ID, the target must contain its saved definition. Omitting `--target` uses the active environment, or Production if none is selected.
+
+The model repository's `evaluations/<id>.yaml` files have a different schema from CLI suites. Export a suite with `dot eval export` before using it in CI.
+
 See [Evaluation](../whats-dot/evaluation.md) for numerical scoring and [Evaluations in CI](../whats-dot/api/evaluations-in-ci.md) for the full schema, reproducible fixture, environment targets, baselines, and a GitHub Actions workflow.
 
 ### Apps as code
