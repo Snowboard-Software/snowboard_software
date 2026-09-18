@@ -87,6 +87,162 @@ The answer sits in the last message carrying a `formatted_result`: a list of par
 
 
 
+## Gate a GitHub Pull Request with an Evaluation
+
+An Evaluation is a reusable set of questions with known numeric answers. Run it after a model, data, or synchronized context change to catch an answer regression before users do. The GitHub workflow below starts one run, follows that exact run to completion, and passes only when every question matches.
+
+### Set up the workflow
+
+1. If you manage Dot context in GitHub, connect the repository under **Settings → Connections → GitHub** and enable auto-sync. Dot adds its parser check to pull requests automatically.
+2. In Dot, open **Model → Evaluation** and select the evaluation you want to use as the gate.
+3. In **Settings → Users → API Tokens**, create a token for a user who can run evaluations.
+4. In the GitHub repository, open **Settings → Secrets and variables → Actions** and add the token as a repository secret named `DOT_API_TOKEN`.
+5. Back in Dot, click **Run from CI** and copy the generated workflow.
+
+<figure><img src="../../../.gitbook/assets/evaluation-github-context-sync.png" alt="Dot connected to a GitHub context repository with auto-sync and the GitHub context check active"><figcaption><p>The context repository is synchronized and Dot's parser check is active before the Evaluation gate is added.</p></figcaption></figure>
+
+Save the workflow as `.github/workflows/dot-evaluation.yml`:
+
+```yaml
+name: Dot evaluation
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  evaluate-dot:
+    name: Dot evaluation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Run evaluation
+        env:
+          DOT_API_TOKEN: ${{ secrets.DOT_API_TOKEN }}
+          DOT_BASE_URL: https://app.getdot.ai
+          DOT_EVALUATION_ID: evl_your_evaluation_id
+        shell: bash
+        run: |
+          set -euo pipefail
+          start_file="$(mktemp)"
+          trap 'rm -f "$start_file"' EXIT
+
+          status="$(curl --silent --show-error \
+            --output "$start_file" --write-out "%{http_code}" \
+            --request POST \
+            --header "X-API-KEY: $DOT_API_TOKEN" \
+            --header "Content-Type: application/json" \
+            --data '{"trigger":"api"}' \
+            "$DOT_BASE_URL/api/evaluations/$DOT_EVALUATION_ID/runs")"
+
+          if [ "$status" = "200" ]; then
+            run_id="$(jq -r '.id' "$start_file")"
+          elif [ "$status" = "409" ]; then
+            run_id="$(jq -r '.detail.active_run_id // empty' "$start_file")"
+            if [ -z "$run_id" ]; then
+              cat "$start_file"
+              exit 1
+            fi
+          else
+            cat "$start_file"
+            exit 1
+          fi
+
+          for attempt in {1..60}; do
+            run="$(curl --fail-with-body --silent --show-error \
+              --header "X-API-KEY: $DOT_API_TOKEN" \
+              "$DOT_BASE_URL/api/evaluation_runs/$run_id")"
+            echo "$run" | jq '{status, verdict, summary}'
+
+            if [ "$(jq -r '.finished' <<<"$run")" = "true" ]; then
+              break
+            fi
+            if [ "$attempt" = "60" ]; then
+              echo "::error::Dot evaluation did not finish within 10 minutes"
+              exit 1
+            fi
+            sleep 10
+          done
+
+          verdict="$(jq -r '.verdict' <<<"$run")"
+          {
+            echo "### Dot evaluation"
+            echo
+            echo "| Verdict | Passed | Failed | Errors |"
+            echo "| --- | ---: | ---: | ---: |"
+            jq -r '"| **\(.verdict)** | \(.summary.pass) | \(.summary.fail) | \(.summary.error) |"' <<<"$run"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$verdict" != "pass" ]; then
+            echo "::error::Dot evaluation verdict: $verdict"
+            exit 1
+          fi
+```
+
+Use `https://eu.getdot.ai` for an EU workspace. The **Run from CI** dialog automatically uses the host where your workspace is running.
+
+### Read the result in GitHub
+
+The action adds the verdict and question counts to the GitHub job summary without exposing the API token. It exits successfully only for `pass`, so it can be made a required status check in your branch protection rules.
+
+On a context pull request, GitHub shows both checks independently: **Dot context check** validates the proposed context files, while **Dot evaluation** exercises the known-answer questions.
+
+<figure><img src="../../../.gitbook/assets/evaluation-github-pr-checks.png" alt="A GitHub context pull request ready to merge with Dot context check and Dot evaluation both passing"><figcaption><p>A synchronized context change is ready to merge only after both the parser check and the Evaluation pass.</p></figcaption></figure>
+
+Open the workflow run to see the exact verdict and counts without leaving GitHub.
+
+<figure><img src="../../../.gitbook/assets/evaluation-github-action-verdict.png" alt="A successful GitHub Action with a Dot evaluation summary showing one passed question and no failures or errors"><figcaption><p>The job summary makes the release decision explicit: pass, fail, and execution-error counts are separate.</p></figcaption></figure>
+
+The completed run remains available in Dot for investigation and comparison with prior runs.
+
+<figure><img src="../../../.gitbook/assets/evaluation-dot-passing-result.png" alt="The corresponding Dot Evaluation result showing 100 percent accuracy and the matching expected and observed answer"><figcaption><p>The same run in Dot shows the evaluated question, expected answer, observed answer, and status.</p></figcaption></figure>
+
+| Verdict | Meaning | GitHub result |
+| --- | --- | --- |
+| `pass` | Every question matched its known answer. | Pass |
+| `fail` | One or more answers differed from the known answer. | Fail |
+| `error` | Dot could not complete the run, for example because a provider or connection was unavailable. This is not a 0% accuracy score. | Fail |
+| `pending` | The run is still queued or running. | Keep polling |
+
+The workflow deliberately checks `verdict == "pass"` instead of calculating a result from counts. A terminal run with a missing result therefore fails closed as `error`. In Dot, execution errors appear as an incomplete run rather than a misleading 0% accuracy score.
+
+If GitHub retries the job while the evaluation is already running, Dot returns `409` with that run's `active_run_id`. The workflow continues polling the same run instead of charging for or starting a duplicate.
+
+{% hint style="warning" %}
+GitHub does not pass repository secrets to `pull_request` workflows from forks. For external contributors, run this workflow manually after reviewing the code. Do not switch it to `pull_request_target` and check out untrusted pull-request code, because that can expose the token.
+{% endhint %}
+
+### Call the API directly
+
+Start a run with `POST /api/evaluations/{evaluation_id}/runs`:
+
+```bash
+curl --request POST \
+  --header "X-API-KEY: $DOT_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{"trigger":"api"}' \
+  "https://app.getdot.ai/api/evaluations/$DOT_EVALUATION_ID/runs"
+```
+
+Keep the returned `id`, then poll only that run:
+
+```bash
+curl --header "X-API-KEY: $DOT_API_TOKEN" \
+  "https://app.getdot.ai/api/evaluation_runs/$RUN_ID"
+```
+
+The response includes `finished`, `verdict`, and `summary`:
+
+```json
+{
+  "id": "evr_01k3…",
+  "status": "completed",
+  "finished": true,
+  "verdict": "pass",
+  "summary": { "total": 12, "pass": 12, "fail": 0, "error": 0, "pending": 0 }
+}
+```
+
 ## User Administration
 
 {% openapi-operation spec="dot-openapi" path="/api/get_users" method="get" %}
@@ -126,6 +282,3 @@ Please make sure that you enabled this flag on settings: **"Allow admins to auth
 {% openapi-operation spec="dot-openapi" path="/api/auth/embedded_user_login" method="post" %}
 [OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
-
-
-
