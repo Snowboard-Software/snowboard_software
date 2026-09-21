@@ -36,7 +36,9 @@ Each action is a separately governed permission under **Model → Skills → Not
 | `notion.comments.write` | Posting comments | Off |
 | `notion.users.read` | Listing workspace members (surfaces names & emails) | Off |
 
-To change a permission, open **Model → Skills**, expand the **Notion** skill, and toggle it.
+To change a permission, open **Model → Skills** and expand the **Notion** skill. The toggle turns an action on or off for the whole workspace.
+
+Next to each toggle sits **Access Groups**, which scopes that one action to the user groups you pick. Keep `all_users` selected to leave it open to everyone. Picking `analysts`, for example, lets you keep reading and searching open to the whole workspace while only your analysts can create or update pages. Turn an action on before you scope it, because the picker works only while the action is on. Admins always keep every action.
 
 {% hint style="info" %}
 **Comments and member listing need a second opt-in on Notion's side.** Those permissions also depend on capabilities configured on the Notion integration itself (e.g. "Read comments"). That's why they default off — enable the capability in Notion's integration settings *and* the matching permission in Dot. Turning on only one side still refuses the call.
