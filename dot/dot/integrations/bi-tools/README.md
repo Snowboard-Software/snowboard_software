@@ -10,7 +10,7 @@ Once a BI tool is connected, there's a second thing you can do: rebuild one of i
 
 ## Migrate a dashboard to Dot
 
-You can turn a Tableau, Metabase, or Sigma dashboard into a Dot app. Ask Dot to migrate a dashboard by name and it recreates it piece by piece, the same charts and tables and layout, but now backed by live SQL you can question and change in plain language.
+You can turn a Tableau, Metabase, Sigma, or Mixpanel dashboard into a Dot app. Ask Dot to migrate a dashboard by name and it recreates it piece by piece, with the same metrics, charts, and layout, but now backed by live SQL you can question and change in plain language.
 
 Why do this? Some teams want to move off their BI tool and keep the dashboards they rely on. Others just want a live, conversational version sitting next to the original, so anyone can drill in without opening the BI tool.
 
@@ -20,13 +20,11 @@ To try it, connect the BI tool first, then ask Dot something like "migrate our W
 
 ## Mixpanel
 
-Connect Mixpanel when you want Dot to read your event definitions, cohorts, funnels, and saved report results. Dot reads this information when it needs it. It does not import events or change your Mixpanel project.
+Connect Mixpanel when you want Dot to read dashboards, report definitions, event definitions, cohorts, funnels, and saved report results. Dot reads this information when it needs it. It does not import events or change your Mixpanel project.
 
-This connection does not recreate a Mixpanel board as a Dot app. Mixpanel's Query API does not expose the board layout or list its report definitions.
+Dot can rebuild a Mixpanel board as a Dot app. It reads the board layout and every saved report definition, then maps those definitions to the same events in your connected warehouse. If your Mixpanel plan includes Query API access, Dot can also read report values directly from Mixpanel. Without Query API access, Dot can still rebuild the board after you explicitly accept warehouse reconstruction.
 
 ### Before you connect
-
-Your Mixpanel plan must include Query API access. Mixpanel rejects these reads on plans without it, even when the service account is valid.
 
 Create a service account for the project you want to connect:
 
@@ -34,8 +32,9 @@ Create a service account for the project you want to connect:
 2. Select **Projects**, then open the project.
 3. Open **Service Accounts**.
 4. Select **Add Service Account**.
-5. Choose the **Consumer** project role.
-6. Save the username and secret. Mixpanel shows the secret once.
+5. Name it after the connection, for example `dot-northstar-reader`.
+6. Choose the **Consumer** project role and scope it only to the project you want Dot to read.
+7. Save the username and secret. Mixpanel shows the secret once.
 
 Consumer is enough for this connection. Do not grant Admin just to connect Mixpanel to Dot.
 
@@ -51,9 +50,27 @@ Consumer is enough for this connection. Do not grant Admin just to connect Mixpa
 6. Enter the Data View workspace ID only if the project uses Data Views. Otherwise, leave it blank.
 7. Select **Connect Mixpanel**.
 
-Dot saves the connection only after Mixpanel confirms that the account can use the Query API for that project. If the project plan does not include Query API access, Dot tells you to upgrade the plan and leaves the connection unsaved.
+Dot validates the service account by reading the project's dashboard list. Query API access is not required to connect, discover boards, or read report definitions. It is required only when Dot needs live aggregate values directly from Mixpanel.
 
 <figure><img src="../../../.gitbook/assets/mixpanel-connection-form.png" alt="The Mixpanel connection form in Dot"><figcaption><p>Enter the Consumer service account and the settings for its project.</p></figcaption></figure>
+
+There is no manual sync button. Dot reads Mixpanel live when it needs the latest definitions. Use **Edit** to change credentials, project, region, or Data View workspace, and **Remove** to disconnect it.
+
+### Rebuild a board and train Dot
+
+Send Dot the Mixpanel board URL and ask it to rebuild the board as an app. Dot inventories the full board, keeps the report order and settings, maps the event logic to warehouse data, builds the app, and checks that every query renders.
+
+The example below uses a project-scoped Consumer service account on a Mixpanel plan without Query API access. The warehouse reconstruction was explicitly accepted. The Mixpanel board shows $41.76K revenue, 300 purchasers, and 30% conversion from 1,000 product viewers to 300 purchasers.
+
+<figure><img src="../../../.gitbook/assets/mixpanel-northstar-source-dashboard.png" alt="The source Mixpanel board with revenue and unique purchaser cards"><figcaption><p>Source Mixpanel board: revenue and unique purchasers.</p></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/mixpanel-northstar-source-funnel.png" alt="The source Mixpanel funnel showing 1,000 product viewers and 300 purchasers"><figcaption><p>Source Mixpanel funnel: 1,000 product viewers, 300 purchasers, and 30% conversion.</p></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/dot-northstar-rebuilt-app.png" alt="The rebuilt Dot app with the same revenue, purchaser, and conversion metrics"><figcaption><p>The rebuilt Dot app preserves all three metrics and their order.</p></figcaption></figure>
+
+You can also use the report definitions as evaluation sources in Train. Use fixed, completed dates. Values read directly through the Query API are Mixpanel reads; values computed from the warehouse must be marked as reconstructed and explicitly accepted before they become ground truth.
+
+<figure><img src="../../../.gitbook/assets/dot-northstar-training-result.png" alt="A completed Dot training with three Mixpanel-derived questions passing"><figcaption><p>Train verifies revenue, unique purchasers, and conversion against the accepted source values.</p></figcaption></figure>
 
 ## Connect a BI tool
 
