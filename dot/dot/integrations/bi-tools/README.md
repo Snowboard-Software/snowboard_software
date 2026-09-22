@@ -22,6 +22,8 @@ To try it, connect the BI tool first, then ask Dot something like "migrate our W
 
 Connect Mixpanel when you want Dot to read your event definitions, cohorts, funnels, and saved report results. Dot reads this information when it needs it. It does not import events or change your Mixpanel project.
 
+This connection does not recreate a Mixpanel board as a Dot app. Mixpanel's Query API does not expose the board layout or list its report definitions.
+
 ### Before you connect
 
 Your Mixpanel plan must include Query API access. Mixpanel rejects these reads on plans without it, even when the service account is valid.
@@ -45,8 +47,8 @@ Consumer is enough for this connection. Do not grant Admin just to connect Mixpa
 2. Search for **Mixpanel** and open the connection.
 3. Enter the service account username and secret.
 4. Enter the Mixpanel Project ID.
-5. Select the project's data residency.
-6. Enter a Workspace ID only if the project uses Data Views.
+5. Select the Mixpanel project region. Dot uses this to send requests to the right regional API.
+6. Enter the Data View workspace ID only if the project uses Data Views. Otherwise, leave it blank.
 7. Select **Connect Mixpanel**.
 
 Dot saves the connection only after Mixpanel confirms that the account can use the Query API for that project. If the project plan does not include Query API access, Dot tells you to upgrade the plan and leaves the connection unsaved.
