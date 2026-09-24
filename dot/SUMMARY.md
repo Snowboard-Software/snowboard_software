@@ -91,6 +91,7 @@
   * [Okta](dot/integrations/sso/okta.md)
   * [Google](dot/integrations/sso/google.md)
   * [Generic OIDC](dot/integrations/sso/oidc.md)
+* [AWS Secrets Manager](dot/integrations/aws-secrets-manager.md)
 
 ## Security & Support
 
