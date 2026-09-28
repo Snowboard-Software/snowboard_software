@@ -53,7 +53,7 @@
   * [Clickhouse](dot/integrations/databases/clickhouse.md)
   * [MySQL / MariaDB](dot/integrations/databases/mysql-mariadb.md)
   * [Oracle Database](dot/integrations/databases/oracle.md)
-  * [Motherduck & DuckDB](dot/integrations/databases/motherduck-and-duckdb.md)
+  * [MotherDuck & DuckDB](dot/integrations/databases/motherduck-and-duckdb.md)
   * [SAP HANA](dot/integrations/databases/sap-hana.md)
   * [Google Sheets](dot/integrations/databases/google-sheets.md)
   * [Firebolt](dot/integrations/databases/firebolt.md)
