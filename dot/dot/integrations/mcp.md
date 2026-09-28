@@ -245,7 +245,7 @@ For clients that accept an MCP server block:
     "ask_dot": {
       "url": "https://app.getdot.ai/ai/mcp",
       "headers": {
-        "API-KEY": "<your-dot-mcp-api-key>"
+        "X-API-KEY": "<your-dot-mcp-api-key>"
       }
     }
   }

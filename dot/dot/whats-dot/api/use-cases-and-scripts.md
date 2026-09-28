@@ -25,7 +25,7 @@ LABELS = ["your_label"]
 def add_label_to_chat(chat_id, labels):
     """Add labels to a chat using token-based authentication."""
     headers = {
-        "API-KEY": API_TOKEN,
+        "X-API-KEY": API_TOKEN,
         "Content-Type": "application/json"
     }
     data = {"chat_id": chat_id, "labels": labels}
@@ -79,7 +79,7 @@ API_KEY = "dot-YOUR_API_KEY_HERE"
 
 # Use "https://eu.getdot.ai/api" for the EU region
 BASE_URL = "https://app.getdot.ai/api"
-HEADERS = {"API-KEY": API_KEY, "Content-Type": "application/json"}
+HEADERS = {"X-API-KEY": API_KEY, "Content-Type": "application/json"}
 
 
 def ask_question(question):
@@ -228,7 +228,7 @@ page_url = f"{ATL_SITE}/pages/{PAGE_ID}"
 
 # ---------- 2)  Dot – read org & note ----------------------------------------
 DOT_BASE = "https://eu.getdot.ai/api"   # or https://app.getdot.ai/api for US
-HEADERS  = {"API-KEY": os.getenv("DOT_API_KEY")}
+HEADERS  = {"X-API-KEY": os.getenv("DOT_API_KEY")}
 
 notes    = requests.get(f"{DOT_BASE}/org_notes", headers=HEADERS).json()
 existing = next((n for n in notes if n.get("title") == "Confluence FAQ"), None)

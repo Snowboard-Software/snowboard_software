@@ -56,7 +56,7 @@ load_dotenv()
 API_KEY = os.getenv("DOT_API_KEY")  # Get from Settings > API Tokens in your Dot instance
 BASE_URL = "https://app.getdot.ai/api"  # Or "https://eu.getdot.ai/api" for EU
 
-headers = {"API-KEY": API_KEY, "Content-Type": "application/json"}
+headers = {"X-API-KEY": API_KEY, "Content-Type": "application/json"}
 
 # These variables are injected by Dot when running as a custom skill:
 # - user_request: The user's question

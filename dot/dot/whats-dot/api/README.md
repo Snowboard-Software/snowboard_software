@@ -22,7 +22,7 @@ All API endpoints can be accessed via an API token that is tied to the permissio
 
 ### How to use the token?
 
-You have two ways. You either pass the token as a header with `API-KEY` or you pass it as a url parameter  in `api_token` . As a header is usually more secure because automated loggers don't store them, but in some places you can't set headers (e.g. dbt webhooks) and then you can use the URL parameter.
+You have two ways. You either pass the token as a header with `X-API-KEY` or you pass it as a url parameter  in `api_token` . As a header is usually more secure because automated loggers don't store them, but in some places you can't set headers (e.g. dbt webhooks) and then you can use the URL parameter. The older header name `API-KEY` still works, but use `X-API-KEY` for new integrations.
 
 #### Via Headers
 
@@ -30,14 +30,14 @@ Call the user endpoint via command line interface.
 
 ```bash
 # Basic API request with token
-curl -H "API-KEY: dot-your_token_here" <https://[app or eu].getdot.ai/api/auth/me>
+curl -H "X-API-KEY: dot-your_token_here" <https://[app or eu].getdot.ai/api/auth/me>
 ```
 
 Call the user endpoint via Python.
 
 ```python
 import requests
-headers = {"API-KEY": "dot-your_token_here"}
+headers = {"X-API-KEY": "dot-your_token_here"}
 response = requests.get("https://[app or eu].getdot.ai/api/auth/me", headers=headers)
 ```
 
