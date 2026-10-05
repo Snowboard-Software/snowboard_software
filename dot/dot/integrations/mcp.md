@@ -6,17 +6,17 @@ MCP (Model Context Protocol) lets AI assistants like Claude, Cursor, and ChatGPT
 
 ### Your Dot MCP URL
 
-You'll paste this URL into every client below. It depends on which region you sign into Dot from:
+You'll paste this URL into the clients below (ChatGPT uses its own, see [ChatGPT](#chatgpt)). It depends on which region you sign into Dot from:
 
 * **US**: `https://app.getdot.ai/ai/mcp`
 * **EU**: `https://eu.getdot.ai/ai/mcp`
 
-Use the same host you use to sign into Dot in the browser. You can also copy the exact URL from **Settings → Integrations** inside Dot.
+Use the same host you use to sign into Dot in the browser. You can also copy the exact URL from your **Profile** in Dot. Open the user menu, choose **Connect Dot**, then **MCP**, or scroll to **Use Dot elsewhere**. It has one tab per client: MCP, CLI, Claude, ChatGPT and Cursor.
 
 {% hint style="success" %}
-**OAuth is the default.** For supported clients (Claude, Cursor, Windsurf), OAuth means no tokens to copy or manage — just sign into Dot in your browser and click **Allow**. Sessions last up to a year.
+**OAuth is the default.** For supported clients (Claude, ChatGPT, Cursor, Windsurf), OAuth means no tokens to copy or manage. Just sign into Dot in your browser and click **Allow**. Sessions last up to a year.
 
-If OAuth isn't supported by your client (ChatGPT, Raycast, generic MCP clients) or something goes wrong, see [Using an API token](#using-an-api-token).
+If your client can't do OAuth or something goes wrong, see [Using an API token](#using-an-api-token).
 {% endhint %}
 
 ### Claude (Web, Desktop, Cowork, Mobile)
@@ -137,7 +137,7 @@ A Dot tab opens. Review the permissions and click **Allow**.
 
 ### Claude Code
 
-Run the command from Dot's Integrations page:
+Run this command (the **CLI** tab in Dot also sets up Claude Code):
 
 ```bash
 claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp
@@ -153,7 +153,7 @@ Claude Code with a signed-in Anthropic account also picks up custom connectors s
 
 Cursor connects to Dot directly as a remote MCP server.
 
-**One-click install:** Click the **Add to Cursor** button on Dot's Integrations page. Cursor will open your browser to authorize.
+**One-click install:** Open the **Cursor** tab in Dot and click **Add to Cursor**. Cursor will open your browser to authorize.
 
 **Manual install:** Add this to `~/.cursor/mcp.json` (use `https://eu.getdot.ai/ai/mcp` for the EU instance):
 
@@ -177,26 +177,30 @@ If you'd rather use a static API token instead of OAuth, see [Using an API token
 
 ### Windsurf
 
-Copy the URL from Dot's Integrations page and add it as an MCP server in Windsurf settings. Windsurf will open your browser to authenticate.
+Copy the URL from the **MCP** tab in Dot and add it as an MCP server in Windsurf settings. Windsurf will open your browser to authenticate.
 
 ### ChatGPT
 
-**Requirements**: ChatGPT Enterprise, Education, or Team subscription.
+**Requirements**: a paid ChatGPT plan. If you don't see a **Create** button, turn on Developer mode under **Settings → Connectors → Advanced**.
 
-ChatGPT supports token-based auth only — see [Using an API token](#using-an-api-token) for how to generate a token. Then in ChatGPT's connector settings, add a new connector:
+ChatGPT has its own URL, so copy it from the **ChatGPT** tab in Dot:
 
-* **Name**: Ask\_dot
-* **Description**: Dot AI-powered data analysis platform. \<Add additional info about the data you have connected and when to use it>
-* **MCP Server URL**: the URL from Dot's Integrations page
-* **Authentication**: your MCP token, sent in an `X-API-KEY` header (see [Using an API token](#using-an-api-token))
+* **US**: `https://app.getdot.ai/chatgpt/mcp`
+* **EU**: `https://eu.getdot.ai/chatgpt/mcp`
+
+1. In ChatGPT, open **Settings → Connectors → Create**.
+2. Name it, then paste the ChatGPT URL as the **MCP Server URL**.
+3. Choose **OAuth** for authentication. ChatGPT signs you in to Dot.
+
+It is built for ChatGPT's Deep Research. Ask it to research your company data and it queries Dot.
 
 ### Raycast AI
 
-Raycast uses token-based auth — see [Using an API token](#using-an-api-token) to generate one.
+Raycast works with the plain MCP URL. If it can't sign in through your browser, generate a token (see [Using an API token](#using-an-api-token)).
 
 1. Run **"Manage MCP Servers"** command in Raycast
 2. Press `Cmd + N` to add a new server
-3. Paste the configuration from Dot's Integrations page
+3. Paste the URL, or the token configuration, from the **MCP** tab in Dot
 4. Submit and use by @-mentioning "dot" in Raycast AI
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
@@ -207,13 +211,13 @@ Most MCP clients support URL-based configuration. If your client supports OAuth 
 
 ### Using an API token
 
-Use a token when your client doesn't support OAuth (ChatGPT, Raycast, generic MCP clients) or as a fallback if OAuth isn't working.
+Use a token when your client doesn't support OAuth or as a fallback if OAuth isn't working.
 
 #### Generate a token
 
-1. Go to **Settings → Integrations** in Dot
-2. Select your client and switch to the **API Token** tab
-3. Click **Generate MCP Token** and copy it immediately — you won't see it again
+1. In Dot, open your **Profile** and scroll to **Use Dot elsewhere**
+2. On the **MCP** tab, open **Client can't do OAuth? Use an API token**
+3. Click **Generate token** and copy it immediately. You won't see it again
 
 #### Apply the token
 
@@ -236,7 +240,7 @@ If your client only takes a plain URL and can't set headers, use OAuth instead (
 For clients that accept an MCP server block:
 
 1. In Cursor, go to **Settings → Tools & Integration → Add new MCP Server** to open `mcp.json`
-2. Grab the URL and API key from the JSON config section under "Others" on Dot's Integrations page
+2. Generate a token on the **MCP** tab in Dot (see above), which shows the URL and header to use
 3. Add to `mcpServers`:
 
 ```json
@@ -245,7 +249,7 @@ For clients that accept an MCP server block:
     "ask_dot": {
       "url": "https://app.getdot.ai/ai/mcp",
       "headers": {
-        "API-KEY": "<your-dot-mcp-api-key>"
+        "X-API-KEY": "<your-dot-mcp-api-key>"
       }
     }
   }
@@ -253,14 +257,6 @@ For clients that accept an MCP server block:
 ```
 {% endtab %}
 
-{% tab title="Claude Desktop config file" %}
-Edit Claude Desktop's config file:
-
-* **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-* **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
-
-Paste the Dot server block from the **API Token** tab on Dot's Integrations page, save, and restart Claude Desktop. Look for the MCP indicator (hammer icon) in the chat input.
-{% endtab %}
 {% endtabs %}
 
 #### Token management
@@ -269,6 +265,10 @@ Paste the Dot server block from the **API Token** tab on Dot's Integrations page
 * **One active token per user** — generating a new token revokes the previous one
 * **365-day expiry** — tokens expire after one year
 * **Immediate revocation** — admins can delete tokens anytime via the UI
+
+### Charts and apps inside your assistant
+
+Hosts that support MCP Apps, such as Claude, show Dot's answers as a card in the conversation: the charts and tables, drawn the way Dot draws them. When you ask to see a Dot app (a dashboard or report), the assistant opens it live in the conversation. Ask "what apps do I have?" and the assistant lists the ones you can open. Text-only clients such as Claude Code and Codex get the text answer, data preview and links.
 
 ### Asking questions
 
@@ -325,7 +325,7 @@ Once configured, you can ask your AI assistant questions about your data:
 
 **"Token does not have required MCP access" error**
 
-* Generate a new MCP token from Settings → Integrations
+* Generate a new MCP token from your Profile, under Use Dot elsewhere
 * Ensure you're not using a regular API token
 
 #### Connection issues
@@ -335,3 +335,13 @@ Once configured, you can ask your AI assistant questions about your data:
 * Check network connection to Dot
 * Verify the Dot instance URL is correct
 * Some clients have a tool timeout setting — adjust it accordingly
+
+### Connect other MCP servers to Dot
+
+This is the other direction: you give Dot tools from a remote MCP server so it can use them while answering. Admins set this up under **Settings → Connections**, in **Context Connectors**, on the **MCP server** card. It is in beta, and servers that only sign in with OAuth aren't supported yet.
+
+1. Enter a **Name**, a **Slug** (lowercase letters, digits and underscores), the server's **URL** (it must start with `https://`) and a **Description**. The description tells Dot when to use the server.
+2. If the server needs a key, add the **Auth header** name and its **Value**.
+3. Click **Save**. Dot loads the server's tools. A server it can't reach isn't saved.
+
+Tools the server declares read-only start switched on. Dot can't enable a tool that can change data. If you know a tool only reads, choose **Mark read-only** next to it first. Use **Refresh tools** to pick up changes. A tool whose definition changed turns off until you review it and switch it back on.

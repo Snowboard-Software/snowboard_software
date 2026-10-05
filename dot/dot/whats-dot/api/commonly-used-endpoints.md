@@ -41,16 +41,6 @@ Documentation how to setup a dbt webhooks
 
 
 
-## Import External Assets
-
-Inform Dot about key external knowledge assets, such as BI dashboards or custom data apps, so it can recommend them to users and assist with discovery and understanding. Authentication works similarly to the Sync Connection endpoint.
-
-{% openapi-operation spec="dot-openapi" path="/api/import_and_overwrite_external_asset" method="post" %}
-[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
-{% endopenapi-operation %}
-
-
-
 ## Export Conversation History
 
 Export all conversations together with relevant meta data fields such as number of messages or author.

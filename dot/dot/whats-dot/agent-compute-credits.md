@@ -14,7 +14,7 @@ For current per-plan credit allowances and rates, see the [Dot pricing page](htt
 
 ### Keeping usage predictable
 
-Admins can cap how many ACCs a single user or a group can consume, so spend stays predictable and no one user draws down the pool unexpectedly. You configure these limits in Dot's settings.
+Admins can cap how many ACCs a single user or a group can consume, so spend stays predictable and no one user draws down the pool unexpectedly. You set these limits under **Settings → Users → Usage Limits**. They use a rolling 7-day window. If you have [workspaces](workspaces.md#sharing-usage-limits), you can share one set of limits across all of them.
 
 There's also a built-in guardrail for single answers. Every now and then a hard question makes Dot do a lot of work at once. So this doesn't quietly run up a big bill, Dot pauses partway through and asks whether to keep going once an answer passes a set amount of credits, about 30 by default. You'll see this in the app, and in Slack, Teams, and email. It's on for everyone out of the box, and admins can raise the limit or switch it off.
 
