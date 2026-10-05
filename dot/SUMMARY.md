@@ -72,7 +72,6 @@
   * [Tableau](dot/integrations/bi-tools/tableau.md)
   * [Metabase](dot/integrations/bi-tools/metabase.md)
   * [Sigma](dot/integrations/bi-tools/sigma.md)
-  * [Qlik](dot/integrations/bi-tools/qlik.md)
 * [Knowledge Bases](dot/integrations/knowledge-bases/README.md)
   * [Slite](dot/integrations/knowledge-bases/slite.md)
   * [Notion](dot/integrations/knowledge-bases/notion.md)

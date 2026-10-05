@@ -38,6 +38,7 @@ They all share the same engine, primitives, and data connections — the differe
 
 * **Always current** — every view runs the pinned SQL against live data. Refresh on demand or on a [schedule](../scheduling.md).
 * **Interactive** — a declarative filter threads through every card whose data has that column and cross-filters the rest automatically; view controls (log/linear, time window, smoothing, show/hide series) flip instantly, client-side, with no re-query. Your filter choices go into the address bar, so copying the URL shares the exact view you are looking at.
+* **Remembers your view**: an app can save your own settings, such as a scenario you built, and bring them back next time you open it. Each person gets their own saved state, and people who are not signed in get none.
 * **Editable** — AI-built, but fully human-editable: the text, layout, style, and the queries themselves — in chat or by hand.
 
 ## Share it anywhere

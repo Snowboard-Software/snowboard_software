@@ -4,7 +4,7 @@ description: Connect your BI tools so Dot learns your business logic, and rebuil
 
 # BI Tools
 
-Connect the BI tools your team already uses, like Tableau, Metabase, Sigma, and Qlik. Dot reads your dashboards to learn how your business defines its metrics. That way its answers match the numbers people already trust.
+Connect the BI tools your team already uses, like Tableau, Metabase, and Sigma. Dot reads your dashboards to learn how your business defines its metrics. That way its answers match the numbers people already trust.
 
 Once a BI tool is connected, there's a second thing you can do: rebuild one of its dashboards as a Dot app.
 
@@ -23,4 +23,3 @@ To try it, connect the BI tool first, then ask Dot something like "migrate our W
 * [Tableau](tableau.md)
 * [Metabase](metabase.md)
 * [Sigma](sigma.md)
-* [Qlik](qlik.md)

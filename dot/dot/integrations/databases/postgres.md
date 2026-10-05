@@ -48,6 +48,16 @@ If your organization uses a firewall to manage Postgres access, Dot will only ac
 * `5.78.211.110`
 * `178.105.217.177`
 
+## SSL Mode
+
+The connection dialog has an **SSL Mode** setting. New connections start on **Require**, which encrypts the connection but does not check the server's certificate. Connections created before this setting existed stay on **Prefer**, which encrypts when the server allows it and falls back to an unencrypted connection when it does not.
+
+* **Verify Full**: encrypts, checks that a public certificate authority signed the server certificate, and checks that the certificate matches the database host name.
+* **Verify CA Only**: encrypts and checks the certificate authority, but not the host name.
+* **Require**: encrypts without checking the certificate. Use this for servers with a private or self-signed certificate.
+* **Prefer**: encrypts when possible, otherwise connects without encryption.
+* **Disable SSL**: never encrypts.
+
 ## Connect via SSH Tunnel
 
 If your database is in a private network or behind a firewall, Dot can connect through an SSH bastion host instead of exposing it directly. In the connection dialog, enable **Connect via SSH Tunnel** and provide:

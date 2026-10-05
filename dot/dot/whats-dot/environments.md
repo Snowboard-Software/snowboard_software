@@ -8,14 +8,14 @@ Environments let you change Dot's knowledge — table documentation, notes, rela
 
 If you work with dbt, this will feel familiar: an environment is to Dot what a dev target is to dbt. You can even point an environment at your dbt dev schema, so Dot and dbt develop against the same data.
 
-<figure><img src="../../.gitbook/assets/environment-switcher.png" alt="Environment switcher in the sidebar"><figcaption><p>Switch environments from the bottom of the sidebar — Production stays untouched while you work</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/environment-switcher.png" alt="Environment switcher"><figcaption><p>Switch environments from the top of the sidebar. Production stays untouched while you work</p></figcaption></figure>
 
 **Why this matters**: Your team relies on Dot's answers. Editing documentation live means every half-finished description and experimental relationship immediately shapes production answers. Environments give you a place to get it right first:
 
 * **Safe iteration** — remodel a domain, rewrite descriptions, or test new notes while production answers stay stable.
 * **Test with real questions** — chat with Dot inside the environment and verify answers before anyone else is affected.
 * **dbt-style workflows** — point the environment at your dev schema/database, develop dbt models and Dot docs together, and promote both when ready.
-* **Reviewable changes** — every environment is a git branch. See the exact file diff before merging, just like a pull request.
+* **Reviewable changes** - every environment is a git branch. See the exact file diff before anything reaches production.
 
 {% hint style="info" %}
 Environments are available to **admins and modelers**. Regular users always see production.
@@ -35,16 +35,16 @@ Chats you run inside an environment appear in the regular History page, tagged w
 
 ## Create and switch
 
-1. Click the environment switcher at the bottom of the sidebar (it shows **Production** by default).
+1. Click the environment switcher at the top of the sidebar (it shows **Production** by default).
 2. Choose **Manage environments**.
-3. Name the environment, pick a color, and click **Create environment**. The new environment forks from production (or from another environment via **Fork from**).
-4. Click **Switch** on the environment to start working in it.
+3. Name the environment, pick a color, and click **Create environment**. The new environment forks from production, from another environment, or from a past version of production, whichever you pick under **Fork from**.
+4. Switch to it with the arrows button on its row, or pick it in the switcher. The tab switches in place without reloading.
 
-<figure><img src="../../.gitbook/assets/environment-manager.png" alt="Environment manager"><figcaption><p>Create, switch, diff, merge, and delete environments in one place</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/environment-manager.png" alt="Environment manager"><figcaption><p>Create, switch, review, merge, and delete environments in one place</p></figcaption></figure>
 
-While an environment is active, every page shows a slim banner with the environment's color so you always know where you are. The switcher in the sidebar shows the same colored dot.
+While an environment is active, a thin band in the environment's color runs across the top of every page, and the switcher shows the environment's name, so you always know where you are.
 
-<figure><img src="../../.gitbook/assets/environment-banner-home.png" alt="Environment banner"><figcaption><p>The banner at the top tells you this tab works in <code>env/dev_rick</code>, isolated from production</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/environment-banner-home.png" alt="Environment banner"><figcaption><p>The colored band at the top tells you this tab works in <code>env/dev_rick</code>, isolated from production</p></figcaption></figure>
 
 Environments are per-tab: switching in one browser tab doesn't affect your other tabs, so you can keep production open side by side.
 
@@ -56,7 +56,7 @@ This means production documentation is never edited in place — every change, h
 
 A throwaway environment is disposable on purpose. Dot deletes it after seven days without activity, and it never gets a branch in your Git repository, even when you have environment mirroring on.
 
-To hold on to one, open **Manage environments** and click **Keep it** on the environment. Dot then treats it like any environment you created yourself: it stays until you delete it, Root leaves it alone when the chat finishes, and it gets its own `dot/env-<slug>` branch if environment mirroring is on.
+A throwaway environment is private to you. To hold on to one and share it, open **Manage environments** and click **Keep and share** on the environment. Dot then treats it like any environment you created yourself: other admins and modelers can see it, it stays until you delete it, Root leaves it alone when the chat finishes, and it gets its own `dot/env-<slug>` branch if environment mirroring is on.
 
 ## Work against your dbt dev target
 
@@ -80,7 +80,7 @@ Target overrides redirect **queries and metadata sync** for that environment onl
 
 When the work is ready:
 
-1. Open **Manage environments** and click **Diff** to see every file the environment changed compared to production. Each file is marked `added`, `modified` or `deleted`.
+1. Open **Manage environments** and click **Review changes** to see every file the environment changed compared to production. Each file is marked `added`, `modified` or `deleted`.
 2. Click a file to read the change itself, line by line, with additions in green and removals in red. One file stays open at a time, so click another to switch. You don't have to leave Dot to see what a merge would do.
 3. Click **Merge to production** and confirm. Dot merges the environment's branch into the production model.
 4. Optionally delete the environment after merging — or keep it for the next iteration.
@@ -89,15 +89,29 @@ When the work is ready:
 
 <figure><img src="../../.gitbook/assets/environment-diff-file-expanded.png" alt="An expanded file in the environment diff"><figcaption><p>Click a file to read its changes line by line</p></figcaption></figure>
 
-Admins can always merge. Modelers need the "Can merge changes to production" permission, which admins grant under Settings, then Advanced Settings, then Modeler Permissions.
+Admins can always merge. Modelers can merge by default, and admins can turn off "Can merge changes to production" under Settings, then Advanced Settings, then Modeler Permissions.
 
-### Promote with a pull request instead
+The merge is done once the change lands in production. If something that follows, such as updating an app, fails, Dot says what is still updating and keeps trying on its own. You don't need to retry.
 
-If you connect a Git provider and want changes to go through review, you don't have to merge inside Dot. You can open a pull request instead. On the environment, click **Open pull request**, and Dot opens a PR from the environment's branch into your production branch on GitHub or GitLab. Your team reviews the diff there and merges when it's ready, and Dot picks up the change. Anyone can open a pull request. Merging to production is the part that needs the permission.
+### Promote with a proposal instead
+
+If you want someone to review the changes before they reach production, open a proposal. On the **Review changes** page, click **Open proposal**. Nothing is proposed until you do. The proposal lands in the Proposals inbox, and a reviewer can merge it, merge only the files they pick, or reject it. Anyone who can use environments can open a proposal. Merging is the part that needs the permission.
+
+If you connect GitHub and Dot mirrors environments to Git, a reviewer who can merge also sees **Open as GitHub pull request** on the proposal. Your team reviews the diff on GitHub, and Dot picks up the change once it is merged.
 
 {% hint style="info" %}
-This works when Dot is mirroring environments to Git, which it does by default. Each lasting environment gets its own branch in the same repository as production, named `dot/env-<slug>`. You can turn this off with the "Mirror environments to Git" toggle under Settings, then Version Control. The throwaway environments Root creates for quick fixes aren't mirrored, unless you keep one.
+Mirroring is on by default. Each lasting environment gets its own branch in the same repository as production, named `dot/env-<slug>`. You can turn this off with the "Mirror environments to Git" toggle under Settings, then Version Control. The throwaway environments Root creates for quick fixes aren't mirrored, unless you keep one.
 {% endhint %}
+
+### When production moves on
+
+If production changes the same files while a proposal is open, the proposal shows which files conflict. Click **Resolve with Dot** and Root works through each file, keeping the intent of both sides. For an environment's proposal, Root brings production's changes into the environment and updates the same proposal. Production itself does not change. You can then merge as usual.
+
+### Test a proposal before you merge it
+
+On a proposal made from a chat, click **Test in environment**. Dot makes a private temporary environment with the proposal's changes on top of production, and switches you into it so you can ask Dot real questions first. It needs the changes to apply cleanly to production, so resolve any conflicts first.
+
+The environment is yours alone, and it can never be merged into production directly. The proposal still merges as before. If production or the proposal changes later, the environment is marked stale. Click it again to bring it up to date. If your own edits there stand in the way, Dot asks before it opens a new one in its place.
 
 ## For coding agents: CLI & API
 
@@ -135,6 +149,8 @@ curl -H "X-API-KEY: $DOT_API_KEY" -H "X-Dot-Environment: $ENV_ID" \
 | `PUT /api/environments/{id}/targets`  | Set warehouse target overrides           |
 | `POST /api/environments/{id}/sync_target` | Sync env docs from the dev target    |
 | `POST /api/environments/{id}/merge`   | Merge to production (`{"confirm": true}`) |
+| `POST /api/environments/{id}/proposal` | Open a proposal for review |
+| `POST /api/environments/{id}/update_from_production` | Bring production's changes into the environment |
 | `DELETE /api/environments/{id}?confirm=true` | Delete                            |
 
 A typical agent recipe — fix documentation for a model you just changed in dbt:

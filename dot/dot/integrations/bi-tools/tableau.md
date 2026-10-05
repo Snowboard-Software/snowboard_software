@@ -38,7 +38,7 @@ Open the Tableau connection in Dot and stay on the **Standard** tab. Enter:
 - **Token Name**
 - **Token Value**
 
-Select **Connect** and wait for the first sync to finish. You can then curate the synced Tableau content under **Model → External assets**.
+Select **Connect**. Dot checks the credentials, then can read your Tableau dashboards when it answers questions and learns your business logic.
 
 <figure><img src="../../../.gitbook/assets/image (10).png" alt="Standard Tableau connection fields in Dot"><figcaption></figcaption></figure>
 
