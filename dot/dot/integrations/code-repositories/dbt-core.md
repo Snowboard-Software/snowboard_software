@@ -38,17 +38,20 @@ Go to **Settings** > **Connections** and scroll to find **dbt Repository**.
 
 Dot clones the repository, parses the dbt project, and matches models to your existing tables.
 
+Dot reads the project with `dbt parse`, so make sure your project parses. If a few files fail, Dot works around them and shows a workaround count next to **Last synced**. Hover over the count to see which files. If the project still doesn't parse, the sync fails.
+
 ## What Gets Synced
 
 Dot extracts the following from your dbt project:
 
 * Model and column descriptions
+* Column tests, such as `unique` and `not_null`
 * Model SQL
 * Upstream/downstream lineage
 * Root data sources
 * Tags and governance metadata
 
-Dot re-syncs periodically, or you can trigger a manual sync from the connection settings.
+Dot syncs the repository once a day. To choose your own frequency and time, open the **dbt Repository** connection and turn on **Schedule sync**. To sync right away, click **Sync**.
 
 ## What It Looks Like
 
@@ -58,7 +61,7 @@ Each matched table shows enriched descriptions, fields, and a compact dbt lineag
 
 ## Linked Database Connection
 
-The **Linked Database Connection** dropdown tells Dot which database to match models against. For example, if your dbt project targets a Snowflake warehouse, select your Snowflake connection. Dot matches models by comparing the model name to table names in that connection.
+The **Linked Database Connection** dropdown tells Dot which database to match models against. For example, if your dbt project targets a Snowflake warehouse, select your Snowflake connection. Dot matches each model to the table dbt builds for it in that connection, by schema and table name. The table name is the model's `alias` if it has one, otherwise the model name.
 
 ## Allow Dot IPs
 
