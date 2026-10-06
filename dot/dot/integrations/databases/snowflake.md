@@ -1,13 +1,21 @@
+---
+description: Connect Dot to Snowflake with a service user that signs in with a key pair.
+---
+
 # Snowflake
 
-## Create a Role and a User
+Dot connects to Snowflake as a service user that signs in with a key pair. You need to be an admin in Dot to add the connection.
 
-This creates a dedicated role and technical user. Replace `example_wh` with your preferred warehouse. `XS` is enough for most installations. It is ok to share this warehouse with other workloads to save costs. **Set a secure password.**
+Run the SQL on this page in Snowflake with a role that can create users and grant privileges, like `SECURITYADMIN`.
+
+## Create a Role and a Service User
+
+This creates a dedicated role and a service user. Replace `example_wh` with your preferred warehouse. `XS` is enough for most installations. It is ok to share this warehouse with other workloads to save costs.
 
 ```sql
 create role dot_role;
 create user dot_user
-    password = '<something secret>' -- remember that!
+    type = service
     default_warehouse = example_wh  -- specify your warehouse
     default_role = dot_role;
 grant role dot_role to user dot_user;
@@ -16,9 +24,38 @@ grant role dot_role to user dot_user;
 grant usage on warehouse example_wh to role dot_role;
 ```
 
+`type = service` tells Snowflake that `dot_user` is an application, not a person. A service user can't sign in with a password, and Snowflake never asks it for a second factor.
 
+Don't grant `dot_user` any other role. Snowflake activates all of a user's roles by default, so another role could widen what Dot can query.
 
-## Grants Read Access to Data
+## Create a Key Pair
+
+Dot signs in with a private key. Snowflake checks it against the public key you assign to `dot_user`. These steps follow Snowflake's [key-pair authentication guide](https://docs.snowflake.com/en/user-guide/key-pair-auth).
+
+1.  Create an encrypted private key. OpenSSL asks you to choose a passphrase.
+
+    ```bash
+    openssl genrsa 2048 | openssl pkcs8 -topk8 -v2 aes-256-cbc -inform PEM -out rsa_key.p8
+    ```
+2.  Create the public key from it. OpenSSL asks for the passphrase again.
+
+    ```bash
+    openssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub
+    ```
+3.  Print the public key on one line, without its `BEGIN` and `END` lines.
+
+    ```bash
+    grep -v "PUBLIC KEY" rsa_key.pub | tr -d '\n'
+    ```
+4.  Assign the public key to `dot_user` in Snowflake.
+
+    ```sql
+    alter user dot_user set rsa_public_key = 'MIIBIjANBgkqh...'; -- paste your one-line public key
+    ```
+
+Keep `rsa_key.p8` and its passphrase somewhere safe, like a password manager. Anyone who has both can sign in as `dot_user`.
+
+## Grant Read Access to Data
 
 It is recommended to grant permissions only to schemas or tables your end-users should have access to. This is usually a schema with core or reporting tables.
 
@@ -46,46 +83,59 @@ For shared databases the following statement is enough.
 grant imported privileges on database shared_external_db to role dot_role;
 ```
 
-## Grants Read Access to Account Information (optional)
+## Grant Read Access to Query History (optional)
 
-Grant access to the query history from Snowflake.
+Dot can read the last 7 days of your account's query history. It uses it to find the tables and columns your team queries most, and to pick example queries for your tables. Dot works without it.
+
+Query history holds the text of every query run in your account. To share it with Dot, run this as `ACCOUNTADMIN`:
 
 ```sql
-grant imported privileges on database snowflake to role dot_role;
+grant database role snowflake.governance_viewer to role dot_role;
 ```
+
+This database role lets `dot_role` read Snowflake's governance views, including `ACCESS_HISTORY` and `QUERY_HISTORY` in `SNOWFLAKE.ACCOUNT_USAGE`.
 
 ## Allow Dot IPs
 
 If your organization uses a network policy to manage Snowflake access, Dot will only access your Snowflake through the following IPs:
 
 * `5.78.211.110`
-* `178.105.217.177`<br>
+* `178.105.217.177`
 
+## Connect in Dot
 
-## Sync Snowflake Roles (optional)
+1. Go to **Settings → Connections**.
+2. Under **Databases**, open **Snowflake**.
+3. In **Account Identifier**, enter your account identifier, like `myorg-myaccount`. To look it up, run `SELECT CURRENT_ORGANIZATION_NAME() || '-' || CURRENT_ACCOUNT_NAME();` in Snowflake.
+4. In **Username**, enter `dot_user`.
+5. Turn on **Key-pair**.
+6. In **Private Key**, paste the whole contents of `rsa_key.p8`, including the `-----BEGIN` and `-----END` lines.
+7. In **Passphrase**, enter the key's passphrase. If your key has no passphrase, leave the field empty.
+8. In **Role**, enter `dot_role`.
+9. In **Warehouse**, enter your warehouse, like `example_wh`.
+10. Click **Connect**.
 
-Snowflake can stay the single source of truth for who sees what. The Snowflake connection has two role-sync toggles (both off by default, under **Settings → Connections → Snowflake**):
+Dot checks that it can see the warehouse, saves the connection, and starts a sync. After the sync, pick the tables Dot should use in [Model](../../whats-dot/model/README.md).
 
-### Sync Snowflake Roles — tables
+If Dot says the warehouse was not found, check the name and that `dot_role` has `usage` on it.
 
-On every sync, each table is tagged with the Snowflake roles that can `SELECT` it (from `SHOW GRANTS`), as Dot groups. Only users in a matching group can see and query the table through Dot.
+## Sign In with a Password
 
-Note: this overwrites the table's existing groups on every sync — Snowflake owns table access from then on.
+Snowflake is phasing out sign-ins that use only a password. Use a key pair instead.
 
-### Sync Snowflake Roles to Users
+* A service user, like the one above, can't sign in with a password.
+* Between August and October 2026, Snowflake blocks passwords for all service users, including `LEGACY_SERVICE` users. It also requires a second factor for every person who signs in with a password.
+* Dot can't answer a second factor. Once Snowflake enforces this in your account, a password connection stops working.
 
-The counterpart for people: on every sync, Snowflake users are matched to Dot users by email (the user's `email` or `login_name`), and their granted roles are assigned as Dot groups — using the same group names as the table side, so role-gated tables and role-granted users line up automatically. When someone changes teams in Snowflake, their Dot access follows on the next sync.
+Snowflake enforces this account by account and tells you the date for yours. Trial accounts are exempt. See [Snowflake's timeline](https://docs.snowflake.com/en/user-guide/security-mfa-rollout).
 
-* Groups assigned by the sync are tracked separately: a revoked Snowflake role is removed again, while groups you assigned manually in Dot are never touched.
-* Disabled Snowflake users are skipped.
+If you have to use the **Password** field, paste a [programmatic access token](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens) instead of a password. Snowflake accepts a token in place of a password. By default, it only accepts a service user's token when the user has a network policy, so allow Dot's IPs in that policy. A token expires after 15 days by default. You can choose up to 365 days. Paste a new one in Dot before it expires.
 
-Listing users requires extra visibility for the connection role:
+## Sync Snowflake Roles
 
-```sql
-grant manage grants on account to role dot_role;
-```
-
-Without it, the user sync skips safely (with a hint in the sync log) and no user is modified — table syncing is unaffected.
+{% hint style="warning" %}
+Snowflake role sync is being fixed. Keep **Sync Snowflake Roles** and **Sync Snowflake Roles to Users** off for now. To control who can query a table, use [groups in Dot](../../whats-dot/permissions.md#data-access-control).
+{% endhint %}
 
 ## Internal Marketplace (optional)
 

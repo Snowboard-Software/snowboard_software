@@ -12,7 +12,7 @@ CREATE GROUP dot_group;
 ALTER GROUP dot_group ADD USER dot_user;
 
 -- Grant Postgres' monitor role for meta data
-GRANT pg_monitor TO dot_group
+GRANT pg_monitor TO dot_group;
 ```
 
 
@@ -34,11 +34,11 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA "schema" GRANT SELECT ON TABLES TO GROUP dot_
 
 ```sql
 SELECT 
-    'GRANT USAGE ON SCHEMA "' || schema_name || '" TO GROUP dot_group;' || '\n' ||
-    'GRANT SELECT ON ALL TABLES IN SCHEMA "' || schema_name || '" TO GROUP dot_group;' || '\n' ||
+    'GRANT USAGE ON SCHEMA "' || schema_name || '" TO GROUP dot_group;' || chr(10) ||
+    'GRANT SELECT ON ALL TABLES IN SCHEMA "' || schema_name || '" TO GROUP dot_group;' || chr(10) ||
     'ALTER DEFAULT PRIVILEGES IN SCHEMA "' || schema_name || '" GRANT SELECT ON TABLES TO GROUP dot_group;' AS single_schema_statement
-FROM svv_all_schemas
-WHERE schema_name not in ('information_schema', 'pg_catalog', 'pg_internal');
+FROM information_schema.schemata
+WHERE schema_name NOT IN ('information_schema', 'pg_catalog', 'pg_toast') AND schema_name NOT LIKE 'pg_temp%' AND schema_name NOT LIKE 'pg_toast_temp%';
 ```
 
 ## Allow Dot IPs
