@@ -58,6 +58,10 @@ Dot queries your data warehouse in place. We store the schema and documentation 
 
 All customer data is encrypted at rest. The volumes holding the databases are encrypted, and backups are encrypted before they leave the server (see below).
 
+**Credentials in Your Own Secret Manager**
+
+Connection passwords, keys and tokens can stay in your own AWS Secrets Manager. Dot reads them with short-lived access to a role you control, keeps them in memory only, and never stores them. See [AWS Secrets Manager](integrations/aws-secrets-manager.md).
+
 **Encryption in Transit**
 
 Our applications encrypt in transit with TLS/SSL only.

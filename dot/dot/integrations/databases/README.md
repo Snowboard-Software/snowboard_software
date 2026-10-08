@@ -4,6 +4,10 @@ description: Connect Dot to your data warehouse
 
 # Databases
 
+## Keeping credentials in AWS Secrets Manager
+
+Instead of typing a password, key or token into a connection, you can point it to a secret in your own AWS Secrets Manager. Dot reads the secret when it connects and never stores it. See [AWS Secrets Manager](../aws-secrets-manager.md).
+
 ## Removing a connection
 
 Removing a connection keeps the work you put into your tables. Tables that were switched on are archived instead of deleted, so their descriptions and column comments stay with them.
