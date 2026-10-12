@@ -51,7 +51,37 @@ They all share the same engine, primitives, and data connections — the differe
 
 * **Every number traces to its source.** Click any value to open the exact query and its compiled SQL; each card carries a **Source** pill, and the data-lineage view maps an app back through its queries, tables, dbt models, and sources.
 * **Certification.** An admin or modeler can mark an app **Certified** — and the badge drops automatically if the underlying source changes without re-review, so a trust signal never goes stale silently.
-* **Permissions & usage.** Folder-based view/edit control, per-app view counts, and auto-archiving of apps no one opens anymore.
+* **Permissions & usage.** Owner and folder-based view/edit control (see [Who can edit an app](#who-can-edit-an-app)), per-app view counts, and auto-archiving of apps no one opens anymore.
+
+## Who can edit an app <a href="#who-can-edit-an-app" id="who-can-edit-an-app"></a>
+
+Every app has an owner. Dot sets it to whoever created the app, and from then on only an admin or the owner can change it. An app in someone's personal folder is owned by that person, so moving an app there makes them its owner.
+
+You can edit an app when any one of these is true:
+
+* You are an admin, or a modeler in a workspace that grants **Can manage all apps like an admin**.
+* You own it.
+* One of your groups has **Can Edit** on the folder it sits in.
+
+Viewing is a separate question. **Can View** on a folder lets people open the apps inside it, and never lets them change one.
+
+Putting an app into a Shared folder asks for that same **Can Edit** grant on the folder you are putting it in, whether you are publishing a new app or moving an existing one.
+
+### Hand an app to someone else
+
+Open the app's title menu and choose **Change owner…**. An admin can do this for any shared app, and an owner can do it for their own. The person you name has to be a member of the workspace.
+
+A personal app belongs to the folder it sits in, so it has no separate owner to change. Move it instead.
+
+{% hint style="info" %}
+Only an admin or the app's owner can put an app behind a public link. A public link runs the app with the owner's data access, so opening one is the owner's call rather than anyone with edit rights.
+{% endhint %}
+
+### Folder rules
+
+Creating, renaming and deleting folders, and setting **Can View** and **Can Edit** on them, stays with admins.
+
+In a new workspace, Shared starts as a commons: everyone can edit what is in it. Narrow that per folder with **Can Edit**. Workspaces that already have a Shared folder keep the rules they have today, and any folder made after that starts as a commons again.
 
 ## Apps as code
 
