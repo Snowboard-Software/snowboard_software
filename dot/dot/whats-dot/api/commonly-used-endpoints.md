@@ -63,6 +63,21 @@ Export all conversations together with relevant meta data fields such as number 
 
 
 
+## Export App Views
+
+`GET /api/export_app_views` returns who opened each app, one row per app and viewer. It needs an admin's [API token](./#everything-starts-with-a-token-of-trust).
+
+{% openapi-operation spec="dot-openapi" path="/api/export_app_views" method="get" %}
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
+{% endopenapi-operation %}
+
+```bash
+# EU: https://eu.getdot.ai
+curl -H "X-API-KEY: YOUR_API_TOKEN" -o app-views.json "https://app.getdot.ai/api/export_app_views"
+```
+
+
+
 ## Ask Dot Automatically
 
 `/api/agentic` is how you ask Dot anything. It is the same engine behind the app, Slack and Teams: Dot reads your model, writes and runs SQL, builds charts, and keeps going until it can answer. A one-line lookup and a multi-step investigation use this one endpoint — Dot decides how far to go.

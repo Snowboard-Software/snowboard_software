@@ -47,6 +47,20 @@ They all share the same engine, primitives, and data connections — the differe
 * **PDF** — a board-ready export that still links back to the live app. It exports the view you are looking at, so the filters you picked are the ones in the file, and the link inside it reopens that same filtered view.
 * **Present** — full-screen live slides straight from the browser.
 
+## See who uses an app
+
+1. Open **Apps**.
+2. Click the number in the app's **Views** column.
+3. Click **View all**.
+
+You see everyone who opened the app, with their views and when they first and last opened it. **Download CSV** saves the list.
+
+<figure><img src="../../../.gitbook/assets/app-viewers-dialog.png" alt="The viewer list of an app, with views, first viewed and last viewed for each person, and a Download CSV button"><figcaption><p>Everyone who opened the app, most views first.</p></figcaption></figure>
+
+Opens within 15 minutes count as one view. Public-link visitors are counted but not named. Hover the info icon to see when counting started.
+
+Anyone in your workspace who can open an app can see who viewed it. In **Storefront mode**, only admins see names. Admins can also export every app's viewers through the [API](../api/commonly-used-endpoints.md#export-app-views).
+
 ## Trust and governance
 
 * **Every number traces to its source.** Click any value to open the exact query and its compiled SQL; each card carries a **Source** pill, and the data-lineage view maps an app back through its queries, tables, dbt models, and sources.
