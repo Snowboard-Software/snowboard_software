@@ -63,7 +63,7 @@ Inform Dot about key external knowledge assets, such as BI dashboards or custom 
 * **Answers**: add `include_answers=true` to get the answer the user read for each question.
 * **App building**: `chat_kind` is `app` on every row of a chat that built or edited an app, and `chat` otherwise. Sum credits by it to see what apps cost apart from questions.
 
-For one row per chat, use `GET /api/chat_history_export`. It returns the same CSV file as **Download CSV** on the **History** page, with the same filters. Here both `start_date` and `end_date` are included, as days in the `tz` you pass (UTC if you leave it out).
+For one row per chat, use `GET /api/chat_history_export`. It returns a CSV file and takes the same filters as the **History** page. Here both `start_date` and `end_date` are included, as days in the `tz` you pass (UTC if you leave it out).
 
 {% openapi-operation spec="dot-openapi" path="/api/chat_history_export" method="get" %}
 [OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
