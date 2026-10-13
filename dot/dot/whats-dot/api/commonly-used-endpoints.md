@@ -61,6 +61,7 @@ Inform Dot about key external knowledge assets, such as BI dashboards or custom 
 
 * **Dates**: UTC days, from `start_date` up to but not including `end_date`. For a single day, pass that day and the day after.
 * **Answers**: add `include_answers=true` to get the answer the user read for each question.
+* **App building**: `chat_kind` is `app` on every row of a chat that built or edited an app, and `chat` otherwise. Sum credits by it to see what apps cost apart from questions.
 
 For one row per chat, use `GET /api/chat_history_export`. It returns the same CSV file as **Download CSV** on the **History** page, with the same filters. Here both `start_date` and `end_date` are included, as days in the `tz` you pass (UTC if you leave it out).
 
