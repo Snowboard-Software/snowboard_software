@@ -44,7 +44,7 @@ They all share the same engine, primitives, and data connections — the differe
 
 * **Share link** — a private link you can revoke at any time.
 * **Embed** — drop an app into your wiki, portal, or product.
-* **PDF** — a board-ready export that still links back to the live app. It exports the view you are looking at, so the filters you picked are the ones in the file, and the link inside it reopens that same filtered view.
+* **PDF**: a board-ready export that still links back to the live app. In **Share**, **Download PDF** gives A4 pages with every card whole, and **One page** puts the whole app on a single page for reading on screen. A deck prints one slide per page. The PDF shows the view you are looking at, so the filters you picked are the ones in the file, and the link inside it reopens that same filtered view. A scheduled delivery offers the same choice next to **Attach PDF**.
 * **Present** — full-screen live slides straight from the browser.
 
 ## Trust and governance
