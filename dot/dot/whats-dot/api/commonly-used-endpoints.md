@@ -53,11 +53,28 @@ Inform Dot about key external knowledge assets, such as BI dashboards or custom 
 
 ## Export Conversation History
 
-Export all conversations together with relevant meta data fields such as number of messages or author.
+`GET /api/export_history` returns one row per question asked in Dot. It needs an admin's [API token](./#everything-starts-with-a-token-of-trust).
 
 {% openapi-operation spec="dot-openapi" path="/api/export_history" method="get" %}
 [OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
 {% endopenapi-operation %}
+
+* **Dates**: UTC days, from `start_date` up to but not including `end_date`. For a single day, pass that day and the day after.
+* **Answers**: add `include_answers=true` to get the answer the user read for each question.
+
+For one row per chat, use `GET /api/chat_history_export`. It returns the same CSV file as **Download CSV** on the **History** page, with the same filters. Here both `start_date` and `end_date` are included, as days in the `tz` you pass (UTC if you leave it out).
+
+{% openapi-operation spec="dot-openapi" path="/api/chat_history_export" method="get" %}
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
+{% endopenapi-operation %}
+
+```bash
+# EU: https://eu.getdot.ai
+curl -H "X-API-KEY: YOUR_API_TOKEN" -o history.csv \
+  "https://app.getdot.ai/api/chat_history_export?start_date=2026-10-01&end_date=2026-10-31&tz=Europe/Berlin"
+```
+
+To read one whole conversation, call `GET /api/c2/{chat_id}?include_all=true`.
 
 
 

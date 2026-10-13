@@ -18,8 +18,10 @@ Users can either upvote or downvote a response from Dot. This feedback tells adm
 
 ## Admin Overview
 
-Admins can see the history of all users. Conversations show a **Feedback** column, based on what users clicked: at least one dislike shows as `Problem`, and likes with no dislikes show as `Success`.
+Admins can see the history of all users on the **History** page. Its **Review** column shows what users clicked: a thumbs down when a conversation has at least one dislike, and a thumbs up when it has only likes.
 
-Next to it, the **Auto-Review** column shows Dot's own assessment of each conversation — it reviews its answers in the background whether or not anyone clicks anything. See [Maintaining Dot](maintaining-dot.md) for how to work through both signals.
+The same column shows Dot's own review of each conversation, such as **Issue** or **Success**. Dot reviews its answers in the background whether or not anyone clicks anything. See [Maintaining Dot](maintaining-dot.md) for how to work through both signals.
 
-<figure><img src="../../.gitbook/assets/feedback-admin-history.png" alt=""><figcaption><p>View feedback across all users in History</p></figcaption></figure>
+Click **Download CSV**, the download icon at the end of the filter bar, to save every chat that matches your search, filters and dates as a CSV file. You can get the same file [over the API](api/commonly-used-endpoints.md#export-conversation-history).
+
+<figure><img src="../../.gitbook/assets/history-review-download-csv.png" alt="The History page with the Review column and the Download CSV button"><figcaption><p>The Review column and Download CSV in History</p></figcaption></figure>
