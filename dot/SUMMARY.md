@@ -48,6 +48,7 @@
   * [AWS Athena](dot/integrations/databases/aws-athena.md)
   * [Databricks](dot/integrations/databases/databricks.md)
   * [Postgres](dot/integrations/databases/postgres.md)
+  * [Neon](dot/integrations/databases/neon.md)
   * [Microsoft SQL Server](dot/integrations/databases/microsoft-sql-server.md)
   * [Microsoft Fabric](dot/integrations/databases/microsoft-fabric.md)
   * [Clickhouse](dot/integrations/databases/clickhouse.md)

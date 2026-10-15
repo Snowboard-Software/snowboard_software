@@ -1,5 +1,7 @@
 # Postgres
 
+Using Neon? Follow the [Neon](neon.md) guide.
+
 ## Create a Group and a User
 
 As a super user, execute the following SQL commands to create a group, a user assigned to that group, and permissions to access a system table.
