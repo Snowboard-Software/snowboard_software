@@ -17,7 +17,7 @@ redirects:
   integrations/mysql-mariadb: dot/integrations/databases/mysql-mariadb.md
   integrations/motherduck-and-duckdb: dot/integrations/databases/motherduck-and-duckdb.md
   integrations/sap-hana: dot/integrations/databases/sap-hana.md
-  # Databases (dot/ prefixed — old /dot/integrations/... URLs)
+  # Databases (dot/ prefixed: old /dot/integrations/... URLs)
   dot/integrations/snowflake: dot/integrations/databases/snowflake.md
   dot/integrations/bigquery: dot/integrations/databases/bigquery.md
   dot/integrations/redshift: dot/integrations/databases/redshift.md
@@ -54,7 +54,7 @@ redirects:
   dot/integrations/azure-active-directory: dot/integrations/sso/azure-active-directory.md
   dot/integrations/okta: dot/integrations/sso/okta.md
 
-  # BI Tools (dot/ prefixed — old flat paths)
+  # BI Tools (dot/ prefixed: old flat paths)
   dot/integrations/tableau: dot/integrations/bi-tools/tableau.md
   dot/integrations/metabase: dot/integrations/bi-tools/metabase.md
   dot/integrations/sigma: dot/integrations/bi-tools/sigma.md
@@ -136,3 +136,16 @@ redirects:
   # Security & Support (old paths under /dot/)
   dot/security-and-privacy: dot/security-and-privacy.md
   dot/support: dot/support.md
+
+  # Developer pages moved under /developers/. Directories and AI agents still
+  # link the old /integrations/... and /dot/integrations/... paths, and GitBook's
+  # automatic redirect for the old MCP path sometimes lands on a 404.
+  integrations/mcp: dot/integrations/mcp.md
+  dot/integrations/mcp: dot/integrations/mcp.md
+  integrations/cli: dot/integrations/cli.md
+  # Short paths people and agents guess
+  mcp: dot/integrations/mcp.md
+  cli: dot/integrations/cli.md
+  api: dot/whats-dot/api/README.md
+  embed: dot/whats-dot/embed.md
+  security-and-privacy: dot/security-and-privacy.md
