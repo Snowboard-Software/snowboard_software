@@ -47,12 +47,12 @@ Then log in:
 dot login
 ```
 
-Opens your browser to authenticate. Token is saved locally.
+At a terminal, this opens your browser to sign in and saves the token locally. When there is no terminal (a coding agent's shell, for example), or when you add `--device`, it prints a sign-in link you can open on any device, then exits. After you approve the link, run `dot login --poll <code>` with the code it printed. Use `dot login --browser` to force the browser flow.
 
 That's it. Your AI agent can now query your data.
 
 {% hint style="info" %}
-You can also install from the **Set Up CLI** page in your Dot dashboard (`/cli-setup`). It generates a command with your auth token embedded so you skip the login step.
+You can also copy the install command from the **CLI** tab under **Use Dot elsewhere** on your Profile page in Dot. For a headless machine, open **Headless or CI? Generate a token** on the same tab. It gives you a `dot login --token` command to run there.
 {% endhint %}
 
 **Self-hosted Dot:**
@@ -125,17 +125,21 @@ dot "Now break down by region" --chat cli-m1abc2d-x4y5z6
 dot catalog
 ```
 
-Instant response. Shows your connections, tables, column counts, row counts, and any external assets like Looker dashboards.
+Instant response. Shows your connections, tables, column counts and row counts.
 
 #### Other commands
 
 ```bash
-dot update          # Update to latest version
-dot status          # Login status and token info
+dot update          # Update to latest version now
+dot status          # Login status and a live check of your token (--json for scripts)
 dot logout          # Clear credentials
 dot --version       # Show version
 dot --help          # Show all options
 ```
+
+#### Updates
+
+The CLI keeps itself current. When a newer version is available it installs in the background and takes effect on your next command, so nothing waits on the download. It tries at most once an hour. Run `dot update` to update right away.
 
 ### Workspace management
 

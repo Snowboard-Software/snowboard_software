@@ -3,5 +3,5 @@
 # the sync that promotes it to production. A skipped or failed week widens the
 # window instead of dropping work. Both anchors advance only when a sync PR
 # merges. See .github/workflows/docs_sync.yml in Snowboard-Software/dot.
-master_sha: f1bae2daf2c23edcbfd80798f27aca4efd22d827
-covers_until: 2026-08-04
+master_sha: 67f12afe194cfad2f2b6245f5330d318f80d91c4
+covers_until: 2026-10-05

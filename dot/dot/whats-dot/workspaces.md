@@ -13,12 +13,18 @@ Workspaces are isolated environments within your organization—separate users, 
 *Org admins only*
 
 1. **Settings → Workspaces → Create Workspace**
-2. Enter a name, optionally copy data from another workspace
+2. Enter a name, and optionally tick **Copy from an existing workspace** and pick the source
 3. Done
+
+A copy brings over Apps, connections, model context, skills, settings, and notes. Data, schedules, and shared links stay in the source. Copying a large workspace can take minutes, so the dialog shows a progress log while it works.
 
 <figure><img src="../../.gitbook/assets/workspace-create-dialog.png" alt=""><figcaption><p>Create a new workspace with optional data copying</p></figcaption></figure>
 
 Limits: 10 workspaces (free) / 200 (unlimited).
+
+### Sharing usage limits
+
+By default each workspace sets its own weekly credit limits, so a person with a seat in three workspaces gets three allowances. In the main workspace, go to **Settings → Users → Usage Limits** and turn on **Share these limits with all workspaces** to give each person one allowance across all of them. Workspaces then show the main workspace's limits read-only, and usage counts across every workspace. The switch appears once the main workspace has at least one workspace. See [Agent Compute Credits](agent-compute-credits.md).
 
 ### Switching Workspaces
 

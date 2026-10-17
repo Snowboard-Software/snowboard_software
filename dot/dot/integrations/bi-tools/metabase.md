@@ -41,6 +41,6 @@ In Dot, provide the Metabase Server URL and the API key you generated:
 
 <figure><img src="../../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-Once connected, Dot will synchronize with Metabase. As soon as it's done, you can head over to **Model** / **External assets** to further curate what Dot should know about.
+Once connected, Dot checks the credentials and can read your Metabase dashboards when it answers questions and learns your business logic.
 
 **Note:** Ensure that the API key has appropriate permissions assigned through its associated group in Metabase to allow Dot to access the necessary data.

@@ -165,7 +165,7 @@ get_result(chat_id="cli-m1abc2d-x4y5z6")
 
 ## Discover available data
 
-Returns instantly (no LLM call): connections with table counts, top tables with descriptions / column / row counts, capabilities, custom skills, external assets.
+Returns instantly (no LLM call): connections with table counts, top tables with descriptions / column / row counts, capabilities, custom skills.
 
 ```bash
 # CLI

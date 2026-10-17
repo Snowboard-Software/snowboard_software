@@ -34,7 +34,7 @@ questions:
     tolerance_pct: 3
 ```
 
-JSON works too. Expected answers can be numbers or ISO dates; quote dates and formatted values in YAML. Numeric tolerance defaults to 3%; use `0` for an exact check. Use stable data, or refresh expected answers against the same data Dot will query.
+JSON works too. Expected answers can be numbers or ISO dates; quote dates and formatted values in YAML. Numeric tolerance defaults to 3%; use `0` for an exact check. Dates always match exactly. `unit` can be `percent`, `points`, a time unit such as `hour`, or a currency code. Use stable data, or refresh expected answers against the same data Dot will query.
 
 ```bash
 dot eval validate suite.yaml

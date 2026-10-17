@@ -13,7 +13,7 @@ Evaluations check whether Dot answers your business questions correctly. Start w
 3. Run the evaluation. It tests the active environment, so use the [environment switcher](environments.md) to choose a saved version first.
 4. Open **Needs attention** to inspect failures and their linked conversations.
 
-Dot compares the observed and expected values. Numeric tolerance defaults to **3%**; set it to **0** for an exact check. A completed run can still contain failures or errors. Evaluations use Economy mode and may make one follow-up attempt when the first answer needs clarification.
+Dot compares the observed and expected values. Numeric tolerance defaults to **3%**; set it to **0** for an exact check. Set a unit (percent, a time unit, or a currency code) and Dot reads the answer in that unit: a duration is converted before the numbers meet, a currency never is. Date answers (YYYY-MM-DD) must match exactly. A completed run can still contain failures or errors. Evaluations use Economy mode and may make one follow-up attempt when the first answer needs clarification.
 
 <figure><img src="../../.gitbook/assets/evaluation-ci-triage.png" alt="Evaluation results filtered to show questions needing attention"><figcaption><p>Inspect the expected and observed answers, then open the conversation to understand a failure.</p></figcaption></figure>
 
