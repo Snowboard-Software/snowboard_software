@@ -116,7 +116,7 @@ The sections above describe how we secure our own systems. These are the control
 
 **Single Sign-On**
 
-Dot supports SAML and OpenID Connect, with dedicated setup for Microsoft Entra ID, Okta and Google, and a generic OIDC option for any other identity provider. Group membership from your IdP can drive a user's role and access scope on every login. See [Single Sign On](integrations/sso/README.md).
+Dot supports OpenID Connect, with dedicated setup for Microsoft Entra ID, Okta and Google, and a generic OIDC option for any other identity provider. Group membership from your IdP can drive a user's role and access scope on every login. See [Single Sign On](integrations/sso/README.md).
 
 **Roles and Permissions**
 
