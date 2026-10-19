@@ -46,10 +46,18 @@ Latest numbers and Brief need queries that can run again. If a message can't be 
 
 ### Managing Schedules
 
-Open the schedule modal on any scheduled message to:
+An app can have several schedules, for example one for the leadership team on Monday and another to Slack on Friday. Open **Schedule delivery...** and each schedule is a tab. Click **+ Add schedule** for another.
+
+<figure><img src="../../.gitbook/assets/app-schedule-tabs.png" alt="The Schedules window for an app with four schedule tabs and an Add schedule button"><figcaption><p>Each schedule of an app is a tab</p></figcaption></figure>
+
+Open the schedule modal on any scheduled message, or a tab on an app, to:
 - Edit frequency or recipients
 - View run history (past deliveries and costs)
 - Delete the schedule
+
+A dot on a tab marks unsaved changes. If you switch tabs with unsaved changes, Dot asks before it discards them. A paused tab says why. Click **Resume** to turn it back on. A schedule paused in git has to be resumed in git.
+
+If a Fresh analysis run could not produce its report (for example because a column is turned off), run history shows it as Failed and the owner gets an email with the reason. Three failures in a row pause the schedule. Recipients still receive the message.
 
 ### Only Send When...
 
@@ -65,7 +73,7 @@ Dot decides how to answer it:
 - **A number on one of the app's charts** (on Latest numbers or Brief): click **Check**. Dot shows what it understood, the value right now, and how often it would have sent over the chart's history. Each run compares the numbers it already refreshed, so quiet runs cost nothing and show as `not_triggered` in run history. Once it sends, the same condition won't send again for at least a day by default.
 - **Anything that needs judgement:** Dot runs a Fresh analysis every run and delivers only when your condition holds. Saving switches **Each run** to Fresh analysis, and every run is metered, sent or not. Suppressed reports show as `result_gate_suppressed` in run history.
 
-On a chart in an app, the **Alert me** pill starts a condition for that chart.
+On a chart in an app, the **Alert me** pill opens the alert already watching that chart, or starts a new one.
 
 ### Pre-check on Messages
 
