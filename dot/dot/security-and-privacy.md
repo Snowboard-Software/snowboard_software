@@ -212,11 +212,12 @@ We strive to resolve all problems as quickly as possible, and we would like to p
 
 ### Rewards
 
-Dot keeps each customer organization separate from every other one. We reward reports that break that separation. These qualify:
+Dot keeps each customer organization separate from every other one. We reward reports that break that separation, and reports that let a user become an admin. These qualify:
 
 * Reading another organization's data.
 * Changing, deleting, or adding data in another organization.
 * Taking over an account in another organization.
+* Becoming an admin of your own organization, or doing what only an admin can do, when your role does not allow it.
 * Reading customer data without logging in, other than through a share link.
 * Running code on Dot's servers outside the analysis sandbox in a way that reaches other organizations.
 
@@ -224,7 +225,7 @@ We decide the amount based on the impact and the quality of the report. Only the
 
 These do not qualify for a reward, though we still read every report:
 
-* Anything that stays within one organization, including issues between users or roles of the same organization.
+* Other issues that stay within one organization, such as one user reading or changing another user's chats in the same organization.
 * Anything an admin can already do in their own organization, such as changing roles, settings, or skills.
 * Opening a chat or app through its share link. Share links work for anyone who has them, by design.
 * Missing or weak HTTP headers, clickjacking without a concrete exploit, and software version banners.
