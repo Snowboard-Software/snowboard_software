@@ -46,7 +46,7 @@ Every modeler permission is on by default in a new workspace. You can turn any o
 * Review Root's proposals, meaning see them and merge or reject them
 * Revert version history to an earlier commit
 * Manage all apps, like an admin
-* Run evaluations
+* Create and run evaluations
 
 Workspaces created before August 2026 kept the settings they had, so in an older workspace some of these may be off until an admin turns them on. These settings are per workspace, so a modeler can have different access in different workspaces.
 
