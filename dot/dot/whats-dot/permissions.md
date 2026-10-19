@@ -35,22 +35,20 @@ The Modeler row shows the defaults. That row isn't fixed, though. Admins can cha
 
 The Modeler role is a starting point, not a fixed set of rules. Admins shape it under Settings, then Advanced Settings, then Modeler Permissions.
 
-A few things are on by default, because modelers have always been able to do them. You can turn any of them off:
+Every modeler permission is on by default in a new workspace. You can turn any of them off:
 
 * See and edit the Skills tab
 * See the History page (limited to their own groups)
 * Chat without restrictions
-
-Everything else is off by default. An admin can grant it when a modeler needs it:
-
 * Trigger and schedule connection syncs
-* Assign workspace users to groups
+* Assign workspace users to groups, including themselves and admins
 * Merge changes to production
 * Review Root's proposals, meaning see them and merge or reject them
 * Revert version history to an earlier commit
 * Manage all apps, like an admin
+* Run evaluations
 
-This way the role stays tight by default, and you hand out exactly the extra access a person needs. These settings are per workspace, so a modeler can have different access in different workspaces.
+Workspaces created before August 2026 kept the settings they had, so in an older workspace some of these may be off until an admin turns them on. These settings are per workspace, so a modeler can have different access in different workspaces.
 
 ## Data Access Control
 
