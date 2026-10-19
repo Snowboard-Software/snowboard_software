@@ -206,6 +206,32 @@ What we promise:
 * We will handle your report with strict confidentiality, and not pass on your personal details to third parties without your permission,
 * We will keep you informed of the progress towards resolving the problem,
 * In the public information concerning the problem reported, we will give your name as the discoverer of the problem (unless you desire otherwise), and
-* As a token of our gratitude for your assistance, we offer a reward for every report of a security problem that was not yet known to us. The amount of the reward will be determined based on the severity of the leak and the quality of the report. The minimum reward will be a 50 USD gift certificate.
+* We will consider a reward for qualifying reports, as described below.
 
 We strive to resolve all problems as quickly as possible, and we would like to play an active role in the ultimate publication on the problem after it is resolved.<br>
+
+### Rewards
+
+Dot keeps each customer organization separate from every other one. We reward reports that break that separation. These qualify:
+
+* Reading another organization's data.
+* Changing, deleting, or adding data in another organization.
+* Taking over an account in another organization.
+* Reading customer data without logging in, other than through a share link.
+* Running code on Dot's servers outside the analysis sandbox in a way that reaches other organizations.
+
+We decide the amount based on the impact and the quality of the report. Only the first report of a problem is rewarded.
+
+These do not qualify for a reward, though we still read every report:
+
+* Anything that stays within one organization, including issues between users or roles of the same organization.
+* Anything an admin can already do in their own organization, such as changing roles, settings, or skills.
+* Opening a chat or app through its share link. Share links work for anyone who has them, by design.
+* Missing or weak HTTP headers, clickjacking without a concrete exploit, and software version banners.
+* Our public API documentation at `/openapi.json` and `/redoc`.
+* Email and DNS settings such as SPF, DKIM, DMARC, and CAA.
+* Rate limiting, password rules, and account or organization enumeration.
+* Credentials taken from your own or other people's devices by malware.
+* Reports from automated scanners without a working proof of concept.
+
+We do not pay a reward if you tested against a production service instead of test.getdot.ai, or if you accessed, kept, or changed data that does not belong to you.
