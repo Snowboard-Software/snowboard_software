@@ -52,7 +52,7 @@ All of our services are hosted on [Hetzner Cloud](https://www.hetzner.com/), in 
 
 Each customer is served from a single region — the EU or the US — and their data stays in that region. Every organization gets its own separate database.
 
-Dot queries your data warehouse in place. We store the schema and documentation Dot needs as context, plus the results that are returned into a chat — we do not copy or replicate your warehouse.
+Dot queries your data warehouse in place. We store the schema and documentation Dot needs as context, plus the results that are returned into a chat. We do not copy or replicate your warehouse. The one exception is Data Replication, which an admin turns on to copy data from SaaS tools such as Stripe or HubSpot into the workspace's own Dot-hosted data store.
 
 **Encryption at Rest**
 
