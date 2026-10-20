@@ -65,7 +65,7 @@ Pooled and direct connection strings both work. Dot always connects to Neon dire
 
 ## Choose the tables Dot uses
 
-After the first sync, open [Model](../../whats-dot/model/README.md) and turn on the tables Dot should use. Dot answers only from tables that are on. On a large database, the first sync turns on only a few tables, so check that the ones your team asks about are on.
+After the first sync, open [Model](../../whats-dot/model/README.md) and turn on the tables Dot should use. Dot answers only from tables that are on. When Neon is your company's first database in Dot and only you have used Dot so far, Dot turns on up to 10 tables that look most useful and lists them at the end of the sync log. Otherwise every table starts off, so turn on the ones your team asks about.
 
 ## If something goes wrong
 
