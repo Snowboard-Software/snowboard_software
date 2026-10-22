@@ -136,6 +136,10 @@ redirects:
   # Security & Support (old paths under /dot/)
   dot/security-and-privacy: dot/security-and-privacy.md
   dot/support: dot/support.md
+  # A site-level redirect sometimes strips /dot/ before these rules run, so
+  # /dot/support and /dot/faq can land on /support and /faq instead.
+  support: dot/support.md
+  faq: dot/support.md
 
   # Developer pages moved under /developers/. Directories and AI agents still
   # link the old /integrations/... and /dot/integrations/... paths, and GitBook's
