@@ -2,7 +2,7 @@
 
 ### What is MCP?
 
-MCP (Model Context Protocol) lets AI assistants like Claude, Cursor, and ChatGPT connect directly to your data sources through secure connections. With Dot's MCP integration, your assistant can query your business data while respecting all of your existing Dot permissions and setup.
+MCP (Model Context Protocol) lets AI assistants like Claude, Codex, Cursor, and ChatGPT connect directly to your data sources through secure connections. With Dot's MCP integration, your assistant can query your business data while respecting all of your existing Dot permissions and setup.
 
 ### Your Dot MCP URL
 
@@ -11,24 +11,70 @@ You'll paste this URL into the clients below (ChatGPT uses its own, see [ChatGPT
 * **US**: `https://app.getdot.ai/ai/mcp`
 * **EU**: `https://eu.getdot.ai/ai/mcp`
 
-Use the same host you use to sign into Dot in the browser. You can also copy the exact URL from your **Profile** in Dot. Open the user menu, choose **Connect Dot**, then **MCP**, or scroll to **Use Dot elsewhere**. It has one tab per client: MCP, CLI, Claude, ChatGPT and Cursor.
+Use the same host you use to sign into Dot in the browser. You can also copy the exact URL from your **Profile** in Dot. Open the user menu, choose **Connect Dot**, then **AI tools**, or scroll to **Use Dot elsewhere**. It has one tab per client: Claude, Codex, Cursor, ChatGPT, MCP and CLI.
 
 {% hint style="success" %}
-**OAuth is the default.** For supported clients (Claude, ChatGPT, Cursor, Windsurf), OAuth means no tokens to copy or manage. Just sign into Dot in your browser and click **Allow**. Sessions last up to a year.
+**OAuth is the default.** For supported clients (Claude, Codex, ChatGPT, Cursor, Windsurf), OAuth means no tokens to copy or manage. Just sign into Dot in your browser and click **Allow**. Sessions last up to a year.
 
 If your client can't do OAuth or something goes wrong, see [Using an API token](#using-an-api-token).
 {% endhint %}
 
+### Signing in
+
+When Claude, Codex or Cursor asks you to connect, Dot opens in your browser. If you are signed out of Dot, its sign-in page opens in that same window. Sign in with your password, a sign-in email or SSO, or create an account. Dot then brings you back to the **Allow** page, which names the app you return to. Click **Allow**.
+
+The connection request lasts 30 minutes. If it runs out, start connecting again from your app.
+
 ### Claude (Web, Desktop, Cowork, Mobile)
 
-**Requirements**: Free, Pro, Max, Team, or Enterprise plan. Free users can connect one custom connector at a time.
+**Requirements**: any Claude plan. Free allows one custom connector. On Team and Enterprise, only an Owner adds a custom connector, then each member connects.
 
 {% hint style="info" %}
-**You only need to set this up once.** Custom connectors are remote MCP servers hosted by Dot, so Anthropic syncs them across every Claude surface automatically. Adding Dot on claude.ai makes it available in Claude Desktop, Cowork, and the Claude mobile apps with no per-device setup. Prefer to start from Claude Desktop? Open **Settings → Connectors → Add custom connector** and follow the same steps — it'll sync back to the web.
+**You only need to set this up once.** Dot is a remote connector, so once it is on your Claude account it also works in Claude Desktop, Cowork and the Claude mobile apps.
 {% endhint %}
 
 {% tabs %}
-{% tab title="Pro / Max" %}
+{% tab title="Add to Claude" %}
+{% stepper %}
+{% step %}
+### Click Add to Claude
+
+In Dot, open your **Profile** and scroll to **Use Dot elsewhere**. On the **Claude** tab, click **Add to Claude**.
+{% endstep %}
+
+{% step %}
+### Add the connector
+
+Claude opens **Add custom connector** with the name **Dot** and your Dot MCP URL already filled in. Click **Add**. If you are signed out of Claude, sign in first and the dialog opens after.
+{% endstep %}
+
+{% step %}
+### Connect
+
+Click **Connect** on the new **Dot** entry.
+
+<figure><img src="../../.gitbook/assets/claude-web-connect-button.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Allow access in Dot
+
+Dot's **Allow** page opens. Check the account and permissions, then click **Allow**. If you are signed out of Dot, sign in first (see [Signing in](#signing-in)).
+
+<figure><img src="../../.gitbook/assets/claude-web-oauth-authorize.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Done
+
+Back in Claude, **Dot** shows as **Connected** with its tools. Turn it on in any chat with the **+** button → **Connectors**.
+
+<figure><img src="../../.gitbook/assets/claude-web-connected-tools.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+{% endstepper %}
+{% endtab %}
+
+{% tab title="Add it by hand" %}
 {% stepper %}
 {% step %}
 ### Open Customize → Connectors
@@ -51,61 +97,39 @@ Click the **+** next to the Connectors header and choose **Add custom connector*
 {% step %}
 ### Name it and paste the URL
 
-Name it **Ask Dot**, paste your Dot MCP URL, then click **Add**.
+Name it **Dot**, paste your Dot MCP URL, then click **Add**.
 
 <figure><img src="../../.gitbook/assets/claude-web-add-custom-dialog.png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Connect
+### Connect and allow
 
-Click **Connect** on the new **Ask Dot** entry.
-
-<figure><img src="../../.gitbook/assets/claude-web-connect-button.png" alt=""><figcaption></figcaption></figure>
-{% endstep %}
-
-{% step %}
-### Authorize in Dot
-
-A Dot tab opens. Review the requested permissions and click **Allow**.
-
-<figure><img src="../../.gitbook/assets/claude-web-oauth-authorize.png" alt=""><figcaption></figcaption></figure>
-{% endstep %}
-
-{% step %}
-### Done
-
-Back in Claude, **Ask Dot** now shows as **Connected** with its available tools. Enable it in any chat via the **+** button → **Connectors**.
-
-<figure><img src="../../.gitbook/assets/claude-web-connected-tools.png" alt=""><figcaption></figcaption></figure>
+Click **Connect** on the new **Dot** entry. On Dot's **Allow** page, click **Allow**.
 {% endstep %}
 {% endstepper %}
 {% endtab %}
 
 {% tab title="Team / Enterprise" %}
-Team and Enterprise workspaces use a two-step flow: an owner adds the connector once for the organization, then each member connects their own Dot account.
+On Team and Enterprise, only an Owner can add a custom connector. The Owner adds Dot once for the organization. Then each member connects their own Dot account.
 
-**Owner (one-time setup):**
+**Owner (once):**
 
 {% stepper %}
 {% step %}
-### Open Organization settings → Connectors
+### Click Add for your team
 
-In Claude, go to **Organization settings → Connectors**.
+In Dot, open your **Profile** and scroll to **Use Dot elsewhere**. On the **Claude** tab, click **Add for your team**.
 {% endstep %}
 
 {% step %}
-### Add a custom web connector
+### Add the connector
 
-Click **Add** → **Custom** → **Web**.
-{% endstep %}
-
-{% step %}
-### Paste the Dot MCP URL
-
-Name it **Ask Dot**, paste your Dot MCP URL, then click **Add**.
+Claude's admin settings open on **Add custom connector**, with the name **Dot** and your Dot MCP URL filled in. Click **Add**.
 {% endstep %}
 {% endstepper %}
+
+To add it by hand instead, go to **Organization settings → Connectors** in Claude, click **Add** → **Custom** → **Web**, name it **Dot**, paste your Dot MCP URL, then click **Add**.
 
 **Each member (once):**
 
@@ -113,7 +137,7 @@ Name it **Ask Dot**, paste your Dot MCP URL, then click **Add**.
 {% step %}
 ### Open Customize → Connectors
 
-Find **Ask Dot** in the list — it'll be marked **Custom**.
+Find **Dot** in the list. It is marked **Custom**.
 {% endstep %}
 
 {% step %}
@@ -125,9 +149,9 @@ Click **Connect**.
 {% endstep %}
 
 {% step %}
-### Authorize in Dot
+### Allow access in Dot
 
-A Dot tab opens. Review the permissions and click **Allow**.
+Dot's **Allow** page opens. Check the permissions and click **Allow**.
 
 <figure><img src="../../.gitbook/assets/claude-web-oauth-authorize.png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
@@ -137,17 +161,48 @@ A Dot tab opens. Review the permissions and click **Allow**.
 
 ### Claude Code
 
-Run this command (the **CLI** tab in Dot also sets up Claude Code):
+Claude Code uses the connectors on your Claude account. If you added Dot in Claude and sign in to Claude Code with that account, Dot is already there. Run `/mcp` to see it.
+
+If you sign in to Claude Code with an API key, it doesn't load those connectors. Add Dot directly:
 
 ```bash
-claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp
+claude mcp add --transport http --scope user dot https://app.getdot.ai/ai/mcp
 ```
 
-OAuth will open your browser to authenticate on first use.
+`--scope user` adds Dot to every project. For the EU region, use `https://eu.getdot.ai/ai/mcp`. Then run `/mcp` in Claude Code to sign in to Dot.
+
+**Plugin:** you can also install Dot as a plugin from Dot's GitHub marketplace, then run `/mcp` to sign in:
+
+```bash
+claude plugin install dot --marketplace Snowboard-Software/getdot
+```
+
+The plugin connects to the US region. On EU, use the `claude mcp add` command above with the EU URL.
+
+### Codex
+
+Run this in your terminal (for the EU region, use `https://eu.getdot.ai/ai/mcp`):
+
+```bash
+codex mcp add dot --url https://app.getdot.ai/ai/mcp
+```
+
+Codex opens your browser to sign in to Dot. Click **Allow**, and Dot is ready in Codex.
+
+The Codex app in the ChatGPT desktop app and the Codex IDE extension share this setup, so Dot shows up there too.
 
 {% hint style="info" %}
-Claude Code with a signed-in Anthropic account also picks up custom connectors synced from your Claude Web/Desktop setup. If you've already connected Dot there, you can skip this command.
+**No browser on this machine?** After adding Dot, run `codex mcp login dot --no-browser`. Codex prints a sign-in link. Open it in any browser, sign in and click **Allow**. Then paste the full address the browser ends up on back into the terminal, even if that page doesn't load.
 {% endhint %}
+
+**Plugin:** you can also install Dot as a plugin from Dot's GitHub marketplace, then run `codex mcp login dot` to sign in:
+
+```bash
+codex plugin marketplace add Snowboard-Software/getdot
+codex plugin add dot@getdot
+```
+
+The plugin connects to the US region. On EU, use the `codex mcp add` command above with the EU URL.
 
 ### Cursor IDE
 
@@ -160,7 +215,7 @@ Cursor connects to Dot directly as a remote MCP server.
 ```json
 {
   "mcpServers": {
-    "ask_dot": {
+    "dot": {
       "url": "https://app.getdot.ai/ai/mcp"
     }
   }
@@ -181,15 +236,15 @@ Copy the URL from the **MCP** tab in Dot and add it as an MCP server in Windsurf
 
 ### ChatGPT
 
-**Requirements**: a paid ChatGPT plan. If you don't see a **Create** button, turn on Developer mode under **Settings → Connectors → Advanced**.
+**Requirements**: ChatGPT Pro, Business, Enterprise or Edu, on the web. On Business and Enterprise, an admin adds Dot.
 
 ChatGPT has its own URL, so copy it from the **ChatGPT** tab in Dot:
 
 * **US**: `https://app.getdot.ai/chatgpt/mcp`
 * **EU**: `https://eu.getdot.ai/chatgpt/mcp`
 
-1. In ChatGPT, open **Settings → Connectors → Create**.
-2. Name it, then paste the ChatGPT URL as the **MCP Server URL**.
+1. In ChatGPT, open **Plugins**, select **+**, then **Add custom MCP server**.
+2. Name it **Dot**, then paste the ChatGPT URL as the server URL.
 3. Choose **OAuth** for authentication. ChatGPT signs you in to Dot.
 
 It is built for ChatGPT's Deep Research. Ask it to research your company data and it queries Dot.
@@ -230,7 +285,7 @@ Send the token in an `X-API-KEY` header. That's how token auth works now, so use
 For Claude Code, pass the header on the add command:
 
 ```bash
-claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp --header "X-API-KEY: YOUR_TOKEN"
+claude mcp add --transport http dot https://app.getdot.ai/ai/mcp --header "X-API-KEY: YOUR_TOKEN"
 ```
 
 If your client only takes a plain URL and can't set headers, use OAuth instead (see the top of this page). Putting the token in the URL is no longer supported.
@@ -246,7 +301,7 @@ For clients that accept an MCP server block:
 ```json
 {
   "mcpServers": {
-    "ask_dot": {
+    "dot": {
       "url": "https://app.getdot.ai/ai/mcp",
       "headers": {
         "X-API-KEY": "<your-dot-mcp-api-key>"
@@ -308,12 +363,8 @@ Once configured, you can ask your AI assistant questions about your data:
 
 **"Authorization session expired" error**
 
-* The consent page expires after 10 minutes — restart the connection from your AI client
-
-**"Sign in to continue" on consent page**
-
-* You need to be signed into Dot in your browser first
-* Click "Open Dot Login", sign in (password or SSO), then click "Continue"
+* The connection request lasts 30 minutes. Start connecting again from your app
+* If your Dot account is in the other region, connect that region's URL instead (see [Your Dot MCP URL](#your-dot-mcp-url))
 
 #### Token issues
 
