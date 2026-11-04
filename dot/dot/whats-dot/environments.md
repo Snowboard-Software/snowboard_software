@@ -97,7 +97,7 @@ The merge is done once the change lands in production. If something that follows
 
 If you want someone to review the changes before they reach production, open a proposal. On the **Review changes** page, click **Open proposal**. Nothing is proposed until you do. The proposal lands in the Proposals inbox, and a reviewer can merge it, merge only the files they pick, or reject it. Anyone who can use environments can open a proposal. Merging is the part that needs the permission.
 
-If you connect GitHub and Dot mirrors environments to Git, a reviewer who can merge also sees **Open as GitHub pull request** on the proposal. Your team reviews the diff on GitHub, and Dot picks up the change once it is merged.
+If you connect GitHub and Dot mirrors environments to Git, the proposal shows an **Open PR** button, which becomes **PR #N** once the pull request exists. Your team reviews the diff on GitHub, and Dot picks up the change once it is merged. To open a pull request for every new proposal automatically, turn on **Sync proposals with pull requests** under Settings, Connections, GitHub sync. It is off by default and only affects proposals published after you turn it on.
 
 {% hint style="info" %}
 Mirroring is on by default. Each lasting environment gets its own branch in the same repository as production, named `dot/env-<slug>`. You can turn this off with the "Mirror environments to Git" toggle under Settings, then Version Control. The throwaway environments Root creates for quick fixes aren't mirrored, unless you keep one.
