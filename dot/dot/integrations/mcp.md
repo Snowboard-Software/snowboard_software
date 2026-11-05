@@ -6,7 +6,7 @@ MCP (Model Context Protocol) lets AI assistants like Claude, Codex, Cursor, and 
 
 ### Your Dot MCP URL
 
-You'll paste this URL into the clients below (ChatGPT uses its own, see [ChatGPT](#chatgpt)). It depends on which region you sign into Dot from:
+You'll paste this URL into the clients below, including ChatGPT. It depends on which region you sign into Dot from:
 
 * **US**: `https://app.getdot.ai/ai/mcp`
 * **EU**: `https://eu.getdot.ai/ai/mcp`
@@ -238,16 +238,16 @@ Copy the URL from the **MCP** tab in Dot and add it as an MCP server in Windsurf
 
 **Requirements**: ChatGPT Pro, Business, Enterprise or Edu, on the web. On Business and Enterprise, an admin adds Dot.
 
-ChatGPT has its own URL, so copy it from the **ChatGPT** tab in Dot:
+ChatGPT uses the full Dot server. Copy it from the **ChatGPT** tab in Dot:
 
-* **US**: `https://app.getdot.ai/chatgpt/mcp`
-* **EU**: `https://eu.getdot.ai/chatgpt/mcp`
+* **US**: `https://app.getdot.ai/ai/mcp`
+* **EU**: `https://eu.getdot.ai/ai/mcp`
 
 1. In ChatGPT, open **Plugins**, select **+**, then **Add custom MCP server**.
-2. Name it **Dot**, then paste the ChatGPT URL as the server URL.
+2. Name it **Dot**, then paste your regional Dot MCP URL as the server URL.
 3. Choose **OAuth** for authentication. ChatGPT signs you in to Dot.
 
-It is built for ChatGPT's Deep Research. Ask it to research your company data and it queries Dot.
+In a new chat, type **@** and pick **Dot**. Ask data questions, open dashboards, or request a dashboard draft. Actions such as scheduling or sending reports need your approval. Existing Deep Research connections continue to work; use the full server above for new connections.
 
 ### Raycast AI
 
@@ -262,7 +262,7 @@ Raycast works with the plain MCP URL. If it can't sign in through your browser, 
 
 ### Other MCP clients
 
-Most MCP clients support URL-based configuration. If your client supports OAuth / MCP authorization, use the plain Dot MCP URL — that's it. Otherwise, follow [Using an API token](#using-an-api-token) and send the token in a header.
+Most MCP clients support URL-based configuration. If your client supports OAuth / MCP authorization, use the plain Dot MCP URL. that's it. Otherwise, follow [Using an API token](#using-an-api-token) and send the token in a header.
 
 ### Using an API token
 
@@ -316,10 +316,10 @@ For clients that accept an MCP server block:
 
 #### Token management
 
-* **Special MCP token with limited scope** — separate from regular API tokens
-* **One active token per user** — generating a new token revokes the previous one
-* **365-day expiry** — tokens expire after one year
-* **Immediate revocation** — admins can delete tokens anytime via the UI
+* **Special MCP token with limited scope**. separate from regular API tokens
+* **One active token per user**. generating a new token revokes the previous one
+* **365-day expiry**. tokens expire after one year
+* **Immediate revocation**. admins can delete tokens anytime via the UI
 
 ### Charts and apps inside your assistant
 
@@ -340,7 +340,7 @@ Once configured, you can ask your AI assistant questions about your data:
 
 * OAuth uses industry-standard **OAuth 2.1 with PKCE** for secure authorization
 * Access tokens expire after **1 hour** and are automatically refreshed
-* Refresh tokens are valid for **1 year** — after that, re-authentication is required
+* Refresh tokens are valid for **1 year**. after that, re-authentication is required
 * To end MCP access, disconnect or remove Dot in your client, which revokes that session, or delete your MCP token in Settings. Note that changing your Dot password does not revoke existing MCP connections on its own
 * The consent page shows exactly which permissions the client is requesting before you approve
 
@@ -385,7 +385,7 @@ Once configured, you can ask your AI assistant questions about your data:
 
 * Check network connection to Dot
 * Verify the Dot instance URL is correct
-* Some clients have a tool timeout setting — adjust it accordingly
+* Some clients have a tool timeout setting. adjust it accordingly
 
 ### Connect other MCP servers to Dot
 
