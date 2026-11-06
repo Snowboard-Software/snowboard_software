@@ -51,7 +51,8 @@ You can also attach a file (like a CSV) to bring your own data into the analysis
 
 Every answer is a starting point, not a dead end:
 
-* **Share** a link with a colleague, or **schedule** it to run and deliver on a cadence.
+* **Share** a link with a colleague, or put the chat in your team's [shared folder](teams.md), where teammates who can edit the folder ask follow-ups in it.
+* **Schedule** it to run and deliver on a cadence.
 * **Download as a presentation** to drop findings straight into a deck.
 * **Turn it into an [App](apps/README.md)** — a living, interactive dashboard or report that stays connected to your data.
 
