@@ -389,10 +389,72 @@ Once configured, you can ask your AI assistant questions about your data:
 
 ### Connect other MCP servers to Dot
 
-This is the other direction: you give Dot tools from a remote MCP server so it can use them while answering. Admins set this up under **Settings → Connections**, in **Context Connectors**, on the **MCP server** card. It is in beta, and servers that only sign in with OAuth aren't supported yet.
+This is the other direction. You give Dot the tools of a remote MCP server, such as Linear, Sentry, Notion or your own internal server. Dot then uses them while it answers. Admins set this up under **Settings → Connections**, in **Context Connectors**, on the **MCP server** card.
 
-1. Enter a **Name**, a **Slug** (lowercase letters, digits and underscores), the server's **URL** (it must start with `https://`) and a **Description**. The description tells Dot when to use the server.
-2. If the server needs a key, add the **Auth header** name and its **Value**.
-3. Click **Save**. Dot loads the server's tools. A server it can't reach isn't saved.
+{% hint style="info" %}
+MCP servers are available on paid plans. On the Free plan, the card shows **Upgrade** and links to Billing.
+{% endhint %}
 
-Tools the server declares read-only start switched on. Dot can't enable a tool that can change data. If you know a tool only reads, choose **Mark read-only** next to it first. Use **Refresh tools** to pick up changes. A tool whose definition changed turns off until you review it and switch it back on.
+#### Add a server
+
+1. Open the **MCP server** card.
+2. Paste the **Server URL**. It must start with `https://`. Dot checks the server, works out how it signs in and suggests a **Name**. You can also paste a server config from Claude Desktop, Cursor or VS Code. Dot fills in the server for you. If the config has several servers, pick one. Dot lists any server it skipped, with the reason.
+3. Fill in **When should Dot use it?** Dot reads this to decide when to reach for these tools, so say what the server knows about, for example "Errors and issues in our Sentry projects".
+4. Check **Sign-in**. Dot shows what it detected. Click **Change** to pick another option:
+   * **Account**: people sign in with their account on the server (OAuth).
+   * **API key**: every request carries a key you paste. Most servers want it as `Authorization: Bearer <key>`.
+   * **None**: the server is open to anyone.
+5. Click **Connect**. For an **Account** server, the server's sign-in page opens next. For the others, Dot loads the server's tools. A server it can't reach isn't saved.
+
+<figure><img src="../../.gitbook/assets/mcp-server-add-drawer.png" alt="The MCP server drawer with a Sentry URL, its description and the account sign-in options"><figcaption><p>Dot detected that Sentry signs people in with their account.</p></figcaption></figure>
+
+#### Choose whose account Dot uses
+
+For an **Account** server, you choose **Whose account does Dot use?**
+
+* **Each person's own** (the default): each person signs in the first time they need the server. Dot sees only what that person can see, so the server's own permissions apply. You sign in once yourself to load the tools.
+* **One shared account**: you sign in once, and everyone uses your account's access. The card shows whose account it is, with **Disconnect**. Use this for service accounts, such as a shared API.
+
+Some servers can't register Dot as an app on their own. The drawer then asks you to register an app with the provider, using the redirect URL it shows, and to paste the client ID (and the secret, if there is one).
+
+**Advanced** holds settings most servers don't need: a fixed client ID and secret, the **Scopes** to ask for (leave it empty to ask for what the server offers), the **Authorization server metadata URL** for a server that doesn't say where it signs in, **Client authentication**, and extra headers.
+
+Changing the URL, the client, the scopes, the metadata URL or the client authentication signs everyone out. Each person signs in again the next time they need the server.
+
+#### Choose the tools
+
+Dot can only use the tools you turn on. Tools the server marks read-only start on. Every other tool starts off, including any tool the server adds later. Next to each tool, Dot shows what the server says about it: **Read-only**, **Can change data** or **Can delete or overwrite**. These are the server's claims, not guarantees.
+
+* Turn a tool on or off with its switch, or use **Turn all on** and **Turn all off**.
+* If the server changes a tool, the tool turns off until you turn it on again. **Approve all changes** turns every changed tool back on.
+* Click **Refresh** to load the server's latest tools.
+* The switch next to the server's name turns the whole server off. Dot can't see or use it until you turn it back on, and its settings and sign-ins stay as they are.
+* **Access Groups** decides who can use the server. It defaults to `all_users`. Only admins can change it.
+
+<figure><img src="../../.gitbook/assets/mcp-server-tools.png" alt="A connected MCP server with one of its three tools turned on"><figcaption><p>Each tool has its own switch.</p></figcaption></figure>
+
+{% hint style="warning" %}
+Dot doesn't ask for approval inside the app before it uses a tool you turned on. Before an action that deletes or overwrites something, Dot checks with the person in the chat first, unless they clearly asked for it. Turn on tools that change data only where you are comfortable with that, and prefer **Each person's own** so the server's permissions still apply.
+{% endhint %}
+
+#### Sign in as a member
+
+When you ask about something that needs a server you haven't signed in to, Dot's answer includes a **Connect** button. Sign in, and Dot carries on with your question.
+
+<figure><img src="../../.gitbook/assets/mcp-server-chat-connect.png" alt="A Connect button for Linear in a chat answer"><figcaption></figcaption></figure>
+
+You can also manage your sign-ins in your **Profile**, under **Connectors** → **Added by your admin**. Each server shows **Connect**, **Reconnect** or **Disconnect**. **Reconnect** appears when your sign-in expired, or when a tool needs more access than your sign-in gave.
+
+<figure><img src="../../.gitbook/assets/mcp-server-profile-connectors.png" alt="The servers an admin added, each with a Connect button"><figcaption></figcaption></figure>
+
+#### Slack, Teams and schedules
+
+* In a Slack channel or a Teams group chat, servers where each person signs in with their own account don't work, because there is no single person to act as. Message Dot directly or use the web app. In a direct message, Dot shows a **Connect** button when you need to sign in.
+* A scheduled question uses the sign-in of the person who owns the schedule.
+* A copied workspace keeps the servers, their settings and their API keys. Account sign-ins don't carry over, so people sign in again there.
+
+#### Limits
+
+* Dot connects to remote servers over HTTPS (Streamable HTTP). It can't run servers that start a program on your computer (stdio), or servers that only speak the older SSE transport.
+* Each tool call has about 100 seconds.
+* Each tool call starts fresh. A server that remembers state between calls, such as an open browser page, starts over every time.
