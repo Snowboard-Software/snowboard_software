@@ -32,7 +32,7 @@ They all share the same engine, primitives, and data connections — the differe
 1. **Ask in chat** — "build an executive overview dashboard", "turn this into a board deck". (Or click **New App**.)
 2. **Dot builds it** — it compiles your plain-English questions to SQL, dry-runs them, and shows a live preview with an **Open app** card.
 3. **Refine conversationally** — "add a region filter", "make it a report", "change the theme". Every edit rebuilds and re-previews.
-4. **Publish** — the app appears on your **Apps** page, either personal or shared with the workspace.
+4. **Publish**: the app appears on your **Apps** page, in **My Apps** or in a [shared folder](../teams.md) your team can open.
 
 ## Live, interactive, and yours to edit
 
