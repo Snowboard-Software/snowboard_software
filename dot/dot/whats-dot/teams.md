@@ -12,23 +12,25 @@ A shared folder is your team's place in Dot. It holds the team's chats, its apps
 
 Each folder names the groups and people who can open it, and what they can do there:
 
-* **Can edit**: put chats and apps in the folder, and ask in its chats.
+* **Can edit**: put chats, apps and subfolders in the folder, and ask in its chats.
 * **Can view**: read everything in the folder.
 
 Admins open every folder. A subfolder has the same people as its parent unless you narrow it. Everything that is in no folder is personal: only you and admins can open it, unless you share its link.
 
-To see who is in a folder, open it and click the faces next to its name. If you can't change who is in it, the list names an admin to ask.
+To see who is in a folder, open it and click the faces at the top. The number beside them says how many people can open the folder. If you can't change who is in it, the list names an admin to ask.
 
 <figure><img src="../../.gitbook/assets/team-folder-who-can-open-it.png" alt="The Who can open it list of a folder, with each group's people and whether they can edit or view"><figcaption><p>Who can open a folder, and what each group can do there.</p></figcaption></figure>
 
 ## Create a folder
 
-Admins create folders and decide who is in them. So can modelers in a workspace that lets modelers manage all apps.
+Admins create a team's folder and decide who is in it. So can modelers in a workspace that lets modelers manage all apps.
 
 1. In the sidebar, open **All folders**.
 2. Click **New folder**.
 3. Name it, then add groups or people. A group joins as **Can view** and a person as **Can edit**.
 4. Change **Can view** to **Can edit** for the people who should ask in the folder's chats.
+
+Anyone who can edit a folder can add a subfolder to it. Open the folder, click **New folder** and name it. The subfolder starts with the same people as the folder.
 
 Deleting a folder deletes its apps for good. Its chats go back to the people who started them.
 
