@@ -58,7 +58,7 @@ You are always in a channel you start. You and the workspace's admins can rename
 
 ## Apps in a channel
 
-A channel's apps sit at the top of it. Each card shows a picture of the app's first screen, with your own data. Click a card to open the app. **Hide pictures** turns the cards into a row of names. While a thread is open, and on a phone, the apps show as names.
+A channel's apps sit at the top of it. Each card shows a picture of the app's first screen, with your own data. Click a card to open the app. **Hide pictures** turns the cards into a row of names. While a thread is open the apps show as names. On a phone they start as names; tap **Show pictures** to see the cards.
 
 An app is in a channel when it is published to that channel's folder on the **Apps** page.
 
@@ -95,7 +95,7 @@ To make the sidebar wider, for long chat titles or channel names, drag its right
 
 ## Schedules in a channel
 
-The clock at the top of a channel lists the schedules that deliver its chats and apps, and whose data access each one runs with. When a schedule runs, its delivery shows in the channel. Click it to see what was sent. On the **Schedules** page your own schedules come first, then **Channels**: the schedules in the channels you are in.
+The clock at the top of a channel lists the schedules that deliver its chats and apps, and whose data access each one runs with. When a schedule runs, Dot posts in the channel that it ran. Click the post to see what it sent. On the **Schedules** page your own schedules come first, then **Channels**: the schedules in the channels you are in.
 
 * People who can edit the channel can pause and resume a teammate's schedule. It keeps running as its owner.
 * Editing a teammate's schedule makes it yours. From then on it runs with your data access, and the editor says so before you save.
