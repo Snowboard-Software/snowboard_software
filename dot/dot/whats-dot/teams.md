@@ -13,7 +13,7 @@ A channel is your team's place in Dot. It holds the team's questions to Dot, its
 1. In the sidebar, under **Channels**, open the channel.
 2. Type your question in the box at the bottom and press Enter.
 
-Your question appears in the channel, and its thread opens beside it. Dot answers in the thread, with your own data access. To ask a follow-up, use the box in the thread.
+Your question appears in the channel, and its thread opens beside it. Dot answers in the thread, with your own data access, and everyone in the channel sees the answer. To ask a follow-up, use the box in the thread.
 
 Each question in the channel shows who asked it and when. Below it, a line says how many replies the thread has, who replied, and when the last reply came. Click a question or its replies to open the thread. To open a thread as a page of its own, click the arrows at its top.
 
@@ -34,7 +34,7 @@ Each channel names the groups and people who can open it, and what they can do t
 
 Admins open every channel. Everything that is in no channel is personal: only you and admins can open it, unless you share its link.
 
-To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. If you can only view a channel, the box at the bottom says who can let you ask.
+To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. In a channel you can only view, the place of the box says who can add you.
 
 ## Start a channel
 
@@ -46,22 +46,30 @@ Anyone in the workspace can start a channel.
 4. Change **Can view** to **Can edit** for the people who should ask Dot in it.
 5. Click **Create**.
 
+A new channel is empty: it says who started it and when, and suggests a few first questions for your data. Click one to ask it.
+
 You are always in a channel you start. You and the workspace's admins can rename it, delete it and change who is in it, from the faces and the **⋮** menu at the top of the channel. Deleting a channel gives its chats back to the people who started them. Only an admin can delete a channel that holds apps.
 
 <figure><img src="../../.gitbook/assets/team-new-channel.png" alt="The New channel panel with a name, two people who can edit, and Create"><figcaption><p>Name the channel and choose who is in it.</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/team-channel-start.png" alt="An empty channel saying who started it and when, with two suggested first questions above the box to ask Dot"><figcaption><p>A new channel suggests a few first questions.</p></figcaption></figure>
 
 **All channels** in the sidebar lists every channel you can open.
 
 ## Apps in a channel
 
-A channel's apps sit at the top of it, each with a picture of the app as you see it, with your own data. Click one to open it. **Hide pictures** turns the cards into a row of names. While a thread is open, and on a phone, the apps show as names.
+A channel's apps sit at the top of it. An app with headline numbers shows its first ones on its card, live and with your own data. Any other app shows a picture of its first screen. Click a card to open the app. **Show names** turns the cards into a row of names. While a thread is open, and on a phone, the apps show as names.
 
 An app is in a channel when it is published to that channel's folder on the **Apps** page.
 
 ## Put a chat in a channel
 
+In the sidebar, click **⋮** beside the chat, then **Move to a channel** and the channel. The chat leaves **Personal** and becomes a question in the channel.
+
+Or from the chat itself:
+
 1. Open the chat and click **Share**.
-2. Under **Channel**, pick the team's channel. Dot shows who will be able to ask in it and who can only read it.
+2. Under **Channel**, pick the team's channel (type to search). Dot shows who will be able to ask in it and who can only read it.
 3. Click **Share in** and the channel's name.
 
 Only the person who started a chat, or an admin, can put it in a channel or take it out.
@@ -70,13 +78,20 @@ Only the person who started a chat, or an admin, can put it in a channel or take
 
 ## Ask in a teammate's chat
 
-Open a question's thread in the channel, or the chat from **Recents** in the sidebar. Each question in it shows the face and name of the person who asked.
+Open a question's thread in the channel. Each question in it shows the face and name of the person who asked.
 
 When you ask, Dot answers with your own data access, not the access of the person who started the chat. Everyone in the channel sees what you ask. To build on a teammate's analysis without adding to their chat, open it as a page and click **Continue in a private chat**. Your copy keeps who asked each earlier question.
 
 If a teammate asks while you have the chat open, their question and Dot's work appear as they happen.
 
 <figure><img src="../../.gitbook/assets/team-chat.png" alt="A team chat as a page, showing its channel and the people in it, with each question labelled by who asked"><figcaption><p>A team chat says which channel it is in and who asked each question.</p></figcaption></figure>
+
+## The sidebar
+
+* **Channels** lists the channels you are in. A channel's name is bold when something is new in it since you last looked. **All channels** lists every channel you can open.
+* **Personal** lists your chats that are in no channel. A chat in a channel is a question in that channel.
+
+To make the sidebar wider, for long chat titles or channel names, drag its right edge.
 
 ## Schedules in a channel
 
