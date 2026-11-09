@@ -34,7 +34,7 @@ Each channel names the groups and people who can open it, and what they can do t
 
 Admins open every channel. Everything that is in no channel is personal: only you and admins can open it, unless you share its link.
 
-To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. In a channel you can only view, the place of the box says who can add you.
+To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. In a channel you can only read, the place of the box says who can let you ask. A thread says the same, and offers **Continue in a private chat**.
 
 ## Start a channel
 
@@ -58,13 +58,13 @@ You are always in a channel you start. You and the workspace's admins can rename
 
 ## Apps in a channel
 
-A channel's apps sit at the top of it. An app with headline numbers shows its first ones on its card, live and with your own data. Any other app shows a picture of its first screen. Click a card to open the app. **Show names** turns the cards into a row of names. While a thread is open, and on a phone, the apps show as names.
+A channel's apps sit at the top of it. Each card shows a picture of the app's first screen, with your own data. Click a card to open the app. **Hide pictures** turns the cards into a row of names. While a thread is open, and on a phone, the apps show as names.
 
 An app is in a channel when it is published to that channel's folder on the **Apps** page.
 
 ## Put a chat in a channel
 
-In the sidebar, click **⋮** beside the chat, then **Move to a channel** and the channel. The chat leaves **Personal** and becomes a question in the channel.
+In the sidebar, click **⋮** beside the chat, then **Move to a channel** and the channel. The chat leaves **Personal** and becomes a question in the channel. Its post says when it was first asked.
 
 Or from the chat itself:
 
@@ -95,7 +95,7 @@ To make the sidebar wider, for long chat titles or channel names, drag its right
 
 ## Schedules in a channel
 
-The clock at the top of a channel lists the schedules that deliver its chats and apps, and whose data access each one runs with. When a schedule runs, its delivery shows in the channel. On the **Schedules** page your own schedules come first, then **Channels**: the schedules in the channels you are in.
+The clock at the top of a channel lists the schedules that deliver its chats and apps, and whose data access each one runs with. When a schedule runs, its delivery shows in the channel. Click it to see what was sent. On the **Schedules** page your own schedules come first, then **Channels**: the schedules in the channels you are in.
 
 * People who can edit the channel can pause and resume a teammate's schedule. It keeps running as its owner.
 * Editing a teammate's schedule makes it yours. From then on it runs with your data access, and the editor says so before you save.
