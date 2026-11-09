@@ -51,7 +51,7 @@ Open the schedule modal on any scheduled message to:
 - View run history (past deliveries and costs)
 - Delete the schedule
 
-In a [shared folder](teams.md#schedules-in-a-folder), the people who can edit the folder manage their teammates' schedules too. Editing one makes it yours: from then on it runs with your data access.
+In a [channel](teams.md#schedules-in-a-channel), the people who can edit the channel manage their teammates' schedules too. Editing one makes it yours: from then on it runs with your data access.
 
 ### Only Send When...
 

@@ -1,74 +1,90 @@
 ---
-description: Keep a team's chats, apps and schedules together in shared folders.
+description: Ask Dot together in channels that hold a team's chats, apps and schedules.
 ---
 
-# Teams and shared folders
+# Teams and channels
 
-A shared folder is your team's place in Dot. It holds the team's chats, its apps and the schedules that deliver them. The people a folder names are the team, so there is nothing else to set up.
+A channel is your team's place in Dot. It holds the team's questions to Dot, its apps and the schedules that deliver them. It works like a channel in Slack: the newest activity is at the bottom, and you ask Dot in the box below it.
 
-<figure><img src="../../.gitbook/assets/team-folder-page.png" alt="A shared folder with its subfolder, chats, apps and schedules, and the faces of the people in each"><figcaption><p>A folder lists everything the team keeps, with who is in each item.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/team-channel.png" alt="A channel with its apps at the top, each question as a post with its replies, and a box to ask Dot"><figcaption><p>A channel shows its apps, then each question with its replies.</p></figcaption></figure>
 
-## Who is in a folder
+## Ask Dot in a channel
 
-Each folder names the groups and people who can open it, and what they can do there:
+1. In the sidebar, under **Channels**, open the channel.
+2. Type your question in the box at the bottom and press Enter.
 
-* **Can edit**: put chats, apps and subfolders in the folder, and ask in its chats.
-* **Can view**: read everything in the folder.
+Your question appears in the channel, and its thread opens beside it. Dot answers in the thread, with your own data access. To ask a follow-up, use the box in the thread.
 
-Admins open every folder. A subfolder has the same people as its parent unless you narrow it. Everything that is in no folder is personal: only you and admins can open it, unless you share its link.
+Each question in the channel shows who asked it and when. Below it, a line says how many replies the thread has, who replied, and when the last reply came. Click a question or its replies to open the thread. To open a thread as a page of its own, click the arrows at its top.
 
-To see who is in a folder, open it and click the faces at the top. The number beside them says how many people can open the folder. If you can't change who is in it, the list names an admin to ask.
+<figure><img src="../../.gitbook/assets/team-channel-thread.png" alt="A question's thread open beside the channel, with Dot's answer and a chart"><figcaption><p>A question's thread opens beside the channel.</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/team-folder-who-can-open-it.png" alt="The Who can open it list of a folder, with each group's people and whether they can edit or view"><figcaption><p>Who can open a folder, and what each group can do there.</p></figcaption></figure>
+## See what is new
 
-## Create a folder
+* A channel's name is bold in the sidebar when something happened since you last looked at it.
+* In the channel, a **New** line sits above what came after your last visit.
+* A gold dot on a question's replies means its thread has news you haven't opened.
 
-Admins create a team's folder and decide who is in it. So can modelers in a workspace that lets modelers manage all apps.
+## Who is in a channel
 
-1. In the sidebar, open **All folders**.
-2. Click **New folder**.
-3. Name it, then add groups or people. A group joins as **Can view** and a person as **Can edit**.
-4. Change **Can view** to **Can edit** for the people who should ask in the folder's chats.
+Each channel names the groups and people who can open it, and what they can do there:
 
-Anyone who can edit a folder can add a subfolder to it. Open the folder, click **New folder** and name it. The subfolder starts with the same people as the folder.
+* **Can edit**: ask Dot in the channel, and put chats and apps in it.
+* **Can view**: read everything in the channel.
 
-Deleting a folder deletes its apps for good. Its chats go back to the people who started them.
+Admins open every channel. Everything that is in no channel is personal: only you and admins can open it, unless you share its link.
 
-## Put a chat in a folder
+To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. If you can only view a channel, the box at the bottom says who can let you ask.
+
+## Start a channel
+
+Anyone in the workspace can start a channel.
+
+1. In the sidebar, click **+** beside **Channels**.
+2. Name the channel.
+3. Add groups or people. A group joins as **Can view** and a person as **Can edit**.
+4. Change **Can view** to **Can edit** for the people who should ask Dot in it.
+5. Click **Create**.
+
+You are always in a channel you start. You and the workspace's admins can rename it, delete it and change who is in it, from the faces and the **⋮** menu at the top of the channel. Deleting a channel gives its chats back to the people who started them. Only an admin can delete a channel that holds apps.
+
+<figure><img src="../../.gitbook/assets/team-new-channel.png" alt="The New channel panel with a name, two people who can edit, and Create"><figcaption><p>Name the channel and choose who is in it.</p></figcaption></figure>
+
+**All channels** in the sidebar lists every channel you can open.
+
+## Apps in a channel
+
+A channel's apps sit at the top of it, each with a picture of the app as you see it, with your own data. Click one to open it. **Hide pictures** turns the cards into a row of names. While a thread is open, and on a phone, the apps show as names.
+
+An app is in a channel when it is published to that channel's folder on the **Apps** page.
+
+## Put a chat in a channel
 
 1. Open the chat and click **Share**.
-2. Under **Folder**, pick the team's folder. Dot shows who will be able to ask in it and who can only read it.
-3. Click **Share with** and the folder's name.
+2. Under **Channel**, pick the team's channel. Dot shows who will be able to ask in it and who can only read it.
+3. Click **Share in** and the channel's name.
 
-Only the person who started a chat, or an admin, can put it in a folder. Once it is there, the folder's editors can move it to another folder they can edit, for example a subfolder.
+Only the person who started a chat, or an admin, can put it in a channel or take it out.
 
-<figure><img src="../../.gitbook/assets/team-share-to-folder.png" alt="The Share dialog naming who can ask in the picked folder and who can read it"><figcaption><p>Share says who will ask and who will read before you share.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/team-share-to-channel.png" alt="The Share dialog naming who can ask in the picked channel and who can read it"><figcaption><p>Share says who will ask and who will read before you share.</p></figcaption></figure>
 
 ## Ask in a teammate's chat
 
-Open the chat from its folder or from **Recents** in the sidebar. Each question shows the face and name of the person who asked it.
+Open a question's thread in the channel, or the chat from **Recents** in the sidebar. Each question in it shows the face and name of the person who asked.
 
-When you ask, Dot answers with your own data access, not the access of the person who started the chat. Everyone in the folder sees what you ask, and the line above the message box says so. To build on a teammate's analysis without adding to their chat, click **Continue in a private chat**. Your copy keeps who asked each earlier question.
+When you ask, Dot answers with your own data access, not the access of the person who started the chat. Everyone in the channel sees what you ask. To build on a teammate's analysis without adding to their chat, open it as a page and click **Continue in a private chat**. Your copy keeps who asked each earlier question.
 
 If a teammate asks while you have the chat open, their question and Dot's work appear as they happen.
 
-People who can only view the folder read the chat, and see **Continue in a private chat** to ask their own follow-up.
+<figure><img src="../../.gitbook/assets/team-chat.png" alt="A team chat as a page, showing its channel and the people in it, with each question labelled by who asked"><figcaption><p>A team chat says which channel it is in and who asked each question.</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/team-chat.png" alt="A team chat showing the folder and the people in it, with each question labelled by who asked"><figcaption><p>A team chat says where it lives, who is in it and who asked each question.</p></figcaption></figure>
+## Schedules in a channel
 
-## The sidebar
+The clock at the top of a channel lists the schedules that deliver its chats and apps, and whose data access each one runs with. When a schedule runs, its delivery shows in the channel. On the **Schedules** page your own schedules come first, then **Channels**: the schedules in the channels you are in.
 
-**Shared** lists the folders you are in. A dot means something in a folder is new to you. **All folders** lists every folder you can open.
-
-**Recents** lists your chats and the team chats you opened or asked in, with the faces of the people in each.
-
-## Schedules in a folder
-
-A folder's page lists the schedules that deliver its chats and apps, and whose data access each one runs with (**Runs as**). On the **Schedules** page your own schedules come first, then **Shared**: the schedules in the folders you are in.
-
-* People who can edit the folder can pause and resume a teammate's schedule. It keeps running as its owner.
+* People who can edit the channel can pause and resume a teammate's schedule. It keeps running as its owner.
 * Editing a teammate's schedule makes it yours. From then on it runs with your data access, and the editor says so before you save.
-* People who can only view the folder see what runs and as whom, but not who receives it.
+* People who can only view the channel see what runs and as whom, but not who receives it.
 
 <figure><img src="../../.gitbook/assets/team-edit-teammates-schedule.png" alt="The schedule editor saying that saving makes a teammate's schedule yours"><figcaption><p>Saving a change to a teammate's schedule makes it yours.</p></figcaption></figure>
 
@@ -86,13 +102,13 @@ Until you choose, Dot shows your Slack photo if it has one. Otherwise it shows a
 
 ## Ask Dot about your team
 
-Dot knows the folders you can open and what is in them. You can ask it things like:
+Dot knows the channels you can open and what is in them. You can ask it things like:
 
-* _"Which shared folders am I in, and what's in Commercial?"_
+* _"Which channels am I in, and what's in Commercial?"_
 * _"What has the Commercial team been looking at lately?"_
 * _"Who asked the earlier questions in this chat?"_
 * _"Move this chat's weekly schedule to Mondays at 9."_
 
 Before Dot changes a teammate's schedule, it tells you the schedule will run with your access and asks you to confirm.
 
-Dot can't publish an app for you. When you ask it to put an app in a folder, it builds the app and tells you to click **Publish** and pick the folder.
+Dot can't publish an app for you. When you ask it to put an app in a channel, it builds the app and tells you to click **Publish** and pick the channel's folder.
