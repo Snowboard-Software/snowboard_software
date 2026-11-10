@@ -12,5 +12,6 @@ Pick the one you use:
 * [PowerBI Semantic Layer](powerbi-semantic-layer.md)
 * [Azure Analysis Services](azure-analysis-services.md)
 * [Looker](looker.md)
+* [Cube](cube.md)
 * [Malloy](malloy.md)
 * [Steep](steep.md)
