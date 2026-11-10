@@ -32,7 +32,7 @@ Each channel names the groups and people who can open it, and what they can do t
 * **Can edit**: ask Dot in the channel, and put chats and apps in it.
 * **Can view**: read everything in the channel.
 
-Admins open every channel. Everything that is in no channel is personal: only you and admins can open it, unless you share its link.
+Admins open every channel. Everything that is in no channel is personal: only you and admins can open it, unless you share its link. If your admin lets modelers read every chat in History, modelers can open it too.
 
 To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. In a channel you can only read, the place of the box says who can let you ask. A thread says the same, and offers **Continue in a private chat**.
 
@@ -84,7 +84,7 @@ Or from the chat itself:
 2. Under **Channel**, pick the team's channel (type to search). Dot shows who will be able to ask in it and who can only read it.
 3. Click **Share in** and the channel's name.
 
-Only the person who started a chat, or an admin, can put it in a channel or take it out.
+Only the person who started a chat, or an admin, can put it in a channel or take it out. Once a teammate has asked in it, it stays in that channel: their answers came from their own data access, for that channel's people. You can still take it out of the team, and an admin can move it.
 
 <figure><img src="../../.gitbook/assets/team-share-to-channel.png" alt="The Share dialog naming who can ask in the picked channel and who can read it"><figcaption><p>Share says who will ask and who will read before you share.</p></figcaption></figure>
 
@@ -92,7 +92,7 @@ Only the person who started a chat, or an admin, can put it in a channel or take
 
 Open a question's thread in the channel. Each question in it shows the face and name of the person who asked.
 
-When you ask, Dot answers with your own data access, not the access of the person who started the chat. Everyone in the channel sees what you ask. To build on a teammate's analysis without adding to their chat, open it as a page and click **Continue in a private chat**. Your copy keeps who asked each earlier question.
+When you ask, Dot answers with your own data access, not the access of the person who started the chat. Everyone in the channel sees what you ask. Dot reads your teammates' questions and answers in the chat, but never the data they fetched along the way, and when you download a table from a teammate's answer, Dot fetches it again with your own access. To build on a teammate's analysis without adding to their chat, open it as a page and click **Continue in a private chat**. Your copy keeps who asked each earlier question.
 
 If a teammate asks while you have the chat open, their question and Dot's work appear as they happen.
 
@@ -111,6 +111,7 @@ The **Schedules** tab lists the schedules that deliver the channel's chats and a
 
 * People who can edit the channel can pause and resume a teammate's schedule from the **⋮** at the end of its row. It keeps running as its owner.
 * Editing a teammate's schedule makes it yours. From then on it runs with your data access, and the editor says so before you save.
+* To test a teammate's schedule, choose **Latest numbers** or **Brief**: the test runs with your own data access.
 * People who can only view the channel see what runs and as whom, but not who receives it.
 
 <figure><img src="../../.gitbook/assets/team-edit-teammates-schedule.png" alt="The schedule editor saying that saving makes a teammate's schedule yours"><figcaption><p>Saving a change to a teammate's schedule makes it yours.</p></figcaption></figure>
