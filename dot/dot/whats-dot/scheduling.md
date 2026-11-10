@@ -51,6 +51,8 @@ Open the schedule modal on any scheduled message to:
 - View run history (past deliveries and costs)
 - Delete the schedule
 
+In a [channel](teams.md#schedules-in-a-channel), the people who can edit the channel manage their teammates' schedules too. Editing one makes it yours: from then on it runs with your data access.
+
 ### Only Send When...
 
 Reduce noise by writing a plain-English condition under **Only send when...**. Leave it empty to send every run. Clear the text to remove a condition.
