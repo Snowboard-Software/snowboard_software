@@ -6,7 +6,7 @@ description: Ask Dot together in channels that hold a team's chats, apps and sch
 
 A channel is your team's place in Dot. It holds the team's questions to Dot, its apps, the schedules that deliver them and the files the team gave Dot. Each has a tab: **Activity**, **Apps**, **Schedules** and **Files**. On **Activity**, you ask Dot in the box at the bottom, as in a Slack channel.
 
-<figure><img src="../../.gitbook/assets/team-channel.png" alt="A channel with its apps at the top, each question as a post with its replies, and a box to ask Dot"><figcaption><p>A channel shows its apps, then each question with its replies.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/team-channel.png" alt="A channel's Activity tab: each question as a post with its replies, a schedule's run with what it found, and a box to ask Dot"><figcaption><p>A channel's activity: each question with its replies, and what a schedule found.</p></figcaption></figure>
 
 ## Ask Dot in a channel
 
@@ -23,7 +23,7 @@ Each question in the channel shows who asked it and when. Below it, a line says 
 
 * A channel's name is bold in the sidebar when something happened since you last looked at it.
 * In the channel, a **New** line sits above what came after your last visit.
-* A gold dot on a question's replies means its thread has news you haven't opened.
+* A dot on a question's replies means its thread has news you haven't opened.
 
 ## Who is in a channel
 
@@ -107,9 +107,9 @@ To make the sidebar wider, for long chat titles or channel names, drag its right
 
 ## Schedules in a channel
 
-The **Schedules** tab lists the schedules that deliver the channel's chats and apps, and whose data access each one runs with. When a schedule runs, Dot posts in the channel that it ran. Click the post to see what it sent. On the **Schedules** page your own schedules come first, then one row for each channel you are in, holding its schedules.
+The **Schedules** tab lists the schedules that deliver the channel's chats and apps: how often each runs, whose data access it runs with, and when it runs next. When a schedule runs, Dot posts what it found in the channel. Click the post to see everything it sent. On the **Schedules** page your own schedules come first, then one row for each channel you are in, holding its schedules.
 
-* People who can edit the channel can pause and resume a teammate's schedule. It keeps running as its owner.
+* People who can edit the channel can pause and resume a teammate's schedule from the **⋮** at the end of its row. It keeps running as its owner.
 * Editing a teammate's schedule makes it yours. From then on it runs with your data access, and the editor says so before you save.
 * People who can only view the channel see what runs and as whom, but not who receives it.
 
