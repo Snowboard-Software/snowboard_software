@@ -52,9 +52,9 @@ You are always in a channel you start. You and the workspace's admins can rename
 
 <figure><img src="../../.gitbook/assets/team-new-channel.png" alt="The New channel panel with a name, two people who can edit, and Create"><figcaption><p>Name the channel and choose who is in it.</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/team-channel-start.png" alt="An empty channel saying who started it and when, with two suggested first questions above the box to ask Dot"><figcaption><p>A new channel suggests a few first questions.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/team-channel-start.png" alt="An empty channel saying who started it and when, with two suggested first questions"><figcaption><p>A new channel suggests a few first questions.</p></figcaption></figure>
 
-**All channels** in the sidebar lists every channel you can open.
+To find a channel, search for its name: click the magnifier at the top of the sidebar, or press ⌘K (Ctrl+K on Windows). Search also finds your teammates' questions in every channel you can open.
 
 ## Apps in a channel
 
@@ -88,7 +88,7 @@ If a teammate asks while you have the chat open, their question and Dot's work a
 
 ## The sidebar
 
-* **Channels** lists the channels you are in. A channel's name is bold when something is new in it since you last looked. **All channels** lists every channel you can open.
+* **Channels** lists the channels you are in. A channel's name is bold when something is new in it since you last looked. Admins also see **All channels**, which lists every channel in the workspace, including the ones they are not in.
 * **Personal** lists your chats that are in no channel. A chat in a channel is a question in that channel.
 
 To make the sidebar wider, for long chat titles or channel names, drag its right edge.
