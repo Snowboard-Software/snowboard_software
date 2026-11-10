@@ -107,7 +107,7 @@ To make the sidebar wider, for long chat titles or channel names, drag its right
 
 ## Schedules in a channel
 
-The **Schedules** tab lists the schedules that deliver the channel's chats and apps, and whose data access each one runs with. When a schedule runs, Dot posts in the channel that it ran. Click the post to see what it sent. On the **Schedules** page your own schedules come first, then **Channels**: the schedules in the channels you are in.
+The **Schedules** tab lists the schedules that deliver the channel's chats and apps, and whose data access each one runs with. When a schedule runs, Dot posts in the channel that it ran. Click the post to see what it sent. On the **Schedules** page your own schedules come first, then one row for each channel you are in, holding its schedules.
 
 * People who can edit the channel can pause and resume a teammate's schedule. It keeps running as its owner.
 * Editing a teammate's schedule makes it yours. From then on it runs with your data access, and the editor says so before you save.
