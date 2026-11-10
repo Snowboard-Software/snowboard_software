@@ -4,7 +4,7 @@ description: Ask Dot together in channels that hold a team's chats, apps and sch
 
 # Teams and channels
 
-A channel is your team's place in Dot. It holds the team's questions to Dot, its apps and the schedules that deliver them. It works like a channel in Slack: the newest activity is at the bottom, and you ask Dot in the box below it.
+A channel is your team's place in Dot. It holds the team's questions to Dot, its apps, the schedules that deliver them and the files the team gave Dot. Each has a tab: **Activity**, **Apps**, **Schedules** and **Files**. On **Activity**, you ask Dot in the box at the bottom, as in a Slack channel.
 
 <figure><img src="../../.gitbook/assets/team-channel.png" alt="A channel with its apps at the top, each question as a post with its replies, and a box to ask Dot"><figcaption><p>A channel shows its apps, then each question with its replies.</p></figcaption></figure>
 
@@ -58,9 +58,21 @@ To find a channel, search for its name: click the magnifier at the top of the si
 
 ## Apps in a channel
 
-A channel's apps sit at the top of it. Each card shows a picture of the app's first screen, with your own data. Click a card to open the app. **Hide pictures** turns the cards into a row of names. While a thread is open the apps show as names. On a phone they start as names; tap **Show pictures** to see the cards.
+The **Apps** tab shows the channel's apps. Each card shows a picture of the app's first screen, with your own data. Click a card to open the app.
 
 An app is in a channel when it is published to that channel's folder on the **Apps** page.
+
+## Files in a channel
+
+The **Files** tab lists every file uploaded in the channel's chats: who gave it, when, and the chat it came with. Click a file to download it, or its chat to open the thread.
+
+To add a file, attach it to your question in the box at the bottom of **Activity**. Dot uses the channel's files as context. When you ask in any of the channel's chats, Dot knows which files the team has given it and brings in the one your question needs, so nobody has to upload the same file twice.
+
+<figure><img src="../../.gitbook/assets/team-channel-files.png" alt="A channel's Files tab listing two uploaded spreadsheets with who gave each, when, and in which chat"><figcaption><p>The Files tab lists what the channel's chats were given.</p></figcaption></figure>
+
+{% hint style="info" %}
+Uploaded files follow your workspace's **Data retention** setting, so a file leaves the list when it expires.
+{% endhint %}
 
 ## Put a chat in a channel
 
@@ -95,7 +107,7 @@ To make the sidebar wider, for long chat titles or channel names, drag its right
 
 ## Schedules in a channel
 
-The clock at the top of a channel lists the schedules that deliver its chats and apps, and whose data access each one runs with. When a schedule runs, Dot posts in the channel that it ran. Click the post to see what it sent. On the **Schedules** page your own schedules come first, then **Channels**: the schedules in the channels you are in.
+The **Schedules** tab lists the schedules that deliver the channel's chats and apps, and whose data access each one runs with. When a schedule runs, Dot posts in the channel that it ran. Click the post to see what it sent. On the **Schedules** page your own schedules come first, then **Channels**: the schedules in the channels you are in.
 
 * People who can edit the channel can pause and resume a teammate's schedule. It keeps running as its owner.
 * Editing a teammate's schedule makes it yours. From then on it runs with your data access, and the editor says so before you save.
