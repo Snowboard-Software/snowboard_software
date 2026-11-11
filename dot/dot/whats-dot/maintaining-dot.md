@@ -56,23 +56,24 @@ A good ritual: collect five to ten conversations where Dot got it wrong and root
 
 ## Let Dot tell you where it failed
 
-You do not have to hunt for the bad answers. After every response, in the background, Dot reviews the whole conversation and labels it. Admins see the verdict on the **History** page, in the **Auto-Review** column:
+You do not have to hunt for the bad answers. After every response, in the background, Dot reviews the whole conversation and labels it. Admins see the verdict on the **History** page, in the **Review** column:
 
-- **Issue** — something went wrong: a complaint, a query error, the user repeating themselves, an empty result where data was expected, or Dot describing what it would do without ever delivering findings. One late failure marks the whole conversation, deliberately.
-- **Abandoned** — Dot asked a clarifying question and nobody came back. The easiest signal to overlook and often the most telling: the question was too ambiguous to answer, or the person gave up.
-- **Success** and **OK** — the user said it was what they needed, or the conversation completed without complaint.
+- **Issue**: something went wrong: a complaint, a query error, the user repeating themselves, an empty result where data was expected, or Dot describing what it would do without ever delivering findings. One late failure marks the whole conversation, deliberately.
+- **Unanswered**: Dot asked a clarifying question and nobody came back. The easiest signal to overlook and often the most telling: the question was too ambiguous to answer, or the person gave up.
+- **Success**: the user said it was what they needed, or the conversation completed without complaint.
+- **Assumptions**: an answer rested on something Dot had to assume that could change the number. The answer itself shows **Assumption made**, and clicking it shows what was assumed.
 
-Hover a label to see the one-line reason, and use the **Issues** and **Abandoned** filters to work through them. If you want this in your own reporting, the admin usage export carries each conversation's score and reason.
+Hover the Review cell to see the one-line reason and the assumptions, and use the **Review** filter to work through **Issue**, **Assumptions** and **Unanswered**. If you want this in your own reporting, the admin usage export carries each conversation's score and reason.
 
-Your users' thumbs are the second signal, in the separate **Feedback** column, and 👎 is the one worth acting on. Dot learns from being corrected — "that is wrong, here is how we actually calculate it" — far more than from being approved of.
+Your users' thumbs are the second signal, shown in the same **Review** column, and 👎 is the one worth acting on. Dot learns from being corrected ("that is wrong, here is how we actually calculate it") far more than from being approved of.
 
 {% hint style="info" %}
-Both columns use the word **Success** for their positive case, but they are independent: Auto-Review is Dot's own judgement of the conversation, Feedback is what your users clicked. Neither overrides the other.
+Dot's **Success** and a user's 👍 are independent: Success is Dot's own judgement of the conversation, 👍 is what a user clicked. Neither overrides the other.
 {% endhint %}
 
 When an answer is wrong, capture the correct query. A wrong answer plus its ground truth is the most useful thing you can hand over — far more useful than a description of what went wrong.
 
-<figure><img src="../../.gitbook/assets/feedback-admin-history.png" alt=""><figcaption><p>Auto-Review is Dot's own verdict on the conversation; Feedback is what users clicked</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/history-review-hover-card.png" alt="The Review hover card on the History page"><figcaption><p>The Review column combines Dot's own verdict with what users clicked</p></figcaption></figure>
 
 ---
 

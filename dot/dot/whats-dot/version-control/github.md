@@ -41,7 +41,7 @@ relationships.yaml   # Table relationships
 Context files use Markdown (`.md`) with YAML frontmatter, or plain YAML. Dashboards sync as `.app` sources plus their `.app.lock` compiled sidecars, and custom skills as their `SKILL.md` and supporting text files.
 
 {% hint style="info" %}
-Context files, dashboards (apps), custom skills, and evaluation definitions are synced. Evaluation runs and results remain in Dot. Database connections, user settings, and chat history remain in Dot.
+Context files, dashboards (apps), custom skills, PowerPoint templates, and evaluation definitions are synced. Evaluation runs and results remain in Dot. Database connections, user settings, and chat history remain in Dot.
 {% endhint %}
 
 ## Setting Up GitHub Sync
@@ -104,7 +104,7 @@ Evaluations sync as `evaluations/<id>.yaml` and follow the same environment and 
 ## Limitations
 
 - **One repository per workspace.** Dot syncs your production branch. If you use [environments](../environments.md) and leave environment mirroring on, Dot also pushes a branch for each environment, named `dot/env-<slug>`, so a reviewer can open a proposal's changes as a pull request
-- **Text files only** in the managed paths — Markdown/YAML context, `.app` dashboard sources with their `.app.lock` sidecars, and skill files (binary or non-UTF-8 assets are skipped)
+- **Text files only** in the managed paths, except PowerPoint templates. Markdown/YAML context, `.app` dashboard sources with their `.app.lock` sidecars, and skill files sync as text. `.pptx` and `.potx` templates under `presentations/` sync as binary files. Other binary or non-UTF-8 assets are skipped
 - **Last write wins** for simultaneous edits (no conflict resolution UI)
 
 **Not synced**: Database credentials, user accounts, chat history, scheduled reports, organization settings.
