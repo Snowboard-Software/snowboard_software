@@ -15,7 +15,7 @@ A channel is your team's place in Dot. It holds the team's questions to Dot, its
 
 Your question appears in the channel, and its thread opens beside it. Dot answers in the thread, with your own data access, and everyone in the channel sees the answer. To ask a follow-up, use the box in the thread.
 
-Each question in the channel shows who asked it and when. Below it, a line says how many replies the thread has, who replied, and when the last reply came. Click a question or its replies to open the thread. To open a thread as a page of its own, click the arrows at its top.
+Each question in the channel shows who asked it and when. Below it, a line says how many replies the thread has and when the last reply came. Click a question or its replies to open the thread. To open a thread as a page of its own, click the arrows at its top.
 
 <figure><img src="../../.gitbook/assets/team-channel-thread.png" alt="A question's thread open beside the channel, with Dot's answer and a chart"><figcaption><p>A question's thread opens beside the channel.</p></figcaption></figure>
 
