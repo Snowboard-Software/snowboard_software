@@ -86,6 +86,28 @@ curl -H "X-API-KEY: YOUR_API_TOKEN" -o app-views.json "https://app.getdot.ai/api
 
 
 
+## Export App View Events
+
+`GET /api/export_app_view_events` returns one row for each time someone opened an app, with who opened it and when. Three opens in a minute are three rows. It needs an admin's [API token](./#everything-starts-with-a-token-of-trust).
+
+{% openapi-operation spec="dot-openapi" path="/api/export_app_view_events" method="get" %}
+[OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
+{% endopenapi-operation %}
+
+* **Dates**: UTC days, from `start_date` up to but not including `end_date`. For a single day, pass that day and the day after.
+* **Events**: `view` is an open of the app. `ask` is a question asked in the app's Ask chat.
+* **Where it was opened**: every open of the app's page in Dot is a row. Opens through a public link, an embed or the API count once per person and app in any 15 minutes, as in `export_app_views`.
+* **CSV**: add `format=csv` to get the same rows as a CSV file.
+* **How far back**: events are kept for 180 days. `events_since` says when the oldest one happened.
+
+```bash
+# EU: https://eu.getdot.ai
+curl -H "X-API-KEY: YOUR_API_TOKEN" -o app-view-events.csv \
+  "https://app.getdot.ai/api/export_app_view_events?start_date=2026-11-01&end_date=2026-12-01&format=csv"
+```
+
+
+
 ## Ask Dot Automatically
 
 `/api/agentic` is how you ask Dot anything. It is the same engine behind the app, Slack and Teams: Dot reads your model, writes and runs SQL, builds charts, and keeps going until it can answer. A one-line lookup and a multi-step investigation use this one endpoint — Dot decides how far to go.
