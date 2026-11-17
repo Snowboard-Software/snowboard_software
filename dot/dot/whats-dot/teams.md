@@ -1,17 +1,40 @@
 ---
-description: Ask Dot together in channels that hold a team's chats, apps and schedules.
+description: Work with your team in channels, and find everything in the Explorer.
 ---
 
 # Teams and channels
 
-A channel is your team's place in Dot. It holds the team's questions to Dot, its apps, the schedules that deliver them and the files the team gave Dot. Each has a tab: **Activity**, **Apps**, **Schedules** and **Files**. On **Activity**, you ask Dot in the box at the bottom, as in a Slack channel.
+Everything in Dot lives in one place. A place is **Personal**, where only you see it, or a **channel**, your team's place. Each place holds its chats, apps and schedules, each on its own tab: **Activity**, **Apps** and **Schedules**, plus **Files** in a channel.
+
+The sidebar lists your places: **Personal** first, then your channels. A dot beside a place means something is new there since you last looked. To see everything you can open at once, click **Explorer**.
 
 <figure><img src="../../.gitbook/assets/team-channel.png" alt="A channel's Activity tab: each question as a post with its replies, a schedule's run with what it found, and a box to ask Dot"><figcaption><p>A channel's activity: each question with its replies, and what a schedule found.</p></figcaption></figure>
 
+## Find anything in the Explorer
+
+The Explorer lists every place you can open on its **Channels** tab, every app on **Apps** and every schedule on **Schedules**, grouped by place. On **Channels** you see who is in each channel, your access, what it holds and when it last changed. Point at a row to see its newest post.
+
+To find something:
+
+1. In the sidebar, click **Explorer**.
+2. Type in the search at the top. You can also press **/** to jump to it.
+
+The search covers all three tabs, and each tab shows how many results it has. Your words stay when you switch tabs or come back from something you opened. A channel or folder you find by its name shows everything in it, and an app is found by its description too. Press **Escape** to clear the search.
+
+<figure><img src="../../.gitbook/assets/team-explorer-search.png" alt="The Explorer's search with the word gro, its Apps tab showing the apps of the Growth channel"><figcaption><p>One search for channels, apps and schedules.</p></figcaption></figure>
+
+Admins see the same page with more on it: every channel in the workspace, and other people's personal apps and schedules.
+
+## Personal
+
+**Personal** holds your chats that are in no channel, and your own apps and schedules. Only you and admins can open it, unless you share a chat's link. If your admin lets modelers read every chat in History, modelers can open it too.
+
+To ask Dot something only you see, open **Personal** and type in the box at the bottom.
+
 ## Ask Dot in a channel
 
-1. In the sidebar, under **Channels**, open the channel.
-2. Type your question in the box at the bottom and press Enter.
+1. In the sidebar, click the channel.
+2. Type your question in the box at the bottom of **Activity** and press Enter.
 
 Your question appears in the channel, and its thread opens beside it. Dot answers in the thread, with your own data access, and everyone in the channel sees the answer. To ask a follow-up, use the box in the thread.
 
@@ -21,7 +44,7 @@ Each question in the channel shows who asked it and when. Below it, a line says 
 
 ## See what is new
 
-* A channel's name is bold in the sidebar when something happened since you last looked at it.
+* A dot beside a channel in the sidebar and in the Explorer means something happened there since you last looked.
 * In the channel, a **New** line sits above what came after your last visit.
 * A dot on a question's replies means its thread has news you haven't opened.
 
@@ -32,7 +55,7 @@ Each channel names the groups and people who can open it, and what they can do t
 * **Can edit**: ask Dot in the channel, and put chats and apps in it.
 * **Can view**: read everything in the channel.
 
-Admins open every channel. Everything that is in no channel is personal: only you and admins can open it, unless you share its link. If your admin lets modelers read every chat in History, modelers can open it too.
+Admins open every channel.
 
 To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. In a channel you can only read, the place of the box says who can let you ask. A thread says the same, and offers **Continue in a private chat**.
 
@@ -40,7 +63,7 @@ To see who is in a channel, click the faces at the top of it. The number beside 
 
 Anyone in the workspace can start a channel.
 
-1. In the sidebar, click **+** beside **Channels**.
+1. In the **Explorer**, on the **Channels** tab, click **New channel**. You can also point at your places in the sidebar and click **New channel** under them.
 2. Name the channel.
 3. Add groups or people. A group joins as **Can view** and a person as **Can edit**.
 4. Change **Can view** to **Can edit** for the people who should ask Dot in it.
@@ -50,23 +73,21 @@ A new channel is empty: it says who started it and when, and suggests a few firs
 
 You are always in a channel you start. You and the workspace's admins can rename it, delete it and change who is in it, from the faces and the **⋮** menu at the top of the channel. Deleting a channel gives its chats back to the people who started them. Only an admin can delete a channel that holds apps.
 
-<figure><img src="../../.gitbook/assets/team-new-channel.png" alt="The New channel panel with a name, two people who can edit, and Create"><figcaption><p>Name the channel and choose who is in it.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/team-new-channel.png" alt="The New channel panel with a name field, people and groups, and Create"><figcaption><p>Name the channel and choose who is in it.</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/team-channel-start.png" alt="An empty channel saying who started it and when, with two suggested first questions"><figcaption><p>A new channel suggests a few first questions.</p></figcaption></figure>
-
-To find a channel, search for its name: click the magnifier at the top of the sidebar, or press ⌘K (Ctrl+K on Windows). Search also finds your teammates' questions in every channel you can open.
+To find a channel, search for its name in the Explorer, or click the magnifier at the top of the sidebar or press ⌘K (Ctrl+K on Windows). That search also finds your teammates' questions in every channel you can open.
 
 ## Apps in a channel
 
-The **Apps** tab shows the channel's apps. Each card shows a picture of the app's first screen, with your own data. Click a card to open the app.
+The **Apps** tab lists the channel's apps, and the folders in it. Point at an app's name to see a picture of it, with your own data. Click the name to open the app.
 
-An app is in a channel when it is published to that channel's folder on the **Apps** page.
+To put an app in a channel, click **Publish** in the app's chat and pick the channel. To move an app you already published, click **⋮** at the end of its row, then **Move to…** and the place.
 
 ## Files in a channel
 
 The **Files** tab lists every file uploaded in the channel's chats: who gave it, when, and the chat it came with. Click a file to download it, or its chat to open the thread.
 
-To add a file, attach it to your question in the box at the bottom of **Activity**. Dot uses the channel's files as context. When you ask in any of the channel's chats, Dot knows which files the team has given it and brings in the one your question needs, so nobody has to upload the same file twice.
+To add a file, attach it to your question in the box at the bottom of **Activity**, or click **Upload a file**. Dot uses the channel's files as context. When you ask in any of the channel's chats, Dot knows which files the team has given it and brings in the one your question needs, so nobody has to upload the same file twice.
 
 <figure><img src="../../.gitbook/assets/team-channel-files.png" alt="A channel's Files tab listing two uploaded spreadsheets with who gave each, when, and in which chat"><figcaption><p>The Files tab lists what the channel's chats were given.</p></figcaption></figure>
 
@@ -76,17 +97,14 @@ Uploaded files follow your workspace's **Data retention** setting, so a file lea
 
 ## Put a chat in a channel
 
-In the sidebar, click **⋮** beside the chat, then **Move to a channel** and the channel. The chat leaves **Personal** and becomes a question in the channel. Its post says when it was first asked.
+1. Click **⋮** on the chat: on its post in **Personal**, on its row in your favorites, or beside **Share** on the chat's own page.
+2. Click **Move to…** and pick the channel.
 
-Or from the chat itself:
+The chat leaves **Personal** and becomes a question in the channel. Its post says when it was first asked. To move it back, pick **Personal** the same way.
 
-1. Open the chat and click **Share**.
-2. Under **Channel**, pick the team's channel (type to search). Dot shows who will be able to ask in it and who can only read it.
-3. Click **Share in** and the channel's name.
+You can also click **Share** in the chat, pick the channel under **Shown in**, and click **Share in** and the channel's name. Dot shows who will be able to ask in it and who can only read it before you share.
 
 Only the person who started a chat, or an admin, can put it in a channel or take it out. Once a teammate has asked in it, it stays in that channel: their answers came from their own data access, for that channel's people. You can still take it out of the team, and an admin can move it.
-
-<figure><img src="../../.gitbook/assets/team-share-to-channel.png" alt="The Share dialog naming who can ask in the picked channel and who can read it"><figcaption><p>Share says who will ask and who will read before you share.</p></figcaption></figure>
 
 ## Ask in a teammate's chat
 
@@ -96,25 +114,18 @@ When you ask, Dot answers with your own data access, not the access of the perso
 
 If a teammate asks while you have the chat open, their question and Dot's work appear as they happen.
 
-<figure><img src="../../.gitbook/assets/team-chat.png" alt="A team chat as a page, showing its channel and the people in it, with each question labelled by who asked"><figcaption><p>A team chat says which channel it is in and who asked each question.</p></figcaption></figure>
-
-## The sidebar
-
-* **Channels** lists the channels you are in. A channel's name is bold when something is new in it since you last looked. Admins also see **All channels**, which lists every channel in the workspace, including the ones they are not in.
-* **Personal** lists your chats that are in no channel. A chat in a channel is a question in that channel.
-
-To make the sidebar wider, for long chat titles or channel names, drag its right edge.
+<figure><img src="../../.gitbook/assets/team-chat.png" alt="A team chat as a page, naming its channel, with the question labelled by who asked it"><figcaption><p>A team chat says which channel it is in and who asked each question.</p></figcaption></figure>
 
 ## Schedules in a channel
 
-The **Schedules** tab lists the schedules that deliver the channel's chats and apps: how often each runs, whose data access it runs with, and when it runs next. When a schedule runs, Dot posts what it found in the channel. Click the post to see everything it sent. On the **Schedules** page your own schedules come first, then one row for each channel you are in, holding its schedules.
+The **Schedules** tab lists the schedules that deliver the channel's chats and apps: how often each runs, whose data access it runs with, and when it runs next. Click one of your schedules to see its place, who it runs as and its past runs; a teammate's schedule opens its thread in the channel. When a schedule runs, Dot posts what it found in the channel. Click the post to see everything it sent.
 
 * People who can edit the channel can pause and resume a teammate's schedule from the **⋮** at the end of its row. It keeps running as its owner.
 * Editing a teammate's schedule makes it yours. From then on it runs with your data access, and the editor says so before you save.
 * To test a teammate's schedule, choose **Latest numbers** or **Brief**: the test runs with your own data access.
 * People who can only view the channel see what runs and as whom, but not who receives it.
 
-<figure><img src="../../.gitbook/assets/team-edit-teammates-schedule.png" alt="The schedule editor saying that saving makes a teammate's schedule yours"><figcaption><p>Saving a change to a teammate's schedule makes it yours.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/team-schedule-panel.png" alt="A schedule's panel naming its place, Growth, and who it runs as, with its past runs"><figcaption><p>A schedule says which place it belongs to and whose access it runs with.</p></figcaption></figure>
 
 ## Your face
 
@@ -125,8 +136,6 @@ Teammates see your face beside your questions. To change it, open **Profile** an
 * Click **Upload a picture**.
 
 Until you choose, Dot shows your Slack photo if it has one. Otherwise it shows an animal it picked for you.
-
-<figure><img src="../../.gitbook/assets/team-face-picker.png" alt="The face picker with the animals, a field to draw a face from a few words, and Upload a picture"><figcaption><p>Choose an animal, draw your own, or upload a picture.</p></figcaption></figure>
 
 ## Ask Dot about your team
 
@@ -139,4 +148,4 @@ Dot knows the channels you can open and what is in them. You can ask it things l
 
 Before Dot changes a teammate's schedule, it tells you the schedule will run with your access and asks you to confirm.
 
-Dot can't publish an app for you. When you ask it to put an app in a channel, it builds the app and tells you to click **Publish** and pick the channel's folder.
+Dot can't publish an app for you. When you ask it to put an app in a channel, it builds the app and tells you to click **Publish** and pick the channel.
