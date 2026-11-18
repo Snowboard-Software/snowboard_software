@@ -60,7 +60,7 @@ You see everyone who opened the app, with their views and when they first and la
 
 Opens within 15 minutes count as one view. Public-link visitors are counted but not named. Hover the info icon to see when counting started.
 
-Anyone in your workspace who can open an app can see who viewed it. In **Storefront mode**, only admins see names. Admins can also export every app's viewers through the [API](../api/commonly-used-endpoints.md#export-app-views).
+Anyone in your workspace who can open an app can see who viewed it. In **Storefront mode**, only admins see names. Admins can also export every app's viewers through the [API](../api/commonly-used-endpoints.md#export-app-views), or [every open, with who opened the app and when](../api/commonly-used-endpoints.md#export-app-view-events).
 
 ## Trust and governance
 
