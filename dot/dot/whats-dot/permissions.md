@@ -35,14 +35,11 @@ The Modeler row shows the defaults. That row isn't fixed, though. Admins can cha
 
 The Modeler role is a starting point, not a fixed set of rules. Admins shape it under Settings, then Advanced Settings, then Modeler Permissions.
 
-A few things are on by default, because modelers have always been able to do them. You can turn any of them off:
+In a new workspace all of them are on. The role exists so a trusted data person can do data work without being an admin, so you turn off what you don't want rather than hunting for what to switch on:
 
 * See and edit the Skills tab
 * See the History page (limited to their own groups)
 * Chat without restrictions
-
-Everything else is off by default. An admin can grant it when a modeler needs it:
-
 * Trigger and schedule connection syncs
 * Assign workspace users to groups
 * Merge changes to production
@@ -50,7 +47,11 @@ Everything else is off by default. An admin can grant it when a modeler needs it
 * Revert version history to an earlier commit
 * Manage all apps, like an admin
 
-This way the role stays tight by default, and you hand out exactly the extra access a person needs. These settings are per workspace, so a modeler can have different access in different workspaces.
+Assigning users to groups is the one worth a thought before you leave it on. Groups decide which tables and rows a person can query, so it reaches further than the others.
+
+Workspaces that already exist keep the access they have today. Dot writes down each current answer before the new defaults apply, so a workspace that never granted these keeps them off until an admin turns one on.
+
+These settings are per workspace, so a modeler can have different access in different workspaces.
 
 ## Data Access Control
 
