@@ -9,6 +9,7 @@
 * [Energy modes](dot/whats-dot/energy-modes.md)
 * [Build apps](dot/whats-dot/apps/README.md)
 * [Scheduling](dot/whats-dot/scheduling.md)
+* [Teams and channels](dot/whats-dot/teams.md)
 
 ## Train Dot
 
