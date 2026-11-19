@@ -16,12 +16,12 @@ The Explorer lists every place you can open on its **Channels** tab, every app o
 
 To find something:
 
-1. In the sidebar, click **Explorer**.
-2. Type in the search at the top. You can also press **/** to jump to it.
+1. In the sidebar, click **Explorer**, then the tab for what you are looking for.
+2. Type in the tab's search, at the right end of the tabs. You can also press **/** to jump to it.
 
-The search covers all three tabs, and each tab shows how many results it has. Your words stay when you switch tabs or come back from something you opened. A channel or folder you find by its name shows everything in it, and an app is found by its description too. Press **Escape** to clear the search.
+A channel or folder you find by its name shows everything in it, and an app is found by its description too. Press **Escape** to clear the search. To find anything at once, from any page, use the search at the top of the sidebar (⌘K, or Ctrl+K on Windows).
 
-<figure><img src="../../.gitbook/assets/team-explorer-search.png" alt="The Explorer's search with the word gro, its Apps tab showing the apps of the Growth channel"><figcaption><p>One search for channels, apps and schedules.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/team-explorer-search.png" alt="The Explorer's Apps tab searched for customer, showing the app whose description mentions customers"><figcaption><p>Each tab has its own search.</p></figcaption></figure>
 
 Admins see the same page with more on it: every channel in the workspace, and other people's personal apps and schedules.
 
@@ -29,7 +29,7 @@ Admins see the same page with more on it: every channel in the workspace, and ot
 
 **Personal** holds your chats that are in no channel, and your own apps and schedules. Only you and admins can open it, unless you share a chat's link. If your admin lets modelers read every chat in History, modelers can open it too.
 
-To ask Dot something only you see, open **Personal** and type in the box at the bottom.
+To ask Dot something only you see, open **Personal** and type in the box at the bottom. Click one of your chats there to open it beside the list, as a thread opens in a channel.
 
 ## Ask Dot in a channel
 
@@ -38,7 +38,7 @@ To ask Dot something only you see, open **Personal** and type in the box at the 
 
 Your question appears in the channel, and its thread opens beside it. Dot answers in the thread, with your own data access, and everyone in the channel sees the answer. To ask a follow-up, use the box in the thread.
 
-Each question in the channel shows who asked it and when. Below it, a line says how many replies the thread has and when the last reply came. Click a question or its replies to open the thread. To open a thread as a page of its own, click the arrows at its top.
+Each question in the channel shows what was asked, and under it who asked, when, and how many replies its thread has. Click a question to open its thread. To open a thread as a page of its own, click the arrows at its top.
 
 <figure><img src="../../.gitbook/assets/team-channel-thread.png" alt="A question's thread open beside the channel, with Dot's answer and a chart"><figcaption><p>A question's thread opens beside the channel.</p></figcaption></figure>
 
@@ -118,7 +118,7 @@ If a teammate asks while you have the chat open, their question and Dot's work a
 
 ## Schedules in a channel
 
-The **Schedules** tab lists the schedules that deliver the channel's chats and apps: how often each runs, whose data access it runs with, and when it runs next. Click one of your schedules to see its place, who it runs as and its past runs; a teammate's schedule opens its thread in the channel. When a schedule runs, Dot posts what it found in the channel. Click the post to see everything it sent.
+The **Schedules** tab lists the schedules that deliver the channel's chats and apps: how often each runs, whose data access it runs with, and when it runs next. Click one of your schedules to see its place, who it runs as and its past runs; a teammate's schedule opens its thread in the channel. When a schedule runs, Dot posts what it found in the channel. Click the post to read everything it sent, beside the channel.
 
 * People who can edit the channel can pause and resume a teammate's schedule from the **⋮** at the end of its row. It keeps running as its owner.
 * Editing a teammate's schedule makes it yours. From then on it runs with your data access, and the editor says so before you save.
