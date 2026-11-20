@@ -58,7 +58,7 @@ To split the rows the way the **History** page's type filter does, keep the rows
 
 | History filter | Field and value |
 | --- | --- |
-| Analysis | `agentic` is `true` |
+| Analysis | `analysis_chat` is `true` |
 | App building | `type` is `app` |
 | Root | `type` is `root`, `proposal`, `data_gap` or `review` |
 | Scheduled | `has_schedule` is `true` |
