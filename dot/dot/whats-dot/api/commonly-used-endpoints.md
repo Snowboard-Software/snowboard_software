@@ -52,8 +52,27 @@ Documentation how to setup a dbt webhooks
 * **Dates**: UTC days, from `start_date` up to but not including `end_date`. For a single day, pass that day and the day after.
 * **Answers**: add `include_answers=true` to get the answer the user read for each question.
 * **App building**: `chat_kind` is `app` on every row of a chat that built or edited an app, and `chat` otherwise. Sum credits by it to see what apps cost apart from questions.
+* **Chat types**: `type` says what the question's chat is, with the same values as the CSV below. `archived` and `training` are `true` for an archived chat and for a training run.
+
+To split the rows the way the **History** page's type filter does, keep the rows where:
+
+| History filter | Field and value |
+| --- | --- |
+| Analysis | `analysis_chat` is `true` |
+| App building | `type` is `app` |
+| Root | `type` is `root`, `proposal`, `data_gap` or `review` |
+| Scheduled | `has_schedule` is `true` |
+| Created by Schedule | `created_by_schedule` is `true` |
+| Shared | `is_shared` is `true` |
+| Training | `training` is `true` |
+| Archived | `archived` is `true` |
+
+Training rows appear only under Training. Root rows appear only under Root.
 
 For one row per chat, use `GET /api/chat_history_export`. It returns a CSV file and takes the same filters as the **History** page. Here both `start_date` and `end_date` are included, as days in the `tz` you pass (UTC if you leave it out).
+
+* **Type filter**: `filter_type` is `all` (the default, every chat but training runs), `agentic` (Analysis), `app` (App building), `context_agent` (Root), `proposals`, `scheduled` (has a schedule), `is_scheduled` (created by a schedule), `shared`, `training` or `archived`.
+* **Type column**: `type` is `chat`, `analysis`, `app` (the chat built or edited an app), `scheduled_run` (a schedule created it), `root` (a Root session), or the ticket a Root session became: `proposal`, `data_gap` or `review`.
 
 {% openapi-operation spec="dot-openapi" path="/api/chat_history_export" method="get" %}
 [OpenAPI dot-openapi](https://test.getdot.ai/openapi.json)
