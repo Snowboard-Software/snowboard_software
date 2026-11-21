@@ -58,9 +58,9 @@ Each channel names the groups and people who can open it, and what they can do t
 
 Admins open every channel.
 
-To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. If you are in it through a group, the list says which one.
+To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. If you are in it through a group, that group's row names you among its people.
 
-A channel you can only read shows an eye beside its name in the sidebar. In it, the place of the box says who can let you ask. A thread says the same, and offers **Continue in a private chat**.
+In a channel you can only read, the place of the box says so and who can let you ask. A thread says the same, and offers **Continue in a private chat**.
 
 ## When someone adds you
 
