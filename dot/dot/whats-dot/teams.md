@@ -47,6 +47,7 @@ Each question in the channel shows what was asked, and under it who asked, when,
 * A dot beside a channel in the sidebar and in the Explorer means something happened there since you last looked.
 * In the channel, a **New** line sits above what came after your last visit.
 * A dot on a question's replies means its thread has news you haven't opened.
+* **New** beside a channel means someone added you to it. See [When someone adds you](#when-someone-adds-you).
 
 ## Who is in a channel
 
@@ -57,21 +58,40 @@ Each channel names the groups and people who can open it, and what they can do t
 
 Admins open every channel.
 
-To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. In a channel you can only read, the place of the box says who can let you ask. A thread says the same, and offers **Continue in a private chat**.
+To see who is in a channel, click the faces at the top of it. The number beside them says how many people can open it. If you are in it through a group, the list says which one.
+
+A channel you can only read shows an eye beside its name in the sidebar. In it, the place of the box says who can let you ask. A thread says the same, and offers **Continue in a private chat**.
+
+## When someone adds you
+
+When someone adds you to a channel, Dot tells you:
+
+* The channel shows **New** in the sidebar until you open it. Point at **New** to see who added you.
+* **New chat** says who added you, with a link to the channel.
+* If they added you by name, not through a group, you also get an email with a link to the channel.
+
+The channel's first line says who started it and how you came in, for example "Tara Farah started this channel today and added you." Its activity also shows who was added and removed since.
+
+<figure><img src="../../.gitbook/assets/team-added-welcome.png" alt="New chat on a first visit: a welcome, the line Tara Farah added you to QC Hello, and the channel marked New in the sidebar"><figcaption><p>A first visit says who added you, and where.</p></figcaption></figure>
 
 ## Start a channel
 
 Anyone in the workspace can start a channel.
 
-1. In the **Explorer**, on the **Channels** tab, click **New channel**. You can also point at your places in the sidebar and click **New channel** under them.
+1. In the **Explorer**, on the **Channels** tab, click **New channel**. You can also click **New channel** under your places in the sidebar. Once you have started a channel, it shows there when you point at the list.
 2. Name the channel.
 3. Add groups or people. A group joins as **Can view** and a person as **Can edit**.
 4. Change **Can view** to **Can edit** for the people who should ask Dot in it.
 5. Click **Create**.
 
-A new channel is empty: it says who started it and when, and suggests a few first questions for your data. Click one to ask it.
+A new channel says who started it, when and with whom, and suggests a few first questions for your data. Click one to ask it.
 
-You are always in a channel you start. You and the workspace's admins can rename it, delete it and change who is in it, from the faces and the **⋮** menu at the top of the channel. Deleting a channel gives its chats back to the people who started them. Only an admin can delete a channel that holds apps.
+You are always in a channel you start. You and the workspace's admins manage it:
+
+* To add or remove people, click the faces at the top of the channel, then **Add or remove people**. The channel's activity shows each change.
+* To rename or delete it, click **⋮** at the top of the channel.
+
+Deleting a channel gives its chats back to the people who started them. Replies teammates asked in those chats go with them, and Dot names whose before you delete. Only an admin can delete a channel that holds apps.
 
 <figure><img src="../../.gitbook/assets/team-new-channel.png" alt="The New channel panel with a name field, people and groups, and Create"><figcaption><p>Name the channel and choose who is in it.</p></figcaption></figure>
 
@@ -110,7 +130,7 @@ Only the person who started a chat, or an admin, can put it in a channel or take
 
 Open a question's thread in the channel. Each question in it shows the face and name of the person who asked.
 
-When you ask, Dot answers with your own data access, not the access of the person who started the chat. Everyone in the channel sees what you ask. Dot reads your teammates' questions and answers in the chat, but never the data they fetched along the way, and when you download a table from a teammate's answer, Dot fetches it again with your own access. To build on a teammate's analysis without adding to their chat, open it as a page and click **Continue in a private chat**. Your copy keeps who asked each earlier question.
+When you ask, Dot answers with your own data access, not the access of the person who started the chat. Everyone in the channel sees what you ask. Dot reads your teammates' questions and answers in the chat, but never the data they fetched along the way, and when you download a table from a teammate's answer, Dot fetches it again with your own access. To build on a teammate's analysis without adding to their chat, click **Continue in a private chat** in its thread. Your copy keeps who asked each earlier question. Dot builds apps only in your own chats: ask for a dashboard in a teammate's chat, and Dot sends you to **Continue in a private chat**.
 
 If a teammate asks while you have the chat open, their question and Dot's work appear as they happen.
 
