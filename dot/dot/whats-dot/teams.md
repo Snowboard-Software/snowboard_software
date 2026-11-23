@@ -124,7 +124,7 @@ Uploaded files follow your workspace's **Data retention** setting, so a file lea
 
 The chat leaves **Personal** and becomes a question in the channel. Its post says when it was first asked. To move it back, pick **Personal** the same way.
 
-You can also click **Share** in the chat, pick the channel under **Shown in**, and click **Share in** and the channel's name. Dot shows who will be able to ask in it and who can only read it before you share.
+You can also click **Share**: at the top of the chat's page, or at the top of its thread beside a channel or **Personal**. Click the place under **Shown in**, pick the channel, and click **Share in** and the channel's name. Dot shows who will be able to ask in it and who can only read it before you share. **Copy link** in the same window copies a link to the chat.
 
 Only the person who started a chat, or an admin, can put it in a channel or take it out. Once a teammate has asked in it, it stays in that channel: their answers came from their own data access, for that channel's people. You can still take it out of the team, and an admin can move it.
 
