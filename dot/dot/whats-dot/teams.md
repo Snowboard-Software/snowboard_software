@@ -40,6 +40,8 @@ Your question appears in the channel, and its thread opens beside it. Dot answer
 
 Each question in the channel shows what was asked, and under it who asked, when, and how many replies its thread has. Click a question to open its thread. To open a thread as a page of its own, click the arrows at its top.
 
+To share a question, point at it and click the share icon, or click **Share** at the top of its thread. For a teammate's question, **Copy link** copies a link to its thread that opens for the channel's people. For your own, it copies a link anyone can view, unless your admin has turned public links off.
+
 <figure><img src="../../.gitbook/assets/team-channel-thread.png" alt="A question's thread open beside the channel, with Dot's answer and a chart"><figcaption><p>A question's thread opens beside the channel.</p></figcaption></figure>
 
 ## See what is new
