@@ -103,6 +103,8 @@ The **Apps** tab lists the channel's apps, and the folders in it. Point at an ap
 
 To put an app in a channel, click **Publish** in the app's chat and pick the channel. To move an app you already published, click **⋮** at the end of its row, then **Move to…** and the place.
 
+Admins sort a channel's apps into folders. Click **New folder** on the channel's **Apps** tab and type the name. In the Explorer's **Apps** tab, **New folder** first asks which channel, or which folder in one, it goes in.
+
 ## Files in a channel
 
 The **Files** tab lists every file uploaded in the channel's chats: who gave it, when, and the chat it came with. Click a file to download it, or its chat to open the thread.
