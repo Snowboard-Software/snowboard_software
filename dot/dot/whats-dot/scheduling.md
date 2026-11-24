@@ -26,13 +26,14 @@ You can schedule a Deep Analysis response or an [app](apps/README.md). On an app
 <figure><img src="../../.gitbook/assets/scheduling-button.png" alt=""><figcaption><p>Click Schedule to set up recurring delivery</p></figcaption></figure>
 
 3. Under **To**, choose the channel (Email/Slack/Teams) and add recipients
-4. Under **Each run**, choose what is sent (see below)
-5. Under **Every**, set the frequency: day, weekday, week (pick the day) or month (pick the date), and the time
-6. Click **Schedule**
+4. Under **Name**, keep the chat's or app's title or give the schedule its own. Every message is titled with it
+5. Under **Each run**, choose what is sent (see below)
+6. Under **Every**, set the frequency: day, weekday, week (pick the day) or month (pick the date), and the time
+7. Click **Schedule**
 
 <figure><img src="../../.gitbook/assets/scheduling-dialog.png" alt=""><figcaption><p>Configure channel, recipients, and frequency</p></figcaption></figure>
 
-Click **Test** to send a preview before committing. **Attach PDF** adds a PDF to each delivery. For apps sent by email, **Native** shows the app's images and tables in the email itself. Large reports get a preview and a link.
+Click **Test** to send a preview before committing. **Attach PDF** adds a PDF to each delivery. For apps sent by email, **Native** shows the app's images and tables in the email itself. An app too long for one email shows its first part and says the rest is in the app.
 
 ### Each Run
 
@@ -43,6 +44,31 @@ Click **Test** to send a preview before committing. **Attach PDF** adds a PDF to
 | Fresh analysis | Dot re-investigates and writes up new findings | Metered |
 
 Latest numbers and Brief need queries that can run again. If a message can't be re-run, only Fresh analysis is offered.
+
+### What Recipients Receive
+
+A scheduled report arrives as one message, laid out the same way on email, Slack and Teams. From the top:
+
+1. The schedule's name and the date.
+2. Why it came now, when a condition on a chart sent it.
+3. The news in one sentence (Brief and Fresh analysis). Brief adds up to two short points.
+4. One picture: the answer's first chart, else the first rows of its first table. An app shows its top.
+5. A link to **Continue in Dot**, or to **Open** the app. Admins can hide it with **Hide 'View Online' links** under **Settings → Advanced Settings → Sharing & privacy**.
+6. The documents: the run's files, one CSV per table, and the PDF when **Attach PDF** is on.
+
+The rest of the run follows below a rule in email, in the thread in Slack, and below a separator in the Teams card. With Fresh analysis, that is the whole analysis. With Latest numbers and Brief, it is the answer's other charts and tables. An app's rest is the app itself, one click away.
+
+The answer's charts, tables and files travel like this:
+
+- Each chart or diagram is drawn in the message.
+- Each table shows its first rows in the message, and the whole table comes as a CSV, up to 100,000 rows.
+- Files are attached in email and Slack, and linked on a Teams card. A CSV linked on Teams opens for signed-in members of your organization.
+- An archive, such as a .zip, is sent only when it is the only file.
+- An image file is sent as a file, not drawn. To see a picture in the message, ask for a chart.
+
+Long reports are cut to fit. An email draws tables up to a size limit, and the tables past it come as CSVs only. A Teams card that fills up ends by pointing to the rest in Dot.
+
+The layout is Dot's own: a run can't send its own email, so there is no custom HTML body, style or subject line. The email subject is the schedule's name and the date. When a condition on a chart sent it, the subject names that condition instead of the date. To change what the message holds, ask Dot for the charts, tables and files you want in the answer.
 
 ### Managing Schedules
 
